@@ -1,0 +1,30 @@
+{
+  "categories": [
+    "car",
+    "person",
+    "art",
+    "nature",
+    "technology",
+    "animal",
+    "fashion",
+    "furniture",
+    "building",
+    "sport"
+  ],
+  "cat_to_idx": {
+    "car": 0,
+    "person": 1,
+    "art": 2,
+    "nature": 3,
+    "technology": 4,
+    "animal": 5,
+    "fashion": 6,
+    "furniture": 7,
+    "building": 8,
+    "sport": 9
+  },
+  "input_size": 64,
+  "hidden_size": 256,
+  "model_type": "mlp",
+  "best_accuracy": 0.19769557307459065
+}
