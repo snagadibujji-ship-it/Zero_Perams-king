@@ -1,0 +1,378 @@
+A knife is used for cutting
+A pen is used for writing
+A hammer is used for hammering nails
+A saw is used for cutting wood
+A shovel is used for digging
+A broom is used for sweeping
+A telescope is used for observing stars
+A microscope is used for seeing small things
+A thermometer is used for measuring temperature
+A clock is used for telling time
+A compass is used for finding direction
+A calculator is used for computing numbers
+A phone is used for communication
+A camera is used for taking pictures
+A ladder is used for climbing
+A key is used for opening locks
+A map is used for navigation
+A wheel is used for transportation
+A battery is used for storing energy
+A filter is used for removing impurities
+Fire causes heat
+Fire causes light
+Fire causes smoke
+Rain causes wet ground
+Rain causes puddles
+Rain causes flooding
+Drought causes dry soil
+Drought causes crop failure
+Cold causes freezing
+Heat causes melting
+Heat causes evaporation
+Heat causes expansion
+Pressure causes compression
+Gravity causes falling
+Gravity causes weight
+Wind causes erosion
+Earthquakes cause destruction
+Lightning causes fire
+Pollution causes health problems
+Deforestation causes habitat loss
+Smoking causes cancer
+Exercise causes sweating
+Exercise causes muscle growth
+Stress causes headaches
+Sleep deprivation causes fatigue
+Overeating causes weight gain
+Loud noise causes hearing damage
+Sunlight causes vitamin D production
+Rust causes metal weakening
+Friction causes heat
+Dropping a glass causes it to break
+Cutting a wire causes a circuit to stop
+Boiling water causes steam
+Freezing water causes ice
+Mixing acid and base causes neutralization
+Combustion causes carbon dioxide
+Photosynthesis causes oxygen production
+Erosion causes land loss
+Volcanic eruption causes lava flow
+Condensation causes dew
+Evaporation causes clouds
+An insult causes anger
+A compliment causes happiness
+Helping someone causes gratitude
+Lying causes distrust
+Betrayal causes sadness
+A gift causes joy
+Rudeness causes irritation
+Kindness causes trust
+Loneliness causes depression
+Success causes confidence
+Failure causes disappointment
+Surprise causes shock
+Danger causes fear
+Safety causes relief
+Injustice causes outrage
+Boredom causes restlessness
+Achievement causes pride
+Loss causes grief
+Love causes happiness
+Rejection causes sadness
+Encouragement causes motivation
+Criticism causes self-doubt
+Praise causes confidence
+Neglect causes resentment
+Glass is fragile
+Glass is transparent
+Glass is made of sand
+Steel is strong
+Steel is made of iron and carbon
+Cotton is soft
+Cotton is made of plant fiber
+Rubber is elastic
+Rubber is flexible
+Diamond is hard
+Diamond is made of carbon
+Paper is thin
+Paper is made of wood pulp
+Plastic is lightweight
+Plastic is made of petroleum
+Concrete is strong
+Concrete is made of cement sand and gravel
+Silk is smooth
+Silk is made of silkworm thread
+Wool is warm
+Wool is made of sheep fiber
+Leather is durable
+Leather is made of animal skin
+Bronze is made of copper and tin
+Brass is made of copper and zinc
+An atom is made of protons neutrons and electrons
+A molecule is made of atoms
+DNA is made of nucleotides
+A cell is made of organelles
+Blood is made of red cells white cells and plasma
+The sun is made of hydrogen and helium
+The atmosphere is made of nitrogen and oxygen
+Ice is cold
+Steam is hot
+Lava is extremely hot
+Space is extremely cold
+The desert is hot and dry
+The arctic is cold and icy
+The tropics are hot and humid
+The ocean is salty
+Fresh water is not salty
+Acid is corrosive
+A vacuum has no air
+Sound needs a medium to travel
+Light travels at 300000 kilometers per second
+Sound travels at 343 meters per second
+Water boils at 100 degrees celsius
+Water freezes at 0 degrees celsius
+Absolute zero is minus 273 degrees celsius
+The speed of light is the fastest speed possible
+Gravity pulls objects toward earth
+Objects fall at 9.8 meters per second squared
+Energy cannot be created or destroyed
+For every action there is an equal and opposite reaction
+An object in motion stays in motion unless acted upon
+Heavier objects have more gravitational pull
+Pressure increases with depth in water
+Hot air rises
+Cold air sinks
+Electricity flows through conductors
+Insulators block electricity
+Magnets attract iron
+Like charges repel
+Opposite charges attract
+A lever multiplies force
+A pulley changes the direction of force
+A wheel reduces friction
+An inclined plane reduces effort
+A computer is used for processing data
+A server is used for hosting services
+A database is used for storing data
+A router is used for directing network traffic
+An algorithm is used for solving problems
+Encryption is used for protecting data
+A compiler is used for translating code
+A debugger is used for finding bugs
+Version control is used for tracking changes
+Testing is used for finding errors
+An API is used for connecting systems
+A cache is used for speeding up access
+Compression is used for reducing file size
+A firewall is used for blocking threats
+Backup is used for protecting against data loss
+A doctor is a person
+A teacher is a person
+An engineer is a person
+A scientist is a person
+A musician is a person
+An artist is a person
+A chef is a person
+A pilot is a person
+A farmer is a person
+A lawyer is a person
+A nurse is a person
+A firefighter is a person
+A police officer is a person
+An architect is a person
+A dentist is a person
+A surgeon is a doctor
+A cardiologist is a doctor
+A pediatrician is a doctor
+A psychiatrist is a doctor
+A mechanic is a person
+A plumber is a person
+An electrician is a person
+A carpenter is a person
+A baker is a person
+A butcher is a person
+A librarian is a person
+A journalist is a person
+A photographer is a person
+An astronaut is a person
+A mathematician is a scientist
+A biologist is a scientist
+A chemist is a scientist
+A physicist is a scientist
+A geologist is a scientist
+An economist is a person
+A philosopher is a person
+A historian is a person
+Monday is a day
+Tuesday is a day
+Wednesday is a day
+Thursday is a day
+Friday is a day
+Saturday is a day
+Sunday is a day
+January is a month
+February is a month
+March is a month
+April is a month
+May is a month
+June is a month
+July is a month
+August is a month
+September is a month
+October is a month
+November is a month
+December is a month
+Spring is a season
+Summer is a season
+Autumn is a season
+Winter is a season
+Red is a color
+Blue is a color
+Green is a color
+Yellow is a color
+Orange is a color
+Purple is a color
+Black is a color
+White is a color
+Brown is a color
+Pink is a color
+Gray is a color
+A circle is a shape
+A square is a shape
+A triangle is a shape
+A rectangle is a shape
+A pentagon is a shape
+A hexagon is a shape
+An oval is a shape
+A cube is a shape
+A sphere is a shape
+A cylinder is a shape
+A cone is a shape
+A pyramid is a shape
+Hydrogen is an element
+Helium is an element
+Carbon is an element
+Nitrogen is an element
+Oxygen is an element
+Iron is an element
+Gold is an element
+Silver is an element
+Copper is an element
+Sodium is an element
+Calcium is an element
+Uranium is an element
+Mercury is an element
+Lead is an element
+Aluminum is an element
+Water is a compound
+Salt is a compound
+Carbon dioxide is a compound
+Methane is a compound
+Glucose is a compound
+The heart is an organ
+The brain is an organ
+The lungs are an organ
+The liver is an organ
+The kidney is an organ
+The stomach is an organ
+The skin is an organ
+The intestine is an organ
+The eye is an organ
+The ear is an organ
+Africa is a continent
+Asia is a continent
+Europe is a continent
+North America is a continent
+South America is a continent
+Australia is a continent
+Antarctica is a continent
+The Pacific is an ocean
+The Atlantic is an ocean
+The Indian is an ocean
+The Arctic is an ocean
+The Nile is a river
+The Amazon is a river
+The Mississippi is a river
+The Yangtze is a river
+The Danube is a river
+The Thames is a river
+Mount Everest is a mountain
+Mount Kilimanjaro is a mountain
+Mount Fuji is a mountain
+The Alps are mountains
+The Himalayas are mountains
+The Andes are mountains
+The Sahara is a desert
+The Gobi is a desert
+The Amazon is a rainforest
+The Pacific is the largest ocean
+Mount Everest is the tallest mountain
+The Nile is the longest river
+Russia is the largest country
+China has the largest population
+The cheetah is the fastest land animal
+The blue whale is the largest animal
+The elephant is the largest land animal
+The giraffe is the tallest animal
+The ostrich is the largest bird
+The hummingbird is the smallest bird
+The peregrine falcon is the fastest bird
+The great white shark is a dangerous predator
+A doctor can heal patients
+A teacher can educate students
+An engineer can design systems
+A scientist can conduct experiments
+A musician can play instruments
+A chef can cook food
+A pilot can fly aircraft
+A farmer can grow crops
+A lawyer can provide legal advice
+A firefighter can extinguish fires
+A carpenter can build furniture
+A painter can create art
+A writer can compose stories
+A surgeon can perform operations
+An architect can design buildings
+Computers can process information
+Robots can perform repetitive tasks
+Satellites can orbit the earth
+Telescopes can observe distant objects
+Submarines can dive underwater
+Airplanes can fly through the air
+Ships can sail across oceans
+Trains can carry many passengers
+Bicycles can be pedaled
+Rockets can travel to space
+Evaporation causes clouds
+Clouds cause condensation
+Condensation causes rain
+Heat causes evaporation
+The sun causes heat
+Gravity causes things to fall
+Rotation causes day and night
+The tilt of the earth causes seasons
+The moon causes tides
+Pressure differences cause wind
+Unequal heating causes pressure differences
+Bacteria cause infection
+Viruses cause disease
+Lack of sleep causes fatigue
+Studying causes learning
+Practice causes improvement
+Overwork causes burnout
+Dehydration causes thirst
+Hunger causes eating
+Cold causes shivering
+Fear causes adrenaline
+Adrenaline causes fast heartbeat
+Combustion causes fire
+Fuel and oxygen cause combustion
+Friction causes sparks
+Sparks cause ignition
+Plate tectonics cause earthquakes
+Earthquakes cause tsunamis
+Volcanic eruptions cause ash clouds
+Ash clouds cause cooling
+Greenhouse gases cause global warming
+Global warming causes ice melting
+Ice melting causes sea level rise

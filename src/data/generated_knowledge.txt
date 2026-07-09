@@ -1,0 +1,646 @@
+Afghanistan is a country
+The capital of Afghanistan is Kabul
+Afghanistan is located in Asia
+Kabul is a city located in Afghanistan
+Albania is a country
+The capital of Albania is Tirana
+Albania is located in Europe
+Tirana is a city located in Albania
+Algeria is a country
+The capital of Algeria is Algiers
+Algeria is located in Africa
+Algiers is a city located in Algeria
+Andorra is a country
+The capital of Andorra is Andorra la Vella
+Andorra is located in Europe
+Andorra la Vella is a city located in Andorra
+Angola is a country
+The capital of Angola is Luanda
+Angola is located in Africa
+Luanda is a city located in Angola
+Argentina is a country
+The capital of Argentina is Buenos Aires
+Argentina is located in South America
+Buenos Aires is a city located in Argentina
+Armenia is a country
+The capital of Armenia is Yerevan
+Armenia is located in Asia
+Yerevan is a city located in Armenia
+Australia is a country
+The capital of Australia is Canberra
+Australia is located in Oceania
+Canberra is a city located in Australia
+Austria is a country
+The capital of Austria is Vienna
+Austria is located in Europe
+Vienna is a city located in Austria
+Azerbaijan is a country
+The capital of Azerbaijan is Baku
+Azerbaijan is located in Asia
+Baku is a city located in Azerbaijan
+Bahamas is a country
+The capital of Bahamas is Nassau
+Bahamas is located in North America
+Nassau is a city located in Bahamas
+Bahrain is a country
+The capital of Bahrain is Manama
+Bahrain is located in Asia
+Manama is a city located in Bahrain
+Bangladesh is a country
+The capital of Bangladesh is Dhaka
+Bangladesh is located in Asia
+Dhaka is a city located in Bangladesh
+Barbados is a country
+The capital of Barbados is Bridgetown
+Barbados is located in North America
+Bridgetown is a city located in Barbados
+Belarus is a country
+The capital of Belarus is Minsk
+Belarus is located in Europe
+Minsk is a city located in Belarus
+Belgium is a country
+The capital of Belgium is Brussels
+Belgium is located in Europe
+Brussels is a city located in Belgium
+Belize is a country
+The capital of Belize is Belmopan
+Belize is located in North America
+Belmopan is a city located in Belize
+Benin is a country
+The capital of Benin is Porto-Novo
+Benin is located in Africa
+Porto-Novo is a city located in Benin
+Bhutan is a country
+The capital of Bhutan is Thimphu
+Bhutan is located in Asia
+Thimphu is a city located in Bhutan
+Bolivia is a country
+The capital of Bolivia is Sucre
+Bolivia is located in South America
+Sucre is a city located in Bolivia
+Bosnia is a country
+The capital of Bosnia is Sarajevo
+Bosnia is located in Europe
+Sarajevo is a city located in Bosnia
+Botswana is a country
+The capital of Botswana is Gaborone
+Botswana is located in Africa
+Gaborone is a city located in Botswana
+Brazil is a country
+The capital of Brazil is Brasilia
+Brazil is located in South America
+Brasilia is a city located in Brazil
+Brunei is a country
+The capital of Brunei is Bandar Seri Begawan
+Brunei is located in Asia
+Bandar Seri Begawan is a city located in Brunei
+Bulgaria is a country
+The capital of Bulgaria is Sofia
+Bulgaria is located in Europe
+Sofia is a city located in Bulgaria
+Cambodia is a country
+The capital of Cambodia is Phnom Penh
+Cambodia is located in Asia
+Phnom Penh is a city located in Cambodia
+Cameroon is a country
+The capital of Cameroon is Yaounde
+Cameroon is located in Africa
+Yaounde is a city located in Cameroon
+Canada is a country
+The capital of Canada is Ottawa
+Canada is located in North America
+Ottawa is a city located in Canada
+Chile is a country
+The capital of Chile is Santiago
+Chile is located in South America
+Santiago is a city located in Chile
+China is a country
+The capital of China is Beijing
+China is located in Asia
+Beijing is a city located in China
+Colombia is a country
+The capital of Colombia is Bogota
+Colombia is located in South America
+Bogota is a city located in Colombia
+Congo is a country
+The capital of Congo is Kinshasa
+Congo is located in Africa
+Kinshasa is a city located in Congo
+Costa Rica is a country
+The capital of Costa Rica is San Jose
+Costa Rica is located in North America
+San Jose is a city located in Costa Rica
+Croatia is a country
+The capital of Croatia is Zagreb
+Croatia is located in Europe
+Zagreb is a city located in Croatia
+Cuba is a country
+The capital of Cuba is Havana
+Cuba is located in North America
+Havana is a city located in Cuba
+Cyprus is a country
+The capital of Cyprus is Nicosia
+Cyprus is located in Europe
+Nicosia is a city located in Cyprus
+Czech Republic is a country
+The capital of Czech Republic is Prague
+Czech Republic is located in Europe
+Prague is a city located in Czech Republic
+Denmark is a country
+The capital of Denmark is Copenhagen
+Denmark is located in Europe
+Copenhagen is a city located in Denmark
+Dominican Republic is a country
+The capital of Dominican Republic is Santo Domingo
+Dominican Republic is located in North America
+Santo Domingo is a city located in Dominican Republic
+Ecuador is a country
+The capital of Ecuador is Quito
+Ecuador is located in South America
+Quito is a city located in Ecuador
+Egypt is a country
+The capital of Egypt is Cairo
+Egypt is located in Africa
+Cairo is a city located in Egypt
+El Salvador is a country
+The capital of El Salvador is San Salvador
+El Salvador is located in North America
+San Salvador is a city located in El Salvador
+Estonia is a country
+The capital of Estonia is Tallinn
+Estonia is located in Europe
+Tallinn is a city located in Estonia
+Ethiopia is a country
+The capital of Ethiopia is Addis Ababa
+Ethiopia is located in Africa
+Addis Ababa is a city located in Ethiopia
+Fiji is a country
+The capital of Fiji is Suva
+Fiji is located in Oceania
+Suva is a city located in Fiji
+Finland is a country
+The capital of Finland is Helsinki
+Finland is located in Europe
+Helsinki is a city located in Finland
+France is a country
+The capital of France is Paris
+France is located in Europe
+Paris is a city located in France
+Gabon is a country
+The capital of Gabon is Libreville
+Gabon is located in Africa
+Libreville is a city located in Gabon
+Georgia is a country
+The capital of Georgia is Tbilisi
+Georgia is located in Asia
+Tbilisi is a city located in Georgia
+Germany is a country
+The capital of Germany is Berlin
+Germany is located in Europe
+Berlin is a city located in Germany
+Ghana is a country
+The capital of Ghana is Accra
+Ghana is located in Africa
+Accra is a city located in Ghana
+Greece is a country
+The capital of Greece is Athens
+Greece is located in Europe
+Athens is a city located in Greece
+Guatemala is a country
+The capital of Guatemala is Guatemala City
+Guatemala is located in North America
+Guatemala City is a city located in Guatemala
+Haiti is a country
+The capital of Haiti is Port-au-Prince
+Haiti is located in North America
+Port-au-Prince is a city located in Haiti
+Honduras is a country
+The capital of Honduras is Tegucigalpa
+Honduras is located in North America
+Tegucigalpa is a city located in Honduras
+Hungary is a country
+The capital of Hungary is Budapest
+Hungary is located in Europe
+Budapest is a city located in Hungary
+Iceland is a country
+The capital of Iceland is Reykjavik
+Iceland is located in Europe
+Reykjavik is a city located in Iceland
+India is a country
+The capital of India is New Delhi
+India is located in Asia
+New Delhi is a city located in India
+Indonesia is a country
+The capital of Indonesia is Jakarta
+Indonesia is located in Asia
+Jakarta is a city located in Indonesia
+Iran is a country
+The capital of Iran is Tehran
+Iran is located in Asia
+Tehran is a city located in Iran
+Iraq is a country
+The capital of Iraq is Baghdad
+Iraq is located in Asia
+Baghdad is a city located in Iraq
+Ireland is a country
+The capital of Ireland is Dublin
+Ireland is located in Europe
+Dublin is a city located in Ireland
+Israel is a country
+The capital of Israel is Jerusalem
+Israel is located in Asia
+Jerusalem is a city located in Israel
+Italy is a country
+The capital of Italy is Rome
+Italy is located in Europe
+Rome is a city located in Italy
+Jamaica is a country
+The capital of Jamaica is Kingston
+Jamaica is located in North America
+Kingston is a city located in Jamaica
+Japan is a country
+The capital of Japan is Tokyo
+Japan is located in Asia
+Tokyo is a city located in Japan
+Jordan is a country
+The capital of Jordan is Amman
+Jordan is located in Asia
+Amman is a city located in Jordan
+Kazakhstan is a country
+The capital of Kazakhstan is Astana
+Kazakhstan is located in Asia
+Astana is a city located in Kazakhstan
+Kenya is a country
+The capital of Kenya is Nairobi
+Kenya is located in Africa
+Nairobi is a city located in Kenya
+Kuwait is a country
+The capital of Kuwait is Kuwait City
+Kuwait is located in Asia
+Kuwait City is a city located in Kuwait
+Laos is a country
+The capital of Laos is Vientiane
+Laos is located in Asia
+Vientiane is a city located in Laos
+Latvia is a country
+The capital of Latvia is Riga
+Latvia is located in Europe
+Riga is a city located in Latvia
+Lebanon is a country
+The capital of Lebanon is Beirut
+Lebanon is located in Asia
+Beirut is a city located in Lebanon
+Libya is a country
+The capital of Libya is Tripoli
+Libya is located in Africa
+Tripoli is a city located in Libya
+Lithuania is a country
+The capital of Lithuania is Vilnius
+Lithuania is located in Europe
+Vilnius is a city located in Lithuania
+Luxembourg is a country
+The capital of Luxembourg is Luxembourg City
+Luxembourg is located in Europe
+Luxembourg City is a city located in Luxembourg
+Madagascar is a country
+The capital of Madagascar is Antananarivo
+Madagascar is located in Africa
+Antananarivo is a city located in Madagascar
+Malaysia is a country
+The capital of Malaysia is Kuala Lumpur
+Malaysia is located in Asia
+Kuala Lumpur is a city located in Malaysia
+Mali is a country
+The capital of Mali is Bamako
+Mali is located in Africa
+Bamako is a city located in Mali
+Malta is a country
+The capital of Malta is Valletta
+Malta is located in Europe
+Valletta is a city located in Malta
+Mexico is a country
+The capital of Mexico is Mexico City
+Mexico is located in North America
+Mexico City is a city located in Mexico
+Moldova is a country
+The capital of Moldova is Chisinau
+Moldova is located in Europe
+Chisinau is a city located in Moldova
+Monaco is a country
+The capital of Monaco is Monaco
+Monaco is located in Europe
+Monaco is a city located in Monaco
+Mongolia is a country
+The capital of Mongolia is Ulaanbaatar
+Mongolia is located in Asia
+Ulaanbaatar is a city located in Mongolia
+Morocco is a country
+The capital of Morocco is Rabat
+Morocco is located in Africa
+Rabat is a city located in Morocco
+Mozambique is a country
+The capital of Mozambique is Maputo
+Mozambique is located in Africa
+Maputo is a city located in Mozambique
+Myanmar is a country
+The capital of Myanmar is Naypyidaw
+Myanmar is located in Asia
+Naypyidaw is a city located in Myanmar
+Nepal is a country
+The capital of Nepal is Kathmandu
+Nepal is located in Asia
+Kathmandu is a city located in Nepal
+Netherlands is a country
+The capital of Netherlands is Amsterdam
+Netherlands is located in Europe
+Amsterdam is a city located in Netherlands
+New Zealand is a country
+The capital of New Zealand is Wellington
+New Zealand is located in Oceania
+Wellington is a city located in New Zealand
+Nicaragua is a country
+The capital of Nicaragua is Managua
+Nicaragua is located in North America
+Managua is a city located in Nicaragua
+Niger is a country
+The capital of Niger is Niamey
+Niger is located in Africa
+Niamey is a city located in Niger
+Nigeria is a country
+The capital of Nigeria is Abuja
+Nigeria is located in Africa
+Abuja is a city located in Nigeria
+North Korea is a country
+The capital of North Korea is Pyongyang
+North Korea is located in Asia
+Pyongyang is a city located in North Korea
+Norway is a country
+The capital of Norway is Oslo
+Norway is located in Europe
+Oslo is a city located in Norway
+Oman is a country
+The capital of Oman is Muscat
+Oman is located in Asia
+Muscat is a city located in Oman
+Pakistan is a country
+The capital of Pakistan is Islamabad
+Pakistan is located in Asia
+Islamabad is a city located in Pakistan
+Panama is a country
+The capital of Panama is Panama City
+Panama is located in North America
+Panama City is a city located in Panama
+Paraguay is a country
+The capital of Paraguay is Asuncion
+Paraguay is located in South America
+Asuncion is a city located in Paraguay
+Peru is a country
+The capital of Peru is Lima
+Peru is located in South America
+Lima is a city located in Peru
+Philippines is a country
+The capital of Philippines is Manila
+Philippines is located in Asia
+Manila is a city located in Philippines
+Poland is a country
+The capital of Poland is Warsaw
+Poland is located in Europe
+Warsaw is a city located in Poland
+Portugal is a country
+The capital of Portugal is Lisbon
+Portugal is located in Europe
+Lisbon is a city located in Portugal
+Qatar is a country
+The capital of Qatar is Doha
+Qatar is located in Asia
+Doha is a city located in Qatar
+Romania is a country
+The capital of Romania is Bucharest
+Romania is located in Europe
+Bucharest is a city located in Romania
+Russia is a country
+The capital of Russia is Moscow
+Russia is located in Europe
+Moscow is a city located in Russia
+Rwanda is a country
+The capital of Rwanda is Kigali
+Rwanda is located in Africa
+Kigali is a city located in Rwanda
+Saudi Arabia is a country
+The capital of Saudi Arabia is Riyadh
+Saudi Arabia is located in Asia
+Riyadh is a city located in Saudi Arabia
+Senegal is a country
+The capital of Senegal is Dakar
+Senegal is located in Africa
+Dakar is a city located in Senegal
+Serbia is a country
+The capital of Serbia is Belgrade
+Serbia is located in Europe
+Belgrade is a city located in Serbia
+Singapore is a country
+The capital of Singapore is Singapore
+Singapore is located in Asia
+Singapore is a city located in Singapore
+Slovakia is a country
+The capital of Slovakia is Bratislava
+Slovakia is located in Europe
+Bratislava is a city located in Slovakia
+Slovenia is a country
+The capital of Slovenia is Ljubljana
+Slovenia is located in Europe
+Ljubljana is a city located in Slovenia
+Somalia is a country
+The capital of Somalia is Mogadishu
+Somalia is located in Africa
+Mogadishu is a city located in Somalia
+South Africa is a country
+The capital of South Africa is Pretoria
+South Africa is located in Africa
+Pretoria is a city located in South Africa
+South Korea is a country
+The capital of South Korea is Seoul
+South Korea is located in Asia
+Seoul is a city located in South Korea
+Spain is a country
+The capital of Spain is Madrid
+Spain is located in Europe
+Madrid is a city located in Spain
+Sri Lanka is a country
+The capital of Sri Lanka is Colombo
+Sri Lanka is located in Asia
+Colombo is a city located in Sri Lanka
+Sudan is a country
+The capital of Sudan is Khartoum
+Sudan is located in Africa
+Khartoum is a city located in Sudan
+Sweden is a country
+The capital of Sweden is Stockholm
+Sweden is located in Europe
+Stockholm is a city located in Sweden
+Switzerland is a country
+The capital of Switzerland is Bern
+Switzerland is located in Europe
+Bern is a city located in Switzerland
+Syria is a country
+The capital of Syria is Damascus
+Syria is located in Asia
+Damascus is a city located in Syria
+Taiwan is a country
+The capital of Taiwan is Taipei
+Taiwan is located in Asia
+Taipei is a city located in Taiwan
+Tanzania is a country
+The capital of Tanzania is Dodoma
+Tanzania is located in Africa
+Dodoma is a city located in Tanzania
+Thailand is a country
+The capital of Thailand is Bangkok
+Thailand is located in Asia
+Bangkok is a city located in Thailand
+Tunisia is a country
+The capital of Tunisia is Tunis
+Tunisia is located in Africa
+Tunis is a city located in Tunisia
+Turkey is a country
+The capital of Turkey is Ankara
+Turkey is located in Asia
+Ankara is a city located in Turkey
+Uganda is a country
+The capital of Uganda is Kampala
+Uganda is located in Africa
+Kampala is a city located in Uganda
+Ukraine is a country
+The capital of Ukraine is Kyiv
+Ukraine is located in Europe
+Kyiv is a city located in Ukraine
+United Arab Emirates is a country
+The capital of United Arab Emirates is Abu Dhabi
+United Arab Emirates is located in Asia
+Abu Dhabi is a city located in United Arab Emirates
+United Kingdom is a country
+The capital of United Kingdom is London
+United Kingdom is located in Europe
+London is a city located in United Kingdom
+United States is a country
+The capital of United States is Washington D.C.
+United States is located in North America
+Washington D.C. is a city located in United States
+Uruguay is a country
+The capital of Uruguay is Montevideo
+Uruguay is located in South America
+Montevideo is a city located in Uruguay
+Uzbekistan is a country
+The capital of Uzbekistan is Tashkent
+Uzbekistan is located in Asia
+Tashkent is a city located in Uzbekistan
+Venezuela is a country
+The capital of Venezuela is Caracas
+Venezuela is located in South America
+Caracas is a city located in Venezuela
+Vietnam is a country
+The capital of Vietnam is Hanoi
+Vietnam is located in Asia
+Hanoi is a city located in Vietnam
+Yemen is a country
+The capital of Yemen is Sanaa
+Yemen is located in Asia
+Sanaa is a city located in Yemen
+Zambia is a country
+The capital of Zambia is Lusaka
+Zambia is located in Africa
+Lusaka is a city located in Zambia
+Zimbabwe is a country
+The capital of Zimbabwe is Harare
+Zimbabwe is located in Africa
+Harare is a city located in Zimbabwe
+Hydrogen is a chemical element
+Hydrogen has the chemical symbol H
+Hydrogen has atomic number 1
+Helium is a chemical element
+Helium has the chemical symbol He
+Helium has atomic number 2
+Lithium is a chemical element
+Lithium has the chemical symbol Li
+Lithium has atomic number 3
+Beryllium is a chemical element
+Beryllium has the chemical symbol Be
+Beryllium has atomic number 4
+Boron is a chemical element
+Boron has the chemical symbol B
+Boron has atomic number 5
+Carbon is a chemical element
+Carbon has the chemical symbol C
+Carbon has atomic number 6
+Nitrogen is a chemical element
+Nitrogen has the chemical symbol N
+Nitrogen has atomic number 7
+Oxygen is a chemical element
+Oxygen has the chemical symbol O
+Oxygen has atomic number 8
+Fluorine is a chemical element
+Fluorine has the chemical symbol F
+Fluorine has atomic number 9
+Neon is a chemical element
+Neon has the chemical symbol Ne
+Neon has atomic number 10
+Sodium is a chemical element
+Sodium has the chemical symbol Na
+Sodium has atomic number 11
+Magnesium is a chemical element
+Magnesium has the chemical symbol Mg
+Magnesium has atomic number 12
+Aluminum is a chemical element
+Aluminum has the chemical symbol Al
+Aluminum has atomic number 13
+Silicon is a chemical element
+Silicon has the chemical symbol Si
+Silicon has atomic number 14
+Phosphorus is a chemical element
+Phosphorus has the chemical symbol P
+Phosphorus has atomic number 15
+Sulfur is a chemical element
+Sulfur has the chemical symbol S
+Sulfur has atomic number 16
+Chlorine is a chemical element
+Chlorine has the chemical symbol Cl
+Chlorine has atomic number 17
+Argon is a chemical element
+Argon has the chemical symbol Ar
+Argon has atomic number 18
+Potassium is a chemical element
+Potassium has the chemical symbol K
+Potassium has atomic number 19
+Calcium is a chemical element
+Calcium has the chemical symbol Ca
+Calcium has atomic number 20
+Iron is a chemical element
+Iron has the chemical symbol Fe
+Iron has atomic number 26
+Copper is a chemical element
+Copper has the chemical symbol Cu
+Copper has atomic number 29
+Zinc is a chemical element
+Zinc has the chemical symbol Zn
+Zinc has atomic number 30
+Silver is a chemical element
+Silver has the chemical symbol Ag
+Silver has atomic number 47
+Tin is a chemical element
+Tin has the chemical symbol Sn
+Tin has atomic number 50
+Gold is a chemical element
+Gold has the chemical symbol Au
+Gold has atomic number 79
+Mercury is a chemical element
+Mercury has the chemical symbol Hg
+Mercury has atomic number 80
+Lead is a chemical element
+Lead has the chemical symbol Pb
+Lead has atomic number 82
+Uranium is a chemical element
+Uranium has the chemical symbol U
+Uranium has atomic number 92
+Plutonium is a chemical element
+Plutonium has the chemical symbol Pu
+Plutonium has atomic number 94

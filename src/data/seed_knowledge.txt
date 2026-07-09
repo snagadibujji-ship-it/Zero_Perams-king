@@ -1,0 +1,2393 @@
+A dog is a mammal
+A cat is a mammal
+A horse is a mammal
+A cow is a mammal
+A pig is a mammal
+A sheep is a mammal
+A goat is a mammal
+A deer is a mammal
+A bear is a mammal
+A wolf is a mammal
+A fox is a mammal
+A rabbit is a mammal
+A mouse is a mammal
+A rat is a mammal
+A bat is a mammal
+A whale is a mammal
+A dolphin is a mammal
+An elephant is a mammal
+A lion is a mammal
+A tiger is a mammal
+A leopard is a mammal
+A cheetah is a mammal
+A monkey is a mammal
+An ape is a mammal
+A gorilla is an ape
+A chimpanzee is an ape
+A giraffe is a mammal
+A zebra is a mammal
+A hippopotamus is a mammal
+A rhinoceros is a mammal
+A camel is a mammal
+A kangaroo is a mammal
+A koala is a mammal
+A squirrel is a mammal
+A hedgehog is a mammal
+An otter is a mammal
+A beaver is a mammal
+A seal is a mammal
+A walrus is a mammal
+A mammal is an animal
+An animal is a living thing
+A living thing is a thing
+A bird is an animal
+An eagle is a bird
+A sparrow is a bird
+A robin is a bird
+A pigeon is a bird
+A crow is a bird
+A raven is a bird
+A parrot is a bird
+A penguin is a bird
+An owl is a bird
+A hawk is a bird
+A falcon is a bird
+A swan is a bird
+A duck is a bird
+A goose is a bird
+A flamingo is a bird
+A pelican is a bird
+A hummingbird is a bird
+A woodpecker is a bird
+A seagull is a bird
+An ostrich is a bird
+A chicken is a bird
+A turkey is a bird
+A peacock is a bird
+A fish is an animal
+A shark is a fish
+A salmon is a fish
+A trout is a fish
+A tuna is a fish
+A cod is a fish
+A bass is a fish
+A catfish is a fish
+A swordfish is a fish
+A goldfish is a fish
+A clownfish is a fish
+An eel is a fish
+A ray is a fish
+A herring is a fish
+A reptile is an animal
+A snake is a reptile
+A lizard is a reptile
+A turtle is a reptile
+A tortoise is a reptile
+A crocodile is a reptile
+An alligator is a reptile
+A gecko is a reptile
+An iguana is a reptile
+A chameleon is a reptile
+A cobra is a snake
+A python is a snake
+A rattlesnake is a snake
+An amphibian is an animal
+A frog is an amphibian
+A toad is an amphibian
+A salamander is an amphibian
+A newt is an amphibian
+An insect is an animal
+A bee is an insect
+An ant is an insect
+A butterfly is an insect
+A beetle is an insect
+A fly is an insect
+A mosquito is an insect
+A dragonfly is an insect
+A grasshopper is an insect
+A cricket is an insect
+A moth is an insect
+A wasp is an insect
+A ladybug is an insect
+A cockroach is an insect
+A termite is an insect
+An arachnid is an animal
+A spider is an arachnid
+A scorpion is an arachnid
+A tick is an arachnid
+A plant is a living thing
+A tree is a plant
+An oak is a tree
+A pine is a tree
+A maple is a tree
+A birch is a tree
+A willow is a tree
+A palm is a tree
+A cedar is a tree
+A redwood is a tree
+An elm is a tree
+A cherry tree is a tree
+An apple tree is a tree
+A flower is a plant
+A rose is a flower
+A tulip is a flower
+A daisy is a flower
+A sunflower is a flower
+A lily is a flower
+An orchid is a flower
+A daffodil is a flower
+A violet is a flower
+A carnation is a flower
+A lotus is a flower
+A grass is a plant
+A fern is a plant
+A moss is a plant
+A cactus is a plant
+A bush is a plant
+A vine is a plant
+A vegetable is a plant
+A fruit is a plant product
+A vehicle is a thing
+A car is a vehicle
+A truck is a vehicle
+A bus is a vehicle
+A motorcycle is a vehicle
+A bicycle is a vehicle
+A train is a vehicle
+An airplane is a vehicle
+A helicopter is a vehicle
+A boat is a vehicle
+A ship is a vehicle
+A submarine is a vehicle
+A rocket is a vehicle
+A van is a vehicle
+A taxi is a vehicle
+A tractor is a vehicle
+A scooter is a vehicle
+A canoe is a boat
+A sailboat is a boat
+A yacht is a boat
+A ferry is a boat
+A tool is a thing
+A hammer is a tool
+A screwdriver is a tool
+A wrench is a tool
+A saw is a tool
+A drill is a tool
+A pliers is a tool
+A knife is a tool
+A scissors is a tool
+An axe is a tool
+A shovel is a tool
+A rake is a tool
+A broom is a tool
+A ladder is a tool
+A ruler is a tool
+A level is a tool
+A chisel is a tool
+A food is a thing
+Bread is a food
+Rice is a food
+Pasta is a food
+Cheese is a food
+Butter is a food
+Meat is a food
+Beef is a meat
+Pork is a meat
+Chicken is a meat
+Fish is a food
+An apple is a fruit
+A banana is a fruit
+An orange is a fruit
+A grape is a fruit
+A strawberry is a fruit
+A blueberry is a fruit
+A watermelon is a fruit
+A peach is a fruit
+A pear is a fruit
+A mango is a fruit
+A pineapple is a fruit
+A lemon is a fruit
+A cherry is a fruit
+A plum is a fruit
+A carrot is a vegetable
+A potato is a vegetable
+A tomato is a fruit
+An onion is a vegetable
+A broccoli is a vegetable
+A spinach is a vegetable
+A cucumber is a vegetable
+A pepper is a vegetable
+A corn is a vegetable
+A pea is a vegetable
+A bean is a vegetable
+A drink is a thing
+Water is a drink
+Milk is a drink
+Juice is a drink
+Tea is a drink
+Coffee is a drink
+Soda is a drink
+Lemonade is a drink
+A material is a thing
+Wood is a material
+Metal is a material
+Plastic is a material
+Glass is a material
+Stone is a material
+Concrete is a material
+Rubber is a material
+Leather is a material
+Cotton is a material
+Silk is a material
+Wool is a material
+Steel is a metal
+Iron is a metal
+Gold is a metal
+Silver is a metal
+Copper is a metal
+Aluminum is a metal
+Bronze is a metal
+Titanium is a metal
+A profession is a thing
+A doctor is a profession
+A nurse is a profession
+A teacher is a profession
+A lawyer is a profession
+An engineer is a profession
+A scientist is a profession
+A chef is a profession
+A pilot is a profession
+A firefighter is a profession
+A police officer is a profession
+A farmer is a profession
+A carpenter is a profession
+A plumber is a profession
+An electrician is a profession
+An architect is a profession
+A musician is a profession
+An artist is a profession
+A writer is a profession
+An accountant is a profession
+A dentist is a profession
+A pharmacist is a profession
+A veterinarian is a profession
+A journalist is a profession
+A photographer is a profession
+A country is a place
+France is a country
+Germany is a country
+Italy is a country
+Spain is a country
+England is a country
+Japan is a country
+China is a country
+India is a country
+Brazil is a country
+Australia is a country
+Canada is a country
+Mexico is a country
+Russia is a country
+Egypt is a country
+South Africa is a country
+Argentina is a country
+Sweden is a country
+Norway is a country
+Greece is a country
+Turkey is a country
+A city is a place
+Paris is a city
+London is a city
+Tokyo is a city
+New York is a city
+Berlin is a city
+Rome is a city
+Madrid is a city
+Moscow is a city
+Beijing is a city
+Sydney is a city
+Cairo is a city
+Mumbai is a city
+Toronto is a city
+Los Angeles is a city
+Chicago is a city
+A body of water is a thing
+An ocean is a body of water
+A sea is a body of water
+A lake is a body of water
+A river is a body of water
+A pond is a body of water
+A stream is a body of water
+The Pacific is an ocean
+The Atlantic is an ocean
+The Indian Ocean is an ocean
+The Arctic is an ocean
+The Mediterranean is a sea
+The Amazon is a river
+The Nile is a river
+The Mississippi is a river
+The Danube is a river
+The Thames is a river
+A celestial object is a thing
+A star is a celestial object
+A planet is a celestial object
+A moon is a celestial object
+A comet is a celestial object
+An asteroid is a celestial object
+A galaxy is a celestial object
+The Sun is a star
+Mercury is a planet
+Venus is a planet
+Earth is a planet
+Mars is a planet
+Jupiter is a planet
+Saturn is a planet
+Uranus is a planet
+Neptune is a planet
+The Moon is a moon
+The Milky Way is a galaxy
+A musical instrument is a thing
+A piano is a musical instrument
+A guitar is a musical instrument
+A violin is a musical instrument
+A drum is a musical instrument
+A flute is a musical instrument
+A trumpet is a musical instrument
+A saxophone is a musical instrument
+A cello is a musical instrument
+A harp is a musical instrument
+A clarinet is a musical instrument
+A trombone is a musical instrument
+An oboe is a musical instrument
+A bass is a musical instrument
+A sport is an activity
+Soccer is a sport
+Basketball is a sport
+Tennis is a sport
+Baseball is a sport
+Swimming is a sport
+Running is a sport
+Cycling is a sport
+Golf is a sport
+Boxing is a sport
+Wrestling is a sport
+Hockey is a sport
+Volleyball is a sport
+Cricket is a sport
+Rugby is a sport
+Skiing is a sport
+A shape is a thing
+A circle is a shape
+A square is a shape
+A triangle is a shape
+A rectangle is a shape
+An oval is a shape
+A pentagon is a shape
+A hexagon is a shape
+An octagon is a shape
+A cube is a shape
+A sphere is a shape
+A cylinder is a shape
+A cone is a shape
+A pyramid is a shape
+An element is a thing
+Hydrogen is an element
+Helium is an element
+Carbon is an element
+Nitrogen is an element
+Oxygen is an element
+Iron is an element
+Gold is an element
+Silver is an element
+Copper is an element
+Sodium is an element
+Calcium is an element
+Potassium is an element
+A color is a thing
+Red is a color
+Blue is a color
+Green is a color
+Yellow is a color
+Orange is a color
+Purple is a color
+Pink is a color
+Brown is a color
+Black is a color
+White is a color
+Gray is a color
+An emotion is a thing
+Happiness is an emotion
+Sadness is an emotion
+Anger is an emotion
+Fear is an emotion
+Surprise is an emotion
+Disgust is an emotion
+Love is an emotion
+Joy is an emotion
+Anxiety is an emotion
+Pride is an emotion
+Shame is an emotion
+Jealousy is an emotion
+A disease is a thing
+The flu is a disease
+A cold is a disease
+Cancer is a disease
+Diabetes is a disease
+Malaria is a disease
+Measles is a disease
+Asthma is a disease
+Pneumonia is a disease
+A dog has four legs
+A dog has fur
+A dog has a tail
+A dog has teeth
+A dog has a nose
+A dog has ears
+A cat has four legs
+A cat has fur
+A cat has whiskers
+A cat has a tail
+A cat has claws
+A cat has ears
+A horse has four legs
+A horse has a mane
+A horse has a tail
+A horse has hooves
+A cow has four legs
+A cow has an udder
+A cow has horns
+A cow has a tail
+A pig has four legs
+A pig has a snout
+A pig has a curly tail
+A sheep has four legs
+A sheep has wool
+A bird has wings
+A bird has feathers
+A bird has a beak
+A bird has two legs
+A bird has hollow bones
+An eagle has sharp talons
+An eagle has keen eyesight
+An owl has large eyes
+An owl has silent flight
+A penguin has flippers
+A fish has gills
+A fish has scales
+A fish has fins
+A fish has a tail
+A shark has sharp teeth
+A shark has a dorsal fin
+A snake has scales
+A snake has no legs
+A snake has a forked tongue
+A turtle has a shell
+A crocodile has strong jaws
+A crocodile has a long tail
+A frog has webbed feet
+A frog has smooth skin
+A spider has eight legs
+A spider has multiple eyes
+An ant has six legs
+A butterfly has colorful wings
+A bee has a stinger
+An elephant has a trunk
+An elephant has large ears
+An elephant has tusks
+A giraffe has a long neck
+A giraffe has spots
+A zebra has stripes
+A lion has a mane
+A rabbit has long ears
+A rabbit has a short tail
+A kangaroo has a pouch
+A kangaroo has strong hind legs
+A rhinoceros has a horn
+A rhinoceros has thick skin
+A porcupine has quills
+A camel has humps
+A whale has a blowhole
+A dolphin has a dorsal fin
+A dolphin has a streamlined body
+An octopus has eight tentacles
+A snail has a shell
+A snail has antennae
+Water is a liquid
+Ice is a solid
+Steam is a gas
+Gold is a metal
+Gold is shiny
+Gold is valuable
+Gold is malleable
+Silver is shiny
+Silver is conductive
+Iron is magnetic
+Iron is strong
+Steel is strong
+Steel is durable
+Copper is conductive
+Copper is reddish
+Diamond is hard
+Diamond is transparent
+Wood is flammable
+Wood is natural
+Glass is transparent
+Glass is fragile
+Glass is smooth
+Rubber is elastic
+Rubber is flexible
+Plastic is lightweight
+Plastic is durable
+Cotton is soft
+Cotton is absorbent
+Silk is smooth
+Silk is lightweight
+Wool is warm
+Wool is insulating
+Leather is durable
+Leather is flexible
+Concrete is hard
+Concrete is heavy
+Stone is hard
+Stone is heavy
+Sand is granular
+Clay is moldable
+Paper is thin
+Paper is flammable
+A circle is round
+A square has four equal sides
+A triangle has three sides
+A rectangle has four sides
+A pentagon has five sides
+A hexagon has six sides
+An octagon has eight sides
+A sphere is round
+A cube has six faces
+A pyramid has a pointed top
+Fire is hot
+Fire is bright
+Ice is cold
+Snow is white
+Snow is cold
+Blood is red
+The sky is blue
+Grass is green
+The sun is bright
+The sun is hot
+The moon is bright at night
+A desert is dry
+A desert is hot
+A forest is green
+A forest has many trees
+An ocean is deep
+An ocean is salty
+A mountain is tall
+A volcano is dangerous
+A volcano has lava
+Lightning is bright
+Lightning is fast
+Thunder is loud
+Rain is wet
+A rainbow has seven colors
+Air is invisible
+Air is essential for breathing
+Honey is sweet
+Sugar is sweet
+Salt is salty
+Lemon is sour
+Vinegar is sour
+Pepper is spicy
+Chocolate is sweet
+Milk is white
+Milk is nutritious
+An egg has a shell
+An egg has a yolk
+Bread is soft
+A bone is hard
+A muscle is flexible
+Skin is elastic
+Hair is made of keratin
+A brain is complex
+A heart has four chambers
+Blood is liquid
+A tooth is hard
+A nail is hard
+A feather is light
+A rock is heavy
+A balloon is light
+Lead is heavy
+Helium is lighter than air
+Mercury is a liquid metal
+Oxygen is essential for life
+Carbon dioxide is a greenhouse gas
+Nitrogen makes up most of the atmosphere
+A car has four wheels
+A car has an engine
+A car has a steering wheel
+A bicycle has two wheels
+A bicycle has pedals
+A motorcycle has two wheels
+A motorcycle has an engine
+A truck has large wheels
+A train has many cars
+An airplane has wings
+An airplane has an engine
+A helicopter has a rotor
+A boat has a hull
+A submarine can go underwater
+A piano has 88 keys
+A guitar has six strings
+A violin has four strings
+A drum is hollow
+A flute is a wind instrument
+A trumpet is brass
+A hammer has a head and handle
+A saw has teeth
+A knife has a blade
+A scissors has two blades
+An axe has a sharp edge
+A shovel has a flat blade
+A book has pages
+A book has a cover
+A clock has hands
+A clock has numbers
+A mirror reflects light
+A magnet attracts iron
+A battery stores energy
+A computer has a processor
+A computer has memory
+A phone has a screen
+A television has a screen
+A camera captures images
+A lamp produces light
+A refrigerator keeps food cold
+An oven produces heat
+A washing machine cleans clothes
+The Earth has one moon
+The Earth has an atmosphere
+Mars has two moons
+Mars is red
+Jupiter is the largest planet
+Saturn has rings
+Venus is the hottest planet
+Mercury is the closest planet to the Sun
+Neptune is blue
+The Sun is a star
+A year has twelve months
+A week has seven days
+A day has twenty-four hours
+An hour has sixty minutes
+A minute has sixty seconds
+A dozen is twelve
+A century is one hundred years
+A millennium is one thousand years
+A kilometer is one thousand meters
+A kilogram is one thousand grams
+A liter is one thousand milliliters
+The speed of light is fast
+Sound travels slower than light
+Gravity pulls objects down
+The Earth rotates on its axis
+The Earth revolves around the Sun
+The Moon causes tides
+Seasons are caused by the Earth's tilt
+A compass points north
+North is the opposite direction of south
+East is the opposite direction of west
+A map shows geography
+A globe represents the Earth
+A thermometer measures temperature
+A barometer measures air pressure
+A scale measures weight
+A ruler measures length
+A stopwatch measures time
+Paris is located in France
+London is located in England
+Tokyo is located in Japan
+Berlin is located in Germany
+Rome is located in Italy
+Madrid is located in Spain
+Moscow is located in Russia
+Beijing is located in China
+New York is located in the United States
+Sydney is located in Australia
+Cairo is located in Egypt
+Mumbai is located in India
+Toronto is located in Canada
+Mexico City is located in Mexico
+Buenos Aires is located in Argentina
+Stockholm is located in Sweden
+Oslo is located in Norway
+Athens is located in Greece
+Istanbul is located in Turkey
+Rio de Janeiro is located in Brazil
+The capital of France is Paris
+The capital of Japan is Tokyo
+The capital of Germany is Berlin
+The capital of Italy is Rome
+The capital of Spain is Madrid
+The capital of Russia is Moscow
+The capital of China is Beijing
+The capital of the United States is Washington DC
+The capital of Australia is Canberra
+The capital of Egypt is Cairo
+The capital of India is New Delhi
+The capital of Canada is Ottawa
+The capital of Mexico is Mexico City
+The capital of Brazil is Brasilia
+The capital of Argentina is Buenos Aires
+The capital of Sweden is Stockholm
+The capital of Norway is Oslo
+The capital of Greece is Athens
+The capital of South Korea is Seoul
+The capital of South Africa is Pretoria
+France is located in Europe
+Germany is located in Europe
+Italy is located in Europe
+Spain is located in Europe
+England is located in Europe
+Sweden is located in Europe
+Norway is located in Europe
+Greece is located in Europe
+Japan is located in Asia
+China is located in Asia
+India is located in Asia
+South Korea is located in Asia
+Brazil is located in South America
+Argentina is located in South America
+Australia is located in Oceania
+Egypt is located in Africa
+South Africa is located in Africa
+Canada is located in North America
+Mexico is located in North America
+The United States is located in North America
+The Nile is located in Africa
+The Amazon is located in South America
+The Mississippi is located in North America
+The Thames is located in England
+The Danube is located in Europe
+The Yangtze is located in China
+The Ganges is located in India
+The Rhine is located in Europe
+The Sahara is located in Africa
+The Himalayas are located in Asia
+The Alps are located in Europe
+The Andes are located in South America
+The Rocky Mountains are located in North America
+Mount Everest is located in the Himalayas
+The Great Wall is located in China
+The Eiffel Tower is located in Paris
+The Colosseum is located in Rome
+The Pyramids are located in Egypt
+The Statue of Liberty is located in New York
+Big Ben is located in London
+Linux was created by Linus Torvalds
+Python was created by Guido van Rossum
+The telephone was invented by Alexander Graham Bell
+The light bulb was invented by Thomas Edison
+The airplane was invented by the Wright brothers
+The printing press was invented by Johannes Gutenberg
+The theory of relativity was developed by Albert Einstein
+Gravity was described by Isaac Newton
+Penicillin was discovered by Alexander Fleming
+The World Wide Web was invented by Tim Berners-Lee
+Facebook was created by Mark Zuckerberg
+Microsoft was founded by Bill Gates
+Apple was founded by Steve Jobs
+Amazon was founded by Jeff Bezos
+Google was founded by Larry Page and Sergey Brin
+Tesla was founded by Elon Musk
+The telephone was invented in 1876
+The light bulb was invented in 1879
+The airplane was invented in 1903
+The internet was developed in the 1960s
+The Earth orbits the Sun
+The Moon orbits the Earth
+Mars orbits the Sun
+Jupiter orbits the Sun
+Electrons orbit the nucleus
+The Earth rotates every 24 hours
+The Earth orbits the Sun every 365 days
+The Moon orbits the Earth every 27 days
+Water is made of hydrogen and oxygen
+Salt is made of sodium and chlorine
+Carbon dioxide is made of carbon and oxygen
+Water has the formula H2O
+A car is used for transportation
+A knife is used for cutting
+A pen is used for writing
+A hammer is used for driving nails
+A saw is used for cutting wood
+A broom is used for sweeping
+A shovel is used for digging
+A ladder is used for climbing
+A key is used for opening locks
+A phone is used for communication
+A camera is used for taking photos
+A stove is used for cooking
+A refrigerator is used for keeping food cold
+A blanket is used for warmth
+An umbrella is used for protection from rain
+A map is used for navigation
+Glasses are used for seeing better
+A telescope is used for viewing distant objects
+A microscope is used for viewing small objects
+A calculator is used for math
+A thermometer is used for measuring temperature
+A clock is used for telling time
+A compass is used for finding direction
+A pencil is used for writing
+An eraser is used for removing marks
+A ruler is used for measuring
+A paintbrush is used for painting
+A needle is used for sewing
+A toothbrush is used for cleaning teeth
+Soap is used for cleaning
+A towel is used for drying
+A pillow is used for sleeping
+A chair is used for sitting
+A table is used for placing things on
+A bed is used for sleeping
+A door is used for entering and exiting
+A window lets in light
+A roof provides shelter
+A wall provides structure
+A bridge connects two sides
+A road is used for travel
+A wheel enables movement
+Fire causes heat
+Fire causes light
+Rain causes wet ground
+Rain causes plants to grow
+Wind causes waves
+Earthquakes cause destruction
+Volcanoes cause eruptions
+Lightning causes thunder
+Cold causes ice to form
+Heat causes water to evaporate
+Gravity causes objects to fall
+Friction causes heat
+Exercise causes fitness
+Exercise causes sweating
+Lack of sleep causes tiredness
+Studying causes learning
+Practice causes improvement
+Sunlight causes photosynthesis
+Pollution causes environmental damage
+Smoking causes lung damage
+Bacteria cause infections
+Viruses cause diseases
+Vaccines prevent diseases
+Medicine treats diseases
+Education leads to knowledge
+Hard work leads to success
+Training leads to skill
+Reading improves vocabulary
+Sleep restores energy
+The heart pumps blood
+The lungs process air
+The brain controls the body
+The stomach digests food
+The liver filters blood
+The kidneys filter waste
+Bones support the body
+Muscles enable movement
+Nerves transmit signals
+Blood carries oxygen
+Plants produce oxygen
+Trees absorb carbon dioxide
+Roots absorb water
+Leaves capture sunlight
+Flowers produce seeds
+Bees pollinate flowers
+The sun provides energy
+Wind generates electricity
+Water generates hydroelectric power
+Coal is a fossil fuel
+Oil is a fossil fuel
+Natural gas is a fossil fuel
+Solar panels convert sunlight to electricity
+Batteries store electrical energy
+Engines convert fuel to motion
+Wheels reduce friction
+Gears transfer motion
+Levers multiply force
+Pulleys change direction of force
+Springs store mechanical energy
+A forest contains trees
+A desert contains sand
+An ocean contains salt water
+A lake contains fresh water
+A river flows to the sea
+Mountains have peaks
+Valleys lie between mountains
+Islands are surrounded by water
+Continents are large landmasses
+The atmosphere surrounds the Earth
+The equator divides Earth into hemispheres
+The North Pole is the coldest region in the north
+The South Pole is the coldest region in the south
+Oxygen is needed for combustion
+Water is needed for life
+Sunlight is needed for plant growth
+Soil provides nutrients for plants
+Farmers grow food
+Bakers make bread
+Teachers educate students
+Doctors treat patients
+Nurses care for patients
+Firefighters extinguish fires
+Police officers enforce laws
+Scientists conduct research
+Engineers build things
+Architects design buildings
+Artists create art
+Musicians play music
+Writers write stories
+Chefs prepare food
+Pilots fly airplanes
+Astronauts travel to space
+Soldiers defend countries
+Judges interpret laws
+Libraries contain books
+Schools educate children
+Hospitals treat the sick
+Museums display artifacts
+Theaters show performances
+Stadiums host sports events
+Airports handle air travel
+Ports handle sea travel
+Factories produce goods
+Farms produce food
+Mines extract minerals
+Power plants generate electricity
+Banks store money
+Markets sell goods
+Restaurants serve food
+Hotels provide lodging
+A keyboard is part of a computer
+A screen is part of a computer
+A wheel is part of a car
+An engine is part of a car
+A wing is part of an airplane
+A sail is part of a sailboat
+A blade is part of a knife
+A handle is part of a hammer
+A string is part of a guitar
+A key is part of a piano
+A petal is part of a flower
+A leaf is part of a tree
+A branch is part of a tree
+A trunk is part of a tree
+A root is part of a tree
+A brick is part of a wall
+A page is part of a book
+A chapter is part of a book
+A sentence is part of a paragraph
+A word is part of a sentence
+A letter is part of a word
+A digit is part of a number
+A note is part of a song
+A scene is part of a movie
+A room is part of a house
+A floor is part of a building
+A wheel is part of a bicycle
+A pedal is part of a bicycle
+Birds can fly
+Fish can swim
+Dogs can bark
+Dogs can run
+Dogs can fetch
+Cats can climb
+Cats can purr
+Cats can hunt
+Humans can think
+Humans can speak
+Humans can read
+Humans can write
+Humans can cook
+Humans can build
+Humans can swim
+Humans can run
+Humans can learn
+Humans can dream
+Snakes can slither
+Snakes can hiss
+Horses can gallop
+Horses can trot
+Horses can jump
+Rabbits can hop
+Frogs can jump
+Frogs can croak
+Kangaroos can jump
+Kangaroos can box
+Monkeys can climb
+Monkeys can swing
+Dolphins can jump
+Dolphins can echolocate
+Bats can echolocate
+Bats can fly
+Eagles can soar
+Penguins can swim
+Penguins cannot fly
+Ostriches cannot fly
+Cheetahs can sprint
+Bears can hibernate
+Squirrels can store food
+Beavers can build dams
+Spiders can spin webs
+Ants can carry heavy loads
+Bees can make honey
+Bees can sting
+Chameleons can change color
+Octopuses can change color
+Owls can rotate their heads
+Parrots can mimic speech
+Elephants can remember
+Wolves can howl
+Crickets can chirp
+Fireflies can glow
+Electric eels can generate electricity
+Camels can survive without water for days
+Turtles can retract into their shells
+Skunks can spray
+Woodpeckers can peck wood
+Hummingbirds can hover
+Salmon can swim upstream
+Geese can fly in formation
+Pigeons can find their way home
+Crows can use tools
+Plants can grow
+Plants can photosynthesize
+Vines can climb
+Trees can grow tall
+Flowers can bloom
+Seeds can germinate
+Roots can absorb water
+Fire can burn
+Water can freeze
+Water can boil
+Water can evaporate
+Ice can melt
+Wind can blow
+Volcanoes can erupt
+Earthquakes can destroy buildings
+Rivers can flood
+Lightning can strike
+Thunder can rumble
+Magnets can attract metal
+Electricity can power devices
+Light can travel through glass
+Sound can travel through walls
+Wheels can roll
+Boats can float
+Airplanes can fly
+Rockets can reach space
+Submarines can dive deep
+Cars can accelerate
+Trains can carry many passengers
+Computers can process data
+Robots can perform tasks
+Cameras can record video
+Telescopes can magnify distant objects
+Microscopes can magnify small objects
+Lasers can cut materials
+X-rays can see through skin
+Radar can detect objects
+Satellites can orbit the Earth
+Solar panels can generate electricity
+Wind turbines can generate electricity
+Bridges can support heavy loads
+Cranes can lift heavy objects
+Scissors can cut paper
+Glue can bond materials
+Soap can remove dirt
+Bleach can disinfect
+Acids can dissolve metals
+Ice can float on water
+Oil can float on water
+Rubber can stretch
+Springs can compress and expand
+Mirrors can reflect light
+Prisms can split light into colors
+Lenses can focus light
+Hot is the opposite of cold
+Big is the opposite of small
+Fast is the opposite of slow
+Light is the opposite of dark
+Happy is the opposite of sad
+Up is the opposite of down
+Left is the opposite of right
+North is the opposite of south
+East is the opposite of west
+Open is the opposite of closed
+On is the opposite of off
+Full is the opposite of empty
+Hard is the opposite of soft
+Wet is the opposite of dry
+New is the opposite of old
+Young is the opposite of old
+Tall is the opposite of short
+Long is the opposite of short
+Wide is the opposite of narrow
+Thick is the opposite of thin
+Heavy is the opposite of light
+Strong is the opposite of weak
+Loud is the opposite of quiet
+Bright is the opposite of dim
+Clean is the opposite of dirty
+Rich is the opposite of poor
+Cheap is the opposite of expensive
+Simple is the opposite of complex
+Easy is the opposite of difficult
+Safe is the opposite of dangerous
+Good is the opposite of bad
+Beautiful is the opposite of ugly
+True is the opposite of false
+Right is the opposite of wrong
+Love is the opposite of hate
+War is the opposite of peace
+Day is the opposite of night
+Summer is the opposite of winter
+Push is the opposite of pull
+Give is the opposite of take
+Buy is the opposite of sell
+Win is the opposite of lose
+Start is the opposite of stop
+Begin is the opposite of end
+Rise is the opposite of fall
+Come is the opposite of go
+Enter is the opposite of exit
+Accept is the opposite of reject
+Success is the opposite of failure
+Question is the opposite of answer
+An elephant is bigger than a mouse
+A whale is bigger than a dolphin
+A mountain is taller than a hill
+The Sun is bigger than the Earth
+Jupiter is bigger than Earth
+The ocean is deeper than a lake
+A river is longer than a stream
+A cheetah is faster than a turtle
+A car is faster than a bicycle
+Light is faster than sound
+An airplane is faster than a car
+A rocket is faster than an airplane
+A snail is slower than a rabbit
+A turtle is slower than a hare
+Steel is stronger than wood
+Diamond is harder than glass
+Lead is heavier than aluminum
+Gold is heavier than silver
+A feather is lighter than a rock
+Air is lighter than water
+The Sun is hotter than the Earth
+Summer is warmer than winter
+The equator is warmer than the poles
+Space is colder than Earth
+Ice is colder than water
+An adult is taller than a child
+A giraffe is taller than a horse
+A skyscraper is taller than a house
+The Pacific Ocean is larger than the Atlantic Ocean
+Asia is larger than Europe
+Russia is larger than France
+China has more people than France
+India has more people than Japan
+The Earth is older than humans
+The Sun is older than the Earth
+The universe is older than the Sun
+A century is longer than a decade
+A year is longer than a month
+A marathon is longer than a sprint
+A novel is longer than a short story
+A movie is longer than a commercial
+An ocean is saltier than a lake
+Sugar is sweeter than bread
+A lemon is more sour than an apple
+Steel is more durable than plastic
+Gold is more valuable than iron
+Water is more common than gold
+Oxygen is more abundant than helium on Earth
+Bacteria are smaller than cells
+Atoms are smaller than cells
+Molecules are smaller than cells
+Viruses are smaller than bacteria
+The Nile is longer than the Thames
+Mount Everest is taller than Mount Fuji
+The Amazon rainforest is larger than any other forest
+Blue whales are larger than any other animal
+Elephants are heavier than horses
+Eagles have better eyesight than humans
+Dogs have better hearing than humans
+Dogs have a better sense of smell than humans
+Cats can see better in the dark than humans
+Owls can see better at night than during the day
+The Earth has seven continents
+The continents are Africa, Antarctica, Asia, Australia, Europe, North America, and South America
+The Earth has five oceans
+There are eight planets in the solar system
+The Sun is the center of the solar system
+Stars produce light and heat
+The Milky Way contains billions of stars
+Light takes eight minutes to travel from the Sun to Earth
+The Moon reflects sunlight
+A solar eclipse occurs when the Moon blocks the Sun
+A lunar eclipse occurs when the Earth blocks sunlight from the Moon
+The Earth's core is made of iron
+Volcanoes form at tectonic plate boundaries
+Earthquakes occur along fault lines
+Mountains form from tectonic activity
+Rivers carve valleys over time
+Glaciers shaped the landscape during ice ages
+Fossils are remains of ancient organisms
+Dinosaurs went extinct 65 million years ago
+Evolution explains how species change over time
+DNA carries genetic information
+Genes determine inherited traits
+Cells are the basic units of life
+Bacteria are single-celled organisms
+Viruses need a host to reproduce
+Photosynthesis converts sunlight into energy
+Chlorophyll makes plants green
+Animals breathe oxygen and exhale carbon dioxide
+Plants absorb carbon dioxide and release oxygen
+The water cycle includes evaporation, condensation, and precipitation
+Clouds are made of water droplets
+Rain forms when clouds become saturated
+Snow forms when water freezes in clouds
+Hail forms in thunderstorms
+Tornadoes are rotating columns of air
+Hurricanes form over warm ocean water
+Drought is a prolonged period without rain
+Floods occur when water overflows land
+Erosion wears away rock and soil
+Weathering breaks down rocks over time
+Sediment accumulates over millions of years
+Rocks can be igneous, sedimentary, or metamorphic
+Igneous rocks form from cooled magma
+Sedimentary rocks form from compressed sediment
+Metamorphic rocks form under heat and pressure
+Minerals have a crystalline structure
+Quartz is a common mineral
+Granite is a type of igneous rock
+Limestone is a type of sedimentary rock
+Marble is a type of metamorphic rock
+Soil is made of rock particles and organic matter
+Nutrients in soil help plants grow
+Earthworms aerate soil
+Decomposition breaks down dead organisms
+Fungi decompose organic matter
+The food chain describes energy transfer between organisms
+Producers make their own food
+Consumers eat other organisms
+Herbivores eat plants
+Carnivores eat meat
+Omnivores eat both plants and meat
+Predators hunt prey
+Prey animals are hunted by predators
+Ecosystems contain living and nonliving things
+A habitat is where an organism lives
+Adaptation helps organisms survive
+Camouflage helps animals hide
+Migration is seasonal movement of animals
+Hibernation is a state of reduced activity in winter
+Extinction means a species no longer exists
+Endangered species are at risk of extinction
+Biodiversity refers to the variety of life
+Conservation protects natural resources
+Deforestation destroys forests
+Pollution contaminates the environment
+Climate change affects global temperatures
+The greenhouse effect traps heat in the atmosphere
+Renewable energy comes from replenishable sources
+Solar energy comes from the Sun
+Wind energy comes from moving air
+Hydroelectric energy comes from flowing water
+Geothermal energy comes from Earth's heat
+Nuclear energy comes from splitting atoms
+Fossil fuels formed from ancient organisms
+Burning fossil fuels releases carbon dioxide
+Carbon dioxide contributes to global warming
+The ozone layer protects from ultraviolet radiation
+Recycling reduces waste
+Composting turns organic waste into soil
+Biodegradable materials decompose naturally
+Plastic takes hundreds of years to decompose
+The human body has 206 bones
+The human body has over 600 muscles
+The human heart beats about 100000 times per day
+Blood flows through arteries and veins
+Red blood cells carry oxygen
+White blood cells fight infection
+The skin is the largest organ
+The brain contains billions of neurons
+The nervous system transmits electrical signals
+The digestive system breaks down food
+The respiratory system processes oxygen
+The circulatory system transports blood
+The immune system defends against disease
+The skeletal system provides structure
+The muscular system enables movement
+The endocrine system produces hormones
+Hormones regulate body functions
+Vitamins are essential for health
+Minerals are essential for health
+Protein builds and repairs tissue
+Carbohydrates provide energy
+Fats store energy
+Fiber aids digestion
+Calcium strengthens bones
+Iron helps blood carry oxygen
+Vitamin C supports the immune system
+Vitamin D helps absorb calcium
+Water makes up about 60 percent of the human body
+Humans need about eight hours of sleep
+Exercise strengthens the heart
+A balanced diet includes fruits and vegetables
+Handwashing prevents the spread of germs
+Vaccines train the immune system
+Antibiotics kill bacteria
+Antibiotics do not work on viruses
+Fever is the body's response to infection
+Pain signals that something is wrong
+Allergies are immune reactions to harmless substances
+Asthma affects the airways
+Diabetes affects blood sugar levels
+The five senses are sight, hearing, smell, taste, and touch
+The eyes detect light
+The ears detect sound
+The nose detects smell
+The tongue detects taste
+The skin detects touch and temperature
+Pupils dilate in darkness
+The retina contains light-sensitive cells
+Sound travels as waves
+Light travels as waves
+Heat transfers through conduction, convection, and radiation
+Conduction transfers heat through direct contact
+Convection transfers heat through fluid movement
+Radiation transfers heat through electromagnetic waves
+Temperature measures how hot or cold something is
+Celsius and Fahrenheit are temperature scales
+Water freezes at zero degrees Celsius
+Water boils at one hundred degrees Celsius
+Absolute zero is the coldest possible temperature
+Atoms are the building blocks of matter
+An atom has protons, neutrons, and electrons
+Protons have a positive charge
+Electrons have a negative charge
+Neutrons have no charge
+The nucleus contains protons and neutrons
+Electrons orbit the nucleus
+Chemical bonds hold atoms together
+Molecules are groups of bonded atoms
+Chemical reactions change substances
+Combustion is a chemical reaction with oxygen
+Oxidation causes rust
+Acids have a low pH
+Bases have a high pH
+Neutral solutions have a pH of seven
+Litmus paper tests for acids and bases
+Solids have a fixed shape
+Liquids take the shape of their container
+Gases expand to fill their container
+Melting changes solid to liquid
+Freezing changes liquid to solid
+Evaporation changes liquid to gas
+Condensation changes gas to liquid
+Sublimation changes solid directly to gas
+Pressure affects the boiling point of liquids
+Density is mass divided by volume
+Objects float if less dense than the fluid
+Objects sink if more dense than the fluid
+Buoyancy is the upward force of a fluid
+Archimedes discovered the principle of buoyancy
+Force equals mass times acceleration
+Newton's first law states objects in motion stay in motion
+Newton's third law states every action has an equal and opposite reaction
+Energy cannot be created or destroyed
+Kinetic energy is the energy of motion
+Potential energy is stored energy
+Electrical energy powers devices
+Chemical energy is stored in bonds
+Nuclear energy is stored in atomic nuclei
+Thermal energy is heat energy
+Sound energy travels as vibrations
+Light energy travels as electromagnetic waves
+Momentum is mass times velocity
+Work is force times distance
+Power is work divided by time
+Velocity is speed with direction
+Acceleration is change in velocity over time
+Gravity accelerates objects at 9.8 meters per second squared on Earth
+Friction opposes motion
+Air resistance slows moving objects
+A lever amplifies force
+An inclined plane reduces effort
+A pulley changes the direction of force
+A wedge splits objects apart
+A screw converts rotational force to linear force
+A wheel and axle reduces friction
+Simple machines make work easier
+Electricity flows through conductors
+Insulators block the flow of electricity
+Copper is a good conductor
+Rubber is a good insulator
+A circuit requires a complete path for current
+Voltage pushes electrical current
+Current is the flow of electrons
+Resistance opposes current flow
+Ohm's law relates voltage, current, and resistance
+A switch opens or closes a circuit
+A fuse protects circuits from overload
+Magnets have north and south poles
+Opposite magnetic poles attract
+Like magnetic poles repel
+Electromagnets use electricity to create magnetism
+Electric motors convert electricity to motion
+Generators convert motion to electricity
+Transformers change voltage levels
+Radio waves carry information wirelessly
+Microwaves heat food
+X-rays penetrate soft tissue
+Ultraviolet light causes sunburn
+Infrared radiation carries heat
+The electromagnetic spectrum includes all types of light
+Visible light is a small part of the electromagnetic spectrum
+Red has the longest wavelength of visible light
+Violet has the shortest wavelength of visible light
+White light contains all colors
+A prism separates white light into colors
+Lenses refract light
+Concave lenses spread light
+Convex lenses focus light
+Mirrors reflect light
+The angle of incidence equals the angle of reflection
+Speed equals distance divided by time
+Pi is approximately 3.14159
+The circumference of a circle is pi times diameter
+The area of a circle is pi times radius squared
+The area of a rectangle is length times width
+The area of a triangle is half base times height
+The volume of a cube is side cubed
+The Pythagorean theorem relates sides of a right triangle
+Addition is combining numbers
+Subtraction is taking away numbers
+Multiplication is repeated addition
+Division is splitting into equal parts
+Fractions represent parts of a whole
+Decimals are another way to write fractions
+Percentages represent parts per hundred
+Prime numbers are divisible only by one and themselves
+Even numbers are divisible by two
+Odd numbers are not divisible by two
+Zero is neither positive nor negative
+Negative numbers are less than zero
+Infinity is not a number
+A billion is one thousand million
+A trillion is one thousand billion
+Algebra uses letters to represent unknowns
+Geometry studies shapes and space
+Statistics analyzes data
+Probability measures likelihood
+An average is the sum divided by the count
+A graph displays data visually
+Coordinates locate points on a grid
+The X-axis is horizontal
+The Y-axis is vertical
+Parallel lines never meet
+Perpendicular lines meet at right angles
+Symmetry means identical on both sides
+Patterns repeat in a predictable way
+The wheel was invented thousands of years ago
+Agriculture began about 10000 years ago
+The ancient Egyptians built the pyramids
+The ancient Greeks invented democracy
+The Roman Empire was one of the largest in history
+The Renaissance began in Italy
+The printing press revolutionized communication
+The Industrial Revolution began in England
+World War One lasted from 1914 to 1918
+World War Two lasted from 1939 to 1945
+The United Nations was founded in 1945
+Humans first walked on the Moon in 1969
+The internet became widely available in the 1990s
+Democracy is a form of government by the people
+A monarchy is ruled by a king or queen
+A republic is governed by elected representatives
+Laws maintain order in society
+Courts interpret laws
+Elections allow citizens to choose leaders
+Taxes fund public services
+Education is a fundamental right
+Freedom of speech is a human right
+The United Nations promotes international cooperation
+Languages are used for communication
+English is widely spoken around the world
+Mandarin Chinese is the most spoken native language
+Spanish is spoken in many countries
+There are thousands of languages in the world
+Writing was invented about 5000 years ago
+The alphabet has 26 letters in English
+Books preserve knowledge
+Libraries store books for public use
+Schools teach children
+Universities provide higher education
+Teachers facilitate learning
+Students acquire knowledge
+Literacy is the ability to read and write
+Mathematics is the language of science
+Science uses observation and experimentation
+The scientific method involves hypothesis and testing
+Technology applies scientific knowledge
+Innovation creates new solutions
+Research advances understanding
+Inventions solve problems
+Art expresses human creativity
+Music is organized sound
+Painting uses color on a surface
+Sculpture creates three-dimensional forms
+Architecture designs buildings
+Literature tells stories through writing
+Poetry uses rhythm and imagery
+Drama is performed on stage
+Film tells stories through moving images
+Photography captures moments in images
+Dance expresses emotion through movement
+Culture includes traditions and customs
+Religion provides spiritual beliefs
+Philosophy studies fundamental questions
+Ethics studies right and wrong
+History studies the past
+Geography studies the Earth's surface
+Economics studies production and exchange
+Psychology studies the mind and behavior
+Sociology studies society
+Anthropology studies human cultures
+Biology studies living things
+Chemistry studies matter and its changes
+Physics studies matter and energy
+Astronomy studies celestial objects
+Geology studies the Earth's structure
+Ecology studies ecosystems
+Botany studies plants
+Zoology studies animals
+Genetics studies heredity
+Medicine treats illness
+Surgery repairs the body
+Anatomy studies body structure
+Physiology studies body functions
+A family is a social unit
+Marriage is a legal partnership
+Community members support each other
+Government manages a country
+Laws protect citizens
+Police maintain public safety
+Courts deliver justice
+Prisons hold convicted criminals
+Hospitals provide medical care
+Schools provide education
+Banks manage money
+Markets exchange goods and services
+Transportation moves people and goods
+Communication shares information
+Media distributes news and entertainment
+The internet connects computers worldwide
+Social media connects people online
+Telephones enable voice communication
+Television broadcasts programs
+Radio transmits audio signals
+Newspapers report current events
+Magazines publish articles
+Advertising promotes products
+Currency is used to buy and sell
+Trade exchanges goods between countries
+Agriculture produces food
+Industry manufactures goods
+Services provide work for others
+Employment provides income
+Wages are payment for work
+Savings is money kept for the future
+Investment grows money over time
+Breakfast is the first meal of the day
+Lunch is the midday meal
+Dinner is the evening meal
+Cooking transforms raw food into meals
+Baking uses an oven
+Frying uses hot oil
+Boiling uses hot water
+Grilling uses direct heat
+Freezing preserves food
+Canning preserves food in sealed containers
+Bread is made from flour
+Cheese is made from milk
+Butter is made from cream
+Wine is made from grapes
+Beer is made from grain
+Chocolate is made from cocoa beans
+Paper is made from wood pulp
+Glass is made from sand
+Cement is made from limestone
+Rubber comes from rubber trees
+Leather comes from animal hides
+Wool comes from sheep
+Silk comes from silkworms
+Cotton comes from cotton plants
+Linen comes from flax plants
+Oil is extracted from underground
+Coal is mined from the earth
+Gold is mined from the earth
+Diamonds are mined from the earth
+Iron ore is processed into steel
+Aluminum is refined from bauxite
+Spring follows winter
+Summer follows spring
+Autumn follows summer
+Winter follows autumn
+Spring is a time of growth
+Summer is the warmest season
+Autumn is when leaves change color
+Winter is the coldest season
+January is the first month of the year
+February is the shortest month
+December is the last month of the year
+Monday is the first day of the work week
+Saturday and Sunday form the weekend
+A calendar tracks days and months
+A clock displays the current time
+Sunrise occurs in the morning
+Sunset occurs in the evening
+Dawn is the beginning of daylight
+Dusk is the end of daylight
+Noon is the middle of the day
+Midnight is the middle of the night
+Morning comes before afternoon
+Afternoon comes before evening
+Evening comes before night
+Clouds block sunlight
+Fog is a cloud near the ground
+Dew forms on cool surfaces in the morning
+Frost forms when temperature drops below freezing
+A rainbow appears after rain when the sun shines
+Wind is moving air
+A breeze is gentle wind
+A gale is strong wind
+A hurricane is a powerful storm
+A tornado is a violent rotating wind
+A blizzard is a severe snowstorm
+A drought is a long period without rain
+Humidity measures moisture in the air
+A weather forecast predicts future weather
+A meteorologist studies weather
+Climate is long-term weather patterns
+Tropical climates are warm and wet
+Desert climates are hot and dry
+Polar climates are cold
+Temperate climates have four seasons
+Altitude affects temperature
+Higher altitude means colder temperatures
+Latitude affects climate
+The equator has a tropical climate
+The poles have a polar climate
+A computer processes information
+Software tells hardware what to do
+Hardware is the physical part of a computer
+A processor executes instructions
+Memory stores data temporarily
+A hard drive stores data permanently
+A keyboard is used for typing
+A mouse is used for pointing and clicking
+A monitor displays information
+A printer produces paper copies
+A scanner digitizes documents
+The internet connects millions of computers
+A website is a collection of web pages
+A browser displays websites
+Email sends electronic messages
+A password protects accounts
+A virus is malicious software
+Encryption protects data
+A database stores organized information
+An algorithm is a set of steps to solve a problem
+Programming creates software
+A bug is an error in software
+Binary code uses ones and zeros
+A byte is eight bits
+A megabyte is one million bytes
+A gigabyte is one billion bytes
+Wi-Fi connects devices wirelessly
+Bluetooth connects devices over short distances
+GPS determines location using satellites
+A smartphone combines a phone with a computer
+An app is a software application
+Cloud computing stores data on remote servers
+Artificial intelligence mimics human thinking
+A robot performs automated tasks
+Virtual reality simulates environments
+Three-dimensional printing creates physical objects from digital designs
+A drone is an unmanned aircraft
+Renewable energy is sustainable
+Electric cars use batteries instead of gasoline
+Recycling conserves resources
+Water treatment makes water safe to drink
+Sewage systems remove waste water
+Plumbing delivers water to buildings
+Electricity powers modern life
+Power lines distribute electricity
+A light switch controls lighting
+A thermostat controls temperature
+Air conditioning cools indoor air
+Heating warms indoor air
+Insulation reduces heat transfer
+A lock secures a door
+A window allows light and air into a building
+Stairs connect floors in a building
+An elevator carries people between floors
+A foundation supports a building
+Concrete is used in construction
+Bricks are used to build walls
+Mortar holds bricks together
+A roof keeps rain out of a building
+Gutters channel rainwater away
+A chimney vents smoke from a fireplace
+A garage stores vehicles
+A sidewalk is for pedestrians
+A crosswalk marks where pedestrians cross
+Traffic lights control vehicle flow
+Speed limits keep roads safe
+Seat belts protect car passengers
+Airbags protect car passengers in crashes
+Brakes slow and stop vehicles
+Headlights illuminate the road at night
+Mirrors help drivers see behind them
+Fuel powers combustion engines
+A battery powers electric vehicles
+Tires provide grip on the road
+An engine converts fuel to mechanical energy
+A transmission transfers power to wheels
+Suspension absorbs road bumps
+Steering controls direction
+A spacecraft travels beyond Earth's atmosphere
+The International Space Station orbits Earth
+Astronauts experience weightlessness in space
+A space suit protects astronauts
+A satellite orbits a planet
+Communication satellites relay signals
+Weather satellites monitor the atmosphere
+The Hubble telescope observes distant objects
+A light year is the distance light travels in one year
+The nearest star to the Sun is Proxima Centauri
+Black holes have extremely strong gravity
+A nebula is a cloud of gas and dust
+New stars form in nebulae
+A supernova is an exploding star
+Neutron stars are extremely dense
+Galaxies contain billions of stars
+The universe is expanding
+The Big Bang theory explains the origin of the universe
+Soccer is played with a round ball
+Basketball is played on a court
+Tennis is played with rackets
+Baseball is played with a bat and ball
+Swimming takes place in water
+Running requires no equipment
+Golf is played on a course
+Boxing takes place in a ring
+Hockey is played on ice or a field
+Football is played on a field
+Volleyball is played with a net
+Cricket is played with a bat and ball
+Table tennis is played on a table
+Badminton is played with shuttlecocks
+Archery uses a bow and arrows
+Fencing uses swords
+Gymnastics involves acrobatic movements
+Wrestling involves grappling
+Surfing is done on waves
+Skateboarding uses a board with wheels
+A goal scores a point in soccer
+A basket scores points in basketball
+A home run scores in baseball
+A touchdown scores in football
+The Olympics are held every four years
+Athletes compete in the Olympics
+A marathon is 42 kilometers long
+A sprint is a short fast race
+A relay race involves teams
+A referee enforces rules in sports
+A coach trains athletes
+Practice improves performance
+Teamwork requires cooperation
+Competition motivates performance
+A trophy rewards the winner
+A medal recognizes achievement
+A painting hangs on a wall
+A sculpture stands on a pedestal
+A photograph captures a moment
+A portrait depicts a person
+A landscape depicts scenery
+A mural is painted on a wall
+Clay can be shaped into pottery
+A canvas is used for painting
+Watercolors are transparent paints
+Oil paints are thick and slow-drying
+A brush applies paint
+A palette holds paint colors
+A gallery displays art
+A museum preserves artifacts
+An orchestra plays classical music
+A band plays popular music
+A choir sings together
+A conductor leads an orchestra
+A composer writes music
+A melody is a sequence of notes
+Harmony combines different notes
+Rhythm is the pattern of beats
+Tempo is the speed of music
+Volume is the loudness of sound
+A note represents a musical pitch
+A chord combines multiple notes
+A scale is a sequence of notes
+A song has verses and a chorus
+An opera combines music and drama
+Ballet combines dance and music
+A novel is a long work of fiction
+A poem uses figurative language
+A play is written for performance
+A biography tells someone's life story
+Fiction describes imaginary events
+Nonfiction describes real events
+A dictionary defines words
+An encyclopedia contains general knowledge
+A newspaper reports daily events
+A map shows geographic features
+An atlas contains maps
+A recipe describes how to prepare food
+Breakfast provides energy for the morning
+Fruits and vegetables provide vitamins
+Protein helps muscles grow
+Calcium builds strong bones and teeth
+Whole grains provide sustained energy
+Junk food is high in sugar and fat
+A balanced diet supports good health
+Regular exercise improves fitness
+Sleep allows the body to recover
+Stress negatively affects health
+Relaxation reduces stress
+Meditation calms the mind
+Hydration is important for body function
+Sunscreen protects skin from UV rays
+Washing hands prevents illness
+Brushing teeth prevents cavities
+Flossing cleans between teeth
+A dentist cares for teeth
+An optometrist checks vision
+A pediatrician treats children
+A surgeon performs operations
+A psychologist studies behavior
+A therapist helps with mental health
+Physical therapy helps recovery from injury
+A prescription is a doctor's written order for medicine
+Over-the-counter medicine does not require a prescription
+First aid treats minor injuries
+CPR can save lives in emergencies
+A bandage covers wounds
+A cast immobilizes broken bones
+An ambulance transports emergency patients
+A stethoscope listens to the heart
+A syringe delivers injections
+A house provides shelter
+An apartment is a type of home
+A kitchen is where food is prepared
+A bathroom is for personal hygiene
+A bedroom is for sleeping
+A living room is for relaxation
+A dining room is for eating
+A garden surrounds a house
+A fence marks property boundaries
+A door provides entry to a room
+A window provides light and ventilation
+Furniture fills rooms in a house
+A sofa is for sitting
+A desk is for working
+A bookshelf stores books
+A wardrobe stores clothes
+A lamp provides light
+A curtain covers a window
+A carpet covers a floor
+A painting decorates a wall
+A vase holds flowers
+A candle provides light when lit
+A fireplace provides warmth
+An attic is the top space in a house
+A basement is below ground level
+A staircase connects floors
+A hallway connects rooms
+A balcony extends from an upper floor
+A porch is at the front of a house
+A driveway leads to a garage
+A mailbox receives letters
+A doorbell announces visitors
+A key opens a lock
+A remote control operates devices from a distance
+A battery provides portable power
+A charger restores battery power
+An outlet provides electricity
+A plug connects to an outlet
+A cord carries electricity
+A light bulb converts electricity to light
+A fan circulates air
+A heater warms a room
+A humidifier adds moisture to air
+A dehumidifier removes moisture from air
+A vacuum cleaner removes dust
+A dishwasher cleans dishes
+A microwave heats food quickly
+A toaster heats bread
+A blender mixes food
+A kettle boils water
+A pot is used for cooking
+A pan is used for frying
+A spoon is used for stirring
+A fork is used for eating
+A knife is used for cutting food
+A plate holds food
+A cup holds liquid
+A glass holds liquid
+A bowl holds food or liquid
+A napkin wipes hands and face
+A sponge absorbs liquid
+A bucket holds water
+A mop cleans floors
+A dustpan collects swept dirt
+A clothesline dries clothes
+An iron removes wrinkles from clothes
+A sewing machine stitches fabric
+A needle and thread repair clothes
+A zipper fastens clothing
+A button fastens clothing
+A belt holds up pants
+A shoe protects the foot
+A boot is a tall shoe
+A sandal is an open shoe
+A hat protects the head
+A scarf wraps around the neck
+A glove covers the hand
+A coat provides warmth
+An umbrella shields from rain
+Sunglasses protect eyes from bright light
+A backpack carries belongings
+A suitcase carries travel items
+A wallet holds money and cards
+A purse carries personal items
+A watch tells time on the wrist
+A ring is worn on a finger
+A necklace is worn around the neck
+Earrings are worn on ears
+A bracelet is worn on the wrist
+A crown symbolizes royalty
+A uniform identifies a profession
+Cotton clothing is cool in summer
+Wool clothing is warm in winter
+Leather is durable for shoes
+Denim is used for jeans
+Polyester dries quickly
+Nylon is strong and lightweight
+A tailor makes and repairs clothes
+A fashion designer creates clothing styles
+Laundry is the process of washing clothes
+Detergent cleans clothes
+Bleach whitens fabric
+A dryer removes moisture from clothes
+Folding organizes clean clothes
+A hanger holds clothes in a closet
+A road connects places
+A highway is a fast road
+A bridge crosses water or valleys
+A tunnel goes through mountains
+A railway carries trains
+A station is where trains stop
+A ticket grants access to transportation
+A passport allows international travel
+A visa permits entry to a country
+A map helps navigate
+A GPS provides turn-by-turn directions
+A traffic sign gives information to drivers
+A stop sign means stop
+A yield sign means slow down
+A red light means stop
+A green light means go
+A yellow light means caution
+A speed limit restricts how fast vehicles may go
+A pedestrian walks on foot
+A cyclist rides a bicycle
+A driver operates a vehicle
+A passenger rides in a vehicle
+Fuel is stored in a tank
+A gas station sells fuel
+An airport has runways
+A runway is where planes take off and land
+A terminal is where passengers wait
+A pilot flies an aircraft
+A flight attendant serves passengers
+A harbor shelters ships
+An anchor holds a ship in place
+A lighthouse warns ships of danger
+A captain commands a ship
+Navigation determines position and direction
+Radar detects distant objects
+Sonar detects objects underwater
+A signal carries information
+A telephone transmits voice
+A microphone captures sound
+A speaker produces sound
+A headphone delivers sound to ears
+A radio receives broadcast signals
+A television receives broadcast images
+A satellite dish receives satellite signals
+A cable carries signals underground
+Fiber optics transmit light signals
+A modem connects to the internet
+A router distributes internet connections
+A server stores and delivers data
+A network connects multiple computers
+Bandwidth measures data transfer speed
+Download receives data from the internet
+Upload sends data to the internet
+Streaming delivers media in real time
+A podcast is an audio program
+A blog is a personal website
+A search engine finds information online
+A hyperlink connects web pages
+A URL is a web address
+A domain name identifies a website
+Encryption scrambles data for security
+A firewall protects networks from threats
+Backup copies protect against data loss
+Data is information stored digitally
+A file organizes digital data
+A folder organizes files
+A document contains text
+A spreadsheet organizes data in rows and columns
+A presentation displays slides
+One plus one equals two
+Two plus two equals four
+Three times three equals nine
+Ten minus five equals five
+Twenty divided by four equals five
+One hundred has three digits
+A thousand has four digits
+A square root of nine is three
+A square root of sixteen is four
+Two squared equals four
+Three cubed equals twenty-seven
+The sum of angles in a triangle is 180 degrees
+A right angle is 90 degrees
+An acute angle is less than 90 degrees
+An obtuse angle is greater than 90 degrees
+A straight line has 180 degrees
+A full rotation is 360 degrees
+A radius is half a diameter
+The diameter passes through the center of a circle
+Circumference is the distance around a circle
+Perimeter is the distance around a shape
+Area measures the space inside a shape
+Volume measures the space inside a solid
+Mass measures the amount of matter
+Weight measures the force of gravity on mass
+Length measures how long something is
+Width measures how wide something is
+Height measures how tall something is
+Depth measures how deep something is
+Distance measures how far apart two points are
+Speed measures how fast something moves
+Time measures duration
+Frequency measures how often something occurs
+Wavelength is the distance between wave peaks
+Amplitude is the height of a wave
+Dogs are loyal to their owners
+Cats are independent animals
+Horses are used for riding
+Cows produce milk
+Chickens lay eggs
+Sheep produce wool
+Pigs are raised for pork
+Ducks swim on ponds
+Geese migrate in autumn
+Bees live in hives
+Ants live in colonies
+Wolves hunt in packs
+Lions live in prides
+Fish live in schools
+Birds gather in flocks
+Cows gather in herds
+Sheep gather in flocks
+A nest is a bird's home
+A den is a bear's home
+A burrow is a rabbit's home
+A hive is a bee's home
+A web is a spider's home
+A kennel is a dog's house
+A stable is a horse's house
+A barn houses farm animals
+A cage holds captive animals
+An aquarium holds fish
+A zoo houses wild animals
+A pet is a domesticated animal kept for companionship
+A wild animal lives in nature
+A predator hunts other animals
+Herbivores eat only plants
+Carnivores eat only meat
+Omnivores eat plants and meat
+Nocturnal animals are active at night
+Diurnal animals are active during the day
+Cold-blooded animals cannot regulate their body temperature
+Warm-blooded animals maintain constant body temperature
+Mammals give live birth
+Reptiles lay eggs
+Most birds lay eggs
+Amphibians live on land and in water
+Insects undergo metamorphosis
+A caterpillar becomes a butterfly
+A tadpole becomes a frog
+Migration helps animals find food and warmth
+Hibernation conserves energy in winter
+Territorial animals defend their space
+Social animals live in groups
+Solitary animals live alone
+Camouflage helps animals avoid predators
+Mimicry makes one species look like another
+Warning colors signal danger to predators
+Venom is injected through a bite or sting
+Poison is harmful when touched or eaten
+Antlers are used for fighting
+Horns are used for defense
+Claws are used for gripping
+Fangs are used for biting
+Tusks are elongated teeth
+Scales protect the skin
+Shells protect soft bodies
+Quills deter predators
+Ink is squirted by octopuses to escape
+Speed helps prey escape predators
+Strength helps predators catch prey
+Intelligence helps animals solve problems
+Communication helps animals coordinate
+Birdsong attracts mates
+Whale songs travel long distances
+Pheromones communicate chemical signals
+Echolocation uses sound to navigate
+Migration patterns follow seasonal changes
+Instinct is inborn behavior
+Learned behavior comes from experience
+Animals can be trained through repetition
+Positive reinforcement rewards desired behavior
+Habitats provide food, water, and shelter
+Wetlands filter water naturally
+Coral reefs support marine biodiversity
+Rainforests contain the most species
+Deserts have adapted species
+Arctic animals have thick fur or blubber
+Deep sea creatures live without sunlight
+Freshwater fish cannot survive in salt water
+Saltwater fish cannot survive in fresh water
+Invasive species threaten native ecosystems
+Keystone species are critical to their ecosystem
+Symbiosis is a close relationship between species
+Mutualism benefits both species
+Parasitism benefits one and harms the other
+Commensalism benefits one without affecting the other
+Pollination transfers pollen between flowers
+Seed dispersal spreads plants to new areas
+Decomposers recycle nutrients into the soil
+Producers form the base of the food chain
+Primary consumers eat producers
+Secondary consumers eat primary consumers
+Apex predators have no natural predators
+Population size is limited by available resources
+Overpopulation depletes resources
+Extinction removes species permanently
+Fossil records show the history of life
+Natural selection favors adapted organisms
+Genetic variation enables evolution
+Mutations introduce new genetic traits
+Reproduction passes genes to offspring
+Sexual reproduction combines genes from two parents
+Asexual reproduction produces identical offspring
+A chromosome carries genetic information
+A genome is the complete set of genetic material
+Cloning produces genetically identical organisms
+Selective breeding develops desired traits
+Domestication adapts species for human use
+Agriculture domesticated plants and animals
+Irrigation supplies water to crops
+Fertilizer provides nutrients to crops
+Pesticides kill harmful insects
+Herbicides kill unwanted plants
+Organic farming avoids synthetic chemicals
+Greenhouses extend growing seasons
+Crop rotation maintains soil health
+A harvest collects mature crops
+A silo stores grain
+A tractor plows fields
+Seeds are planted in soil
+Germination begins plant growth
+Sunlight drives plant growth
+Water is essential for plant growth
+Pruning shapes and improves plant health
+Grafting joins parts of different plants
+Composting enriches soil
+Mulch retains soil moisture
+Weeds compete with crops for resources
+Drought stresses plants
+Frost damages sensitive plants
+Greenhouses protect plants from cold
+Photosynthesis occurs in leaves
+Transpiration releases water from leaves
+Respiration releases energy in cells
+Fermentation produces alcohol from sugar
+Yeast causes bread to rise
+Bacteria convert milk into yogurt
+Mold grows on decaying food
+Preservatives extend food shelf life
+Refrigeration slows bacterial growth
+Pasteurization kills harmful bacteria in milk
+Sterilization kills all microorganisms
+Disinfectants clean surfaces of germs
+Antibacterial soap kills bacteria on hands
+Chlorine purifies drinking water
+Fluoride strengthens tooth enamel
+Iodine prevents thyroid problems
+Vaccination prevents infectious diseases
+Quarantine isolates sick individuals
+Epidemics spread disease through communities
+Pandemics spread disease globally
+Hygiene practices prevent disease transmission
+Sanitation removes waste safely
+Clean water prevents waterborne diseases
+Nutrition supports immune function
+Rest helps the body fight infection
+Antibodies recognize specific pathogens
+Immunity protects against repeated infection
+Allergies are overreactions of the immune system
+Inflammation is the body's response to injury
+Healing repairs damaged tissue
+Scars form where deep wounds heal
+Blood clotting stops bleeding
+Platelets help blood clot
+Plasma is the liquid part of blood
+Transfusion replaces lost blood
+Blood types must match for transfusion
+Organs can be transplanted between people
+Prosthetics replace missing limbs
+Wheelchairs assist mobility
+Hearing aids amplify sound
+Braille allows blind people to read
+Sign language communicates without sound
+A guide dog assists blind people
+Accessibility makes places usable for all people
+Inclusion ensures everyone can participate
+Diversity includes people of all backgrounds
+Empathy understands others' feelings
+Compassion motivates helping others
+Kindness benefits everyone
+Respect treats others with dignity
+Honesty builds trust
+Integrity means doing the right thing
+Responsibility means being accountable
+Courage means facing fear
+Patience means waiting calmly
+Perseverance means continuing despite difficulty
+Cooperation achieves more than working alone
+Compromise resolves disagreements
+Forgiveness releases resentment
+Gratitude appreciates what one has
+Generosity shares with others
+Humility avoids arrogance
+Curiosity drives learning
+Creativity produces new ideas
+Critical thinking evaluates information
+Problem solving finds solutions
+Decision making chooses between options
+Planning prepares for the future
+Organization maintains order
+Leadership guides others
+Listening understands others
+Speaking communicates ideas
+Reading acquires information
+Writing records thoughts
+A sentence expresses a complete thought
+A paragraph develops one idea
+An essay presents an argument
+A story has a beginning, middle, and end
+Characters are people in a story
+A setting is where a story takes place
+A plot is what happens in a story
+A theme is the message of a story
+Conflict drives a story forward
+Resolution concludes a story
+A narrator tells a story
+Dialogue is conversation between characters
+Description creates mental images
+A metaphor compares unlike things
+A simile compares using like or as
+Alliteration repeats initial sounds
+Rhyme matches end sounds
+A stanza is a group of lines in a poem
+A chapter is a section of a book
+A title names a work
+An author writes a book
+An illustrator creates pictures for a book
+A publisher produces and distributes books
+A reader consumes written content
+An audience watches or listens
+Feedback improves performance
+A review evaluates quality
+A summary condenses information
+A conclusion ends an argument or essay
+Evidence supports a claim
+An opinion is a personal belief
+A fact is verifiable information
+Truth corresponds to reality
+Knowledge is justified true belief
+Wisdom applies knowledge with judgment
+Intelligence solves problems effectively
+Memory stores past experiences
+Attention focuses on specific information
+Perception interprets sensory input
+Consciousness is awareness of oneself
+Dreams occur during sleep
+Imagination creates mental images
+Motivation drives action
+Emotion influences behavior
+Reason guides logical thinking
+Intuition is immediate understanding
+Habit is repeated behavior
+Addiction is compulsive behavior
+Discipline controls behavior
+Self-control resists impulses
+Confidence believes in oneself
+Anxiety fears future events
+Depression involves persistent sadness
+Therapy treats mental health conditions
+Support helps people cope
+A friend provides companionship
+Trust is the foundation of relationships
+Communication maintains relationships
+Conflict can damage relationships
+Apology repairs relationships
+Boundaries protect personal space
+Independence means self-reliance
+Interdependence means mutual support
+Growth comes from challenges
+Failure teaches lessons
+Success rewards effort
+Goals direct effort
+Achievement fulfills goals
+Happiness comes from within
+Purpose gives life meaning
+Values guide decisions
+Beliefs shape perception
+Attitudes influence behavior
+Character is built over time

@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Hybrid AI World State",
+  "type": "object",
+  "required": [
+    "world_tick",
+    "plants",
+    "economics",
+    "weather",
+    "grid",
+    "organizational_memory"
+  ],
+  "properties": {
+    "world_tick": {
+      "type": "integer"
+    },
+    "weather": {
+      "type": "object"
+    },
+    "grid": {
+      "type": "object"
+    },
+    "economics": {
+      "type": "object"
+    },
+    "plants": {
+      "type": "array"
+    },
+    "organizational_memory": {
+      "type": "object"
+    },
+    "myth_pressure": {
+      "type": "number"
+    },
+    "historian_integrity": {
+      "type": "number"
+    },
+    "consensus_reality_score": {
+      "type": "number"
+    }
+  }
+}

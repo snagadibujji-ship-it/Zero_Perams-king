@@ -1,0 +1,45 @@
+# Hybrid AI System Configuration
+
+[system]
+version = "0.1.0"
+ram_budget_mb = 300
+boot_target_ms = 2000
+
+[engine]
+max_facts = 10000000
+max_working_memory = 50
+response_style = "casual"  # casual | formal | technical | simple
+
+[knowledge]
+preload_packs = ["general-world"]
+tier_hot_mb = 80
+tier_warm_mb = 200
+
+[user]
+default_role = "standard"  # admin | standard | restricted | guest
+multi_user = false
+encryption = true
+
+[api]
+enabled = false
+host = "127.0.0.1"
+port = 7777
+
+[voice]
+enabled = false
+wake_word = "hey ai"
+stt_model = "tiny"  # tiny | small | medium
+
+[learning]
+auto_consolidate = true
+consolidate_interval_hours = 24
+max_learn_buffer_mb = 20
+
+[profiler]
+enabled = true
+sample_rate = 100  # every Nth operation
+
+[gc]
+schedule = "daily"
+memory_pressure_threshold = 0.7
+aggressive_threshold = 0.9

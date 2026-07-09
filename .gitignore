@@ -1,0 +1,19 @@
+# Compiled
+ai
+concept_build
+*.o
+*.pyc
+__pycache__/
+
+# Internal notes (not for sharing)
+.DNA_INTERNAL_NOTES.md
+
+# User data (personal)
+user_data/
+
+# Large knowledge (rebuild from source)
+src/data/knowledge.dat
+
+# OS
+.DS_Store
+*.swp
