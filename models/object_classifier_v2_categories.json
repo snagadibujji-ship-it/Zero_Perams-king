@@ -1,0 +1,33 @@
+{
+  "categories": [
+    "animal",
+    "building",
+    "car",
+    "fashion",
+    "food",
+    "furniture",
+    "nature",
+    "person",
+    "sport",
+    "technology"
+  ],
+  "cat_to_idx": {
+    "animal": 0,
+    "building": 1,
+    "car": 2,
+    "fashion": 3,
+    "food": 4,
+    "furniture": 5,
+    "nature": 6,
+    "person": 7,
+    "sport": 8,
+    "technology": 9
+  },
+  "input_size": 64,
+  "hidden": [
+    512,
+    128
+  ],
+  "best_accuracy": 0.23204326516815954,
+  "training_images": 29583
+}
