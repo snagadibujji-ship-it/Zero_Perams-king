@@ -33,7 +33,51 @@ import os, math, colorsys, struct, hashlib
 from collections import Counter
 
 class VisionEngine:
-    """Cosmic-level image understanding. Zero training. Never hallucinates."""
+    """Cosmic-level image understanding. Zero training. Never hallucinates.
+    
+    Now enhanced with optional micro-model neural predictions from trained
+    classifiers. Classical CV is always the baseline; neural models add
+    learned knowledge on top when available and confident.
+    """
+    
+    def __init__(self, enable_neural=True, auto_load_models=True):
+        """
+        Initialize VisionEngine.
+        
+        Args:
+            enable_neural: Whether to use trained micro-models (if available)
+            auto_load_models: Auto-load all models from user_data/models/
+        """
+        self.neural_enabled = enable_neural
+        self._integrator = None
+        
+        if enable_neural and auto_load_models:
+            self._init_neural()
+    
+    def _init_neural(self):
+        """Initialize neural model integrator (fault-tolerant)."""
+        try:
+            from model_integrator import ModelIntegrator
+            self._integrator = ModelIntegrator()
+            loaded = self._integrator.load_all_models()
+            if loaded > 0:
+                pass  # Models loaded silently
+            else:
+                self._integrator = None  # No models available
+        except Exception:
+            self._integrator = None  # Neural not available, classical-only mode
+    
+    @property
+    def neural_available(self) -> bool:
+        """Check if neural models are loaded and ready."""
+        return self._integrator is not None and len(self._integrator.slots) > 0
+    
+    @property
+    def models_loaded(self) -> int:
+        """Number of neural models currently loaded."""
+        if self._integrator:
+            return len(self._integrator.slots)
+        return 0
     
     # === CORE ANALYSIS ===
     
@@ -103,7 +147,95 @@ class VisionEngine:
         # 15. Confidence-aware description
         result['description'] = self._cosmic_description(result)
         
+        # 16. Neural model predictions (if trained models available)
+        result['neural'] = self._neural_predictions(image_path)
+        
         return result
+    
+    # === 0. NEURAL MODEL INTEGRATION ===
+    
+    def _neural_predictions(self, image_path):
+        """
+        Run trained micro-models on the image (if any are loaded).
+        
+        Returns predictions from all loaded classifiers with confidence scores.
+        Classical CV is NEVER replaced — neural just adds learned knowledge.
+        """
+        if not self.neural_available:
+            return {'available': False, 'models': 0, 'predictions': {}}
+        
+        try:
+            predictions = self._integrator.predict(image_path=image_path)
+            
+            # Format for inclusion in results
+            formatted = {
+                'available': True,
+                'models': len(self._integrator.slots),
+                'predictions': {},
+            }
+            
+            for model_name, pred in predictions.items():
+                if isinstance(pred, dict) and "prediction" in pred:
+                    formatted['predictions'][model_name] = {
+                        'category': pred['prediction'],
+                        'confidence': pred['confidence'],
+                        'top_3': pred.get('top_3', []),
+                        'inference_ms': pred.get('inference_ms', 0),
+                    }
+            
+            return formatted
+            
+        except Exception:
+            return {'available': False, 'models': 0, 'predictions': {}}
+    
+    def analyze_with_neural(self, image_path):
+        """
+        Full analysis with neural predictions prominently included.
+        Same as analyze() but ensures neural models are active.
+        
+        Returns integrated result combining classical + neural.
+        """
+        if not self.neural_available:
+            self._init_neural()
+        
+        result = self.analyze(image_path)
+        
+        # If neural predictions have high confidence, enhance the description
+        neural = result.get('neural', {})
+        if neural.get('available') and neural.get('predictions'):
+            high_conf = []
+            for model, pred in neural['predictions'].items():
+                if pred.get('confidence', 0) >= 0.85:
+                    high_conf.append(f"{pred['category']} ({pred['confidence']:.0%})")
+            
+            if high_conf:
+                result['neural_summary'] = f"Identified as: {', '.join(high_conf)}"
+                # Prepend to description
+                original_desc = result.get('description', '')
+                result['description'] = (
+                    f"[Neural] {result['neural_summary']}. {original_desc}"
+                )
+        
+        return result
+    
+    def reload_models(self):
+        """Hot-reload neural models (call after training new models)."""
+        self._init_neural()
+        if self.neural_available:
+            print(f"  [OK] {self.models_loaded} neural models loaded")
+        else:
+            print("  [INFO] No trained models found. Train one with vision_trainer.py")
+    
+    def get_neural_status(self):
+        """Get status of loaded neural models."""
+        if not self._integrator:
+            return {'enabled': self.neural_enabled, 'loaded': False, 'models': 0}
+        return {
+            'enabled': self.neural_enabled,
+            'loaded': True,
+            'models': self.models_loaded,
+            'details': self._integrator.get_status(),
+        }
     
     # === 1. DEEP COLOR ANALYSIS ===
     

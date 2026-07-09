@@ -43,3 +43,59 @@ sample_rate = 100  # every Nth operation
 schedule = "daily"
 memory_pressure_threshold = 0.7
 aggressive_threshold = 0.9
+
+# ═══ Cloud Storage (Google Drive via Rclone) ═══
+[cloud_storage]
+enabled = true
+provider = "rclone"                 # rclone (recommended) | google_api (legacy)
+backend = "google_drive"            # google_drive | s3 | backblaze
+remote_name = "gdrive"             # rclone remote name
+cache_dir = "user_data/image_cache"
+max_cache_gb = 50                   # Local cache limit
+auto_sync = false                   # Auto-sync new images on startup
+sync_interval_hours = 24
+download_threads = 4
+
+[cloud_storage.rclone]
+# No credentials needed — rclone uses its own built-in Google API keys.
+# Just run: python3 src/python/setup_drive.py
+# Or manually: rclone config (create remote named "gdrive")
+remote_name = "gdrive"
+# Folders to scan for training images (Drive paths, not IDs)
+training_folders = []               # e.g. ["TrainingImages", "Photos/AI_Training"]
+# File filters
+max_file_size_mb = 50
+min_file_size_kb = 10
+# Streaming: use rclone cat (0 local disk per file)
+stream_mode = true
+
+# ═══ Vision Training ═══
+[vision_training]
+enabled = true
+models_dir = "user_data/models"
+datasets_dir = "user_data/datasets"
+training_logs_dir = "user_data/training_logs"
+
+[vision_training.defaults]
+model_size = "small"                # micro (25KB) | small (80KB) | medium (200KB)
+epochs = 20
+batch_size = 32
+learning_rate = 0.001
+early_stopping_patience = 5
+target_accuracy = 0.90
+augmentation = true
+train_split = 0.70
+val_split = 0.15
+test_split = 0.15
+
+[vision_training.inference]
+auto_load_models = true             # Load all trained models on startup
+min_confidence = 0.60               # Ignore predictions below this
+high_confidence = 0.85              # Neural overrides classical above this
+max_inference_ms = 5                # Target inference time per model
+enable_fusion = true                # Combine classical CV + neural predictions
+
+[vision_training.resources]
+max_training_ram_mb = 512           # RAM limit during training
+max_models_loaded = 10              # Max models in memory simultaneously
+gpu_enabled = false                 # Use GPU if available (future)
