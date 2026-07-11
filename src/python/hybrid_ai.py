@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Hybrid AI - Unified Interface (Cosmic Level)
+Axima - Unified Interface (Cosmic Level)
 Combines C engine (fast knowledge lookup) + Python brain (deep intelligence)
 + Proactive AI + Personality + Teaching + Workflows + Persistent Context.
 """
@@ -34,12 +34,12 @@ except: CommunityIntelligence = None
 
 # Find C binary
 AI_BIN = None
-for path in ['../../ai', '/root/hybrid-ai/ai']:
+for path in ['../../ai', '/root/axima/ai']:
     if os.path.isfile(path) and os.access(path, os.X_OK):
         AI_BIN = os.path.abspath(path)
         break
 
-class HybridAI:
+class Axima:
     """Unified AI combining C speed + Python intelligence + Cosmic features."""
     
     def __init__(self):
@@ -203,6 +203,10 @@ class HybridAI:
         self._track_topic(user_input)
         self.mood = self._detect_mood(user_input)
         
+        # 0.1 Reference resolution — resolve "it", "that", short follow-ups
+        user_input = self._resolve_references(user_input)
+        lower = user_input.lower()
+        
         # 0.5 Check workflows (keyword triggers)
         wf_result = self._check_workflows(user_input)
         if wf_result:
@@ -215,9 +219,11 @@ class HybridAI:
         # 1.5 Code generation (cosmic engine - 15 languages, 100+ algorithms)
         lower = user_input.lower()
         code_triggers = ['write', 'code', 'implement', 'create a function', 'build a',
-                        'program', 'script', 'algorithm', 'data structure',
-                        'sort', 'search', 'fibonacci', 'factorial', 'server',
-                        'linked list', 'binary tree', 'hash', 'graph', 'stack', 'queue']
+                        'program a', 'script', 'algorithm', 'data structure',
+                        'sort', 'fibonacci', 'factorial',
+                        'linked list', 'binary tree', 'hash map', 'stack implementation', 'queue implementation']
+        # Only trigger code gen for COMMANDS, not questions like "who created X?"
+        is_code_request = any(t in lower for t in code_triggers) and not lower.startswith(('who', 'what is', 'why', 'when', 'where'))
         
         # 1.6 Agent system for complex tasks (math, compare, run commands)
         agent_triggers = ['calculate', 'compute', 'compare', 'vs', 'versus',
@@ -230,7 +236,7 @@ class HybridAI:
                     return {"response": result['answer'], "gap": False}
             except: pass
         
-        if any(t in lower for t in code_triggers):
+        if is_code_request:
             try:
                 from codegen_engine import handle_code_request
                 result = handle_code_request(user_input)
@@ -252,10 +258,13 @@ class HybridAI:
             if sim_result and 'No matching rules' not in sim_result:
                 return {"response": sim_result, "gap": False}
         
-        # 3. Check if needs clarification
-        should_clarify, clarification = self.metacog.should_ask_clarification(user_input)
-        if should_clarify:
-            return {"response": clarification, "gap": False}
+        # 3. Check if needs clarification (skip for greetings and follow-ups)
+        greetings = ['hi', 'hello', 'hey', 'yo', 'sup', 'good morning', 'good evening']
+        is_followup = hasattr(self, '_last_topic') and self._last_topic and self.turn > 1
+        if lower.strip().rstrip('!') not in greetings and not is_followup:
+            should_clarify, clarification = self.metacog.should_ask_clarification(user_input)
+            if should_clarify:
+                return {"response": clarification, "gap": False}
         
         # 4. Multi-path reasoning (if available)
         multipath_answer = None
@@ -397,6 +406,96 @@ class HybridAI:
         except: pass
     
     # ── Smart Follow-up Questions (Phase GPT-killer) ─────────────
+    # ── Reference Resolution (context awareness) ──────────────────
+    def _resolve_references(self, user_input):
+        """Resolve 'it', 'that', 'this', short follow-ups using conversation history."""
+        lower = user_input.lower().strip()
+        
+        # Track what we're talking about (extract main topic from questions)
+        if not hasattr(self, '_last_topic'):
+            self._last_topic = None
+            self._last_entity = None
+            self._conversation_history = []
+        
+        # Store this turn
+        self._conversation_history.append(user_input)
+        if len(self._conversation_history) > 20:
+            self._conversation_history = self._conversation_history[-20:]
+        
+        # Pronouns that refer to last topic
+        pronouns = ['it', 'that', 'this', 'its', 'they', 'them']
+        
+        # Check if input contains unresolved pronoun as the main subject
+        words = lower.split()
+        needs_resolution = False
+        
+        # Pattern: "What can it do?" / "Tell me more about it" / "How does it work?"
+        if any(w in words for w in pronouns):
+            # Only resolve if the pronoun seems to be the SUBJECT (not part of a longer entity name)
+            for p in pronouns:
+                if p in words:
+                    idx = words.index(p)
+                    # If pronoun is after a question word or "about", it's referring to something
+                    if idx > 0 and words[idx-1] in ['is', 'does', 'can', 'about', 'of', 'with', 'from']:
+                        needs_resolution = True
+                        break
+                    if idx == 0 or (idx == 1 and words[0] in ['what', 'how', 'why', 'where', 'can', 'does']):
+                        needs_resolution = True
+                        break
+        
+        # Short follow-up with no clear subject (like "and?" "more?" "why?")
+        if len(words) <= 3 and lower.endswith('?') and not any(c.isupper() for c in user_input[1:]):
+            if self._last_topic and lower not in ['hi?', 'hello?']:
+                needs_resolution = True
+        
+        # Resolve
+        if needs_resolution and self._last_topic:
+            # Replace pronoun with actual topic
+            resolved = user_input
+            for p in pronouns:
+                # Replace "it" with the topic, but carefully
+                if f' {p} ' in f' {lower} ':
+                    resolved = resolved.replace(f' {p} ', f' {self._last_topic} ', 1)
+                    resolved = resolved.replace(f' {p.capitalize()} ', f' {self._last_topic} ', 1)
+                elif lower.startswith(f'{p} '):
+                    resolved = self._last_topic + resolved[len(p):]
+                elif lower.endswith(f' {p}'):
+                    resolved = resolved[:-len(p)] + self._last_topic
+            
+            # For very short questions, prepend topic
+            if len(words) <= 3 and resolved == user_input:
+                resolved = f"What about {self._last_topic}? {user_input}"
+            
+            return resolved
+        
+        # Extract topic from this question for future reference
+        topic = self._extract_main_topic(user_input)
+        if topic:
+            self._last_topic = topic
+            self._last_entity = topic
+        
+        return user_input
+    
+    def _extract_main_topic(self, text):
+        """Extract the main subject/topic from a question."""
+        lower = text.lower()
+        skip = {'what', 'is', 'are', 'the', 'a', 'an', 'who', 'was', 'where', 'when',
+                'how', 'does', 'do', 'can', 'will', 'which', 'why', 'tell', 'me', 
+                'about', 'write', 'in', 'of', 'for', 'to', 'and', 'or', 'hi', 'hello'}
+        
+        words = text.split()
+        topic_words = []
+        for w in words:
+            clean = w.strip('?.,!').lower()
+            if clean not in skip and len(clean) > 2:
+                topic_words.append(w.strip('?.,!'))
+                if len(topic_words) >= 3:
+                    break
+        
+        if topic_words:
+            return ' '.join(topic_words[:2])  # Max 2 words as topic
+        return None
+
     def _generate_followups(self, question, answer):
         """Generate 2-3 smart follow-up questions based on the topic."""
         q = question.lower()
@@ -568,14 +667,14 @@ class HybridAI:
 
 def main():
     print("╔══════════════════════════════════════════╗")
-    print("║   Hybrid AI v1.0.0 — Cosmic Engine      ║")
+    print("║   Axima v1.0.0 — Cosmic Engine      ║")
     print(f"║   Engines: {len(engines_loaded)} + 21 C modules" + " " * (17 - len(str(len(engines_loaded)))) + "║")
     print(f"║   C Engine: {'✓' if AI_BIN else '✗'}  Derive: ✓  Agents: ✓  " + "║")
     print("║   Phases: 3,7,8,10,14,15,16,17,22,23   ║")
     print("╚══════════════════════════════════════════╝")
     print()
     
-    ai = HybridAI()
+    ai = Axima()
     
     # Show proactive suggestion on startup if any
     proactive = ai._proactive_check()

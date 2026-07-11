@@ -1,6 +1,6 @@
 #define _GNU_SOURCE
 /*
- * Hybrid AI Engine v0.1.0 - Main Entry Point
+ * Axima Engine v0.1.0 - Main Entry Point
  * Phase 1: Core Skeleton
  *
  * A lightweight AI system targeting ~300MB RAM with:
@@ -75,7 +75,7 @@ static void signal_handler(int sig) {
 static void print_banner(void) {
     printf("\n");
     printf("╔══════════════════════════════════════════╗\n");
-    printf("║     Hybrid AI Engine v%s           ║\n", VERSION);
+    printf("║     Axima Engine v%s           ║\n", VERSION);
     printf("║     RAM Target: %dMB                  ║\n", RAM_TARGET_MB);
     printf("║     Status: Phase 1 - Core Skeleton     ║\n");
     printf("╚══════════════════════════════════════════╝\n");
@@ -790,7 +790,7 @@ static int tests_passed = 0;
 } while(0)
 
 int main(void) {
-    printf("\n=== Hybrid AI Engine - Self Tests ===\n\n");
+    printf("\n=== Axima Engine - Self Tests ===\n\n");
     /* Test 1: Knowledge graph init/destroy */
     {
         KnowledgeGraph kg;

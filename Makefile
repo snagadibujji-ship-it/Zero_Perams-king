@@ -51,7 +51,19 @@ SRCS = $(SRC_DIR)/main.c \
        $(SRC_DIR)/tool_integration.c \
        $(SRC_DIR)/teaching.c \
        $(SRC_DIR)/workflow.c \
-       $(SRC_DIR)/context_env.c
+       $(SRC_DIR)/context_env.c \
+       $(SRC_DIR)/qhk.c \
+       $(SRC_DIR)/sokt.c \
+       $(SRC_DIR)/sip.c \
+       $(SRC_DIR)/eir.c \
+       $(SRC_DIR)/pcse.c \
+       $(SRC_DIR)/ast_v.c \
+       $(SRC_DIR)/dcm.c \
+       $(SRC_DIR)/dap.c \
+       $(SRC_DIR)/psar.c \
+       $(SRC_DIR)/csi.c \
+       $(SRC_DIR)/fve.c \
+       $(SRC_DIR)/cuq.c
 
 OBJS = $(SRCS:.c=.o)
 BIN = ai

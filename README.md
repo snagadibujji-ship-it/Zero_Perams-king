@@ -1,4 +1,4 @@
-# 🧠 Hybrid AI — Zero-Parameter Intelligence Engine
+# 🧠 Axima — Zero-Parameter Intelligence Engine
 
 > **A fundamentally different approach to AI.** No neural networks. No billions of parameters. No cloud dependency.  
 > A knowledge graph + reasoning engine that grows smarter with every interaction.
@@ -232,7 +232,7 @@ Requirements: GCC (C11), Python 3, Linux (any architecture).
 
 ```bash
 git clone <repo>
-cd hybrid-ai
+cd axima
 make                    # Build C engine
 python3 src/python/hybrid_ai.py   # Run
 ```
@@ -244,7 +244,7 @@ No GPU. No internet (for offline mode). No dependencies beyond standard library.
 ## File Structure
 
 ```
-hybrid-ai/
+axima/
 ├── ai                    # C binary (300KB)
 ├── concept_build         # Knowledge compiler
 ├── Makefile

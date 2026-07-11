@@ -348,3 +348,135 @@ if __name__ == '__main__':
     print("Direct simulation: fire + paper")
     for effect, prob in sim.simulate('fire', 'paper'):
         print(f"  → {effect} ({prob:.1%})")
+
+
+# ═══════════════════════════════════════════════════════════════════════
+# AXIMA CAUSAL ENGINE — MAX LEVEL (powered by HELIX)
+# ═══════════════════════════════════════════════════════════════════════
+
+class CausalPredictor:
+    """Predicts what happens next using HELIX DAG templates + Axima reasoning."""
+    
+    def __init__(self):
+        try:
+            from event_chains import DAG_TEMPLATES, predict_next_event, analyze_chain_risk
+            self.dag_templates = DAG_TEMPLATES
+            self._predict = predict_next_event
+            self._risk = analyze_chain_risk
+            self.available = True
+        except:
+            self.available = False
+    
+    def predict(self, event, domain=None):
+        """Predict next events from a given event."""
+        if not self.available:
+            return None
+        
+        # Find which domain this event belongs to
+        if domain is None:
+            domain = self._find_domain(event)
+        
+        if not domain:
+            return None
+        
+        chain = {'events': [{'event_type': event, 'world': domain, 'severity': 'warning', 'timestamp_offset_s': 0}], 'world': domain}
+        return self._predict(chain)
+    
+    def risk_assessment(self, events, domain):
+        """Assess risk level of a sequence of events."""
+        if not self.available:
+            return None
+        
+        chain = {
+            'events': [{'event_type': e, 'world': domain, 'severity': 'warning', 'timestamp_offset_s': i * 60}
+                      for i, e in enumerate(events)]
+        }
+        return self._risk(chain)
+    
+    def what_happens_after(self, event, domain=None, depth=5):
+        """Generate a full prediction chain: what cascades from this event."""
+        if not self.available:
+            return None
+        
+        from event_chains import generate_event_chain
+        if domain is None:
+            domain = self._find_domain(event)
+        if not domain:
+            return f"Unknown event: {event}"
+        
+        chain = generate_event_chain(domain, trigger=event, seed=hash(event) % 10000, max_depth=depth)
+        
+        if chain['events']:
+            results = []
+            for e in chain['events'][1:]:  # skip the trigger itself
+                results.append(f"→ {e['event_type']} ({e['severity']}, after {e['timestamp_offset_s']:.0f}s)")
+            return '\n'.join(results) if results else "No predicted follow-on events."
+        return "No predicted consequences."
+    
+    def compare_scenarios(self, event, domain=None):
+        """Compare actual vs counterfactual: what if we responded differently?"""
+        if not self.available:
+            return None
+        
+        from event_chains import generate_counterfactual
+        if domain is None:
+            domain = self._find_domain(event)
+        if not domain:
+            return None
+        
+        cf = generate_counterfactual(domain, seed=hash(event) % 10000, branch_point=1)
+        
+        actual_events = [e['event_type'] for e in cf['actual_path']]
+        counter_events = [e['event_type'] for e in cf['counterfactual_path']]
+        
+        return {
+            'scenario': event,
+            'actual_outcome': cf['actual_outcome'],
+            'alternative_outcome': cf['counterfactual_outcome'],
+            'actual_chain': actual_events[:5],
+            'alternative_chain': counter_events[:5],
+            'recommendation': 'earlier intervention' if cf['actual_outcome'] == 'critical' else 'current response adequate',
+        }
+    
+    def cascade_impact(self, event, domains=None):
+        """What's the cross-domain impact of this event?"""
+        if not self.available:
+            return None
+        
+        from event_chains import generate_cascade_chain
+        if domains is None:
+            domains = ['cybersecurity', 'energy', 'healthcare']
+        
+        cascade = generate_cascade_chain(domains, seed=hash(event) % 10000, max_total=15)
+        
+        return {
+            'trigger': event,
+            'domains_affected': cascade['worlds'],
+            'total_events': cascade['total_events'],
+            'duration_s': cascade['total_time_s'],
+            'cross_world_edges': cascade['cross_world_edges'],
+            'risk': 'high' if cascade['total_events'] > 10 else 'medium',
+        }
+    
+    def _find_domain(self, event):
+        """Find which domain an event belongs to."""
+        event_lower = event.lower().replace(' ', '_')
+        for domain, dag in self.dag_templates.items():
+            if event_lower in dag:
+                return domain
+        # Try partial match
+        for domain, dag in self.dag_templates.items():
+            for key in dag:
+                if event_lower in key or key in event_lower:
+                    return domain
+        return None
+
+
+# Wire into existing WorldSimulator
+_causal_predictor = None
+
+def get_causal_predictor():
+    global _causal_predictor
+    if _causal_predictor is None:
+        _causal_predictor = CausalPredictor()
+    return _causal_predictor
