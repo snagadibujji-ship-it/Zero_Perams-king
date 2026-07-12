@@ -12,6 +12,30 @@ from auto_learn import offer_search, save_facts, get_learned_count
 from metacognition import MetacognitiveReasoner
 from world_sim import WorldSimulator
 
+# v3.0 modules (graceful fallback)
+try:
+    from kda_manager import get_kda, query_kda
+except ImportError:
+    get_kda = None; query_kda = None
+
+try:
+    from kfr import KnowledgeFusionReactor
+except ImportError:
+    KnowledgeFusionReactor = None
+
+try:
+    from hvne import HVNEngine
+except ImportError:
+    HVNEngine = None
+
+try:
+    from psar_dsl import synthesize_program
+except ImportError:
+    synthesize_program = None
+from auto_learn import offer_search, save_facts, get_learned_count
+from metacognition import MetacognitiveReasoner
+from world_sim import WorldSimulator
+
 # Optional cosmic modules (fault-tolerant imports)
 try:
     from fluency import FluencyEngine
@@ -31,6 +55,14 @@ except: TruthGuard = None
 try:
     from community import CommunityIntelligence
 except: CommunityIntelligence = None
+
+try:
+    from natural_response import NaturalResponseV6
+except: NaturalResponseV6 = None
+
+try:
+    from semantic_brain import SemanticBrain
+except: SemanticBrain = None
 
 # Find C binary
 AI_BIN = None
@@ -60,6 +92,18 @@ class Axima:
         self.truthguard = TruthGuard() if TruthGuard else None
         self.community = CommunityIntelligence() if CommunityIntelligence else None
         
+        # Natural Response v6 — intelligence gate + humanizer
+        self._natural_response = NaturalResponseV6() if NaturalResponseV6 else None
+        
+        # Semantic Brain v6 — field theory entity resolution + spelling correction
+        self._semantic_brain = None
+        if SemanticBrain:
+            try:
+                entities = self._load_entities_from_knowledge()
+                self._semantic_brain = SemanticBrain(entities=entities)
+            except:
+                self._semantic_brain = SemanticBrain()
+        
         # Personality & context (C-backed but tracked in Python too)
         self.mood = 'neutral'
         self.personality = {'formality': 0.5, 'verbosity': 0.6, 'humor': 0.3, 'empathy': 0.7}
@@ -72,6 +116,69 @@ class Axima:
         self._load_session()
         self._start_c_engine()
     
+    def _load_entities_from_knowledge(self):
+        """Extract entity names from knowledge text files for Semantic Brain."""
+        entities = set()
+        data_dir = os.path.join(os.path.dirname(__file__), '..', 'data')
+        if not os.path.isdir(data_dir):
+            data_dir = os.path.join(os.path.dirname(__file__), '../../src/data')
+        if not os.path.isdir(data_dir):
+            return entities
+        
+        for fname in os.listdir(data_dir):
+            if not fname.endswith('.txt'):
+                continue
+            fpath = os.path.join(data_dir, fname)
+            try:
+                with open(fpath, 'r', errors='ignore') as f:
+                    for line in f:
+                        line = line.strip()
+                        if not line or line.startswith('#'):
+                            continue
+                        # Parse patterns: "A X is a Y", "X is Y", "The capital of X is Y"
+                        # Extract subjects
+                        low = line.lower()
+                        if low.startswith('a ') or low.startswith('an '):
+                            # "A dog is a mammal" → "dog"
+                            parts = line.split(' is ', 1)
+                            if parts:
+                                subj = parts[0].lstrip('AaAn ').strip()
+                                if 2 < len(subj) < 40:
+                                    entities.add(subj)
+                                # Also extract object: "mammal"
+                                if len(parts) > 1:
+                                    obj = parts[1].lstrip('a ').lstrip('an ').strip()
+                                    if 2 < len(obj) < 40 and ' ' not in obj:
+                                        entities.add(obj)
+                        elif ' is ' in line:
+                            parts = line.split(' is ', 1)
+                            subj = parts[0].strip().lstrip('The ').strip()
+                            if 2 < len(subj) < 40:
+                                entities.add(subj)
+                        elif ' has ' in line:
+                            subj = line.split(' has ', 1)[0].strip()
+                            if 2 < len(subj) < 40:
+                                entities.add(subj)
+                        elif ' can ' in line:
+                            subj = line.split(' can ', 1)[0].strip()
+                            if 2 < len(subj) < 40:
+                                entities.add(subj)
+            except:
+                continue
+        
+        # Add common compound entities
+        compounds = [
+            'black hole', 'quantum mechanics', 'machine learning', 'artificial intelligence',
+            'climate change', 'solar system', 'big bang', 'dark matter', 'dark energy',
+            'deep learning', 'neural network', 'electric current', 'magnetic field',
+            'gravitational force', 'speed of light', 'periodic table', 'chemical reaction',
+            'plate tectonics', 'natural selection', 'genetic code', 'immune system',
+            'operating system', 'binary search', 'linked list', 'hash map',
+            'prime number', 'real number', 'complex number', 'irrational number',
+        ]
+        entities.update(compounds)
+        return entities
+
     def _start_c_engine(self):
         """Launch C engine as a persistent subprocess with stdin/stdout pipes."""
         self.c_available = AI_BIN is not None
@@ -207,10 +314,59 @@ class Axima:
         user_input = self._resolve_references(user_input)
         lower = user_input.lower()
         
+        # 0.2 SEMANTIC BRAIN — Field Theory understanding
+        # Resolves misspellings, identifies entities, detects intent
+        self._forces = None
+        if self._semantic_brain and '. ' not in user_input:
+            try:
+                self._forces = self._semantic_brain.understand(user_input)
+                # If brain found the entity with high confidence and it differs from input,
+                # REWRITE the query for the C engine (misspelling correction)
+                if self._forces.gravity and self._forces.confidence >= 0.75:
+                    resolved = self._forces.gravity
+                    # Only rewrite if it's a bare query (1-3 words, no question structure)
+                    words = user_input.strip().split()
+                    is_bare = (len(words) <= 3
+                               and not any(w.lower() in ('what','who','why','how','when','where','is','are','does','can','do')
+                                           for w in words))
+                    if is_bare and resolved.lower() != ' '.join(words).lower():
+                        user_input = f"What is {resolved}?"
+                    elif not is_bare and not any(c.isdigit() for c in user_input):
+                        # For structured questions, replace misspelled entity IN the question
+                        # Skip common verbs and question structure words
+                        skip_words = {'what','who','why','how','when','where','is','are','does',
+                                      'can','do','a','an','the','if','you','it','we','they','he',
+                                      'she','this','that','will','would','could','should','has',
+                                      'have','had','was','were','been','being','get','got','make',
+                                      'happens','happened','happen','happening',
+                                      'heat','drop','burn','cut','mix','stretch','compress',
+                                      'freeze','cool','hit','throw','break','push','pull',
+                                      'cook','bake','fry','boil','melt','ignite','light',
+                                      'electrify','magnetize','submerge','dissolve',
+                                      'times','plus','minus','divided','multiply','add',
+                                      'subtract','equals','sum','product','square','cube',
+                                      'root','power','percent','factorial','modulo'}
+                        for w in words:
+                            if (w.lower() not in skip_words and len(w) > 2):
+                                # Check if brain resolved this word differently
+                                loc = self._semantic_brain._locate_word(w.lower()) if hasattr(self._semantic_brain, '_locate_word') else (None, 0)
+                                if loc[0] and loc[1] >= 0.75 and loc[0].lower() != w.lower():
+                                    user_input = user_input.replace(w, loc[0])
+                                    break
+            except:
+                pass
+        lower = user_input.lower()
+        
         # 0.5 Check workflows (keyword triggers)
         wf_result = self._check_workflows(user_input)
         if wf_result:
             return {"response": wf_result, "gap": False}
+        
+        # 0.6 IDENTITY — who are you, what can you do
+        identity_triggers = ['who are you', 'what are you', 'what can you do', 'what do you do',
+                            'tell me about yourself', 'introduce yourself', 'your name']
+        if any(t in lower for t in identity_triggers):
+            return {"response": self._identity_response(lower), "gap": False}
         
         # 1. Teaching mode (Socratic)
         if self.teach_mode:
@@ -233,7 +389,12 @@ class Axima:
                 from agent_system import agent_process
                 result = agent_process(user_input)
                 if result['success'] and result['answer'] and len(result['answer']) > 2:
-                    return {"response": result['answer'], "gap": False}
+                    try:
+                        from response_depth import enrich_response
+                        ans = enrich_response(user_input, result['answer'])
+                    except:
+                        ans = result['answer']
+                    return {"response": ans, "gap": False}
             except: pass
         
         if is_code_request:
@@ -251,20 +412,28 @@ class Axima:
                     return {"response": result['result'], "gap": False}
             except: pass
         
-        # 2. Check for "what if" → world simulator
+        # 2. Check for "what if" → world simulator + Causal Axiom Engine
         lower = user_input.lower()
         if any(p in lower for p in ['what happens if', 'what would happen', 'what if you', 'what if i']):
             sim_result = self.world.explain(user_input)
-            if sim_result and 'No matching rules' not in sim_result:
+            if sim_result and 'No known causal' not in sim_result and 'Cannot predict' not in sim_result:
+                # Enrich causal response
+                try:
+                    from response_depth import enrich_response
+                    sim_result = enrich_response(user_input, sim_result, 'causal')
+                except:
+                    pass
                 return {"response": sim_result, "gap": False}
         
         # 3. Check if needs clarification (skip for greetings and follow-ups)
         greetings = ['hi', 'hello', 'hey', 'yo', 'sup', 'good morning', 'good evening']
         is_followup = hasattr(self, '_last_topic') and self._last_topic and self.turn > 1
         if lower.strip().rstrip('!') not in greetings and not is_followup:
-            should_clarify, clarification = self.metacog.should_ask_clarification(user_input)
-            if should_clarify:
-                return {"response": clarification, "gap": False}
+            # Use Semantic Brain's needs_clarify signal if available
+            if self._forces and self._forces.needs_clarify and self._forces.confidence < 0.4:
+                options = self._forces.clarify_options
+                if options:
+                    return {"response": options[0], "gap": False}
         
         # 4. Multi-path reasoning (if available)
         multipath_answer = None
@@ -274,6 +443,62 @@ class Axima:
                 if paths and paths.get('best_answer'):
                     multipath_answer = paths['best_answer']
             except: pass
+        
+        # 4.3 DEBATE auto-detection — contested/opinion questions
+        try:
+            from debate import get_debate_engine
+            de = get_debate_engine()
+            if de.is_debate_topic(user_input):
+                result = de.debate(user_input)
+                if result and result.get('verified_facts', result.get('position_a', {}).get('evidence')):
+                    return {"response": de.format_debate(result), "gap": False}
+        except: pass
+
+        # 4.5 KDA Query — Check abstracted knowledge BEFORE C engine
+        if query_kda:
+            # Use Semantic Brain entities if available, else fallback to naive split
+            subjects = []
+            if self._forces and self._forces.gravity and self._forces.confidence > 0.6:
+                subjects = [self._forces.gravity.lower()]
+                if self._forces.spin:
+                    subjects.append(self._forces.spin.lower())
+            else:
+                topic_words = user_input.lower().split()
+                stop_words = {'what','is','the','a','an','who','where','when','how','why','are','was','do','does','tell','me','about'}
+                subjects = [w for w in topic_words if w not in stop_words and len(w) > 2]
+            for subj in subjects:
+                kda_results = query_kda(subj)
+                if kda_results:
+                    # Format KDA results as answer
+                    parts = [f"{subj} {r} {o}" for s, r, o, c in kda_results[:3]]
+                    if parts:
+                        kda_answer = '. '.join(parts) + '.'
+                        # Only use if it's actually informative
+                        if len(kda_answer) > 20 and 'is_a' in kda_answer or len(kda_results) >= 2:
+                            return {"response": f"[KDA] {kda_answer}", "gap": False}
+        
+        # 4.8 Boolean Reasoner — yes/no questions, primes, comparisons, syllogisms
+        # Trigger on: "is X...", "can X...", "does X..." OR multi-statement syllogisms
+        is_boolean = (lower.startswith(('is ', 'can ', 'does ', 'do '))
+                      or ('. is ' in lower or '. can ' in lower or '. does ' in lower))
+        if is_boolean:
+            try:
+                from boolean_reasoner import answer_boolean
+                bool_result = answer_boolean(user_input)
+                if bool_result:
+                    answer, conf = bool_result
+                    # Enrich the response using RDE with the raw yes/no
+                    try:
+                        from response_depth import enrich_response, detect_type
+                        raw = f"{'Yes' if answer == 'yes' else 'No'}."
+                        # Use specific type detection for better enrichment
+                        q_type = detect_type(user_input)
+                        resp = enrich_response(user_input, raw, q_type)
+                    except:
+                        resp = f"{'Yes' if answer == 'yes' else 'No'}."
+                    return {"response": resp, "gap": False}
+            except:
+                pass
         
         # 5. Get C engine's fast answer (knowledge graph + derive + reasoning)
         c_answer = self._query_c(user_input)
@@ -285,12 +510,23 @@ class Axima:
                                 "teach me", "not sure", "can't find"]
         if (c_answer and len(c_answer) > 50
                 and not any(s in c_answer.lower() for s in dont_know_signals_sc)):
-            # High-quality C answer — return directly with mood adjustment only
+            # High-quality C answer — run through NR v6 gate then return
             final = self._adjust_for_mood(c_answer, self.mood)
+            if NaturalResponseV6 and self._natural_response:
+                try:
+                    nr_result = self._natural_response.respond(final, user_input, 0.95)
+                    if nr_result and nr_result.get('display'):
+                        final = nr_result['display']
+                except: pass
             if self.long_memory:
                 try:
                     self.long_memory.store(user_input, final)
                 except: pass
+            # Enrich with Response Depth Engine
+            try:
+                from response_depth import enrich_response
+                final = enrich_response(user_input, final)
+            except: pass
             return {"response": final, "gap": False}
         
         # 6. Check if C engine doesn't know (gap detected)
@@ -306,12 +542,34 @@ class Axima:
                 if agent_result['success'] and agent_result['answer']:
                     ans = agent_result['answer']
                     if len(ans) > 20 and 'I hear you' not in ans:
-                        return {"response": f"[Agent: {agent_result['intent']}] {ans}", "gap": False}
+                        try:
+                            from response_depth import enrich_response
+                            ans = enrich_response(user_input, ans)
+                        except: pass
+                        return {"response": ans, "gap": False}
             except: pass
             
             # Use multipath if it found something
             if multipath_answer:
                 return {"response": multipath_answer, "gap": False}
+            
+            # 6.5 AUTO WEB SEARCH — before declaring gap, try to find answer online
+            if self.auto_search or True:  # Always try web as last resort
+                try:
+                    web_result = self.search_and_learn(user_input)
+                    if web_result and web_result.get('found'):
+                        answer = web_result['answer']
+                        # Enrich with RDE
+                        try:
+                            from response_depth import enrich_response
+                            answer = enrich_response(user_input, answer)
+                        except: pass
+                        # Auto-save if enabled
+                        if self.auto_save and web_result.get('facts'):
+                            self.save_learned(web_result['facts'])
+                        return {"response": answer, "gap": False}
+                except:
+                    pass
             
             # Track as gap
             topic = user_input.split()[-1] if user_input.split() else user_input
@@ -348,11 +606,25 @@ class Axima:
         # 11. Mood-based adjustment
         final = self._adjust_for_mood(final, self.mood)
         
-        # 12. Long-term memory storage
+        # 12. Natural Response v6 — intelligence gate + humanizer (LAST STEP)
+        if NaturalResponseV6 and hasattr(self, '_natural_response'):
+            try:
+                nr_result = self._natural_response.respond(final, user_input, 0.9)
+                if nr_result and nr_result.get('display'):
+                    final = nr_result['display']
+            except: pass
+        
+        # 13. Long-term memory storage
         if self.long_memory:
             try:
                 self.long_memory.store(user_input, final)
             except: pass
+        
+        # 14. Response Depth Engine — enrich final answer
+        try:
+            from response_depth import enrich_response
+            final = enrich_response(user_input, final)
+        except: pass
         
         return {"response": final, "gap": False}
     
@@ -496,70 +768,6 @@ class Axima:
             return ' '.join(topic_words[:2])  # Max 2 words as topic
         return None
 
-    def _generate_followups(self, question, answer):
-        """Generate 2-3 smart follow-up questions based on the topic."""
-        q = question.lower()
-        followups = []
-        
-        # Extract the main topic
-        topic = None
-        for word in question.split():
-            w = word.strip('?.,!').lower()
-            if len(w) > 3 and w not in ('what', 'where', 'when', 'which', 'that', 
-                'this', 'about', 'does', 'have', 'with', 'from', 'they', 'there',
-                'their', 'would', 'could', 'should', 'write', 'explain', 'tell'):
-                topic = w
-                break
-        
-        if not topic:
-            return ""
-        
-        # Generate contextual follow-ups based on question type
-        if 'what is' in q or 'what are' in q:
-            followups = [
-                f"How does {topic} work in practice?",
-                f"What are the main types of {topic}?",
-                f"Where is {topic} used most?",
-            ]
-        elif 'how' in q:
-            followups = [
-                f"What are the advantages of this approach?",
-                f"Are there alternatives to {topic}?",
-                f"What problems can occur with {topic}?",
-            ]
-        elif 'why' in q:
-            followups = [
-                f"What would happen without {topic}?",
-                f"When was this first discovered?",
-                f"How does this affect daily life?",
-            ]
-        elif 'who' in q:
-            followups = [
-                f"What else did they contribute?",
-                f"Who were their contemporaries?",
-                f"How did their work change the field?",
-            ]
-        elif 'capital' in q or 'country' in q or 'located' in q:
-            followups = [
-                f"What is {topic} known for?",
-                f"What is the population of {topic}?",
-                f"What language do they speak in {topic}?",
-            ]
-        elif any(w in q for w in ['cause', 'happen', 'effect']):
-            followups = [
-                f"Can this be prevented?",
-                f"What are the long-term effects?",
-                f"How common is this?",
-            ]
-        else:
-            followups = [
-                f"Would you like to know more about {topic}?",
-                f"How is {topic} related to other concepts?",
-            ]
-        
-        # Return 2 questions max, cleanly formatted
-        selected = followups[:2]
-        return "\n  → " + "\n  → ".join(selected)
     def _detect_mood(self, text):
         """Detect user mood from text patterns."""
         t = text.lower()
@@ -567,90 +775,82 @@ class Axima:
             return 'frustrated'
         if any(w in t for w in ['how does', 'what if', 'interesting', 'curious', 'tell me more', 'explain']):
             return 'curious'
-        if any(w in t for w in ['quick', 'just', 'fast', 'hurry', 'briefly']):
-            return 'rushed'
-        if any(w in t for w in ['thanks', 'perfect', 'awesome', 'great', 'love it', '!']):
+        if any(w in t for w in ['thanks', 'awesome', 'great', 'perfect', 'love it', 'amazing']):
             return 'happy'
-        if any(w in t for w in ["don't understand", 'confused', 'what?', 'huh', 'lost']):
+        if any(w in t for w in ['confused', "don't understand", 'unclear', 'lost', 'what do you mean']):
             return 'confused'
         return 'neutral'
-    
+
     def _adjust_for_mood(self, response, mood):
-        """Adjust response based on detected mood."""
+        """Adjust response tone based on detected mood."""
         if not response:
             return response
         if mood == 'frustrated':
-            response = response.split('.')[0] + '.' if len(response) > 200 else response
-        elif mood == 'rushed':
-            sentences = response.split('. ')
-            response = '. '.join(sentences[:2]) + '.' if len(sentences) > 2 else response
-        elif mood == 'curious' and len(response) < 100:
-            response += " Would you like me to go deeper on this topic?"
+            return response  # Don't add fluff when user is frustrated
+        if mood == 'curious':
+            return response  # Give full detail
+        if mood == 'confused':
+            return response  # Keep it simple
         return response
-    
-    # ── Proactive AI (Phase 14) ───────────────────────────────────
+
     def _track_topic(self, text):
         """Track topic frequency for proactive suggestions."""
-        words = text.lower().split()
-        for w in words:
-            if len(w) > 3 and w not in ('what', 'where', 'when', 'that', 'this', 'about', 'does', 'have', 'with'):
-                self.topics_asked[w] = self.topics_asked.get(w, 0) + 1
-        # Track session topic
-        if words:
-            topic = ' '.join(w for w in words[:5] if len(w) > 3)
-            if topic and topic not in self.session_topics[-5:]:
-                self.session_topics.append(topic)
-    
+        topic = self._extract_main_topic(text)
+        if topic:
+            topic_lower = topic.lower()
+            self.topics_asked[topic_lower] = self.topics_asked.get(topic_lower, 0) + 1
+
     def _proactive_check(self):
         """Check if we should proactively suggest something."""
-        # If any topic asked 5+ times → suggest deep dive
         for topic, count in self.topics_asked.items():
             if count >= 5:
-                self.topics_asked[topic] = 0  # Reset after suggesting
-                return f"💡 I notice you've asked about '{topic}' many times. Want me to do a deep search and build comprehensive knowledge on it?"
-        # If 3+ recent gaps → offer to auto-learn
-        if len(self.gaps) >= 3:
-            recent = self.gaps[-3:]
-            self.gaps = self.gaps[:-3]
-            topics = ', '.join(recent)
-            return f"💡 I couldn't answer these recently: {topics}. Want me to search and learn them all?"
+                self.topics_asked[topic] = 0
+                return f"  You've asked about '{topic}' {count} times. Want a deep dive? (/hunt {topic})"
         return None
-    
-    # ── Teaching Mode (Phase 17) ──────────────────────────────────
-    def _socratic_response(self, question):
-        """Instead of answering, ask a guiding question (Socratic method)."""
-        q = question.lower()
-        if 'what is' in q:
-            topic = q.replace('what is', '').replace('a ', '').replace('an ', '').strip().rstrip('?')
-            return f"Good question! Before I tell you, let me ask: what do you already know about {topic}? Any guesses?"
-        if 'how' in q:
-            return f"Let's think about this step by step. What's the first thing that needs to happen?"
-        if 'why' in q:
-            return f"Think about what causes lead to this effect. What do you think might be the reason?"
-        return f"Interesting! What's your intuition telling you? Let's work through it together."
-    
-    # ── Workflow Automation (Phase 22) ─────────────────────────────
-    def _check_workflows(self, text):
-        """Check if any workflow keyword triggers fire."""
-        t = text.lower()
+
+    def _socratic_response(self, user_input):
+        """In teach mode, ask guiding questions instead of giving answers."""
+        topic = self._extract_main_topic(user_input) or 'that'
+        questions = [
+            f"Interesting question! What do YOU think about {topic}?",
+            f"Before I answer — what do you already know about {topic}?",
+            f"Let's think about this together. What comes to mind when you hear '{topic}'?",
+            f"Good question! Can you think of any examples of {topic}?",
+        ]
+        import random
+        return random.choice(questions)
+
+    def _check_workflows(self, user_input):
+        """Check if input triggers a workflow."""
+        return None
+
+    def _identity_response(self, q):
+        """Handle 'who are you' / 'what can you do' questions."""
+        if any(w in q for w in ['who are', 'what are you', 'your name', 'introduce']):
+            return ("I'm Axima — a zero-parameter AI that reasons from verified knowledge, not guesses. "
+                    "I run fully offline on your device, never hallucinate, and get smarter with every conversation. "
+                    "Built by Ghias (Gowtham Sangadi).")
+        if any(w in q for w in ['what can you', 'what do you']):
+            return ("I can:\n"
+                    "• Answer questions from verified knowledge (7,800+ concepts)\n"
+                    "• Do math (exact arithmetic, primes, comparisons)\n"
+                    "• Reason about cause and effect (physics, chemistry, biology, social)\n"
+                    "• Generate code in Python, C, JavaScript, Bash\n"
+                    "• Search the web when I don't know something\n"
+                    "• Learn permanently from every conversation\n"
+                    "• Logic and syllogisms\n"
+                    "• Share knowledge peer-to-peer with other users\n"
+                    "All offline, all free, all private. 0% hallucination guaranteed.")
+        return "I'm Axima — an AI that proves answers instead of guessing them."
+        """Check if any workflow triggers match this input."""
         for wf in self.workflows:
-            if wf.get('enabled') and wf.get('trigger_type') == 'keyword':
-                if wf['trigger_value'].lower() in t:
-                    return self._execute_workflow(wf)
+            if not wf.get('enabled'):
+                continue
+            trigger = wf.get('trigger_value', '').lower()
+            if trigger and trigger in user_input.lower():
+                return f"[Workflow '{wf['name']}'] {wf.get('action_value', '')}"
         return None
-    
-    def _execute_workflow(self, wf):
-        """Execute a workflow action."""
-        if wf['action_type'] == 'shell':
-            try:
-                r = subprocess.run(wf['action_value'], shell=True, capture_output=True, text=True, timeout=10)
-                return f"⚙️ Workflow '{wf['name']}' executed:\n{r.stdout[:500]}"
-            except Exception as e:
-                return f"⚙️ Workflow '{wf['name']}' failed: {e}"
-        elif wf['action_type'] == 'notify':
-            return f"🔔 Reminder: {wf['action_value']}"
-        return None
-    
+
     def workflow_create(self, name, trigger_type, trigger_value, action_type, action_value):
         """Create a new workflow automation."""
         self.workflows.append({
@@ -736,6 +936,92 @@ def main():
                     print(f"  (Back to normal answers)")
                 print()
                 continue
+            
+            # ═══ v3.0 MODES ═══
+            if user.startswith('/hunt '):
+                topic = user[6:].strip()
+                if topic:
+                    try:
+                        from hunt import get_hunt_engine
+                        print(f"  Hunting: {topic}...")
+                        result = get_hunt_engine().hunt(topic)
+                        print(get_hunt_engine().format_hunt(result))
+                        # Auto-save verified facts via KDA
+                        if result.get('verified_facts'):
+                            for f in result['verified_facts']:
+                                try:
+                                    from kda_manager import save_with_kda
+                                    save_with_kda(topic, 'has_fact', f['text'][:100], 90)
+                                except: pass
+                    except Exception as e:
+                        print(f"  Hunt error: {e}")
+                else:
+                    print("  Usage: /hunt <topic>")
+                print()
+                continue
+            
+            if user.startswith('/debate '):
+                topic = user[8:].strip()
+                if topic:
+                    try:
+                        from debate import get_debate_engine
+                        result = get_debate_engine().debate(topic)
+                        if result:
+                            print(get_debate_engine().format_debate(result))
+                    except Exception as e:
+                        print(f"  Debate error: {e}")
+                else:
+                    print("  Usage: /debate <topic>")
+                print()
+                continue
+            
+            if user == '/predict':
+                # Show what PCE thinks you'll ask next
+                if hasattr(ai, '_last_topic') and ai._last_topic:
+                    print(f"  Based on your conversation about '{ai._last_topic}':")
+                    print(f"  You might ask next:")
+                    suggestions = [
+                        f"    • More about {ai._last_topic}",
+                        f"    • A related topic",
+                        f"    • Why {ai._last_topic} is important",
+                        f"    • How {ai._last_topic} works",
+                    ]
+                    for s in suggestions:
+                        print(s)
+                else:
+                    print("  No predictions yet. Ask a few questions first.")
+                print()
+                continue
+            
+            if user.startswith('/prove '):
+                claim = user[7:].strip()
+                if claim:
+                    print(f"  Proving: \"{claim}\"")
+                    # Route through C engine with PCSE
+                    ans = ai._query_c(f"is {claim}")
+                    if ans:
+                        print(f"  {ans}")
+                    else:
+                        print(f"  Cannot prove or disprove with available knowledge.")
+                else:
+                    print("  Usage: /prove <claim>")
+                print()
+                continue
+            
+            if user.startswith('/level '):
+                try:
+                    level = int(user[7:].strip())
+                    if 0 <= level <= 4:
+                        ai._user_level = level
+                        levels = ['auto', 'child', 'student', 'detailed', 'expert']
+                        print(f"  Explanation level: {levels[level]}")
+                    else:
+                        print("  Levels: 0=auto, 1=child, 2=student, 3=detailed, 4=expert")
+                except:
+                    print("  Usage: /level 0-4")
+                print()
+                continue
+            
             if user.startswith('/workflow'):
                 parts = user.split(maxsplit=4)
                 if len(parts) < 2 or parts[1] == 'list':
@@ -891,6 +1177,25 @@ def main():
                     print("    /workspace leave          — Leave\n")
                 continue
             
+            # ═══ PREDICT v3.0: Check if input is about suggestions (DIE) ═══
+            if hasattr(ai, '_predict_engine') and ai._predict_engine.state.state != 'open':
+                die_result = ai._predict_engine.process_input(user)
+                if die_result.get('handled'):
+                    ans = die_result.get('answer', '')
+                    if ans and 'Did you mean' not in ans:
+                        print(f"  {ans}")
+                        # Show next-level suggestions if drilling
+                        next_sugs = die_result.get('suggestions', [])
+                        if next_sugs:
+                            print(f"\n  You might also want to know:")
+                            print(ai._predict_engine.format_suggestions(next_sugs))
+                        print()
+                        continue
+                    elif 'Did you mean' in str(ans):
+                        print(f"  {ans}")
+                        print()
+                        continue
+            
             response = ai.ask(user)
             if response.get("gap"):
                 # AI doesn't know
@@ -983,11 +1288,19 @@ def main():
                         print("  OK. You can teach me: 'Remember that...'\n")
             else:
                 print(f"  {response['response']}")
-                # Smart follow-up suggestions (not every time - every 3rd turn)
-                if ai.turn % 3 == 0 and not ai.teach_mode:
-                    followups = ai._generate_followups(user, response['response'])
-                    if followups:
-                        print(followups)
+                
+                # ═══ PREDICT v3.0: DIE + Suggestions + Drilling ═══
+                if not hasattr(ai, '_predict_engine'):
+                    from predict import PredictEngine
+                    ai._predict_engine = PredictEngine(answer_func=lambda q: ai._query_c(q) or '')
+                
+                # Generate suggestions after answer
+                if not ai.teach_mode:
+                    sugs = ai._predict_engine.after_answer(user, response['response'])
+                    if sugs:
+                        print(f"\n  You might also want to know:")
+                        print(ai._predict_engine.format_suggestions(sugs))
+                
                 print()
     except KeyboardInterrupt:
         pass

@@ -146,13 +146,14 @@ int response_plan_about(SemanticCore* core, SynonymDB* synonyms,
     uint32_t cap_targets[8];
     int cap_count = semantic_get_relations(core, concept_id, REL_CAPABLE_OF, cap_targets, 8);
     if (cap_count > 0) {
-        const char* trans = discourse_transition(last_section, SEC_CAPABILITY);
         char sent[256];
         const char* first_cap = semantic_get_name(core, cap_targets[0]);
         if (first_cap) {
+            /* Use direct "{Name} can {ability}" — no transition prefix needed
+               because sv_can already includes the subject */
             sv_can(name, first_cap, sent, sizeof(sent));
             size_t len = strlen(out);
-            snprintf(out + len, maxlen - len, "%s%s", trans, sent);
+            snprintf(out + len, maxlen - len, "%s", sent);
             for (int i = 1; i < cap_count && i < 4; i++) {
                 const char* cap = semantic_get_name(core, cap_targets[i]);
                 if (cap && !already_mentioned(out, cap)) {

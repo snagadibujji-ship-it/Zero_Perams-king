@@ -63,7 +63,9 @@ SRCS = $(SRC_DIR)/main.c \
        $(SRC_DIR)/psar.c \
        $(SRC_DIR)/csi.c \
        $(SRC_DIR)/fve.c \
-       $(SRC_DIR)/cuq.c
+       $(SRC_DIR)/cuq.c \
+       $(SRC_DIR)/cse.c \
+       $(SRC_DIR)/rre.c
 
 OBJS = $(SRCS:.c=.o)
 BIN = ai

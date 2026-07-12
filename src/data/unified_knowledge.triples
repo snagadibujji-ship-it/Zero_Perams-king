@@ -1,0 +1,4686 @@
+iron|has_state|solid|90
+iron|melts_at|1538|95
+iron|is_a|metal|90
+iron|is_conductive|true|90
+iron|is_magnetic|true|90
+iron|is_dense|true|90
+iron|is_malleable|true|90
+iron|corrodes|true|90
+steel|has_state|solid|90
+steel|melts_at|1370|95
+steel|is_a|metal|90
+steel|is_conductive|true|90
+steel|is_magnetic|true|90
+steel|is_dense|true|90
+steel|is_malleable|true|90
+steel|corrodes|true|90
+gold|has_state|solid|90
+gold|melts_at|1064|95
+gold|is_a|metal|90
+gold|is_conductive|true|90
+gold|is_dense|true|90
+gold|is_malleable|true|90
+silver|has_state|solid|90
+silver|melts_at|962|95
+silver|is_a|metal|90
+silver|is_conductive|true|90
+silver|is_dense|true|90
+silver|is_malleable|true|90
+copper|has_state|solid|90
+copper|melts_at|1085|95
+copper|is_a|metal|90
+copper|is_conductive|true|90
+copper|is_dense|true|90
+copper|is_malleable|true|90
+copper|corrodes|true|90
+aluminum|has_state|solid|90
+aluminum|melts_at|660|95
+aluminum|is_a|metal|90
+aluminum|is_conductive|true|90
+aluminum|is_dense|true|90
+aluminum|is_malleable|true|90
+titanium|has_state|solid|90
+titanium|melts_at|1668|95
+titanium|is_a|metal|90
+titanium|is_conductive|true|90
+titanium|is_dense|true|90
+titanium|is_malleable|true|90
+lead|has_state|solid|90
+lead|melts_at|327|95
+lead|is_a|metal|90
+lead|is_conductive|true|90
+lead|is_dense|true|90
+lead|is_malleable|true|90
+zinc|has_state|solid|90
+zinc|melts_at|420|95
+zinc|is_a|metal|90
+zinc|is_conductive|true|90
+zinc|is_dense|true|90
+zinc|is_malleable|true|90
+tin|has_state|solid|90
+tin|melts_at|232|95
+tin|is_a|metal|90
+tin|is_conductive|true|90
+tin|is_dense|true|90
+tin|is_malleable|true|90
+nickel|has_state|solid|90
+nickel|melts_at|1455|95
+nickel|is_a|metal|90
+nickel|is_conductive|true|90
+nickel|is_magnetic|true|90
+nickel|is_dense|true|90
+nickel|is_malleable|true|90
+chromium|has_state|solid|90
+chromium|melts_at|1907|95
+chromium|is_a|metal|90
+chromium|is_conductive|true|90
+chromium|is_dense|true|90
+chromium|is_malleable|true|90
+tungsten|has_state|solid|90
+tungsten|melts_at|3422|95
+tungsten|is_a|metal|90
+tungsten|is_conductive|true|90
+tungsten|is_dense|true|90
+tungsten|is_malleable|true|90
+platinum|has_state|solid|90
+platinum|melts_at|1768|95
+platinum|is_a|metal|90
+platinum|is_conductive|true|90
+platinum|is_dense|true|90
+platinum|is_malleable|true|90
+bronze|has_state|solid|90
+bronze|melts_at|950|95
+bronze|is_a|metal|90
+bronze|is_conductive|true|90
+bronze|is_dense|true|90
+bronze|is_malleable|true|90
+brass|has_state|solid|90
+brass|melts_at|930|95
+brass|is_a|metal|90
+brass|is_conductive|true|90
+brass|is_dense|true|90
+brass|is_malleable|true|90
+mercury|has_state|liquid|90
+mercury|melts_at|-39|95
+mercury|is_a|metal|90
+mercury|is_conductive|true|90
+mercury|is_dense|true|90
+mercury|is_malleable|true|90
+cobalt|has_state|solid|90
+cobalt|melts_at|1495|95
+cobalt|is_a|metal|90
+cobalt|is_conductive|true|90
+cobalt|is_magnetic|true|90
+cobalt|is_dense|true|90
+cobalt|is_malleable|true|90
+manganese|has_state|solid|90
+manganese|melts_at|1246|95
+manganese|is_a|metal|90
+manganese|is_conductive|true|90
+manganese|is_dense|true|90
+manganese|is_malleable|true|90
+vanadium|has_state|solid|90
+vanadium|melts_at|1910|95
+vanadium|is_a|metal|90
+vanadium|is_conductive|true|90
+vanadium|is_dense|true|90
+vanadium|is_malleable|true|90
+molybdenum|has_state|solid|90
+molybdenum|melts_at|2623|95
+molybdenum|is_a|metal|90
+molybdenum|is_conductive|true|90
+molybdenum|is_dense|true|90
+molybdenum|is_malleable|true|90
+palladium|has_state|solid|90
+palladium|melts_at|1555|95
+palladium|is_a|metal|90
+palladium|is_conductive|true|90
+palladium|is_dense|true|90
+palladium|is_malleable|true|90
+iridium|has_state|solid|90
+iridium|melts_at|2466|95
+iridium|is_a|metal|90
+iridium|is_conductive|true|90
+iridium|is_dense|true|90
+iridium|is_malleable|true|90
+rhodium|has_state|solid|90
+rhodium|melts_at|1964|95
+rhodium|is_a|metal|90
+rhodium|is_conductive|true|90
+rhodium|is_dense|true|90
+rhodium|is_malleable|true|90
+osmium|has_state|solid|90
+osmium|melts_at|3033|95
+osmium|is_a|metal|90
+osmium|is_conductive|true|90
+osmium|is_dense|true|90
+osmium|is_malleable|true|90
+ruthenium|has_state|solid|90
+ruthenium|melts_at|2334|95
+ruthenium|is_a|metal|90
+ruthenium|is_conductive|true|90
+ruthenium|is_dense|true|90
+ruthenium|is_malleable|true|90
+tantalum|has_state|solid|90
+tantalum|melts_at|3017|95
+tantalum|is_a|metal|90
+tantalum|is_conductive|true|90
+tantalum|is_dense|true|90
+tantalum|is_malleable|true|90
+beryllium|has_state|solid|90
+beryllium|melts_at|1287|95
+beryllium|is_a|metal|90
+beryllium|is_conductive|true|90
+beryllium|is_dense|true|90
+beryllium|is_malleable|true|90
+magnesium|has_state|solid|90
+magnesium|melts_at|650|95
+magnesium|is_a|metal|90
+magnesium|is_conductive|true|90
+magnesium|is_dense|true|90
+magnesium|is_malleable|true|90
+calcium|has_state|solid|90
+calcium|melts_at|842|95
+calcium|is_a|mineral|90
+calcium|is_fragile|true|90
+calcium|is_dense|true|90
+sodium|has_state|solid|90
+sodium|melts_at|98|95
+sodium|is_a|metal|90
+sodium|is_conductive|true|90
+sodium|is_dense|true|90
+sodium|is_malleable|true|90
+potassium|has_state|solid|90
+potassium|melts_at|63|95
+potassium|is_a|metal|90
+potassium|is_conductive|true|90
+potassium|is_dense|true|90
+potassium|is_malleable|true|90
+lithium|has_state|solid|90
+lithium|melts_at|180|95
+lithium|is_a|metal|90
+lithium|is_conductive|true|90
+lithium|is_dense|true|90
+lithium|is_malleable|true|90
+barium|has_state|solid|90
+barium|melts_at|727|95
+barium|is_a|metal|90
+barium|is_conductive|true|90
+barium|is_dense|true|90
+barium|is_malleable|true|90
+strontium|has_state|solid|90
+strontium|melts_at|777|95
+strontium|is_a|metal|90
+strontium|is_conductive|true|90
+strontium|is_dense|true|90
+strontium|is_malleable|true|90
+wax|has_state|solid|90
+wax|melts_at|60|95
+wax|is_a|organic|90
+wax|is_flammable|true|90
+paraffin|has_state|solid|90
+paraffin|melts_at|55|95
+paraffin|is_a|organic|90
+paraffin|is_flammable|true|90
+butter|has_state|solid|90
+butter|melts_at|35|95
+butter|is_a|organic|90
+chocolate|has_state|solid|90
+chocolate|melts_at|34|95
+chocolate|is_a|organic|90
+cheese|has_state|solid|90
+cheese|melts_at|65|95
+cheese|is_a|organic|90
+sugar|has_state|solid|90
+sugar|melts_at|186|95
+sugar|is_a|organic|90
+sugar|is_flammable|true|90
+honey|has_state|solid|90
+honey|melts_at|40|95
+honey|is_a|organic|90
+caramel|has_state|solid|90
+caramel|melts_at|170|95
+caramel|is_a|organic|90
+caramel|is_flammable|true|90
+gelatin|has_state|solid|90
+gelatin|melts_at|35|95
+gelatin|is_a|organic|90
+soap|has_state|solid|90
+soap|melts_at|55|95
+soap|is_a|organic|90
+crayon|has_state|solid|90
+crayon|melts_at|60|95
+crayon|is_a|organic|90
+crayon|is_flammable|true|90
+lipstick|has_state|solid|90
+lipstick|melts_at|55|95
+lipstick|is_a|organic|90
+candle|has_state|solid|90
+candle|melts_at|60|95
+candle|is_a|organic|90
+candle|is_flammable|true|90
+beeswax|has_state|solid|90
+beeswax|melts_at|63|95
+beeswax|is_a|organic|90
+beeswax|is_flammable|true|90
+tallow|has_state|solid|90
+tallow|melts_at|45|95
+tallow|is_a|organic|90
+tallow|is_flammable|true|90
+lard|has_state|solid|90
+lard|melts_at|40|95
+lard|is_a|organic|90
+coconut oil|has_state|solid|90
+coconut oil|melts_at|24|95
+coconut oil|is_a|organic|90
+coconut oil|is_flammable|true|90
+palm oil|has_state|solid|90
+palm oil|melts_at|35|95
+palm oil|is_a|organic|90
+glass|has_state|solid|90
+glass|melts_at|1400|95
+glass|is_a|ceramic|90
+glass|is_fragile|true|90
+glass|is_dense|true|90
+porcelain|has_state|solid|90
+porcelain|melts_at|1800|95
+porcelain|is_a|ceramic|90
+porcelain|is_fragile|true|90
+porcelain|is_dense|true|90
+ceramic|has_state|solid|90
+ceramic|melts_at|1600|95
+ceramic|is_a|ceramic|90
+ceramic|is_fragile|true|90
+ceramic|is_dense|true|90
+quartz|has_state|solid|90
+quartz|melts_at|1670|95
+quartz|is_a|ceramic|90
+quartz|is_fragile|true|90
+quartz|is_dense|true|90
+obsidian|has_state|solid|90
+obsidian|melts_at|1200|95
+obsidian|is_a|mineral|90
+obsidian|is_fragile|true|90
+obsidian|is_dense|true|90
+crystal|has_state|solid|90
+crystal|melts_at|1400|95
+crystal|is_a|ceramic|90
+crystal|is_fragile|true|90
+crystal|is_dense|true|90
+enamel|has_state|solid|90
+enamel|melts_at|1500|95
+enamel|is_a|ceramic|90
+enamel|is_fragile|true|90
+enamel|is_dense|true|90
+terracotta|has_state|solid|90
+terracotta|melts_at|1100|95
+terracotta|is_a|ceramic|90
+terracotta|is_fragile|true|90
+terracotta|is_dense|true|90
+stoneware|has_state|solid|90
+stoneware|melts_at|1200|95
+stoneware|is_a|ceramic|90
+stoneware|is_fragile|true|90
+stoneware|is_dense|true|90
+earthenware|has_state|solid|90
+earthenware|melts_at|1000|95
+earthenware|is_a|ceramic|90
+earthenware|is_fragile|true|90
+earthenware|is_dense|true|90
+borosilicate|has_state|solid|90
+borosilicate|melts_at|1648|95
+borosilicate|is_a|ceramic|90
+borosilicate|is_fragile|true|90
+borosilicate|is_dense|true|90
+fiberglass|has_state|solid|90
+fiberglass|melts_at|1121|95
+fiberglass|is_a|ceramic|90
+fiberglass|is_fragile|true|90
+sapphire|has_state|solid|90
+sapphire|melts_at|2040|95
+sapphire|is_a|ceramic|90
+sapphire|is_fragile|true|90
+sapphire|is_dense|true|90
+ruby|has_state|solid|90
+ruby|melts_at|2040|95
+ruby|is_a|ceramic|90
+ruby|is_fragile|true|90
+ruby|is_dense|true|90
+diamond|has_state|solid|90
+diamond|melts_at|3550|95
+diamond|is_a|ceramic|90
+diamond|is_fragile|true|90
+diamond|is_dense|true|90
+plastic|has_state|solid|90
+plastic|melts_at|150|95
+plastic|is_a|polymer|90
+plastic|is_flammable|true|90
+rubber|has_state|solid|90
+rubber|melts_at|180|95
+rubber|is_a|polymer|90
+rubber|is_flammable|true|90
+rubber|is_elastic|true|90
+nylon|has_state|solid|90
+nylon|melts_at|220|95
+nylon|is_a|polymer|90
+nylon|is_flammable|true|90
+polyester|has_state|solid|90
+polyester|melts_at|260|95
+polyester|is_a|polymer|90
+polyester|is_flammable|true|90
+polystyrene|has_state|solid|90
+polystyrene|melts_at|240|95
+polystyrene|is_a|polymer|90
+polystyrene|is_flammable|true|90
+polyethylene|has_state|solid|90
+polyethylene|melts_at|130|95
+polyethylene|is_a|polymer|90
+polyethylene|is_flammable|true|90
+pvc|has_state|solid|90
+pvc|melts_at|160|95
+pvc|is_a|polymer|90
+pvc|is_flammable|true|90
+teflon|has_state|solid|90
+teflon|melts_at|327|95
+teflon|is_a|polymer|90
+teflon|is_flammable|true|90
+acrylic|has_state|solid|90
+acrylic|melts_at|160|95
+acrylic|is_a|polymer|90
+acrylic|is_flammable|true|90
+silicone|has_state|solid|90
+silicone|melts_at|300|95
+silicone|is_a|polymer|90
+silicone|is_flammable|true|90
+silicone|is_elastic|true|90
+epoxy|has_state|liquid|90
+epoxy|is_a|polymer|90
+polypropylene|has_state|solid|90
+polypropylene|melts_at|160|95
+polypropylene|is_a|polymer|90
+polypropylene|is_flammable|true|90
+polyurethane|has_state|solid|90
+polyurethane|melts_at|200|95
+polyurethane|is_a|polymer|90
+polyurethane|is_flammable|true|90
+kevlar|has_state|solid|90
+kevlar|melts_at|500|95
+kevlar|is_a|polymer|90
+kevlar|is_flammable|true|90
+neoprene|has_state|solid|90
+neoprene|melts_at|200|95
+neoprene|is_a|polymer|90
+neoprene|is_flammable|true|90
+neoprene|is_elastic|true|90
+latex|has_state|solid|90
+latex|melts_at|150|95
+latex|is_a|polymer|90
+latex|is_flammable|true|90
+latex|is_elastic|true|90
+vinyl|has_state|solid|90
+vinyl|melts_at|150|95
+vinyl|is_a|polymer|90
+vinyl|is_flammable|true|90
+cellophane|has_state|solid|90
+cellophane|melts_at|230|95
+cellophane|is_a|polymer|90
+cellophane|is_flammable|true|90
+styrofoam|has_state|solid|90
+styrofoam|melts_at|240|95
+styrofoam|is_a|polymer|90
+styrofoam|is_flammable|true|90
+foam|has_state|solid|90
+foam|melts_at|200|95
+foam|is_a|polymer|90
+foam|is_flammable|true|90
+foam|is_elastic|true|90
+cotton|has_state|solid|90
+cotton|boils_at|255|95
+cotton|is_a|fabric|90
+cotton|is_flammable|true|90
+silk|has_state|solid|90
+silk|boils_at|255|95
+silk|is_a|fabric|90
+silk|is_flammable|true|90
+wool|has_state|solid|90
+wool|boils_at|255|95
+wool|is_a|fabric|90
+wool|is_flammable|true|90
+linen|has_state|solid|90
+linen|boils_at|255|95
+linen|is_a|fabric|90
+linen|is_flammable|true|90
+denim|has_state|solid|90
+denim|boils_at|255|95
+denim|is_a|fabric|90
+denim|is_flammable|true|90
+canvas|has_state|solid|90
+canvas|boils_at|255|95
+canvas|is_a|fabric|90
+canvas|is_flammable|true|90
+velvet|has_state|solid|90
+velvet|boils_at|255|95
+velvet|is_a|fabric|90
+velvet|is_flammable|true|90
+satin|has_state|solid|90
+satin|boils_at|255|95
+satin|is_a|fabric|90
+satin|is_flammable|true|90
+polyester fabric|has_state|solid|90
+polyester fabric|boils_at|255|95
+polyester fabric|is_a|fabric|90
+polyester fabric|is_flammable|true|90
+nylon fabric|has_state|solid|90
+nylon fabric|boils_at|255|95
+nylon fabric|is_a|fabric|90
+nylon fabric|is_flammable|true|90
+leather|has_state|solid|90
+leather|boils_at|255|95
+leather|is_a|fabric|90
+leather|is_flammable|true|90
+suede|has_state|solid|90
+suede|boils_at|255|95
+suede|is_a|fabric|90
+suede|is_flammable|true|90
+cashmere|has_state|solid|90
+cashmere|boils_at|255|95
+cashmere|is_a|fabric|90
+cashmere|is_flammable|true|90
+flannel|has_state|solid|90
+flannel|boils_at|255|95
+flannel|is_a|fabric|90
+flannel|is_flammable|true|90
+tweed|has_state|solid|90
+tweed|boils_at|255|95
+tweed|is_a|fabric|90
+tweed|is_flammable|true|90
+chiffon|has_state|solid|90
+chiffon|boils_at|255|95
+chiffon|is_a|fabric|90
+chiffon|is_flammable|true|90
+organza|has_state|solid|90
+organza|boils_at|255|95
+organza|is_a|fabric|90
+organza|is_flammable|true|90
+tulle|has_state|solid|90
+tulle|boils_at|255|95
+tulle|is_a|fabric|90
+tulle|is_flammable|true|90
+burlap|has_state|solid|90
+burlap|boils_at|255|95
+burlap|is_a|fabric|90
+burlap|is_flammable|true|90
+hemp|has_state|solid|90
+hemp|boils_at|255|95
+hemp|is_a|fabric|90
+hemp|is_flammable|true|90
+jute|has_state|solid|90
+jute|boils_at|255|95
+jute|is_a|fabric|90
+jute|is_flammable|true|90
+rayon|has_state|solid|90
+rayon|boils_at|255|95
+rayon|is_a|fabric|90
+rayon|is_flammable|true|90
+spandex|has_state|solid|90
+spandex|boils_at|255|95
+spandex|is_a|fabric|90
+spandex|is_flammable|true|90
+spandex|is_elastic|true|90
+fleece|has_state|solid|90
+fleece|boils_at|255|95
+fleece|is_a|fabric|90
+fleece|is_flammable|true|90
+fleece|is_elastic|true|90
+felt|has_state|solid|90
+felt|boils_at|255|95
+felt|is_a|fabric|90
+felt|is_flammable|true|90
+water|has_state|liquid|90
+water|melts_at|0|95
+water|boils_at|100|95
+water|is_a|liquid|90
+water|is_dense|true|90
+ethanol|has_state|liquid|90
+ethanol|melts_at|-114|95
+ethanol|boils_at|78|95
+ethanol|is_a|liquid|90
+ethanol|is_flammable|true|90
+ethanol|is_dense|true|90
+methanol|has_state|liquid|90
+methanol|melts_at|-98|95
+methanol|boils_at|65|95
+methanol|is_a|liquid|90
+methanol|is_flammable|true|90
+methanol|is_dense|true|90
+gasoline|has_state|liquid|90
+gasoline|melts_at|-60|95
+gasoline|boils_at|95|95
+gasoline|is_a|liquid|90
+gasoline|is_flammable|true|90
+gasoline|is_dense|true|90
+diesel|has_state|liquid|90
+diesel|melts_at|-10|95
+diesel|boils_at|180|95
+diesel|is_a|liquid|90
+diesel|is_flammable|true|90
+diesel|is_dense|true|90
+kerosene|has_state|liquid|90
+kerosene|melts_at|-45|95
+kerosene|boils_at|150|95
+kerosene|is_a|liquid|90
+kerosene|is_flammable|true|90
+kerosene|is_dense|true|90
+acetone|has_state|liquid|90
+acetone|melts_at|-95|95
+acetone|boils_at|56|95
+acetone|is_a|liquid|90
+acetone|is_flammable|true|90
+acetone|is_dense|true|90
+glycerin|has_state|liquid|90
+glycerin|melts_at|18|95
+glycerin|boils_at|290|95
+glycerin|is_a|liquid|90
+glycerin|is_flammable|true|90
+glycerin|is_dense|true|90
+turpentine|has_state|liquid|90
+turpentine|melts_at|-10|95
+turpentine|boils_at|160|95
+turpentine|is_a|liquid|90
+turpentine|is_flammable|true|90
+turpentine|is_dense|true|90
+benzene|has_state|liquid|90
+benzene|melts_at|6|95
+benzene|boils_at|80|95
+benzene|is_a|liquid|90
+benzene|is_flammable|true|90
+benzene|is_dense|true|90
+toluene|has_state|liquid|90
+toluene|melts_at|-95|95
+toluene|boils_at|111|95
+toluene|is_a|liquid|90
+toluene|is_flammable|true|90
+toluene|is_dense|true|90
+ammonia liquid|has_state|liquid|90
+ammonia liquid|melts_at|-78|95
+ammonia liquid|boils_at|-33|95
+ammonia liquid|is_a|liquid|90
+ammonia liquid|is_flammable|true|90
+ammonia liquid|is_dense|true|90
+sulfuric acid|has_state|liquid|90
+sulfuric acid|melts_at|10|95
+sulfuric acid|boils_at|337|95
+sulfuric acid|is_a|liquid|90
+sulfuric acid|is_conductive|true|90
+sulfuric acid|is_dense|true|90
+hydrochloric acid|has_state|liquid|90
+hydrochloric acid|melts_at|-27|95
+hydrochloric acid|boils_at|48|95
+hydrochloric acid|is_a|liquid|90
+hydrochloric acid|is_conductive|true|90
+hydrochloric acid|is_dense|true|90
+nitric acid|has_state|liquid|90
+nitric acid|melts_at|-42|95
+nitric acid|boils_at|83|95
+nitric acid|is_a|liquid|90
+nitric acid|is_conductive|true|90
+nitric acid|is_dense|true|90
+acetic acid|has_state|liquid|90
+acetic acid|melts_at|17|95
+acetic acid|boils_at|118|95
+acetic acid|is_a|liquid|90
+acetic acid|is_flammable|true|90
+acetic acid|is_conductive|true|90
+acetic acid|is_dense|true|90
+olive oil|has_state|liquid|90
+olive oil|melts_at|-6|95
+olive oil|boils_at|300|95
+olive oil|is_a|liquid|90
+olive oil|is_flammable|true|90
+motor oil|has_state|liquid|90
+motor oil|melts_at|-30|95
+motor oil|boils_at|300|95
+motor oil|is_a|liquid|90
+motor oil|is_flammable|true|90
+motor oil|is_dense|true|90
+brake fluid|has_state|liquid|90
+brake fluid|melts_at|-40|95
+brake fluid|boils_at|230|95
+brake fluid|is_a|liquid|90
+brake fluid|is_flammable|true|90
+brake fluid|is_dense|true|90
+egg|has_state|solid|90
+egg|cooks_at|70|95
+egg|is_a|food|90
+egg|is_fragile|true|90
+steak|has_state|solid|90
+steak|cooks_at|75|95
+steak|is_a|food|90
+chicken|has_state|solid|90
+chicken|cooks_at|75|95
+chicken|is_a|food|90
+fish|has_state|solid|90
+fish|cooks_at|63|95
+fish|is_a|food|90
+bacon|has_state|solid|90
+bacon|cooks_at|75|95
+bacon|is_a|food|90
+bacon|is_flammable|true|90
+bread|has_state|solid|90
+bread|boils_at|200|95
+bread|is_a|food|90
+bread|is_flammable|true|90
+rice|has_state|solid|90
+rice|cooks_at|100|95
+rice|is_a|food|90
+pasta|has_state|solid|90
+pasta|cooks_at|100|95
+pasta|is_a|food|90
+pizza|has_state|solid|90
+pizza|boils_at|200|95
+pizza|cooks_at|80|95
+pizza|is_a|food|90
+pizza|is_flammable|true|90
+cake|has_state|solid|90
+cake|boils_at|180|95
+cake|is_a|food|90
+cake|is_flammable|true|90
+cookie|has_state|solid|90
+cookie|boils_at|190|95
+cookie|is_a|food|90
+cookie|is_flammable|true|90
+cookie|is_fragile|true|90
+apple|has_state|solid|90
+apple|cooks_at|80|95
+apple|is_a|food|90
+banana|has_state|solid|90
+banana|cooks_at|80|95
+banana|is_a|food|90
+tomato|has_state|solid|90
+tomato|cooks_at|80|95
+tomato|is_a|food|90
+tomato|is_fragile|true|90
+potato|has_state|solid|90
+potato|cooks_at|100|95
+potato|is_a|food|90
+corn|has_state|solid|90
+corn|cooks_at|100|95
+corn|is_a|food|90
+ice cream|has_state|solid|90
+ice cream|melts_at|-2|95
+ice cream|is_a|food|90
+frozen yogurt|has_state|solid|90
+frozen yogurt|melts_at|-5|95
+frozen yogurt|is_a|food|90
+popsicle|has_state|solid|90
+popsicle|melts_at|0|95
+popsicle|is_a|food|90
+marshmallow|has_state|solid|90
+marshmallow|melts_at|100|95
+marshmallow|is_a|food|90
+marshmallow|is_flammable|true|90
+granite|has_state|solid|90
+granite|melts_at|1260|95
+granite|is_a|mineral|90
+granite|is_fragile|true|90
+granite|is_dense|true|90
+basalt|has_state|solid|90
+basalt|melts_at|1200|95
+basalt|is_a|mineral|90
+basalt|is_fragile|true|90
+basalt|is_dense|true|90
+limestone|has_state|solid|90
+limestone|melts_at|825|95
+limestone|is_a|mineral|90
+limestone|is_fragile|true|90
+limestone|is_dense|true|90
+sandstone|has_state|solid|90
+sandstone|melts_at|1100|95
+sandstone|is_a|mineral|90
+sandstone|is_fragile|true|90
+sandstone|is_dense|true|90
+marble|has_state|solid|90
+marble|melts_at|1339|95
+marble|is_a|mineral|90
+marble|is_fragile|true|90
+marble|is_dense|true|90
+slate|has_state|solid|90
+slate|melts_at|1300|95
+slate|is_a|mineral|90
+slate|is_fragile|true|90
+slate|is_dense|true|90
+chalk|has_state|solid|90
+chalk|melts_at|825|95
+chalk|is_a|mineral|90
+chalk|is_fragile|true|90
+chalk|is_dense|true|90
+pumice|has_state|solid|90
+pumice|melts_at|900|95
+pumice|is_a|mineral|90
+pumice|is_fragile|true|90
+flint|has_state|solid|90
+flint|melts_at|1700|95
+flint|is_a|mineral|90
+flint|is_fragile|true|90
+flint|is_dense|true|90
+jade|has_state|solid|90
+jade|melts_at|1000|95
+jade|is_a|mineral|90
+jade|is_fragile|true|90
+jade|is_dense|true|90
+agate|has_state|solid|90
+agate|melts_at|1600|95
+agate|is_a|mineral|90
+agate|is_fragile|true|90
+agate|is_dense|true|90
+onyx|has_state|solid|90
+onyx|melts_at|1600|95
+onyx|is_a|mineral|90
+onyx|is_fragile|true|90
+onyx|is_dense|true|90
+opal|has_state|solid|90
+opal|melts_at|1600|95
+opal|is_a|mineral|90
+opal|is_fragile|true|90
+opal|is_dense|true|90
+turquoise|has_state|solid|90
+turquoise|melts_at|1000|95
+turquoise|is_a|mineral|90
+turquoise|is_fragile|true|90
+turquoise|is_dense|true|90
+amethyst|has_state|solid|90
+amethyst|melts_at|1650|95
+amethyst|is_a|mineral|90
+amethyst|is_fragile|true|90
+amethyst|is_dense|true|90
+emerald|has_state|solid|90
+emerald|melts_at|1400|95
+emerald|is_a|mineral|90
+emerald|is_fragile|true|90
+emerald|is_dense|true|90
+topaz|has_state|solid|90
+topaz|melts_at|1650|95
+topaz|is_a|mineral|90
+topaz|is_fragile|true|90
+topaz|is_dense|true|90
+garnet|has_state|solid|90
+garnet|melts_at|1300|95
+garnet|is_a|mineral|90
+garnet|is_fragile|true|90
+garnet|is_dense|true|90
+coal|has_state|solid|90
+coal|melts_at|400|95
+coal|is_a|mineral|90
+coal|is_flammable|true|90
+coal|is_fragile|true|90
+coal|is_dense|true|90
+graphite|has_state|solid|90
+graphite|melts_at|3600|95
+graphite|is_a|mineral|90
+graphite|is_fragile|true|90
+graphite|is_dense|true|90
+nail|has_state|solid|90
+nail|melts_at|1538|95
+nail|is_a|metal|90
+nail|is_conductive|true|90
+nail|is_magnetic|true|90
+nail|is_dense|true|90
+nail|is_malleable|true|90
+nail|corrodes|true|90
+screw|has_state|solid|90
+screw|melts_at|1538|95
+screw|is_a|metal|90
+screw|is_conductive|true|90
+screw|is_magnetic|true|90
+screw|is_dense|true|90
+screw|is_malleable|true|90
+screw|corrodes|true|90
+bolt|has_state|solid|90
+bolt|melts_at|1538|95
+bolt|is_a|metal|90
+bolt|is_conductive|true|90
+bolt|is_magnetic|true|90
+bolt|is_dense|true|90
+bolt|is_malleable|true|90
+bolt|corrodes|true|90
+nut|has_state|solid|90
+nut|melts_at|1538|95
+nut|is_a|metal|90
+nut|is_conductive|true|90
+nut|is_magnetic|true|90
+nut|is_dense|true|90
+nut|is_malleable|true|90
+nut|corrodes|true|90
+washer|has_state|solid|90
+washer|melts_at|1538|95
+washer|is_a|metal|90
+washer|is_conductive|true|90
+washer|is_magnetic|true|90
+washer|is_dense|true|90
+washer|is_malleable|true|90
+washer|corrodes|true|90
+rivet|has_state|solid|90
+rivet|melts_at|1538|95
+rivet|is_a|metal|90
+rivet|is_conductive|true|90
+rivet|is_magnetic|true|90
+rivet|is_dense|true|90
+rivet|is_malleable|true|90
+rivet|corrodes|true|90
+pin|has_state|solid|90
+pin|melts_at|1538|95
+pin|is_a|metal|90
+pin|is_conductive|true|90
+pin|is_magnetic|true|90
+pin|is_dense|true|90
+pin|is_malleable|true|90
+pin|corrodes|true|90
+staple|has_state|solid|90
+staple|melts_at|1538|95
+staple|is_a|metal|90
+staple|is_conductive|true|90
+staple|is_magnetic|true|90
+staple|is_dense|true|90
+staple|is_malleable|true|90
+staple|corrodes|true|90
+clip|has_state|solid|90
+clip|melts_at|1538|95
+clip|is_a|metal|90
+clip|is_conductive|true|90
+clip|is_magnetic|true|90
+clip|is_dense|true|90
+clip|is_malleable|true|90
+clip|corrodes|true|90
+knife|has_state|solid|90
+knife|melts_at|1370|95
+knife|is_a|metal|90
+knife|is_conductive|true|90
+knife|is_magnetic|true|90
+knife|is_dense|true|90
+knife|is_malleable|true|90
+knife|corrodes|true|90
+sword|has_state|solid|90
+sword|melts_at|1370|95
+sword|is_a|metal|90
+sword|is_conductive|true|90
+sword|is_magnetic|true|90
+sword|is_dense|true|90
+sword|is_malleable|true|90
+sword|corrodes|true|90
+dagger|has_state|solid|90
+dagger|melts_at|1538|95
+dagger|is_a|metal|90
+dagger|is_conductive|true|90
+dagger|is_magnetic|true|90
+dagger|is_dense|true|90
+dagger|is_malleable|true|90
+dagger|corrodes|true|90
+axe|has_state|solid|90
+axe|melts_at|1538|95
+axe|is_a|metal|90
+axe|is_conductive|true|90
+axe|is_magnetic|true|90
+axe|is_dense|true|90
+axe|is_malleable|true|90
+axe|corrodes|true|90
+hammer|has_state|solid|90
+hammer|melts_at|1538|95
+hammer|is_a|metal|90
+hammer|is_conductive|true|90
+hammer|is_magnetic|true|90
+hammer|is_dense|true|90
+hammer|is_malleable|true|90
+hammer|corrodes|true|90
+wrench|has_state|solid|90
+wrench|melts_at|1538|95
+wrench|is_a|metal|90
+wrench|is_conductive|true|90
+wrench|is_magnetic|true|90
+wrench|is_dense|true|90
+wrench|is_malleable|true|90
+wrench|corrodes|true|90
+pliers|has_state|solid|90
+pliers|melts_at|1538|95
+pliers|is_a|metal|90
+pliers|is_conductive|true|90
+pliers|is_magnetic|true|90
+pliers|is_dense|true|90
+pliers|is_malleable|true|90
+pliers|corrodes|true|90
+screwdriver|has_state|solid|90
+screwdriver|melts_at|1538|95
+screwdriver|is_a|metal|90
+screwdriver|is_conductive|true|90
+screwdriver|is_magnetic|true|90
+screwdriver|is_dense|true|90
+screwdriver|is_malleable|true|90
+screwdriver|corrodes|true|90
+saw|has_state|solid|90
+saw|melts_at|1538|95
+saw|is_a|metal|90
+saw|is_conductive|true|90
+saw|is_magnetic|true|90
+saw|is_dense|true|90
+saw|is_malleable|true|90
+saw|corrodes|true|90
+drill|has_state|solid|90
+drill|melts_at|1538|95
+drill|is_a|metal|90
+drill|is_conductive|true|90
+drill|is_magnetic|true|90
+drill|is_dense|true|90
+drill|is_malleable|true|90
+drill|corrodes|true|90
+chisel|has_state|solid|90
+chisel|melts_at|1538|95
+chisel|is_a|metal|90
+chisel|is_conductive|true|90
+chisel|is_magnetic|true|90
+chisel|is_dense|true|90
+chisel|is_malleable|true|90
+chisel|corrodes|true|90
+file|has_state|solid|90
+file|melts_at|1538|95
+file|is_a|metal|90
+file|is_conductive|true|90
+file|is_magnetic|true|90
+file|is_dense|true|90
+file|is_malleable|true|90
+file|corrodes|true|90
+clamp|has_state|solid|90
+clamp|melts_at|1538|95
+clamp|is_a|metal|90
+clamp|is_conductive|true|90
+clamp|is_magnetic|true|90
+clamp|is_dense|true|90
+clamp|is_malleable|true|90
+clamp|corrodes|true|90
+vise|has_state|solid|90
+vise|melts_at|1538|95
+vise|is_a|metal|90
+vise|is_conductive|true|90
+vise|is_magnetic|true|90
+vise|is_dense|true|90
+vise|is_malleable|true|90
+vise|corrodes|true|90
+fork|has_state|solid|90
+fork|melts_at|1538|95
+fork|is_a|metal|90
+fork|is_conductive|true|90
+fork|is_magnetic|true|90
+fork|is_dense|true|90
+fork|is_malleable|true|90
+fork|corrodes|true|90
+spoon|has_state|solid|90
+spoon|melts_at|1538|95
+spoon|is_a|metal|90
+spoon|is_conductive|true|90
+spoon|is_magnetic|true|90
+spoon|is_dense|true|90
+spoon|is_malleable|true|90
+spoon|corrodes|true|90
+ladle|has_state|solid|90
+ladle|melts_at|1538|95
+ladle|is_a|metal|90
+ladle|is_conductive|true|90
+ladle|is_magnetic|true|90
+ladle|is_dense|true|90
+ladle|is_malleable|true|90
+ladle|corrodes|true|90
+tongs|has_state|solid|90
+tongs|melts_at|1538|95
+tongs|is_a|metal|90
+tongs|is_conductive|true|90
+tongs|is_magnetic|true|90
+tongs|is_dense|true|90
+tongs|is_malleable|true|90
+tongs|corrodes|true|90
+whisk|has_state|solid|90
+whisk|melts_at|1538|95
+whisk|is_a|metal|90
+whisk|is_conductive|true|90
+whisk|is_magnetic|true|90
+whisk|is_dense|true|90
+whisk|is_malleable|true|90
+whisk|corrodes|true|90
+spatula|has_state|solid|90
+spatula|melts_at|1538|95
+spatula|is_a|metal|90
+spatula|is_conductive|true|90
+spatula|is_magnetic|true|90
+spatula|is_dense|true|90
+spatula|is_malleable|true|90
+spatula|corrodes|true|90
+can opener|has_state|solid|90
+can opener|melts_at|1538|95
+can opener|is_a|metal|90
+can opener|is_conductive|true|90
+can opener|is_magnetic|true|90
+can opener|is_dense|true|90
+can opener|is_malleable|true|90
+can opener|corrodes|true|90
+pot|has_state|solid|90
+pot|melts_at|1538|95
+pot|is_a|metal|90
+pot|is_conductive|true|90
+pot|is_magnetic|true|90
+pot|is_dense|true|90
+pot|is_malleable|true|90
+pot|corrodes|true|90
+pan|has_state|solid|90
+pan|melts_at|1538|95
+pan|is_a|metal|90
+pan|is_conductive|true|90
+pan|is_magnetic|true|90
+pan|is_dense|true|90
+pan|is_malleable|true|90
+pan|corrodes|true|90
+wok|has_state|solid|90
+wok|melts_at|1538|95
+wok|is_a|metal|90
+wok|is_conductive|true|90
+wok|is_magnetic|true|90
+wok|is_dense|true|90
+wok|is_malleable|true|90
+wok|corrodes|true|90
+kettle|has_state|solid|90
+kettle|melts_at|1538|95
+kettle|is_a|metal|90
+kettle|is_conductive|true|90
+kettle|is_magnetic|true|90
+kettle|is_dense|true|90
+kettle|is_malleable|true|90
+kettle|corrodes|true|90
+colander|has_state|solid|90
+colander|melts_at|1538|95
+colander|is_a|metal|90
+colander|is_conductive|true|90
+colander|is_magnetic|true|90
+colander|is_dense|true|90
+colander|is_malleable|true|90
+colander|corrodes|true|90
+baking sheet|has_state|solid|90
+baking sheet|melts_at|1538|95
+baking sheet|is_a|metal|90
+baking sheet|is_conductive|true|90
+baking sheet|is_magnetic|true|90
+baking sheet|is_dense|true|90
+baking sheet|is_malleable|true|90
+baking sheet|corrodes|true|90
+muffin tin|has_state|solid|90
+muffin tin|melts_at|1538|95
+muffin tin|is_a|metal|90
+muffin tin|is_conductive|true|90
+muffin tin|is_magnetic|true|90
+muffin tin|is_dense|true|90
+muffin tin|is_malleable|true|90
+muffin tin|corrodes|true|90
+car|has_state|solid|90
+car|melts_at|1538|95
+car|is_a|metal|90
+car|is_conductive|true|90
+car|is_magnetic|true|90
+car|is_dense|true|90
+car|is_malleable|true|90
+car|corrodes|true|90
+truck|has_state|solid|90
+truck|melts_at|1538|95
+truck|is_a|metal|90
+truck|is_conductive|true|90
+truck|is_magnetic|true|90
+truck|is_dense|true|90
+truck|is_malleable|true|90
+truck|corrodes|true|90
+bus|has_state|solid|90
+bus|melts_at|1538|95
+bus|is_a|metal|90
+bus|is_conductive|true|90
+bus|is_magnetic|true|90
+bus|is_dense|true|90
+bus|is_malleable|true|90
+bus|corrodes|true|90
+train|has_state|solid|90
+train|melts_at|1538|95
+train|is_a|metal|90
+train|is_conductive|true|90
+train|is_magnetic|true|90
+train|is_dense|true|90
+train|is_malleable|true|90
+train|corrodes|true|90
+airplane|has_state|solid|90
+airplane|melts_at|1538|95
+airplane|is_a|metal|90
+airplane|is_conductive|true|90
+airplane|is_magnetic|true|90
+airplane|is_dense|true|90
+airplane|is_malleable|true|90
+airplane|corrodes|true|90
+helicopter|has_state|solid|90
+helicopter|melts_at|1538|95
+helicopter|is_a|metal|90
+helicopter|is_conductive|true|90
+helicopter|is_magnetic|true|90
+helicopter|is_dense|true|90
+helicopter|is_malleable|true|90
+helicopter|corrodes|true|90
+submarine|has_state|solid|90
+submarine|melts_at|1538|95
+submarine|is_a|metal|90
+submarine|is_conductive|true|90
+submarine|is_magnetic|true|90
+submarine|is_dense|true|90
+submarine|is_malleable|true|90
+submarine|corrodes|true|90
+tank|has_state|solid|90
+tank|melts_at|1538|95
+tank|is_a|metal|90
+tank|is_conductive|true|90
+tank|is_magnetic|true|90
+tank|is_dense|true|90
+tank|is_malleable|true|90
+tank|corrodes|true|90
+bicycle|has_state|solid|90
+bicycle|melts_at|1538|95
+bicycle|is_a|metal|90
+bicycle|is_conductive|true|90
+bicycle|is_magnetic|true|90
+bicycle|is_dense|true|90
+bicycle|is_malleable|true|90
+bicycle|corrodes|true|90
+motorcycle|has_state|solid|90
+motorcycle|melts_at|1538|95
+motorcycle|is_a|metal|90
+motorcycle|is_conductive|true|90
+motorcycle|is_magnetic|true|90
+motorcycle|is_dense|true|90
+motorcycle|is_malleable|true|90
+motorcycle|corrodes|true|90
+scooter|has_state|solid|90
+scooter|melts_at|1538|95
+scooter|is_a|metal|90
+scooter|is_conductive|true|90
+scooter|is_magnetic|true|90
+scooter|is_dense|true|90
+scooter|is_malleable|true|90
+scooter|corrodes|true|90
+skateboard truck|has_state|solid|90
+skateboard truck|melts_at|1538|95
+skateboard truck|is_a|metal|90
+skateboard truck|is_conductive|true|90
+skateboard truck|is_magnetic|true|90
+skateboard truck|is_dense|true|90
+skateboard truck|is_malleable|true|90
+skateboard truck|corrodes|true|90
+wheelchair|has_state|solid|90
+wheelchair|melts_at|1538|95
+wheelchair|is_a|metal|90
+wheelchair|is_conductive|true|90
+wheelchair|is_magnetic|true|90
+wheelchair|is_dense|true|90
+wheelchair|is_malleable|true|90
+wheelchair|corrodes|true|90
+bridge|has_state|solid|90
+bridge|melts_at|1538|95
+bridge|is_a|metal|90
+bridge|is_conductive|true|90
+bridge|is_magnetic|true|90
+bridge|is_dense|true|90
+bridge|is_malleable|true|90
+bridge|corrodes|true|90
+crane|has_state|solid|90
+crane|melts_at|1538|95
+crane|is_a|metal|90
+crane|is_conductive|true|90
+crane|is_magnetic|true|90
+crane|is_dense|true|90
+crane|is_malleable|true|90
+crane|corrodes|true|90
+elevator|has_state|solid|90
+elevator|melts_at|1538|95
+elevator|is_a|metal|90
+elevator|is_conductive|true|90
+elevator|is_magnetic|true|90
+elevator|is_dense|true|90
+elevator|is_malleable|true|90
+elevator|corrodes|true|90
+escalator|has_state|solid|90
+escalator|melts_at|1538|95
+escalator|is_a|metal|90
+escalator|is_conductive|true|90
+escalator|is_magnetic|true|90
+escalator|is_dense|true|90
+escalator|is_malleable|true|90
+escalator|corrodes|true|90
+rail|has_state|solid|90
+rail|melts_at|1538|95
+rail|is_a|metal|90
+rail|is_conductive|true|90
+rail|is_magnetic|true|90
+rail|is_dense|true|90
+rail|is_malleable|true|90
+rail|corrodes|true|90
+beam|has_state|solid|90
+beam|melts_at|1538|95
+beam|is_a|metal|90
+beam|is_conductive|true|90
+beam|is_magnetic|true|90
+beam|is_dense|true|90
+beam|is_malleable|true|90
+beam|corrodes|true|90
+girder|has_state|solid|90
+girder|melts_at|1538|95
+girder|is_a|metal|90
+girder|is_conductive|true|90
+girder|is_magnetic|true|90
+girder|is_dense|true|90
+girder|is_malleable|true|90
+girder|corrodes|true|90
+pillar|has_state|solid|90
+pillar|melts_at|1538|95
+pillar|is_a|metal|90
+pillar|is_conductive|true|90
+pillar|is_magnetic|true|90
+pillar|is_dense|true|90
+pillar|is_malleable|true|90
+pillar|corrodes|true|90
+pipe|has_state|solid|90
+pipe|melts_at|1538|95
+pipe|is_a|metal|90
+pipe|is_conductive|true|90
+pipe|is_magnetic|true|90
+pipe|is_dense|true|90
+pipe|is_malleable|true|90
+pipe|corrodes|true|90
+valve|has_state|solid|90
+valve|melts_at|1538|95
+valve|is_a|metal|90
+valve|is_conductive|true|90
+valve|is_magnetic|true|90
+valve|is_dense|true|90
+valve|is_malleable|true|90
+valve|corrodes|true|90
+faucet|has_state|solid|90
+faucet|melts_at|1538|95
+faucet|is_a|metal|90
+faucet|is_conductive|true|90
+faucet|is_magnetic|true|90
+faucet|is_dense|true|90
+faucet|is_malleable|true|90
+faucet|corrodes|true|90
+hinge|has_state|solid|90
+hinge|melts_at|1538|95
+hinge|is_a|metal|90
+hinge|is_conductive|true|90
+hinge|is_magnetic|true|90
+hinge|is_dense|true|90
+hinge|is_malleable|true|90
+hinge|corrodes|true|90
+lock|has_state|solid|90
+lock|melts_at|1538|95
+lock|is_a|metal|90
+lock|is_conductive|true|90
+lock|is_magnetic|true|90
+lock|is_dense|true|90
+lock|is_malleable|true|90
+lock|corrodes|true|90
+key|has_state|solid|90
+key|melts_at|1538|95
+key|is_a|metal|90
+key|is_conductive|true|90
+key|is_magnetic|true|90
+key|is_dense|true|90
+key|is_malleable|true|90
+key|corrodes|true|90
+padlock|has_state|solid|90
+padlock|melts_at|1538|95
+padlock|is_a|metal|90
+padlock|is_conductive|true|90
+padlock|is_magnetic|true|90
+padlock|is_dense|true|90
+padlock|is_malleable|true|90
+padlock|corrodes|true|90
+chain|has_state|solid|90
+chain|melts_at|1538|95
+chain|is_a|metal|90
+chain|is_conductive|true|90
+chain|is_magnetic|true|90
+chain|is_dense|true|90
+chain|is_malleable|true|90
+chain|corrodes|true|90
+wire|has_state|solid|90
+wire|melts_at|1538|95
+wire|is_a|metal|90
+wire|is_conductive|true|90
+wire|is_magnetic|true|90
+wire|is_dense|true|90
+wire|is_malleable|true|90
+wire|corrodes|true|90
+cable|has_state|solid|90
+cable|melts_at|1538|95
+cable|is_a|metal|90
+cable|is_conductive|true|90
+cable|is_magnetic|true|90
+cable|is_dense|true|90
+cable|is_malleable|true|90
+cable|corrodes|true|90
+antenna|has_state|solid|90
+antenna|melts_at|1538|95
+antenna|is_a|metal|90
+antenna|is_conductive|true|90
+antenna|is_magnetic|true|90
+antenna|is_dense|true|90
+antenna|is_malleable|true|90
+antenna|corrodes|true|90
+satellite dish|has_state|solid|90
+satellite dish|melts_at|1538|95
+satellite dish|is_a|metal|90
+satellite dish|is_conductive|true|90
+satellite dish|is_magnetic|true|90
+satellite dish|is_dense|true|90
+satellite dish|is_malleable|true|90
+satellite dish|corrodes|true|90
+lightning rod|has_state|solid|90
+lightning rod|melts_at|1538|95
+lightning rod|is_a|metal|90
+lightning rod|is_conductive|true|90
+lightning rod|is_magnetic|true|90
+lightning rod|is_dense|true|90
+lightning rod|is_malleable|true|90
+lightning rod|corrodes|true|90
+coin|has_state|solid|90
+coin|melts_at|1538|95
+coin|is_a|metal|90
+coin|is_conductive|true|90
+coin|is_magnetic|true|90
+coin|is_dense|true|90
+coin|is_malleable|true|90
+coin|corrodes|true|90
+medal|has_state|solid|90
+medal|melts_at|1538|95
+medal|is_a|metal|90
+medal|is_conductive|true|90
+medal|is_magnetic|true|90
+medal|is_dense|true|90
+medal|is_malleable|true|90
+medal|corrodes|true|90
+trophy|has_state|solid|90
+trophy|melts_at|1538|95
+trophy|is_a|metal|90
+trophy|is_conductive|true|90
+trophy|is_magnetic|true|90
+trophy|is_dense|true|90
+trophy|is_malleable|true|90
+trophy|corrodes|true|90
+ring|has_state|solid|90
+ring|melts_at|1538|95
+ring|is_a|metal|90
+ring|is_conductive|true|90
+ring|is_magnetic|true|90
+ring|is_dense|true|90
+ring|is_malleable|true|90
+ring|corrodes|true|90
+bracelet|has_state|solid|90
+bracelet|melts_at|1538|95
+bracelet|is_a|metal|90
+bracelet|is_conductive|true|90
+bracelet|is_magnetic|true|90
+bracelet|is_dense|true|90
+bracelet|is_malleable|true|90
+bracelet|corrodes|true|90
+necklace|has_state|solid|90
+necklace|melts_at|1538|95
+necklace|is_a|metal|90
+necklace|is_conductive|true|90
+necklace|is_magnetic|true|90
+necklace|is_dense|true|90
+necklace|is_malleable|true|90
+necklace|corrodes|true|90
+watch|has_state|solid|90
+watch|melts_at|1538|95
+watch|is_a|metal|90
+watch|is_conductive|true|90
+watch|is_magnetic|true|90
+watch|is_dense|true|90
+watch|is_malleable|true|90
+watch|corrodes|true|90
+bell|has_state|solid|90
+bell|melts_at|1538|95
+bell|is_a|metal|90
+bell|is_conductive|true|90
+bell|is_magnetic|true|90
+bell|is_dense|true|90
+bell|is_malleable|true|90
+bell|corrodes|true|90
+gong|has_state|solid|90
+gong|melts_at|1538|95
+gong|is_a|metal|90
+gong|is_conductive|true|90
+gong|is_magnetic|true|90
+gong|is_dense|true|90
+gong|is_malleable|true|90
+gong|corrodes|true|90
+cymbal|has_state|solid|90
+cymbal|melts_at|1538|95
+cymbal|is_a|metal|90
+cymbal|is_conductive|true|90
+cymbal|is_magnetic|true|90
+cymbal|is_dense|true|90
+cymbal|is_malleable|true|90
+cymbal|corrodes|true|90
+triangle instrument|has_state|solid|90
+triangle instrument|melts_at|1538|95
+triangle instrument|is_a|metal|90
+triangle instrument|is_conductive|true|90
+triangle instrument|is_magnetic|true|90
+triangle instrument|is_dense|true|90
+triangle instrument|is_malleable|true|90
+triangle instrument|corrodes|true|90
+tuning fork|has_state|solid|90
+tuning fork|melts_at|1538|95
+tuning fork|is_a|metal|90
+tuning fork|is_conductive|true|90
+tuning fork|is_magnetic|true|90
+tuning fork|is_dense|true|90
+tuning fork|is_malleable|true|90
+tuning fork|corrodes|true|90
+engine|has_state|solid|90
+engine|melts_at|1538|95
+engine|is_a|metal|90
+engine|is_conductive|true|90
+engine|is_magnetic|true|90
+engine|is_dense|true|90
+engine|is_malleable|true|90
+engine|corrodes|true|90
+motor|has_state|solid|90
+motor|melts_at|1538|95
+motor|is_a|metal|90
+motor|is_conductive|true|90
+motor|is_magnetic|true|90
+motor|is_dense|true|90
+motor|is_malleable|true|90
+motor|corrodes|true|90
+generator|has_state|solid|90
+generator|melts_at|1538|95
+generator|is_a|metal|90
+generator|is_conductive|true|90
+generator|is_magnetic|true|90
+generator|is_dense|true|90
+generator|is_malleable|true|90
+generator|corrodes|true|90
+turbine|has_state|solid|90
+turbine|melts_at|1538|95
+turbine|is_a|metal|90
+turbine|is_conductive|true|90
+turbine|is_magnetic|true|90
+turbine|is_dense|true|90
+turbine|is_malleable|true|90
+turbine|corrodes|true|90
+piston|has_state|solid|90
+piston|melts_at|1538|95
+piston|is_a|metal|90
+piston|is_conductive|true|90
+piston|is_magnetic|true|90
+piston|is_dense|true|90
+piston|is_malleable|true|90
+piston|corrodes|true|90
+crankshaft|has_state|solid|90
+crankshaft|melts_at|1538|95
+crankshaft|is_a|metal|90
+crankshaft|is_conductive|true|90
+crankshaft|is_magnetic|true|90
+crankshaft|is_dense|true|90
+crankshaft|is_malleable|true|90
+crankshaft|corrodes|true|90
+gear|has_state|solid|90
+gear|melts_at|1538|95
+gear|is_a|metal|90
+gear|is_conductive|true|90
+gear|is_magnetic|true|90
+gear|is_dense|true|90
+gear|is_malleable|true|90
+gear|corrodes|true|90
+spring|has_state|solid|90
+spring|melts_at|1538|95
+spring|is_a|metal|90
+spring|is_conductive|true|90
+spring|is_magnetic|true|90
+spring|is_dense|true|90
+spring|is_malleable|true|90
+spring|corrodes|true|90
+bearing|has_state|solid|90
+bearing|melts_at|1538|95
+bearing|is_a|metal|90
+bearing|is_conductive|true|90
+bearing|is_magnetic|true|90
+bearing|is_dense|true|90
+bearing|is_malleable|true|90
+bearing|corrodes|true|90
+axle|has_state|solid|90
+axle|melts_at|1538|95
+axle|is_a|metal|90
+axle|is_conductive|true|90
+axle|is_magnetic|true|90
+axle|is_dense|true|90
+axle|is_malleable|true|90
+axle|corrodes|true|90
+cam|has_state|solid|90
+cam|melts_at|1538|95
+cam|is_a|metal|90
+cam|is_conductive|true|90
+cam|is_magnetic|true|90
+cam|is_dense|true|90
+cam|is_malleable|true|90
+cam|corrodes|true|90
+flywheel|has_state|solid|90
+flywheel|melts_at|1538|95
+flywheel|is_a|metal|90
+flywheel|is_conductive|true|90
+flywheel|is_magnetic|true|90
+flywheel|is_dense|true|90
+flywheel|is_malleable|true|90
+flywheel|corrodes|true|90
+pulley|has_state|solid|90
+pulley|melts_at|1538|95
+pulley|is_a|metal|90
+pulley|is_conductive|true|90
+pulley|is_magnetic|true|90
+pulley|is_dense|true|90
+pulley|is_malleable|true|90
+pulley|corrodes|true|90
+lever|has_state|solid|90
+lever|melts_at|1538|95
+lever|is_a|metal|90
+lever|is_conductive|true|90
+lever|is_magnetic|true|90
+lever|is_dense|true|90
+lever|is_malleable|true|90
+lever|corrodes|true|90
+shield|has_state|solid|90
+shield|melts_at|1538|95
+shield|is_a|metal|90
+shield|is_conductive|true|90
+shield|is_magnetic|true|90
+shield|is_dense|true|90
+shield|is_malleable|true|90
+shield|corrodes|true|90
+helmet|has_state|solid|90
+helmet|melts_at|1538|95
+helmet|is_a|metal|90
+helmet|is_conductive|true|90
+helmet|is_magnetic|true|90
+helmet|is_dense|true|90
+helmet|is_malleable|true|90
+helmet|corrodes|true|90
+armor|has_state|solid|90
+armor|melts_at|1538|95
+armor|is_a|metal|90
+armor|is_conductive|true|90
+armor|is_magnetic|true|90
+armor|is_dense|true|90
+armor|is_malleable|true|90
+armor|corrodes|true|90
+cannon|has_state|solid|90
+cannon|melts_at|1538|95
+cannon|is_a|metal|90
+cannon|is_conductive|true|90
+cannon|is_magnetic|true|90
+cannon|is_dense|true|90
+cannon|is_malleable|true|90
+cannon|corrodes|true|90
+bullet|has_state|solid|90
+bullet|melts_at|1538|95
+bullet|is_a|metal|90
+bullet|is_conductive|true|90
+bullet|is_magnetic|true|90
+bullet|is_dense|true|90
+bullet|is_malleable|true|90
+bullet|corrodes|true|90
+shell casing|has_state|solid|90
+shell casing|melts_at|1538|95
+shell casing|is_a|metal|90
+shell casing|is_conductive|true|90
+shell casing|is_magnetic|true|90
+shell casing|is_dense|true|90
+shell casing|is_malleable|true|90
+shell casing|corrodes|true|90
+anchor|has_state|solid|90
+anchor|melts_at|1538|95
+anchor|is_a|metal|90
+anchor|is_conductive|true|90
+anchor|is_magnetic|true|90
+anchor|is_dense|true|90
+anchor|is_malleable|true|90
+anchor|corrodes|true|90
+propeller|has_state|solid|90
+propeller|melts_at|1538|95
+propeller|is_a|metal|90
+propeller|is_conductive|true|90
+propeller|is_magnetic|true|90
+propeller|is_dense|true|90
+propeller|is_malleable|true|90
+propeller|corrodes|true|90
+rudder|has_state|solid|90
+rudder|melts_at|1538|95
+rudder|is_a|metal|90
+rudder|is_conductive|true|90
+rudder|is_magnetic|true|90
+rudder|is_dense|true|90
+rudder|is_malleable|true|90
+rudder|corrodes|true|90
+keel|has_state|solid|90
+keel|melts_at|1538|95
+keel|is_a|metal|90
+keel|is_conductive|true|90
+keel|is_magnetic|true|90
+keel|is_dense|true|90
+keel|is_malleable|true|90
+keel|corrodes|true|90
+stove|has_state|solid|90
+stove|melts_at|1538|95
+stove|is_a|metal|90
+stove|is_conductive|true|90
+stove|is_magnetic|true|90
+stove|is_dense|true|90
+stove|is_malleable|true|90
+stove|corrodes|true|90
+oven|has_state|solid|90
+oven|melts_at|1538|95
+oven|is_a|metal|90
+oven|is_conductive|true|90
+oven|is_magnetic|true|90
+oven|is_dense|true|90
+oven|is_malleable|true|90
+oven|corrodes|true|90
+toaster|has_state|solid|90
+toaster|melts_at|1538|95
+toaster|is_a|metal|90
+toaster|is_conductive|true|90
+toaster|is_magnetic|true|90
+toaster|is_dense|true|90
+toaster|is_malleable|true|90
+toaster|corrodes|true|90
+microwave frame|has_state|solid|90
+microwave frame|melts_at|1538|95
+microwave frame|is_a|metal|90
+microwave frame|is_conductive|true|90
+microwave frame|is_magnetic|true|90
+microwave frame|is_dense|true|90
+microwave frame|is_malleable|true|90
+microwave frame|corrodes|true|90
+refrigerator body|has_state|solid|90
+refrigerator body|melts_at|1538|95
+refrigerator body|is_a|metal|90
+refrigerator body|is_conductive|true|90
+refrigerator body|is_magnetic|true|90
+refrigerator body|is_dense|true|90
+refrigerator body|is_malleable|true|90
+refrigerator body|corrodes|true|90
+filing cabinet|has_state|solid|90
+filing cabinet|melts_at|1538|95
+filing cabinet|is_a|metal|90
+filing cabinet|is_conductive|true|90
+filing cabinet|is_magnetic|true|90
+filing cabinet|is_dense|true|90
+filing cabinet|is_malleable|true|90
+filing cabinet|corrodes|true|90
+safe|has_state|solid|90
+safe|melts_at|1538|95
+safe|is_a|metal|90
+safe|is_conductive|true|90
+safe|is_magnetic|true|90
+safe|is_dense|true|90
+safe|is_malleable|true|90
+safe|corrodes|true|90
+locker|has_state|solid|90
+locker|melts_at|1538|95
+locker|is_a|metal|90
+locker|is_conductive|true|90
+locker|is_magnetic|true|90
+locker|is_dense|true|90
+locker|is_malleable|true|90
+locker|corrodes|true|90
+shelf bracket|has_state|solid|90
+shelf bracket|melts_at|1538|95
+shelf bracket|is_a|metal|90
+shelf bracket|is_conductive|true|90
+shelf bracket|is_magnetic|true|90
+shelf bracket|is_dense|true|90
+shelf bracket|is_malleable|true|90
+shelf bracket|corrodes|true|90
+curtain rod|has_state|solid|90
+curtain rod|melts_at|1538|95
+curtain rod|is_a|metal|90
+curtain rod|is_conductive|true|90
+curtain rod|is_magnetic|true|90
+curtain rod|is_dense|true|90
+curtain rod|is_malleable|true|90
+curtain rod|corrodes|true|90
+fence|has_state|solid|90
+fence|melts_at|1538|95
+fence|is_a|metal|90
+fence|is_conductive|true|90
+fence|is_magnetic|true|90
+fence|is_dense|true|90
+fence|is_malleable|true|90
+fence|corrodes|true|90
+gate|has_state|solid|90
+gate|melts_at|1538|95
+gate|is_a|metal|90
+gate|is_conductive|true|90
+gate|is_magnetic|true|90
+gate|is_dense|true|90
+gate|is_malleable|true|90
+gate|corrodes|true|90
+railing|has_state|solid|90
+railing|melts_at|1538|95
+railing|is_a|metal|90
+railing|is_conductive|true|90
+railing|is_magnetic|true|90
+railing|is_dense|true|90
+railing|is_malleable|true|90
+railing|corrodes|true|90
+handrail|has_state|solid|90
+handrail|melts_at|1538|95
+handrail|is_a|metal|90
+handrail|is_conductive|true|90
+handrail|is_magnetic|true|90
+handrail|is_dense|true|90
+handrail|is_malleable|true|90
+handrail|corrodes|true|90
+ladder|has_state|solid|90
+ladder|melts_at|1538|95
+ladder|is_a|metal|90
+ladder|is_conductive|true|90
+ladder|is_magnetic|true|90
+ladder|is_dense|true|90
+ladder|is_malleable|true|90
+ladder|corrodes|true|90
+scaffolding|has_state|solid|90
+scaffolding|melts_at|1538|95
+scaffolding|is_a|metal|90
+scaffolding|is_conductive|true|90
+scaffolding|is_magnetic|true|90
+scaffolding|is_dense|true|90
+scaffolding|is_malleable|true|90
+scaffolding|corrodes|true|90
+manhole cover|has_state|solid|90
+manhole cover|melts_at|1538|95
+manhole cover|is_a|metal|90
+manhole cover|is_conductive|true|90
+manhole cover|is_magnetic|true|90
+manhole cover|is_dense|true|90
+manhole cover|is_malleable|true|90
+manhole cover|corrodes|true|90
+fire hydrant|has_state|solid|90
+fire hydrant|melts_at|1538|95
+fire hydrant|is_a|metal|90
+fire hydrant|is_conductive|true|90
+fire hydrant|is_magnetic|true|90
+fire hydrant|is_dense|true|90
+fire hydrant|is_malleable|true|90
+fire hydrant|corrodes|true|90
+mailbox|has_state|solid|90
+mailbox|melts_at|1538|95
+mailbox|is_a|metal|90
+mailbox|is_conductive|true|90
+mailbox|is_magnetic|true|90
+mailbox|is_dense|true|90
+mailbox|is_malleable|true|90
+mailbox|corrodes|true|90
+street lamp|has_state|solid|90
+street lamp|melts_at|1538|95
+street lamp|is_a|metal|90
+street lamp|is_conductive|true|90
+street lamp|is_magnetic|true|90
+street lamp|is_dense|true|90
+street lamp|is_malleable|true|90
+street lamp|corrodes|true|90
+traffic light pole|has_state|solid|90
+traffic light pole|melts_at|1538|95
+traffic light pole|is_a|metal|90
+traffic light pole|is_conductive|true|90
+traffic light pole|is_magnetic|true|90
+traffic light pole|is_dense|true|90
+traffic light pole|is_malleable|true|90
+traffic light pole|corrodes|true|90
+paperclip|has_state|solid|90
+paperclip|melts_at|1538|95
+paperclip|is_a|metal|90
+paperclip|is_conductive|true|90
+paperclip|is_magnetic|true|90
+paperclip|is_dense|true|90
+paperclip|is_malleable|true|90
+paperclip|corrodes|true|90
+safety pin|has_state|solid|90
+safety pin|melts_at|1538|95
+safety pin|is_a|metal|90
+safety pin|is_conductive|true|90
+safety pin|is_magnetic|true|90
+safety pin|is_dense|true|90
+safety pin|is_malleable|true|90
+safety pin|corrodes|true|90
+needle|has_state|solid|90
+needle|melts_at|1538|95
+needle|is_a|metal|90
+needle|is_conductive|true|90
+needle|is_magnetic|true|90
+needle|is_dense|true|90
+needle|is_malleable|true|90
+needle|corrodes|true|90
+thimble|has_state|solid|90
+thimble|melts_at|1538|95
+thimble|is_a|metal|90
+thimble|is_conductive|true|90
+thimble|is_magnetic|true|90
+thimble|is_dense|true|90
+thimble|is_malleable|true|90
+thimble|corrodes|true|90
+scissors|has_state|solid|90
+scissors|melts_at|1370|95
+scissors|is_a|metal|90
+scissors|is_conductive|true|90
+scissors|is_magnetic|true|90
+scissors|is_dense|true|90
+scissors|is_malleable|true|90
+scissors|corrodes|true|90
+barbell|has_state|solid|90
+barbell|melts_at|1538|95
+barbell|is_a|metal|90
+barbell|is_conductive|true|90
+barbell|is_magnetic|true|90
+barbell|is_dense|true|90
+barbell|is_malleable|true|90
+barbell|corrodes|true|90
+dumbbell|has_state|solid|90
+dumbbell|melts_at|1538|95
+dumbbell|is_a|metal|90
+dumbbell|is_conductive|true|90
+dumbbell|is_magnetic|true|90
+dumbbell|is_dense|true|90
+dumbbell|is_malleable|true|90
+dumbbell|corrodes|true|90
+kettlebell|has_state|solid|90
+kettlebell|melts_at|1538|95
+kettlebell|is_a|metal|90
+kettlebell|is_conductive|true|90
+kettlebell|is_magnetic|true|90
+kettlebell|is_dense|true|90
+kettlebell|is_malleable|true|90
+kettlebell|corrodes|true|90
+window|has_state|solid|90
+window|melts_at|1400|95
+window|is_a|ceramic|90
+window|is_fragile|true|90
+window|is_dense|true|90
+mirror|has_state|solid|90
+mirror|melts_at|1400|95
+mirror|is_a|ceramic|90
+mirror|is_fragile|true|90
+mirror|is_dense|true|90
+lens|has_state|solid|90
+lens|melts_at|1400|95
+lens|is_a|ceramic|90
+lens|is_fragile|true|90
+lens|is_dense|true|90
+prism|has_state|solid|90
+prism|melts_at|1400|95
+prism|is_a|ceramic|90
+prism|is_fragile|true|90
+prism|is_dense|true|90
+magnifying glass|has_state|solid|90
+magnifying glass|melts_at|1400|95
+magnifying glass|is_a|ceramic|90
+magnifying glass|is_fragile|true|90
+magnifying glass|is_dense|true|90
+telescope lens|has_state|solid|90
+telescope lens|melts_at|1400|95
+telescope lens|is_a|ceramic|90
+telescope lens|is_fragile|true|90
+telescope lens|is_dense|true|90
+wine glass|has_state|solid|90
+wine glass|melts_at|1400|95
+wine glass|is_a|ceramic|90
+wine glass|is_fragile|true|90
+wine glass|is_dense|true|90
+beer glass|has_state|solid|90
+beer glass|melts_at|1400|95
+beer glass|is_a|ceramic|90
+beer glass|is_fragile|true|90
+beer glass|is_dense|true|90
+champagne glass|has_state|solid|90
+champagne glass|melts_at|1400|95
+champagne glass|is_a|ceramic|90
+champagne glass|is_fragile|true|90
+champagne glass|is_dense|true|90
+shot glass|has_state|solid|90
+shot glass|melts_at|1400|95
+shot glass|is_a|ceramic|90
+shot glass|is_fragile|true|90
+shot glass|is_dense|true|90
+tumbler|has_state|solid|90
+tumbler|melts_at|1400|95
+tumbler|is_a|ceramic|90
+tumbler|is_fragile|true|90
+tumbler|is_dense|true|90
+vase|has_state|solid|90
+vase|melts_at|1400|95
+vase|is_a|ceramic|90
+vase|is_fragile|true|90
+vase|is_dense|true|90
+fishbowl|has_state|solid|90
+fishbowl|melts_at|1400|95
+fishbowl|is_a|ceramic|90
+fishbowl|is_fragile|true|90
+fishbowl|is_dense|true|90
+terrarium|has_state|solid|90
+terrarium|melts_at|1400|95
+terrarium|is_a|ceramic|90
+terrarium|is_fragile|true|90
+terrarium|is_dense|true|90
+snow globe|has_state|solid|90
+snow globe|melts_at|1400|95
+snow globe|is_a|ceramic|90
+snow globe|is_fragile|true|90
+snow globe|is_dense|true|90
+hourglass|has_state|solid|90
+hourglass|melts_at|1400|95
+hourglass|is_a|ceramic|90
+hourglass|is_fragile|true|90
+hourglass|is_dense|true|90
+light bulb|has_state|solid|90
+light bulb|melts_at|1400|95
+light bulb|is_a|ceramic|90
+light bulb|is_fragile|true|90
+light bulb|is_dense|true|90
+fluorescent tube|has_state|solid|90
+fluorescent tube|melts_at|1400|95
+fluorescent tube|is_a|ceramic|90
+fluorescent tube|is_fragile|true|90
+fluorescent tube|is_dense|true|90
+neon sign|has_state|solid|90
+neon sign|melts_at|1400|95
+neon sign|is_a|ceramic|90
+neon sign|is_fragile|true|90
+neon sign|is_dense|true|90
+led panel|has_state|solid|90
+led panel|melts_at|1400|95
+led panel|is_a|ceramic|90
+led panel|is_fragile|true|90
+led panel|is_dense|true|90
+phone screen|has_state|solid|90
+phone screen|melts_at|1400|95
+phone screen|is_a|ceramic|90
+phone screen|is_fragile|true|90
+phone screen|is_dense|true|90
+tablet screen|has_state|solid|90
+tablet screen|melts_at|1400|95
+tablet screen|is_a|ceramic|90
+tablet screen|is_fragile|true|90
+tablet screen|is_dense|true|90
+tv screen|has_state|solid|90
+tv screen|melts_at|1400|95
+tv screen|is_a|ceramic|90
+tv screen|is_fragile|true|90
+tv screen|is_dense|true|90
+monitor|has_state|solid|90
+monitor|melts_at|1400|95
+monitor|is_a|ceramic|90
+monitor|is_fragile|true|90
+monitor|is_dense|true|90
+bottle|has_state|solid|90
+bottle|melts_at|1400|95
+bottle|is_a|ceramic|90
+bottle|is_fragile|true|90
+bottle|is_dense|true|90
+jar|has_state|solid|90
+jar|melts_at|1400|95
+jar|is_a|ceramic|90
+jar|is_fragile|true|90
+jar|is_dense|true|90
+flask|has_state|solid|90
+flask|melts_at|1400|95
+flask|is_a|ceramic|90
+flask|is_fragile|true|90
+flask|is_dense|true|90
+beaker|has_state|solid|90
+beaker|melts_at|1400|95
+beaker|is_a|ceramic|90
+beaker|is_fragile|true|90
+beaker|is_dense|true|90
+test tube|has_state|solid|90
+test tube|melts_at|1400|95
+test tube|is_a|ceramic|90
+test tube|is_fragile|true|90
+test tube|is_dense|true|90
+petri dish|has_state|solid|90
+petri dish|melts_at|1400|95
+petri dish|is_a|ceramic|90
+petri dish|is_fragile|true|90
+petri dish|is_dense|true|90
+eyeglasses|has_state|solid|90
+eyeglasses|melts_at|1400|95
+eyeglasses|is_a|ceramic|90
+eyeglasses|is_fragile|true|90
+eyeglasses|is_dense|true|90
+monocle|has_state|solid|90
+monocle|melts_at|1400|95
+monocle|is_a|ceramic|90
+monocle|is_fragile|true|90
+monocle|is_dense|true|90
+binoculars|has_state|solid|90
+binoculars|melts_at|1400|95
+binoculars|is_a|ceramic|90
+binoculars|is_fragile|true|90
+binoculars|is_dense|true|90
+microscope lens|has_state|solid|90
+microscope lens|melts_at|1400|95
+microscope lens|is_a|ceramic|90
+microscope lens|is_fragile|true|90
+microscope lens|is_dense|true|90
+chandelier|has_state|solid|90
+chandelier|melts_at|1400|95
+chandelier|is_a|ceramic|90
+chandelier|is_fragile|true|90
+chandelier|is_dense|true|90
+ornament|has_state|solid|90
+ornament|melts_at|1400|95
+ornament|is_a|ceramic|90
+ornament|is_fragile|true|90
+ornament|is_dense|true|90
+crystal ball|has_state|solid|90
+crystal ball|melts_at|1400|95
+crystal ball|is_a|ceramic|90
+crystal ball|is_fragile|true|90
+crystal ball|is_dense|true|90
+glass figurine|has_state|solid|90
+glass figurine|melts_at|1400|95
+glass figurine|is_a|ceramic|90
+glass figurine|is_fragile|true|90
+glass figurine|is_dense|true|90
+aquarium|has_state|solid|90
+aquarium|melts_at|1400|95
+aquarium|is_a|ceramic|90
+aquarium|is_fragile|true|90
+aquarium|is_dense|true|90
+greenhouse panel|has_state|solid|90
+greenhouse panel|melts_at|1400|95
+greenhouse panel|is_a|ceramic|90
+greenhouse panel|is_fragile|true|90
+greenhouse panel|is_dense|true|90
+shower door|has_state|solid|90
+shower door|melts_at|1400|95
+shower door|is_a|ceramic|90
+shower door|is_fragile|true|90
+shower door|is_dense|true|90
+car windshield|has_state|solid|90
+car windshield|melts_at|1400|95
+car windshield|is_a|ceramic|90
+car windshield|is_fragile|true|90
+car windshield|is_dense|true|90
+stained glass|has_state|solid|90
+stained glass|melts_at|1400|95
+stained glass|is_a|ceramic|90
+stained glass|is_fragile|true|90
+stained glass|is_dense|true|90
+glass tile|has_state|solid|90
+glass tile|melts_at|1400|95
+glass tile|is_a|ceramic|90
+glass tile|is_fragile|true|90
+glass tile|is_dense|true|90
+glass bead|has_state|solid|90
+glass bead|melts_at|1400|95
+glass bead|is_a|ceramic|90
+glass bead|is_fragile|true|90
+glass bead|is_dense|true|90
+marble toy|has_state|solid|90
+marble toy|melts_at|1400|95
+marble toy|is_a|ceramic|90
+marble toy|is_fragile|true|90
+marble toy|is_dense|true|90
+plate|has_state|solid|90
+plate|melts_at|1600|95
+plate|is_a|ceramic|90
+plate|is_fragile|true|90
+plate|is_dense|true|90
+bowl|has_state|solid|90
+bowl|melts_at|1600|95
+bowl|is_a|ceramic|90
+bowl|is_fragile|true|90
+bowl|is_dense|true|90
+cup|has_state|solid|90
+cup|melts_at|1600|95
+cup|is_a|ceramic|90
+cup|is_fragile|true|90
+cup|is_dense|true|90
+mug|has_state|solid|90
+mug|melts_at|1600|95
+mug|is_a|ceramic|90
+mug|is_fragile|true|90
+mug|is_dense|true|90
+saucer|has_state|solid|90
+saucer|melts_at|1600|95
+saucer|is_a|ceramic|90
+saucer|is_fragile|true|90
+saucer|is_dense|true|90
+teapot|has_state|solid|90
+teapot|melts_at|1600|95
+teapot|is_a|ceramic|90
+teapot|is_fragile|true|90
+teapot|is_dense|true|90
+coffee pot|has_state|solid|90
+coffee pot|melts_at|1600|95
+coffee pot|is_a|ceramic|90
+coffee pot|is_fragile|true|90
+coffee pot|is_dense|true|90
+vase ceramic|has_state|solid|90
+vase ceramic|melts_at|1600|95
+vase ceramic|is_a|ceramic|90
+vase ceramic|is_fragile|true|90
+vase ceramic|is_dense|true|90
+flower pot|has_state|solid|90
+flower pot|melts_at|1600|95
+flower pot|is_a|ceramic|90
+flower pot|is_fragile|true|90
+flower pot|is_dense|true|90
+planter|has_state|solid|90
+planter|melts_at|1600|95
+planter|is_a|ceramic|90
+planter|is_fragile|true|90
+planter|is_dense|true|90
+birdbath|has_state|solid|90
+birdbath|melts_at|1600|95
+birdbath|is_a|ceramic|90
+birdbath|is_fragile|true|90
+birdbath|is_dense|true|90
+toilet|has_state|solid|90
+toilet|melts_at|1600|95
+toilet|is_a|ceramic|90
+toilet|is_fragile|true|90
+toilet|is_dense|true|90
+sink|has_state|solid|90
+sink|melts_at|1600|95
+sink|is_a|ceramic|90
+sink|is_fragile|true|90
+sink|is_dense|true|90
+bathtub|has_state|solid|90
+bathtub|melts_at|1600|95
+bathtub|is_a|ceramic|90
+bathtub|is_fragile|true|90
+bathtub|is_dense|true|90
+tile|has_state|solid|90
+tile|melts_at|1600|95
+tile|is_a|ceramic|90
+tile|is_fragile|true|90
+tile|is_dense|true|90
+brick|has_state|solid|90
+brick|melts_at|1600|95
+brick|is_a|ceramic|90
+brick|is_fragile|true|90
+brick|is_dense|true|90
+roof tile|has_state|solid|90
+roof tile|melts_at|1600|95
+roof tile|is_a|ceramic|90
+roof tile|is_fragile|true|90
+roof tile|is_dense|true|90
+statue|has_state|solid|90
+statue|melts_at|1600|95
+statue|is_a|ceramic|90
+statue|is_fragile|true|90
+statue|is_dense|true|90
+figurine|has_state|solid|90
+figurine|melts_at|1600|95
+figurine|is_a|ceramic|90
+figurine|is_fragile|true|90
+figurine|is_dense|true|90
+doll porcelain|has_state|solid|90
+doll porcelain|melts_at|1600|95
+doll porcelain|is_a|ceramic|90
+doll porcelain|is_fragile|true|90
+doll porcelain|is_dense|true|90
+chess piece ceramic|has_state|solid|90
+chess piece ceramic|melts_at|1600|95
+chess piece ceramic|is_a|ceramic|90
+chess piece ceramic|is_fragile|true|90
+chess piece ceramic|is_dense|true|90
+mortar pestle|has_state|solid|90
+mortar pestle|melts_at|1600|95
+mortar pestle|is_a|ceramic|90
+mortar pestle|is_fragile|true|90
+mortar pestle|is_dense|true|90
+grinding stone|has_state|solid|90
+grinding stone|melts_at|1600|95
+grinding stone|is_a|ceramic|90
+grinding stone|is_fragile|true|90
+grinding stone|is_dense|true|90
+sharpening stone|has_state|solid|90
+sharpening stone|melts_at|1600|95
+sharpening stone|is_a|ceramic|90
+sharpening stone|is_fragile|true|90
+sharpening stone|is_dense|true|90
+insulator electric|has_state|solid|90
+insulator electric|melts_at|1600|95
+insulator electric|is_a|ceramic|90
+insulator electric|is_fragile|true|90
+insulator electric|is_dense|true|90
+spark plug|has_state|solid|90
+spark plug|melts_at|1600|95
+spark plug|is_a|ceramic|90
+spark plug|is_fragile|true|90
+spark plug|is_dense|true|90
+crucible|has_state|solid|90
+crucible|melts_at|1600|95
+crucible|is_a|ceramic|90
+crucible|is_fragile|true|90
+crucible|is_dense|true|90
+shirt|has_state|solid|90
+shirt|boils_at|255|95
+shirt|is_a|fabric|90
+shirt|is_flammable|true|90
+pants|has_state|solid|90
+pants|boils_at|255|95
+pants|is_a|fabric|90
+pants|is_flammable|true|90
+dress|has_state|solid|90
+dress|boils_at|255|95
+dress|is_a|fabric|90
+dress|is_flammable|true|90
+skirt|has_state|solid|90
+skirt|boils_at|255|95
+skirt|is_a|fabric|90
+skirt|is_flammable|true|90
+jacket|has_state|solid|90
+jacket|boils_at|255|95
+jacket|is_a|fabric|90
+jacket|is_flammable|true|90
+coat|has_state|solid|90
+coat|boils_at|255|95
+coat|is_a|fabric|90
+coat|is_flammable|true|90
+sweater|has_state|solid|90
+sweater|boils_at|255|95
+sweater|is_a|fabric|90
+sweater|is_flammable|true|90
+sock|has_state|solid|90
+sock|boils_at|255|95
+sock|is_a|fabric|90
+sock|is_flammable|true|90
+glove|has_state|solid|90
+glove|boils_at|255|95
+glove|is_a|fabric|90
+glove|is_flammable|true|90
+hat|has_state|solid|90
+hat|boils_at|255|95
+hat|is_a|fabric|90
+hat|is_flammable|true|90
+scarf|has_state|solid|90
+scarf|boils_at|255|95
+scarf|is_a|fabric|90
+scarf|is_flammable|true|90
+tie|has_state|solid|90
+tie|boils_at|255|95
+tie|is_a|fabric|90
+tie|is_flammable|true|90
+belt fabric|has_state|solid|90
+belt fabric|boils_at|255|95
+belt fabric|is_a|fabric|90
+belt fabric|is_flammable|true|90
+blanket|has_state|solid|90
+blanket|boils_at|255|95
+blanket|is_a|fabric|90
+blanket|is_flammable|true|90
+pillow|has_state|solid|90
+pillow|boils_at|255|95
+pillow|is_a|fabric|90
+pillow|is_flammable|true|90
+mattress|has_state|solid|90
+mattress|boils_at|255|95
+mattress|is_a|fabric|90
+mattress|is_flammable|true|90
+curtain|has_state|solid|90
+curtain|boils_at|255|95
+curtain|is_a|fabric|90
+curtain|is_flammable|true|90
+drape|has_state|solid|90
+drape|boils_at|255|95
+drape|is_a|fabric|90
+drape|is_flammable|true|90
+tapestry|has_state|solid|90
+tapestry|boils_at|255|95
+tapestry|is_a|fabric|90
+tapestry|is_flammable|true|90
+towel|has_state|solid|90
+towel|boils_at|255|95
+towel|is_a|fabric|90
+towel|is_flammable|true|90
+washcloth|has_state|solid|90
+washcloth|boils_at|255|95
+washcloth|is_a|fabric|90
+washcloth|is_flammable|true|90
+napkin|has_state|solid|90
+napkin|boils_at|255|95
+napkin|is_a|fabric|90
+napkin|is_flammable|true|90
+tablecloth|has_state|solid|90
+tablecloth|boils_at|255|95
+tablecloth|is_a|fabric|90
+tablecloth|is_flammable|true|90
+placemat|has_state|solid|90
+placemat|boils_at|255|95
+placemat|is_a|fabric|90
+placemat|is_flammable|true|90
+carpet|has_state|solid|90
+carpet|boils_at|255|95
+carpet|is_a|fabric|90
+carpet|is_flammable|true|90
+rug|has_state|solid|90
+rug|boils_at|255|95
+rug|is_a|fabric|90
+rug|is_flammable|true|90
+mat|has_state|solid|90
+mat|boils_at|255|95
+mat|is_a|fabric|90
+mat|is_flammable|true|90
+runner|has_state|solid|90
+runner|boils_at|255|95
+runner|is_a|fabric|90
+runner|is_flammable|true|90
+tent|has_state|solid|90
+tent|boils_at|255|95
+tent|is_a|fabric|90
+tent|is_flammable|true|90
+sail|has_state|solid|90
+sail|boils_at|255|95
+sail|is_a|fabric|90
+sail|is_flammable|true|90
+flag|has_state|solid|90
+flag|boils_at|255|95
+flag|is_a|fabric|90
+flag|is_flammable|true|90
+banner|has_state|solid|90
+banner|boils_at|255|95
+banner|is_a|fabric|90
+banner|is_flammable|true|90
+parachute|has_state|solid|90
+parachute|boils_at|255|95
+parachute|is_a|fabric|90
+parachute|is_flammable|true|90
+awning|has_state|solid|90
+awning|boils_at|255|95
+awning|is_a|fabric|90
+awning|is_flammable|true|90
+backpack|has_state|solid|90
+backpack|boils_at|255|95
+backpack|is_a|fabric|90
+backpack|is_flammable|true|90
+purse|has_state|solid|90
+purse|boils_at|255|95
+purse|is_a|fabric|90
+purse|is_flammable|true|90
+wallet fabric|has_state|solid|90
+wallet fabric|boils_at|255|95
+wallet fabric|is_a|fabric|90
+wallet fabric|is_flammable|true|90
+luggage|has_state|solid|90
+luggage|boils_at|255|95
+luggage|is_a|fabric|90
+luggage|is_flammable|true|90
+duffel bag|has_state|solid|90
+duffel bag|boils_at|255|95
+duffel bag|is_a|fabric|90
+duffel bag|is_flammable|true|90
+rope|has_state|solid|90
+rope|boils_at|255|95
+rope|is_a|fabric|90
+rope|is_flammable|true|90
+string|has_state|solid|90
+string|boils_at|255|95
+string|is_a|fabric|90
+string|is_flammable|true|90
+thread|has_state|solid|90
+thread|boils_at|255|95
+thread|is_a|fabric|90
+thread|is_flammable|true|90
+yarn|has_state|solid|90
+yarn|boils_at|255|95
+yarn|is_a|fabric|90
+yarn|is_flammable|true|90
+ribbon|has_state|solid|90
+ribbon|boils_at|255|95
+ribbon|is_a|fabric|90
+ribbon|is_flammable|true|90
+lace|has_state|solid|90
+lace|boils_at|255|95
+lace|is_a|fabric|90
+lace|is_flammable|true|90
+bandage|has_state|solid|90
+bandage|boils_at|255|95
+bandage|is_a|fabric|90
+bandage|is_flammable|true|90
+gauze|has_state|solid|90
+gauze|boils_at|255|95
+gauze|is_a|fabric|90
+gauze|is_flammable|true|90
+cotton ball|has_state|solid|90
+cotton ball|boils_at|255|95
+cotton ball|is_a|fabric|90
+cotton ball|is_flammable|true|90
+diaper|has_state|solid|90
+diaper|boils_at|255|95
+diaper|is_a|fabric|90
+diaper|is_flammable|true|90
+canvas painting|has_state|solid|90
+canvas painting|boils_at|255|95
+canvas painting|is_a|fabric|90
+canvas painting|is_flammable|true|90
+embroidery|has_state|solid|90
+embroidery|boils_at|255|95
+embroidery|is_a|fabric|90
+embroidery|is_flammable|true|90
+quilt|has_state|solid|90
+quilt|boils_at|255|95
+quilt|is_a|fabric|90
+quilt|is_flammable|true|90
+phone case|has_state|solid|90
+phone case|melts_at|150|95
+phone case|is_a|polymer|90
+phone case|is_flammable|true|90
+laptop body|has_state|solid|90
+laptop body|melts_at|150|95
+laptop body|is_a|polymer|90
+laptop body|is_flammable|true|90
+keyboard|has_state|solid|90
+keyboard|melts_at|150|95
+keyboard|is_a|polymer|90
+keyboard|is_flammable|true|90
+mouse|has_state|solid|90
+mouse|melts_at|150|95
+mouse|is_a|polymer|90
+mouse|is_flammable|true|90
+usb drive|has_state|solid|90
+usb drive|melts_at|150|95
+usb drive|is_a|polymer|90
+usb drive|is_flammable|true|90
+lego brick|has_state|solid|90
+lego brick|melts_at|150|95
+lego brick|is_a|polymer|90
+lego brick|is_flammable|true|90
+toy car|has_state|solid|90
+toy car|melts_at|150|95
+toy car|is_a|polymer|90
+toy car|is_flammable|true|90
+action figure|has_state|solid|90
+action figure|melts_at|150|95
+action figure|is_a|polymer|90
+action figure|is_flammable|true|90
+doll plastic|has_state|solid|90
+doll plastic|melts_at|150|95
+doll plastic|is_a|polymer|90
+doll plastic|is_flammable|true|90
+frisbee|has_state|solid|90
+frisbee|melts_at|150|95
+frisbee|is_a|polymer|90
+frisbee|is_flammable|true|90
+pen|has_state|solid|90
+pen|melts_at|150|95
+pen|is_a|polymer|90
+pen|is_flammable|true|90
+marker|has_state|solid|90
+marker|melts_at|150|95
+marker|is_a|polymer|90
+marker|is_flammable|true|90
+highlighter|has_state|solid|90
+highlighter|melts_at|150|95
+highlighter|is_a|polymer|90
+highlighter|is_flammable|true|90
+eraser cap|has_state|solid|90
+eraser cap|melts_at|150|95
+eraser cap|is_a|polymer|90
+eraser cap|is_flammable|true|90
+bottle cap|has_state|solid|90
+bottle cap|melts_at|150|95
+bottle cap|is_a|polymer|90
+bottle cap|is_flammable|true|90
+straw|has_state|solid|90
+straw|burns_at|230|95
+straw|is_a|organic|90
+straw|is_flammable|true|90
+straw|is_fragile|true|90
+cup plastic|has_state|solid|90
+cup plastic|melts_at|150|95
+cup plastic|is_a|polymer|90
+cup plastic|is_flammable|true|90
+plate plastic|has_state|solid|90
+plate plastic|melts_at|150|95
+plate plastic|is_a|polymer|90
+plate plastic|is_flammable|true|90
+container|has_state|solid|90
+container|melts_at|150|95
+container|is_a|polymer|90
+container|is_flammable|true|90
+trash can|has_state|solid|90
+trash can|melts_at|150|95
+trash can|is_a|polymer|90
+trash can|is_flammable|true|90
+bucket|has_state|solid|90
+bucket|melts_at|150|95
+bucket|is_a|polymer|90
+bucket|is_flammable|true|90
+crate plastic|has_state|solid|90
+crate plastic|melts_at|150|95
+crate plastic|is_a|polymer|90
+crate plastic|is_flammable|true|90
+storage bin|has_state|solid|90
+storage bin|melts_at|150|95
+storage bin|is_a|polymer|90
+storage bin|is_flammable|true|90
+credit card|has_state|solid|90
+credit card|melts_at|150|95
+credit card|is_a|polymer|90
+credit card|is_flammable|true|90
+id card|has_state|solid|90
+id card|melts_at|150|95
+id card|is_a|polymer|90
+id card|is_flammable|true|90
+badge|has_state|solid|90
+badge|melts_at|150|95
+badge|is_a|polymer|90
+badge|is_flammable|true|90
+lanyard clip|has_state|solid|90
+lanyard clip|melts_at|150|95
+lanyard clip|is_a|polymer|90
+lanyard clip|is_flammable|true|90
+comb|has_state|solid|90
+comb|melts_at|150|95
+comb|is_a|polymer|90
+comb|is_flammable|true|90
+brush|has_state|solid|90
+brush|melts_at|150|95
+brush|is_a|polymer|90
+brush|is_flammable|true|90
+toothbrush|has_state|solid|90
+toothbrush|melts_at|150|95
+toothbrush|is_a|polymer|90
+toothbrush|is_flammable|true|90
+razor handle|has_state|solid|90
+razor handle|melts_at|150|95
+razor handle|is_a|polymer|90
+razor handle|is_flammable|true|90
+soap dispenser|has_state|solid|90
+soap dispenser|melts_at|150|95
+soap dispenser|is_a|polymer|90
+soap dispenser|is_flammable|true|90
+hanger|has_state|solid|90
+hanger|melts_at|150|95
+hanger|is_a|polymer|90
+hanger|is_flammable|true|90
+clothespin|has_state|solid|90
+clothespin|melts_at|150|95
+clothespin|is_a|polymer|90
+clothespin|is_flammable|true|90
+laundry basket|has_state|solid|90
+laundry basket|melts_at|150|95
+laundry basket|is_a|polymer|90
+laundry basket|is_flammable|true|90
+drying rack|has_state|solid|90
+drying rack|melts_at|150|95
+drying rack|is_a|polymer|90
+drying rack|is_flammable|true|90
+garden hose|has_state|solid|90
+garden hose|melts_at|150|95
+garden hose|is_a|polymer|90
+garden hose|is_flammable|true|90
+sprinkler|has_state|solid|90
+sprinkler|melts_at|150|95
+sprinkler|is_a|polymer|90
+sprinkler|is_flammable|true|90
+watering can plastic|has_state|solid|90
+watering can plastic|melts_at|150|95
+watering can plastic|is_a|polymer|90
+watering can plastic|is_flammable|true|90
+pot plastic|has_state|solid|90
+pot plastic|melts_at|150|95
+pot plastic|is_a|polymer|90
+pot plastic|is_flammable|true|90
+traffic cone|has_state|solid|90
+traffic cone|melts_at|150|95
+traffic cone|is_a|polymer|90
+traffic cone|is_flammable|true|90
+safety helmet|has_state|solid|90
+safety helmet|melts_at|150|95
+safety helmet|is_a|polymer|90
+safety helmet|is_flammable|true|90
+goggles|has_state|solid|90
+goggles|melts_at|150|95
+goggles|is_a|polymer|90
+goggles|is_flammable|true|90
+visor|has_state|solid|90
+visor|melts_at|150|95
+visor|is_a|polymer|90
+visor|is_flammable|true|90
+suitcase|has_state|solid|90
+suitcase|melts_at|150|95
+suitcase|is_a|polymer|90
+suitcase|is_flammable|true|90
+cooler|has_state|solid|90
+cooler|melts_at|150|95
+cooler|is_a|polymer|90
+cooler|is_flammable|true|90
+lunch box|has_state|solid|90
+lunch box|melts_at|150|95
+lunch box|is_a|polymer|90
+lunch box|is_flammable|true|90
+thermos|has_state|solid|90
+thermos|melts_at|150|95
+thermos|is_a|polymer|90
+thermos|is_flammable|true|90
+remote control|has_state|solid|90
+remote control|melts_at|150|95
+remote control|is_a|polymer|90
+remote control|is_flammable|true|90
+game controller|has_state|solid|90
+game controller|melts_at|150|95
+game controller|is_a|polymer|90
+game controller|is_flammable|true|90
+headphones|has_state|solid|90
+headphones|melts_at|150|95
+headphones|is_a|polymer|90
+headphones|is_flammable|true|90
+outlet cover|has_state|solid|90
+outlet cover|melts_at|150|95
+outlet cover|is_a|polymer|90
+outlet cover|is_flammable|true|90
+light switch|has_state|solid|90
+light switch|melts_at|150|95
+light switch|is_a|polymer|90
+light switch|is_flammable|true|90
+plug|has_state|solid|90
+plug|melts_at|150|95
+plug|is_a|polymer|90
+plug|is_flammable|true|90
+extension cord|has_state|solid|90
+extension cord|melts_at|150|95
+extension cord|is_a|polymer|90
+extension cord|is_flammable|true|90
+tire|has_state|solid|90
+tire|melts_at|180|95
+tire|is_a|polymer|90
+tire|is_flammable|true|90
+tire|is_elastic|true|90
+inner tube|has_state|solid|90
+inner tube|melts_at|180|95
+inner tube|is_a|polymer|90
+inner tube|is_flammable|true|90
+inner tube|is_elastic|true|90
+wheel|has_state|solid|90
+wheel|melts_at|180|95
+wheel|is_a|polymer|90
+wheel|is_flammable|true|90
+wheel|is_elastic|true|90
+ball|has_state|solid|90
+ball|melts_at|180|95
+ball|is_a|polymer|90
+ball|is_flammable|true|90
+ball|is_elastic|true|90
+bouncy ball|has_state|solid|90
+bouncy ball|melts_at|180|95
+bouncy ball|is_a|polymer|90
+bouncy ball|is_flammable|true|90
+bouncy ball|is_elastic|true|90
+basketball|has_state|solid|90
+basketball|melts_at|180|95
+basketball|is_a|polymer|90
+basketball|is_flammable|true|90
+basketball|is_elastic|true|90
+eraser|has_state|solid|90
+eraser|melts_at|180|95
+eraser|is_a|polymer|90
+eraser|is_flammable|true|90
+eraser|is_elastic|true|90
+rubber band|has_state|solid|90
+rubber band|melts_at|180|95
+rubber band|is_a|polymer|90
+rubber band|is_flammable|true|90
+rubber band|is_elastic|true|90
+elastic band|has_state|solid|90
+elastic band|melts_at|180|95
+elastic band|is_a|polymer|90
+elastic band|is_flammable|true|90
+elastic band|is_elastic|true|90
+hair tie|has_state|solid|90
+hair tie|melts_at|180|95
+hair tie|is_a|polymer|90
+hair tie|is_flammable|true|90
+hair tie|is_elastic|true|90
+wristband|has_state|solid|90
+wristband|melts_at|180|95
+wristband|is_a|polymer|90
+wristband|is_flammable|true|90
+wristband|is_elastic|true|90
+glove rubber|has_state|solid|90
+glove rubber|melts_at|180|95
+glove rubber|is_a|polymer|90
+glove rubber|is_flammable|true|90
+glove rubber|is_elastic|true|90
+boot rubber|has_state|solid|90
+boot rubber|melts_at|180|95
+boot rubber|is_a|polymer|90
+boot rubber|is_flammable|true|90
+boot rubber|is_elastic|true|90
+raincoat|has_state|solid|90
+raincoat|melts_at|180|95
+raincoat|is_a|polymer|90
+raincoat|is_flammable|true|90
+raincoat|is_elastic|true|90
+galosh|has_state|solid|90
+galosh|melts_at|180|95
+galosh|is_a|polymer|90
+galosh|is_flammable|true|90
+galosh|is_elastic|true|90
+gasket|has_state|solid|90
+gasket|melts_at|180|95
+gasket|is_a|polymer|90
+gasket|is_flammable|true|90
+gasket|is_elastic|true|90
+o-ring|has_state|solid|90
+o-ring|melts_at|180|95
+o-ring|is_a|polymer|90
+o-ring|is_flammable|true|90
+o-ring|is_elastic|true|90
+seal|has_state|solid|90
+seal|melts_at|180|95
+seal|is_a|polymer|90
+seal|is_flammable|true|90
+seal|is_elastic|true|90
+grommet|has_state|solid|90
+grommet|melts_at|180|95
+grommet|is_a|polymer|90
+grommet|is_flammable|true|90
+grommet|is_elastic|true|90
+bushing|has_state|solid|90
+bushing|melts_at|180|95
+bushing|is_a|polymer|90
+bushing|is_flammable|true|90
+bushing|is_elastic|true|90
+mat rubber|has_state|solid|90
+mat rubber|melts_at|180|95
+mat rubber|is_a|polymer|90
+mat rubber|is_flammable|true|90
+mat rubber|is_elastic|true|90
+yoga mat|has_state|solid|90
+yoga mat|melts_at|180|95
+yoga mat|is_a|polymer|90
+yoga mat|is_flammable|true|90
+yoga mat|is_elastic|true|90
+floor mat|has_state|solid|90
+floor mat|melts_at|180|95
+floor mat|is_a|polymer|90
+floor mat|is_flammable|true|90
+floor mat|is_elastic|true|90
+mouse pad|has_state|solid|90
+mouse pad|melts_at|180|95
+mouse pad|is_a|polymer|90
+mouse pad|is_flammable|true|90
+mouse pad|is_elastic|true|90
+balloon|has_state|solid|90
+balloon|melts_at|180|95
+balloon|is_a|polymer|90
+balloon|is_flammable|true|90
+balloon|is_elastic|true|90
+inflatable|has_state|solid|90
+inflatable|melts_at|180|95
+inflatable|is_a|polymer|90
+inflatable|is_flammable|true|90
+inflatable|is_elastic|true|90
+pool float|has_state|solid|90
+pool float|melts_at|180|95
+pool float|is_a|polymer|90
+pool float|is_flammable|true|90
+pool float|is_elastic|true|90
+life jacket|has_state|solid|90
+life jacket|melts_at|180|95
+life jacket|is_a|polymer|90
+life jacket|is_flammable|true|90
+life jacket|is_elastic|true|90
+hose|has_state|solid|90
+hose|melts_at|180|95
+hose|is_a|polymer|90
+hose|is_flammable|true|90
+hose|is_elastic|true|90
+tubing|has_state|solid|90
+tubing|melts_at|180|95
+tubing|is_a|polymer|90
+tubing|is_flammable|true|90
+tubing|is_elastic|true|90
+plunger|has_state|solid|90
+plunger|melts_at|180|95
+plunger|is_a|polymer|90
+plunger|is_flammable|true|90
+plunger|is_elastic|true|90
+squeegee|has_state|solid|90
+squeegee|melts_at|180|95
+squeegee|is_a|polymer|90
+squeegee|is_flammable|true|90
+squeegee|is_elastic|true|90
+shoe sole|has_state|solid|90
+shoe sole|melts_at|180|95
+shoe sole|is_a|polymer|90
+shoe sole|is_flammable|true|90
+shoe sole|is_elastic|true|90
+heel|has_state|solid|90
+heel|melts_at|180|95
+heel|is_a|polymer|90
+heel|is_flammable|true|90
+heel|is_elastic|true|90
+grip|has_state|solid|90
+grip|melts_at|180|95
+grip|is_a|polymer|90
+grip|is_flammable|true|90
+grip|is_elastic|true|90
+handle rubber|has_state|solid|90
+handle rubber|melts_at|180|95
+handle rubber|is_a|polymer|90
+handle rubber|is_flammable|true|90
+handle rubber|is_elastic|true|90
+duck toy|has_state|solid|90
+duck toy|melts_at|180|95
+duck toy|is_a|polymer|90
+duck toy|is_flammable|true|90
+duck toy|is_elastic|true|90
+chew toy|has_state|solid|90
+chew toy|melts_at|180|95
+chew toy|is_a|polymer|90
+chew toy|is_flammable|true|90
+chew toy|is_elastic|true|90
+stress ball|has_state|solid|90
+stress ball|melts_at|180|95
+stress ball|is_a|polymer|90
+stress ball|is_flammable|true|90
+stress ball|is_elastic|true|90
+squeeze toy|has_state|solid|90
+squeeze toy|melts_at|180|95
+squeeze toy|is_a|polymer|90
+squeeze toy|is_flammable|true|90
+squeeze toy|is_elastic|true|90
+beef|has_state|solid|90
+beef|cooks_at|63|95
+beef|is_a|food|90
+pork|has_state|solid|90
+pork|cooks_at|71|95
+pork|is_a|food|90
+lamb|has_state|solid|90
+lamb|cooks_at|63|95
+lamb|is_a|food|90
+turkey|has_state|solid|90
+turkey|cooks_at|74|95
+turkey|is_a|food|90
+salmon|has_state|solid|90
+salmon|cooks_at|63|95
+salmon|is_a|food|90
+shrimp|has_state|solid|90
+shrimp|cooks_at|74|95
+shrimp|is_a|food|90
+tofu|has_state|solid|90
+tofu|cooks_at|80|95
+tofu|is_a|food|90
+flour|has_state|solid|90
+flour|burns_at|380|95
+flour|is_a|food|90
+flour|is_flammable|true|90
+popcorn|has_state|solid|90
+popcorn|cooks_at|180|95
+popcorn|is_a|food|90
+popcorn|is_flammable|true|90
+popcorn|is_fragile|true|90
+cracker|has_state|solid|90
+cracker|burns_at|200|95
+cracker|is_a|food|90
+cracker|is_flammable|true|90
+cracker|is_fragile|true|90
+ice cube|has_state|solid|90
+ice cube|melts_at|0|95
+ice cube|is_a|frozen_liquid|90
+ice cube|is_fragile|true|90
+gelato|has_state|solid|90
+gelato|melts_at|-3|95
+gelato|is_a|food|90
+frozen pizza|has_state|solid|90
+frozen pizza|melts_at|-1|95
+frozen pizza|cooks_at|200|95
+frozen pizza|is_a|food|90
+frozen pizza|is_flammable|true|90
+coffee|has_state|liquid|90
+coffee|melts_at|-2|95
+coffee|boils_at|100|95
+coffee|is_a|liquid|90
+tea|has_state|liquid|90
+tea|melts_at|-1|95
+tea|boils_at|100|95
+tea|is_a|liquid|90
+orange juice|has_state|liquid|90
+orange juice|melts_at|-2|95
+orange juice|boils_at|100|95
+orange juice|is_a|liquid|90
+soda|has_state|liquid|90
+soda|melts_at|-2|95
+soda|boils_at|100|95
+soda|is_a|liquid|90
+beer|has_state|liquid|90
+beer|melts_at|-3|95
+beer|boils_at|100|95
+beer|is_a|liquid|90
+beer|is_flammable|true|90
+wine|has_state|liquid|90
+wine|melts_at|-5|95
+wine|boils_at|95|95
+wine|is_a|liquid|90
+wine|is_flammable|true|90
+whiskey|has_state|liquid|90
+whiskey|melts_at|-25|95
+whiskey|boils_at|78|95
+whiskey|is_a|liquid|90
+whiskey|is_flammable|true|90
+vodka|has_state|liquid|90
+vodka|melts_at|-27|95
+vodka|boils_at|78|95
+vodka|is_a|liquid|90
+vodka|is_flammable|true|90
+vinegar|has_state|liquid|90
+vinegar|melts_at|-2|95
+vinegar|boils_at|118|95
+vinegar|is_a|liquid|90
+maple syrup|has_state|liquid|90
+maple syrup|melts_at|-18|95
+maple syrup|boils_at|104|95
+maple syrup|is_a|liquid|90
+maple syrup|is_dense|true|90
+vegetable oil|has_state|liquid|90
+vegetable oil|melts_at|-10|95
+vegetable oil|boils_at|230|95
+vegetable oil|is_a|liquid|90
+vegetable oil|is_flammable|true|90
+bone|has_state|solid|90
+bone|melts_at|1670|95
+bone|is_a|organic|90
+bone|is_fragile|true|90
+bone|is_dense|true|90
+horn|has_state|solid|90
+horn|burns_at|300|95
+horn|is_a|organic|90
+horn|is_flammable|true|90
+shell|has_state|solid|90
+shell|is_a|mineral|90
+shell|is_fragile|true|90
+shell|is_dense|true|90
+pearl|has_state|solid|90
+pearl|is_a|mineral|90
+pearl|is_fragile|true|90
+pearl|is_dense|true|90
+coral|has_state|solid|90
+coral|is_a|mineral|90
+coral|is_fragile|true|90
+amber|has_state|solid|90
+amber|melts_at|300|95
+amber|is_a|organic|90
+amber|is_flammable|true|90
+amber|is_fragile|true|90
+bamboo|has_state|solid|90
+bamboo|burns_at|300|95
+bamboo|is_a|organic|90
+bamboo|is_flammable|true|90
+bamboo|is_elastic|true|90
+hay|has_state|solid|90
+hay|burns_at|230|95
+hay|is_a|organic|90
+hay|is_flammable|true|90
+clay|has_state|solid|90
+clay|melts_at|1100|95
+clay|is_a|mineral|90
+clay|is_malleable|true|90
+charcoal|has_state|solid|90
+charcoal|burns_at|350|95
+charcoal|is_a|organic|90
+charcoal|is_flammable|true|90
+charcoal|is_fragile|true|90
+cork|has_state|solid|90
+cork|is_a|organic|90
+cork|is_flammable|true|90
+cork|is_elastic|true|90
+resin|has_state|solid|90
+resin|melts_at|80|95
+resin|is_a|organic|90
+resin|is_flammable|true|90
+tar|has_state|solid|90
+tar|melts_at|60|95
+tar|is_a|organic|90
+tar|is_flammable|true|90
+feather|has_state|solid|90
+feather|is_a|organic|90
+feather|is_flammable|true|90
+fur|has_state|solid|90
+fur|burns_at|260|95
+fur|is_a|organic|90
+fur|is_flammable|true|90
+hair|has_state|solid|90
+hair|burns_at|230|95
+hair|is_a|organic|90
+hair|is_flammable|true|90
+eggshell|has_state|solid|90
+eggshell|is_a|mineral|90
+eggshell|is_fragile|true|90
+helium|has_state|gas|90
+helium|is_a|gas|90
+neon|has_state|gas|90
+neon|is_a|gas|90
+argon|has_state|gas|90
+argon|is_a|gas|90
+carbon dioxide|has_state|gas|90
+carbon dioxide|is_a|gas|90
+carbon dioxide|is_dense|true|90
+methane|has_state|gas|90
+methane|is_a|gas|90
+methane|is_flammable|true|90
+propane|has_state|gas|90
+propane|is_a|gas|90
+propane|is_flammable|true|90
+propane|is_dense|true|90
+butane|has_state|gas|90
+butane|is_a|gas|90
+butane|is_flammable|true|90
+chlorine|has_state|gas|90
+chlorine|is_a|gas|90
+chlorine|is_dense|true|90
+steam|has_state|gas|90
+steam|melts_at|0|95
+steam|is_a|gas|90
+natural gas|has_state|gas|90
+natural gas|is_a|gas|90
+natural gas|is_flammable|true|90
+acetylene|has_state|gas|90
+acetylene|is_a|gas|90
+acetylene|is_flammable|true|90
+asphalt|has_state|solid|90
+asphalt|melts_at|80|95
+asphalt|is_a|organic|90
+asphalt|is_flammable|true|90
+cement|has_state|solid|90
+cement|melts_at|1500|95
+cement|is_a|mineral|90
+cement|is_fragile|true|90
+cement|is_dense|true|90
+plaster|has_state|solid|90
+plaster|melts_at|1200|95
+plaster|is_a|mineral|90
+plaster|is_fragile|true|90
+drywall|has_state|solid|90
+drywall|is_a|mineral|90
+drywall|is_fragile|true|90
+plywood|has_state|solid|90
+plywood|burns_at|300|95
+plywood|is_a|organic|90
+plywood|is_flammable|true|90
+solder|has_state|solid|90
+solder|melts_at|183|95
+solder|is_a|metal|90
+solder|is_conductive|true|90
+solder|is_malleable|true|90
+silicon|has_state|solid|90
+silicon|melts_at|1414|95
+silicon|is_a|mineral|90
+silicon|is_fragile|true|90
+silicon|is_conductive|true|90
+rebar|has_state|solid|90
+rebar|melts_at|1370|95
+rebar|is_a|metal|90
+rebar|is_conductive|true|90
+rebar|is_magnetic|true|90
+rebar|is_dense|true|90
+pvc pipe|has_state|solid|90
+pvc pipe|melts_at|160|95
+pvc pipe|is_a|polymer|90
+pvc pipe|is_flammable|true|90
+copper pipe|has_state|solid|90
+copper pipe|melts_at|1085|95
+copper pipe|is_a|metal|90
+copper pipe|is_conductive|true|90
+copper pipe|is_malleable|true|90
+paint|has_state|liquid|90
+paint|is_a|liquid|90
+paint|is_flammable|true|90
+super glue|has_state|liquid|90
+super glue|is_a|polymer|90
+super glue|is_flammable|true|90
+sun|description|G-type main-sequence star (G2V), 4.6 billion years old, 150 million km from Earth|95
+earth|description|Third planet from Sun, 4.5 billion years old, diameter 12742 km|95
+moon|description|Earths natural satellite, 384400 km away, 27.3 day orbit|95
+dog|description|Canis lupus familiaris, domesticated 15000-40000 years ago, 350+ breeds|95
+cat|description|Felis catus, domesticated 10000 years ago, 70+ breeds|95
+gold|description|Element 79 Au, least reactive metals, dense 19.3 g/cm3|95
+water|description|H2O, covers 71% of Earth, essential for life, less dense as solid|95
+fire|description|Rapid oxidation releasing heat light and gases, needs fuel oxygen ignition|95
+diamond|description|Pure carbon crystal lattice, hardest natural material Mohs 10|95
+oxygen|description|Element 8, 21% of atmosphere, essential for aerobic respiration|95
+mercury|description|Element 80 Hg, only liquid metal at room temp, melts at -39C|95
+iron|description|Element 26 Fe, most common element on Earth by mass, basis of steel|95
+hydrogen|description|Element 1, lightest and most abundant element in universe|95
+carbon|description|Element 6, basis of organic chemistry and life|95
+silver|description|Element 47 Ag, highest electrical and thermal conductivity|95
+copper|description|Element 29 Cu, excellent conductor, used in wiring since antiquity|95
+python|description|High-level programming language by Guido van Rossum 1991|95
+linux|description|Free open-source OS kernel by Linus Torvalds 1991|95
+jupiter|description|Largest planet, 11x Earth diameter, 318x mass, Great Red Spot|95
+mars|description|Fourth planet, Red Planet, iron oxide, largest volcano Olympus Mons|95
+venus|description|Second planet, hottest 465C, extreme greenhouse, similar size to Earth|95
+saturn|description|Sixth planet, ring system of ice and rock, 146 known moons|95
+brain|description|Central nervous system organ, 86 billion neurons, uses 20% body energy|95
+dna|description|Deoxyribonucleic acid, genetic instructions, double helix, 4 bases ATGC|95
+electricity|description|Flow of electric charge through conductor, measured in amperes and volts|95
+gravity|description|Fundamental force of attraction between masses, 9.81 m/s2 on Earth, spacetime curvature|95
+bitcoin|description|First decentralized cryptocurrency 2009 by Satoshi Nakamoto, proof-of-work blockchain|95
+internet|description|Global network of computers using TCP/IP, started as ARPANET 1969, 5 billion users|95
+photosynthesis|description|Plants convert sunlight CO2 water into glucose oxygen, powers nearly all life|95
+evolution|description|Change in heritable characteristics over generations via natural selection mutation drift|95
+atom|description|Smallest unit of matter forming chemical element, protons neutrons electrons|95
+black hole|description|Region of spacetime where gravity prevents anything including light from escaping|95
+quantum|description|Minimum physical entity in interaction, quantum mechanics governs atomic scale|95
+sky blue|explanation|Rayleigh scattering, shorter blue wavelengths scatter more than red in atmosphere|95
+ships float|explanation|Archimedes principle, hull displaces water weighing more than ship, buoyant force|95
+ice float|explanation|Water expands 9% when freezing, ice less dense 917 vs 1000 kg/m3|95
+seasons change|explanation|Earth axis tilted 23.5 degrees, different hemispheres get more sunlight at different times|95
+moon phases|explanation|We see different amounts of Moons sunlit side as it orbits Earth|95
+rainbow|explanation|Sunlight refracts in water droplets, reflects, refracts again, splits into wavelengths|95
+refrigerator|explanation|Evaporates coolant inside to absorb heat, compresses outside to release heat, cycle repeats|95
+airplane fly|explanation|Wings create lift via pressure difference, curved top faster air lower pressure, engines thrust|95
+magnets work|explanation|Aligned electron spins in ferromagnetic materials create macroscopic magnetic field|95
+vaccines work|explanation|Expose immune system to harmless pathogen piece, body makes antibodies and memory cells|95
+gravity work|explanation|Mass curves spacetime, objects follow straight paths in curved space appearing as attraction|95
+sound travel|explanation|Pressure waves through medium, vibrating objects push molecules creating compression wave 343 m/s|95
+fire burn|explanation|Combustion rapid reaction between fuel and oxygen releasing heat sustains chain reaction|95
+stars shine|explanation|Nuclear fusion in core converts hydrogen to helium releasing energy E=mc2|95
+tides|explanation|Moon gravitational pull on oceans, near side bulges toward far side away, Earth rotation|95
+virus bacteria difference|explanation|Virus non-living needs host 20-300nm. Bacteria living single-cell independent 1-10um. Antibiotics only kill bacteria|95
+dna work|explanation|Double helix 4 bases ATGC pair up, sequences form genes coding for proteins|95
+4dos|created_year|1988|95
+a bee|has_property|a stinger|90
+a bicycle|has_property|two wheels|90
+a bicycle|has_property|pedals|90
+a bird|has_property|wings|90
+a bird|has_property|feathers|90
+a bird|has_property|a beak|90
+a bird|has_property|two legs|90
+a bird|has_property|hollow bones|90
+a boat|has_property|a hull|90
+a book|has_property|pages|90
+a book|has_property|a cover|90
+a butterfly|has_property|colorful wings|90
+a camel|has_property|humps|90
+a car|has_property|four wheels|90
+a car|has_property|an engine|90
+a car|has_property|a steering wheel|90
+a cat|has_property|four legs|90
+a cat|has_property|fur|90
+a cat|has_property|whiskers|90
+a cat|has_property|a tail|90
+a cat|has_property|claws|90
+a cat|has_property|ears|90
+a clock|has_property|hands|90
+a clock|has_property|numbers|90
+a computer|has_property|a processor|90
+a computer|has_property|memory|90
+a cow|has_property|four legs|90
+a cow|has_property|an udder|90
+a cow|has_property|horns|90
+a cow|has_property|a tail|90
+a crocodile|has_property|strong jaws|90
+a crocodile|has_property|a long tail|90
+a cube|has_property|six faces|90
+a day|has_property|twenty-four hours|90
+a dog|has_property|four legs|90
+a dog|has_property|fur|90
+a dog|has_property|a tail|90
+a dog|has_property|teeth|90
+a dog|has_property|a nose|90
+a dog|has_property|ears|90
+a dolphin|has_property|a dorsal fin|90
+a dolphin|has_property|a streamlined body|90
+a fish|has_property|gills|90
+a fish|has_property|scales|90
+a fish|has_property|fins|90
+a fish|has_property|a tail|90
+a forest|has_property|many trees|90
+a frog|has_property|webbed feet|90
+a frog|has_property|smooth skin|90
+a giraffe|has_property|a long neck|90
+a giraffe|has_property|spots|90
+a guitar|has_property|six strings|90
+a hammer|has_property|a head and handle|90
+a heart|has_property|four chambers|90
+a helicopter|has_property|a rotor|90
+a hexagon|has_property|six sides|90
+a horse|has_property|four legs|90
+a horse|has_property|a mane|90
+a horse|has_property|a tail|90
+a horse|has_property|hooves|90
+a kangaroo|has_property|a pouch|90
+a kangaroo|has_property|strong hind legs|90
+a knife|has_property|a blade|90
+a lion|has_property|a mane|90
+a minute|has_property|sixty seconds|90
+a motorcycle|has_property|two wheels|90
+a motorcycle|has_property|an engine|90
+a penguin|has_property|flippers|90
+a pentagon|has_property|five sides|90
+a phone|has_property|a screen|90
+a piano|has_property|88 keys|90
+a pig|has_property|four legs|90
+a pig|has_property|a snout|90
+a pig|has_property|a curly tail|90
+a porcupine|has_property|quills|90
+a pyramid|has_property|a pointed top|90
+a rabbit|has_property|long ears|90
+a rabbit|has_property|a short tail|90
+a rainbow|has_property|seven colors|90
+a rectangle|has_property|four sides|90
+a rhinoceros|has_property|a horn|90
+a rhinoceros|has_property|thick skin|90
+a saw|has_property|teeth|90
+a scissors|has_property|two blades|90
+a shark|has_property|sharp teeth|90
+a shark|has_property|a dorsal fin|90
+a sheep|has_property|four legs|90
+a sheep|has_property|wool|90
+a shovel|has_property|a flat blade|90
+a snail|has_property|a shell|90
+a snail|has_property|antennae|90
+a snake|has_property|scales|90
+a snake|has_property|no legs|90
+a snake|has_property|a forked tongue|90
+a song|has_property|verses and a chorus|90
+a spider|has_property|eight legs|90
+a spider|has_property|multiple eyes|90
+a square|has_property|four equal sides|90
+a story|has_property|a beginning, middle, and end|90
+a straight line|has_property|180 degrees|90
+a television|has_property|a screen|90
+a thousand|has_property|four digits|90
+a train|has_property|many cars|90
+a triangle|has_property|three sides|90
+a truck|has_property|large wheels|90
+a turtle|has_property|a shell|90
+a violin|has_property|four strings|90
+a volcano|has_property|lava|90
+a week|has_property|seven days|90
+a whale|has_property|a blowhole|90
+a year|has_property|twelve months|90
+a zebra|has_property|stripes|90
+a#|created_year|2004|95
+abc|designed_by|lambert meertens|95
+abc|created_year|1975|95
+abc|designed_by|steven pemberton|95
+accent|created_year|1990|95
+accountant|is_a|profession|95
+actinium|symbol|ac|99
+actinium|atomic_number|89|99
+actionscript|designed_by|gary grossman|95
+actionscript|created_year|1998|95
+afghanistan|capital|kabul|99
+afghanistan|population|41454761|95
+agda|created_year|2007|95
+airplane|is_a|vehicle|95
+albania|capital|tirana|99
+albania|population|2811655|95
+algeria|capital|algiers|99
+algeria|population|46164219|95
+algol|designed_by|alan perlis|95
+algol|created_year|1959|95
+algol|designed_by|friedrich l. bauer|95
+algol|designed_by|peter naur|95
+algol|designed_by|heinz rutishauser|95
+algol|designed_by|john mccarthy|95
+algol|designed_by|john backus|95
+algol|designed_by|klaus samelson|95
+algol|designed_by|adriaan van wijngaarden|95
+algol|designed_by|julien green|95
+algol|designed_by|bernard vauquois|95
+algol|designed_by|charles katz|95
+algol|designed_by|hermann bottenbruch|95
+algol|designed_by|joseph henry wegstein|95
+algol 58|designed_by|alan perlis|95
+algol 58|designed_by|friedrich l. bauer|95
+algol 58|designed_by|heinz rutishauser|95
+algol 58|designed_by|john backus|95
+algol 58|designed_by|klaus samelson|95
+algol 58|designed_by|charles katz|95
+algol 60|designed_by|john backus|95
+algorithm|is_a|set of steps to solve a problem|95
+alice|created_year|2000|95
+alice|created_year|1995|95
+alligator|is_a|reptile|95
+aluminium|symbol|al|99
+aluminium|atomic_number|13|99
+americium|symbol|am|99
+americium|atomic_number|95|99
+amphibian|is_a|animal|95
+an airplane|has_property|wings|90
+an airplane|has_property|an engine|90
+an airport|has_property|runways|90
+an ant|has_property|six legs|90
+an atom|has_property|protons, neutrons, and electrons|90
+an axe|has_property|a sharp edge|90
+an eagle|has_property|sharp talons|90
+an eagle|has_property|keen eyesight|90
+an egg|has_property|a shell|90
+an egg|has_property|a yolk|90
+an elephant|has_property|a trunk|90
+an elephant|has_property|large ears|90
+an elephant|has_property|tusks|90
+an hour|has_property|sixty minutes|90
+an octagon|has_property|eight sides|90
+an octopus|has_property|eight tentacles|90
+an owl|has_property|large eyes|90
+an owl|has_property|silent flight|90
+andorra|capital|andorra la vella|99
+andorra|population|87486|95
+angola|capital|luanda|99
+angola|population|36749906|95
+animal|is_a|living thing|95
+ant|is_a|insect|95
+antigua and barbuda|capital|st. john's|99
+antigua and barbuda|population|101489|95
+antimony|symbol|sb|99
+antimony|atomic_number|51|99
+apartment|is_a|type of home|95
+ape|is_a|mammal|95
+app|is_a|software application|95
+apple|is_a|fruit|95
+apple tree|is_a|tree|95
+arachnid|is_a|animal|95
+architect|is_a|profession|95
+argentina|capital|buenos aires|99
+argentina|population|47327407|95
+argon|symbol|ar|99
+argon|atomic_number|18|99
+armenia|capital|yerevan|99
+armenia|population|2930450|95
+arsenic|symbol|as|99
+arsenic|atomic_number|33|99
+artist|is_a|profession|95
+aruba|capital|oranjestad|99
+aruba|population|106739|95
+assembly language|created_year|1949|95
+astatine|symbol|at|99
+astatine|atomic_number|85|99
+asteroid|is_a|celestial object|95
+australia|capital|canberra|99
+australia|population|27614411|95
+austria|capital|vienna|99
+austria|population|8979894|95
+axe|is_a|tool|95
+azerbaijan|capital|baku|99
+azerbaijan|population|10180770|95
+bahrain|capital|manama|99
+bahrain|population|1569666|95
+banana|is_a|fruit|95
+bangladesh|capital|dhaka|99
+bangladesh|population|171466990|95
+barbados|capital|bridgetown|99
+barbados|population|303431|95
+barium|symbol|ba|99
+barium|atomic_number|56|99
+bass|is_a|fish|95
+bass|is_a|musical instrument|95
+bat|is_a|mammal|95
+bean|is_a|vegetable|95
+bear|is_a|mammal|95
+beaver|is_a|mammal|95
+bee|is_a|insect|95
+beetle|is_a|insect|95
+belarus|capital|minsk|99
+belarus|population|9056080|95
+belgium|capital|brussels|99
+belgium|population|11825551|95
+belize|capital|belmopan|99
+belize|population|411106|95
+benin|capital|porto-novo|99
+benin|population|14111034|95
+berkelium|symbol|bk|99
+berkelium|atomic_number|97|99
+beryllium|symbol|be|99
+beryllium|atomic_number|4|99
+bhutan|capital|thimphu|99
+bhutan|population|787424|95
+bicycle|is_a|vehicle|95
+birch|is_a|tree|95
+bird|is_a|animal|95
+bismuth|symbol|bi|99
+bismuth|atomic_number|83|99
+black hole|is_a|astronomical body so compact that its gravity prevents anything, including light, from escaping|90
+blitz basic|created_year|2000|95
+blizzard|is_a|severe snowstorm|95
+blog|is_a|personal website|95
+blueberry|is_a|fruit|95
+boat|is_a|vehicle|95
+body of water|is_a|thing|95
+bohrium|symbol|bh|99
+bohrium|atomic_number|107|99
+bolivia|capital|la paz|99
+bolivia|population|12244159|95
+bolivia|capital|sucre|99
+boo|designed_by|rodrigo b. de oliveira|95
+boo|created_year|2003|95
+boot|is_a|tall shoe|95
+boron|symbol|b|99
+boron|atomic_number|5|99
+bosnia and herzegovina|capital|sarajevo|99
+bosnia and herzegovina|population|3816459|95
+botswana|capital|gaborone|99
+botswana|population|2480244|95
+bourne shell|created_year|1979|95
+brainfuck|created_year|1993|95
+brazil|capital|brasília|99
+brazil|population|213421037|95
+broccoli|is_a|vegetable|95
+bromine|symbol|br|99
+bromine|atomic_number|35|99
+broom|is_a|tool|95
+brunei|capital|bandar seri begawan|99
+brunei|population|458949|95
+bug|is_a|error in software|95
+bulgaria|capital|sofia|99
+bulgaria|population|6423207|95
+burkina faso|capital|ouagadougou|99
+burkina faso|population|23025776|95
+burrow|is_a|rabbit's home|95
+burundi|capital|gitega|99
+burundi|population|13689450|95
+bus|is_a|vehicle|95
+bush|is_a|plant|95
+butterfly|is_a|insect|95
+c shell|created_year|1978|95
+c--|designed_by|simon peyton jones|95
+c--|created_year|1997|95
+c--|designed_by|norman ramsey|95
+cactus|is_a|plant|95
+cadmium|symbol|cd|99
+cadmium|atomic_number|48|99
+caesium|symbol|cs|99
+caesium|atomic_number|55|99
+calcium|symbol|ca|99
+calcium|atomic_number|20|99
+californium|symbol|cf|99
+californium|atomic_number|98|99
+cambodia|capital|phnom penh|99
+cambodia|population|17423880|95
+camel|is_a|mammal|95
+cameroon|capital|yaoundé|99
+cameroon|population|28372687|95
+canada|capital|ottawa|99
+canada|population|36991981|95
+canoe|is_a|boat|95
+cape verde|capital|praia|99
+cape verde|population|555988|95
+car|is_a|vehicle|95
+carbon|symbol|c|99
+carbon|atomic_number|6|99
+carnation|is_a|flower|95
+carpenter|is_a|profession|95
+carrot|is_a|vegetable|95
+cascading style sheets|created_year|1996|95
+cat|is_a|mammal|95
+catfish|is_a|fish|95
+cedar|is_a|tree|95
+celestial object|is_a|thing|95
+cello|is_a|musical instrument|95
+central african republic|capital|bangui|99
+central african republic|population|5152421|95
+cerium|symbol|ce|99
+cerium|atomic_number|58|99
+ceylon|created_year|2011|95
+chad|capital|n'djamena|99
+chad|population|19319064|95
+chameleon|is_a|reptile|95
+chapter|is_a|section of a book|95
+charm++|designed_by|laxmikant kale|95
+cheetah|is_a|mammal|95
+chef|is_a|profession|95
+cherry|is_a|fruit|95
+cherry tree|is_a|tree|95
+chicken|is_a|bird|95
+chile|capital|santiago|99
+chile|population|19458000|95
+chimpanzee|is_a|ape|95
+china|has_property|more people than france|90
+chip-8|created_year|1970|95
+chisel|is_a|tool|95
+chlorine|symbol|cl|99
+chlorine|atomic_number|17|99
+chromium|symbol|cr|99
+chromium|atomic_number|24|99
+cics|created_year|1968|95
+circle|is_a|shape|95
+city|is_a|place|95
+clarinet|is_a|musical instrument|95
+clarion|created_year|1986|95
+clips|created_year|1985|95
+clojure|created_year|2007|95
+clownfish|is_a|fish|95
+cluster|created_year|1990|95
+cmu common lisp|created_year|1980|95
+cobalt|symbol|co|99
+cobalt|atomic_number|27|99
+cobra|is_a|snake|95
+cockroach|is_a|insect|95
+cod|is_a|fish|95
+coffeescript|designed_by|jeremy ashkenas|95
+coffeescript|created_year|2009|95
+cold|is_a|disease|95
+colombia|capital|bogotá|99
+colombia|population|52321152|95
+color|is_a|thing|95
+comal|created_year|1975|95
+comet|is_a|celestial object|95
+comit|designed_by|victor yngve|95
+comit|created_year|1957|95
+common intermediate language|created_year|2000|95
+common lisp|designed_by|scott e. fahlman|95
+common lisp|created_year|1984|95
+common lisp|designed_by|david moon|95
+common lisp|designed_by|richard p. gabriel|95
+comoros|capital|moroni|99
+comoros|population|902348|95
+component pascal|created_year|1997|95
+cone|is_a|shape|95
+cook islands|capital|avarua|99
+cook islands|population|14222|95
+copernicium|symbol|cn|99
+copernicium|atomic_number|112|99
+copper|symbol|cu|99
+copper|atomic_number|29|99
+corn|is_a|vegetable|95
+costa rica|capital|san josé|99
+costa rica|population|5265575|95
+country|is_a|place|95
+cow|is_a|mammal|95
+cricket|is_a|insect|95
+croatia|capital|zagreb|99
+croatia|population|3871833|95
+crocodile|is_a|reptile|95
+crow|is_a|bird|95
+cuba|capital|havana|99
+cuba|population|10985974|95
+cube|is_a|shape|95
+cucumber|is_a|vegetable|95
+curaçao|capital|willemstad|99
+curaçao|population|152849|95
+curium|symbol|cm|99
+curium|atomic_number|96|99
+curl|designed_by|massachusetts institute of technology|95
+curl|created_year|1998|95
+curl|designed_by|steve ward|95
+cyclone|designed_by|at&t labs|95
+cyclone|created_year|2002|95
+cylinder|is_a|shape|95
+cyprus|capital|nicosia|99
+cyprus|population|1344976|95
+cython|created_year|2007|95
+czech republic|capital|prague|99
+czech republic|population|10909500|95
+cω|created_year|2005|95
+daffodil|is_a|flower|95
+daisy|is_a|flower|95
+darmstadtium|symbol|ds|99
+darmstadtium|atomic_number|110|99
+deer|is_a|mammal|95
+democratic republic of the congo|capital|kinshasa|99
+democratic republic of the congo|population|105789731|95
+den|is_a|bear's home|95
+denmark|capital|copenhagen|99
+denmark|population|5822863|95
+dentist|is_a|profession|95
+disease|is_a|thing|95
+djibouti|capital|djibouti|99
+djibouti|population|1152944|95
+doctor|is_a|profession|95
+dog|is_a|mammal|95
+dolphin|is_a|mammal|95
+dominica|capital|roseau|99
+dominica|population|74656|95
+dominican republic|capital|santo domingo|99
+dominican republic|population|10760028|95
+dragonfly|is_a|insect|95
+drill|is_a|tool|95
+drink|is_a|thing|95
+drone|is_a|unmanned aircraft|95
+drought|is_a|long period without rain|95
+drum|is_a|musical instrument|95
+dubnium|symbol|db|99
+dubnium|atomic_number|105|99
+duck|is_a|bird|95
+dylan|created_year|1992|95
+dysprosium|symbol|dy|99
+dysprosium|atomic_number|66|99
+eagle|is_a|bird|95
+ecuador|capital|quito|99
+ecuador|population|16938986|95
+eel|is_a|fish|95
+egypt|capital|cairo|99
+egypt|population|114535772|95
+einsteinium|symbol|es|99
+einsteinium|atomic_number|99|99
+el salvador|capital|san salvador|99
+el salvador|population|6029976|95
+elan|designed_by|cornelis h. a. koster|95
+elan|created_year|1974|95
+electrician|is_a|profession|95
+element|is_a|thing|95
+elephant|is_a|mammal|95
+elm|is_a|tree|95
+emacs lisp|designed_by|richard stallman|95
+emacs lisp|created_year|1985|95
+emacs lisp|designed_by|guy l. steele jr|95
+emirate of al qawasim|capital|ras al-khaimah|99
+emirate of lengeh|capital|bandar lengeh|99
+emotion|is_a|thing|95
+engineer|is_a|profession|95
+equatorial guinea|capital|ciudad de la paz|99
+equatorial guinea|population|1847549|95
+erbium|symbol|er|99
+erbium|atomic_number|68|99
+eritrea|capital|asmara|99
+eritrea|population|3497000|95
+estonia|capital|tallinn|99
+estonia|population|1369995|95
+eswatini|capital|mbabane|99
+eswatini|population|1230506|95
+eswatini|capital|lobamba|99
+ethiopia|capital|addis ababa|99
+ethiopia|population|128691692|95
+etoys|designed_by|alan kay|95
+etoys|created_year|1996|95
+euphoria|created_year|1993|95
+europium|symbol|eu|99
+europium|atomic_number|63|99
+executive systems problem oriented language|created_year|1966|95
+extensible application markup language|created_year|2008|95
+falcon|is_a|bird|95
+family|is_a|social unit|95
+farmer|is_a|profession|95
+federated states of micronesia|capital|palikir|99
+federated states of micronesia|population|75817|95
+fermium|symbol|fm|99
+fermium|atomic_number|100|99
+fern|is_a|plant|95
+ferry|is_a|boat|95
+fiji|capital|suva|99
+fiji|population|926276|95
+finland|capital|helsinki|99
+finland|population|5652881|95
+firefighter|is_a|profession|95
+fish|is_a|animal|95
+flamingo|is_a|bird|95
+flerovium|symbol|fl|99
+flerovium|atomic_number|114|99
+flower|is_a|plant|95
+fluorine|symbol|f|99
+fluorine|atomic_number|9|99
+flute|is_a|musical instrument|95
+flute|is_a|wind instrument|95
+fly|is_a|insect|95
+food|is_a|thing|95
+fortran|designed_by|john backus|95
+fortran|created_year|1957|95
+fox|is_a|mammal|95
+france|capital|paris|99
+france|population|68605616|95
+francium|symbol|fr|99
+francium|atomic_number|87|99
+freebasic|created_year|2004|95
+frog|is_a|amphibian|95
+fruit|is_a|plant product|95
+gabon|capital|libreville|99
+gabon|population|2025137|95
+gadolinium|symbol|gd|99
+gadolinium|atomic_number|64|99
+galaxy|is_a|celestial object|95
+gallium|symbol|ga|99
+gallium|atomic_number|31|99
+gauss|created_year|1984|95
+gecko|is_a|reptile|95
+genie|created_year|2008|95
+georgia|capital|tbilisi|99
+georgia|population|3694600|95
+germanium|symbol|ge|99
+germanium|atomic_number|32|99
+germany|capital|berlin|99
+germany|population|83577140|95
+ghana|capital|accra|99
+ghana|population|32833031|95
+giraffe|is_a|mammal|95
+gnu octave|created_year|1988|95
+go|designed_by|rob pike|95
+go|created_year|2009|95
+go|designed_by|q1107006|95
+go|designed_by|robert griesemer|95
+goat|is_a|mammal|95
+gold|symbol|au|99
+gold|atomic_number|79|99
+goldfish|is_a|fish|95
+goose|is_a|bird|95
+gorilla|is_a|ape|95
+grape|is_a|fruit|95
+grass|is_a|plant|95
+grasshopper|is_a|insect|95
+greece|capital|athens|99
+greece|population|10482487|95
+greenland|capital|nuuk|99
+greenland|population|56609|95
+grenada|capital|st. george's|99
+grenada|population|114299|95
+guatemala|capital|guatemala city|99
+guatemala|population|17263239|95
+guinea|capital|conakry|99
+guinea|population|12717176|95
+guinea-bissau|capital|bissau|99
+guinea-bissau|population|1861283|95
+guitar|is_a|musical instrument|95
+guyana|capital|georgetown|99
+guyana|population|878674|95
+hafnium|symbol|hf|99
+hafnium|atomic_number|72|99
+haiti|capital|port-au-prince|99
+haiti|population|10981229|95
+hammer|is_a|tool|95
+harp|is_a|musical instrument|95
+hassium|symbol|hs|99
+hassium|atomic_number|108|99
+hawk|is_a|bird|95
+hedgehog|is_a|mammal|95
+helicopter|is_a|vehicle|95
+helium|symbol|he|99
+helium|atomic_number|2|99
+herring|is_a|fish|95
+hexagon|is_a|shape|95
+highway|is_a|fast road|95
+hippopotamus|is_a|mammal|95
+hive|is_a|bee's home|95
+holmium|symbol|ho|99
+holmium|atomic_number|67|99
+honduras|capital|tegucigalpa|99
+honduras|population|8303771|95
+horse|is_a|mammal|95
+hummingbird|is_a|bird|95
+hungary|capital|budapest|99
+hungary|population|9603634|95
+hurricane|is_a|powerful storm|95
+hydrogen|symbol|h|99
+hydrogen|atomic_number|1|99
+ibm basic|created_year|1981|95
+iceland|capital|reykjavík|99
+iceland|population|364260|95
+icon|designed_by|ralph griswold|95
+icon|created_year|1977|95
+iguana|is_a|reptile|95
+india|has_property|more people than japan|90
+india|capital|new delhi|99
+india|population|1326093247|95
+indium|symbol|in|99
+indium|atomic_number|49|99
+indonesia|capital|jakarta|99
+indonesia|population|275439000|95
+insect|is_a|animal|95
+intercal|created_year|1972|95
+iodine|symbol|i|99
+iodine|atomic_number|53|99
+iran|capital|tehran|99
+iran|population|92417700|95
+iraq|capital|baghdad|99
+iraq|population|38274618|95
+ireland|capital|dublin|99
+ireland|population|5149139|95
+iridium|symbol|ir|99
+iridium|atomic_number|77|99
+iron|symbol|fe|99
+iron|atomic_number|26|99
+israel|capital|jerusalem|99
+israel|population|9840000|95
+italy|capital|rome|99
+italy|population|58850717|95
+ivory coast|capital|yamoussoukro|99
+ivory coast|population|31165654|95
+j#|created_year|2002|95
+jamaica|capital|kingston|99
+jamaica|population|2697983|95
+japan|capital|tokyo|99
+japan|population|123802000|95
+java|designed_by|sun microsystems|95
+java|created_year|1995|95
+java|designed_by|james gosling|95
+jordan|capital|amman|99
+jordan|population|10428241|95
+joss|created_year|1963|95
+journalist|is_a|profession|95
+jovial|designed_by|system development corporation|95
+jovial|created_year|1960|95
+joy|created_year|2001|95
+kangaroo|is_a|mammal|95
+karel|designed_by|richard e. pattis|95
+karel|created_year|1981|95
+kashmir sultanate|capital|srinagar|99
+kashmir sultanate|population|280000|95
+kashmir sultanate|capital|baramulla|99
+kashmir sultanate|capital|sopore|99
+kashmir sultanate|capital|nowshera|99
+kashmir sultanate|capital|nowhatta|99
+kashmir sultanate|capital|chanderkot|99
+kazakhstan|capital|astana|99
+kazakhstan|population|20139914|95
+kennel|is_a|dog's house|95
+kenya|capital|nairobi|99
+kenya|population|48468138|95
+kingdom of denmark|capital|copenhagen|99
+kingdom of denmark|population|5930987|95
+kingdom of the netherlands|capital|amsterdam|99
+kingdom of the netherlands|population|17100715|95
+kiribati|capital|south tarawa|99
+kiribati|population|134518|95
+knife|is_a|tool|95
+koala|is_a|mammal|95
+kosovo|capital|pristina|99
+kosovo|population|1586659|95
+krypton|symbol|kr|99
+krypton|atomic_number|36|99
+kuwait|capital|kuwait city|99
+kuwait|population|4464000|95
+kyrgyzstan|capital|bishkek|99
+kyrgyzstan|population|7281800|95
+ladder|is_a|tool|95
+ladybug|is_a|insect|95
+lake|is_a|body of water|95
+lanthanum|symbol|la|99
+lanthanum|atomic_number|57|99
+laos|capital|vientiane|99
+laos|population|6858160|95
+latvia|capital|riga|99
+latvia|population|1845096|95
+lawrencium|symbol|lr|99
+lawrencium|atomic_number|103|99
+lawyer|is_a|profession|95
+lead|symbol|pb|99
+lead|atomic_number|82|99
+lebanon|capital|beirut|99
+lebanon|population|6100075|95
+lemon|is_a|fruit|95
+leopard|is_a|mammal|95
+lesotho|capital|maseru|99
+lesotho|population|2007201|95
+level|is_a|tool|95
+liberia|capital|monrovia|99
+liberia|population|5214030|95
+libya|capital|tripoli|99
+libya|population|7381023|95
+liechtenstein|capital|vaduz|99
+liechtenstein|population|37922|95
+lily|is_a|flower|95
+lion|is_a|mammal|95
+lithium|symbol|li|99
+lithium|atomic_number|3|99
+lithuania|capital|vilnius|99
+lithuania|population|2860002|95
+livermorium|symbol|lv|99
+livermorium|atomic_number|116|99
+living thing|is_a|thing|95
+lizard|is_a|reptile|95
+logo|designed_by|seymour papert|95
+logo|created_year|1967|95
+logo|designed_by|cynthia solomon|95
+logo|designed_by|wally feurzeig|95
+lotus|is_a|flower|95
+lua|designed_by|roberto ierusalimschy|95
+lua|created_year|1993|95
+lutetium|symbol|lu|99
+lutetium|atomic_number|71|99
+luxembourg|capital|luxembourg|99
+luxembourg|population|681973|95
+madagascar|capital|antananarivo|99
+madagascar|population|31964956|95
+magnesium|symbol|mg|99
+magnesium|atomic_number|12|99
+malawi|capital|lilongwe|99
+malawi|population|17563749|95
+malaysia|capital|kuala lumpur|99
+malaysia|population|32447385|95
+maldives|capital|malé|99
+maldives|population|436330|95
+mali|capital|bamako|99
+mali|population|22395489|95
+malta|capital|valletta|99
+malta|population|553214|95
+mammal|is_a|animal|95
+manganese|symbol|mn|99
+manganese|atomic_number|25|99
+mango|is_a|fruit|95
+maple|is_a|tree|95
+maple|created_year|1982|95
+maragheh khanate|capital|maragheh|99
+mars|has_property|two moons|90
+marshall islands|capital|majuro|99
+marshall islands|population|53127|95
+material|is_a|thing|95
+mathcad|created_year|1986|95
+mathematica|created_year|1988|95
+matlab|designed_by|cleve moler|95
+matlab|created_year|1984|95
+mauritania|capital|nouakchott|99
+mauritania|population|4736139|95
+mauritius|capital|port louis|99
+mauritius|population|1264613|95
+meitnerium|symbol|mt|99
+meitnerium|atomic_number|109|99
+melody|is_a|sequence of notes|95
+mendelevium|symbol|md|99
+mendelevium|atomic_number|101|99
+mercury|symbol|hg|99
+mercury|atomic_number|80|99
+mercury|created_year|1995|95
+mesa|created_year|1976|95
+metapost|created_year|1994|95
+mexico|capital|mexico city|99
+mexico|population|132274416|95
+microsoft basic|created_year|1975|95
+ml|designed_by|robin milner|95
+ml|created_year|1973|95
+moldova|capital|chișinău|99
+moldova|population|2409207|95
+molybdenum|symbol|mo|99
+molybdenum|atomic_number|42|99
+monaco|capital|monaco|99
+monaco|population|38857|95
+mongolia|capital|ulaanbaatar|99
+mongolia|population|3409939|95
+monkey|is_a|mammal|95
+monkey x|created_year|2011|95
+montenegro|capital|podgorica|99
+montenegro|population|617213|95
+moon|is_a|celestial object|95
+morocco|capital|rabat|99
+morocco|population|36828330|95
+moscovium|symbol|mc|99
+moscovium|atomic_number|115|99
+mosquito|is_a|insect|95
+moss|is_a|plant|95
+moth|is_a|insect|95
+motorcycle|is_a|vehicle|95
+mouse|is_a|mammal|95
+mozambique|capital|maputo|99
+mozambique|population|29668834|95
+msx basic|created_year|1983|95
+muscat and oman|capital|muscat|99
+musical instrument|is_a|thing|95
+musician|is_a|profession|95
+myanmar|capital|naypyidaw|99
+myanmar|population|53370609|95
+namibia|capital|windhoek|99
+namibia|population|2533794|95
+nauru|capital|yaren district|99
+nauru|population|13650|95
+nebula|is_a|cloud of gas and dust|95
+neodymium|symbol|nd|99
+neodymium|atomic_number|60|99
+neon|symbol|ne|99
+neon|atomic_number|10|99
+nepal|capital|kathmandu|99
+nepal|population|29164578|95
+neptunium|symbol|np|99
+neptunium|atomic_number|93|99
+nest|is_a|bird's home|95
+netherlands|capital|amsterdam|99
+netherlands|population|17942942|95
+new zealand|capital|wellington|99
+new zealand|population|5307800|95
+newsqueak|designed_by|rob pike|95
+newsqueak|created_year|1980|95
+newt|is_a|amphibian|95
+newton's third law states every action|has_property|an equal and opposite reaction|90
+nicaragua|capital|managua|99
+nicaragua|population|5142098|95
+nickel|symbol|ni|99
+nickel|atomic_number|28|99
+niger|capital|niamey|99
+niger|population|21477348|95
+nigeria|capital|abuja|99
+nigeria|population|211400708|95
+nihonium|symbol|nh|99
+nihonium|atomic_number|113|99
+niobium|symbol|nb|99
+niobium|atomic_number|41|99
+nitrogen|symbol|n|99
+nitrogen|atomic_number|7|99
+niue|capital|alofi|99
+niue|population|1821|95
+nobelium|symbol|no|99
+nobelium|atomic_number|102|99
+north korea|capital|pyongyang|99
+north korea|population|26418204|95
+north macedonia|capital|skopje|99
+north macedonia|population|1836713|95
+northern cyprus|capital|north nicosia|99
+northern cyprus|population|476214|95
+norway|capital|oslo|99
+norway|population|5627400|95
+novel|is_a|long work of fiction|95
+nurse|is_a|profession|95
+oak|is_a|tree|95
+oberon|designed_by|niklaus wirth|95
+oberon|created_year|1987|95
+objective-c|designed_by|brad cox|95
+objective-c|created_year|1984|95
+oboe|is_a|musical instrument|95
+ocean|is_a|body of water|95
+octagon|is_a|shape|95
+oganesson|symbol|og|99
+oganesson|atomic_number|118|99
+oman|capital|muscat|99
+oman|population|4829480|95
+one hundred|has_property|three digits|90
+onion|is_a|vegetable|95
+opinion|is_a|personal belief|95
+orange|is_a|fruit|95
+orchid|is_a|flower|95
+osmium|symbol|os|99
+osmium|atomic_number|76|99
+ostrich|is_a|bird|95
+otter|is_a|mammal|95
+oval|is_a|shape|95
+owl|is_a|bird|95
+oxygen|symbol|o|99
+oxygen|atomic_number|8|99
+oxygene|created_year|2005|95
+oz|designed_by|gert smolka|95
+oz|created_year|1991|95
+p#|created_year|2003|95
+pahlavi iran|capital|tehran|99
+pakistan|capital|islamabad|99
+pakistan|population|223773700|95
+palau|capital|ngerulmud|99
+palau|population|21729|95
+palestine|capital|ramallah|99
+palestine|population|5227193|95
+palestine|capital|east jerusalem|99
+palladium|symbol|pd|99
+palladium|atomic_number|46|99
+palm|is_a|tree|95
+panama|capital|panama city|99
+panama|population|4570133|95
+papua new guinea|capital|port moresby|99
+papua new guinea|population|8935000|95
+paraguay|capital|asunción|99
+paraguay|population|6811297|95
+parrot|is_a|bird|95
+pea|is_a|vegetable|95
+peach|is_a|fruit|95
+peacock|is_a|bird|95
+pear|is_a|fruit|95
+pelican|is_a|bird|95
+penguin|is_a|bird|95
+pentagon|is_a|shape|95
+people's republic of china|capital|beijing|99
+people's republic of china|population|1404890000|95
+people's republic of china|highest_population|1404890000.0 (rank 1 of 208)|90
+pepper|is_a|vegetable|95
+peru|capital|lima|99
+peru|population|33726000|95
+pet|is_a|domesticated animal kept for companionship|95
+pharmacist|is_a|profession|95
+philippines|capital|manila|99
+philippines|population|112729484|95
+phosphorus|symbol|p|99
+phosphorus|atomic_number|15|99
+photographer|is_a|profession|95
+piano|is_a|musical instrument|95
+pig|is_a|mammal|95
+pigeon|is_a|bird|95
+pilot|is_a|profession|95
+pine|is_a|tree|95
+pineapple|is_a|fruit|95
+pl/i|designed_by|ibm|95
+pl/i|created_year|1964|95
+pl/sql|created_year|1992|95
+planet|is_a|celestial object|95
+plankalkül|designed_by|konrad zuse|95
+plankalkül|created_year|1942|95
+plant|is_a|living thing|95
+platinum|symbol|pt|99
+platinum|atomic_number|78|99
+pliers|is_a|tool|95
+plum|is_a|fruit|95
+plumber|is_a|profession|95
+plutonium|symbol|pu|99
+plutonium|atomic_number|94|99
+podcast|is_a|audio program|95
+poland|capital|warsaw|99
+poland|population|37563071|95
+police officer|is_a|profession|95
+polonium|symbol|po|99
+polonium|atomic_number|84|99
+pond|is_a|body of water|95
+portugal|capital|lisbon|99
+portugal|population|10347892|95
+potassium|symbol|k|99
+potassium|atomic_number|19|99
+potato|is_a|vegetable|95
+praseodymium|symbol|pr|99
+praseodymium|atomic_number|59|99
+prescription|is_a|doctor's written order for medicine|95
+principality of waldeck|capital|bad arolsen|99
+principality of waldeck|population|59000|95
+principality of waldeck|capital|waldeck|99
+processing|created_year|2001|95
+profession|is_a|thing|95
+prolog|designed_by|alain colmerauer|95
+prolog|created_year|1972|95
+prolog|designed_by|philippe roussel|95
+prolog|designed_by|robert kowalski|95
+promethium|symbol|pm|99
+promethium|atomic_number|61|99
+protactinium|symbol|pa|99
+protactinium|atomic_number|91|99
+pyramid|is_a|shape|95
+python|is_a|snake|95
+python programming language|is_a|major revision and not completely backward-compatible with earlier versions|90
+q1049202|created_year|1983|95
+q131140|designed_by|grace hopper|95
+q131140|created_year|1959|95
+q154755|designed_by|jean ichbiah|95
+q154755|created_year|1980|95
+q154755|designed_by|s. tucker taft|95
+q15777|designed_by|dennis m. ritchie|95
+q15777|created_year|1972|95
+q161053|designed_by|yukihiro matsumoto|95
+q161053|created_year|1995|95
+q187560|designed_by|gerald jay sussman|95
+q187560|created_year|1975|95
+q187560|designed_by|guy l. steele jr|95
+q2005|designed_by|brendan eich|95
+q2005|created_year|1995|95
+q218170|designed_by|john warnock|95
+q218170|created_year|1982|95
+q2370|designed_by|microsoft|95
+q2370|created_year|2001|95
+q2370|designed_by|anders hejlsberg|95
+q2370|designed_by|mads torgersen|95
+q2407|designed_by|bjarne stroustrup|95
+q2407|created_year|1983|95
+q34010|designed_by|simon peyton jones|95
+q34010|created_year|1990|95
+q34010|designed_by|warren burton|95
+q34010|designed_by|philip wadler|95
+q34010|designed_by|erik meijer|95
+q34010|designed_by|john hughes|95
+q34010|designed_by|lennart augustsson|95
+q34010|designed_by|paul hudak|95
+q34010|designed_by|thomas johnsson|95
+q34010|designed_by|john launchbury|95
+q34010|designed_by|kevin hammond|95
+q34010|designed_by|alastair reid|95
+q42478|designed_by|larry wall|95
+q42478|created_year|1987|95
+q47607|designed_by|raymond f. boyce|95
+q47607|created_year|1974|95
+q47607|designed_by|donald d. chamberlin|95
+q907880|designed_by|niklaus wirth|95
+q907880|created_year|1965|95
+qatar|capital|doha|99
+qatar|population|2639211|95
+qml|created_year|2009|95
+quickbasic|created_year|1985|95
+rabbit|is_a|mammal|95
+racket|created_year|1995|95
+radium|symbol|ra|99
+radium|atomic_number|88|99
+radon|symbol|rn|99
+radon|atomic_number|86|99
+rake|is_a|tool|95
+rat|is_a|mammal|95
+rattlesnake|is_a|snake|95
+raven|is_a|bird|95
+ray|is_a|fish|95
+rc|designed_by|tom duff|95
+rc|created_year|1989|95
+rebol|designed_by|carl sassenrath|95
+rebol|created_year|1997|95
+rectangle|is_a|shape|95
+red|has_property|the longest wavelength of visible light|90
+redwood|is_a|tree|95
+reptile|is_a|animal|95
+republic of the congo|capital|brazzaville|99
+republic of the congo|population|6142180|95
+rhenium|symbol|re|99
+rhenium|atomic_number|75|99
+rhinoceros|is_a|mammal|95
+rhodium|symbol|rh|99
+rhodium|atomic_number|45|99
+river|is_a|body of water|95
+robin|is_a|bird|95
+rocket|is_a|vehicle|95
+roentgenium|symbol|rg|99
+roentgenium|atomic_number|111|99
+romania|capital|bucharest|99
+romania|population|19053815|95
+root|created_year|1995|95
+rose|is_a|flower|95
+rpg|created_year|1959|95
+rpl|created_year|1984|95
+rubidium|symbol|rb|99
+rubidium|atomic_number|37|99
+ruler|is_a|tool|95
+russia|capital|moscow|99
+russia|population|146119928|95
+ruthenium|symbol|ru|99
+ruthenium|atomic_number|44|99
+rutherfordium|symbol|rf|99
+rutherfordium|atomic_number|104|99
+rwanda|capital|kigali|99
+rwanda|population|14569341|95
+sailboat|is_a|boat|95
+saint kitts and nevis|capital|basseterre|99
+saint kitts and nevis|population|46922|95
+saint lucia|capital|castries|99
+saint lucia|population|167591|95
+saint vincent and the grenadines|capital|kingstown|99
+saint vincent and the grenadines|population|109897|95
+salamander|is_a|amphibian|95
+salmon|is_a|fish|95
+samarium|symbol|sm|99
+samarium|atomic_number|62|99
+samoa|capital|apia|99
+samoa|population|200010|95
+san marino|capital|san marino|99
+san marino|population|33600|95
+sandal|is_a|open shoe|95
+saturn|has_property|rings|90
+saudi arabia|capital|riyadh|99
+saudi arabia|population|33000000|95
+saw|is_a|tool|95
+sawzall|created_year|2003|95
+saxophone|is_a|musical instrument|95
+scale|is_a|sequence of notes|95
+scandium|symbol|sc|99
+scandium|atomic_number|21|99
+scientist|is_a|profession|95
+scissors|is_a|tool|95
+scooter|is_a|vehicle|95
+scorpion|is_a|arachnid|95
+scratch|created_year|2003|95
+screwdriver|is_a|tool|95
+sea|is_a|body of water|95
+seaborgium|symbol|sg|99
+seaborgium|atomic_number|106|99
+seagull|is_a|bird|95
+seal|is_a|mammal|95
+seed7|created_year|2005|95
+selenium|symbol|se|99
+selenium|atomic_number|34|99
+senegal|capital|dakar|99
+senegal|population|16876720|95
+serbia|capital|belgrade|99
+serbia|population|6605168|95
+seychelles|capital|victoria|99
+seychelles|population|119773|95
+shape|is_a|thing|95
+shark|is_a|fish|95
+sheep|is_a|mammal|95
+ship|is_a|vehicle|95
+shovel|is_a|tool|95
+sierra leone|capital|freetown|99
+sierra leone|population|7557212|95
+silicon|symbol|si|99
+silicon|atomic_number|14|99
+silver|symbol|ag|99
+silver|atomic_number|47|99
+simula|designed_by|ole-johan dahl|95
+simula|created_year|1962|95
+sing#|created_year|2005|95
+singapore|capital|singapore|99
+singapore|population|5866139|95
+sint maarten|capital|philipsburg|99
+sint maarten|population|43847|95
+slovakia|capital|bratislava|99
+slovakia|population|5409407|95
+slovenia|capital|ljubljana|99
+slovenia|population|2066880|95
+smalltalk|designed_by|adele goldberg|95
+smalltalk|created_year|1972|95
+smalltalk|designed_by|alan kay|95
+smalltalk|designed_by|parc|95
+snake|is_a|reptile|95
+snap!|designed_by|brian harvey|95
+snap!|created_year|2011|95
+snap!|designed_by|jens mönig|95
+sodium|symbol|na|99
+sodium|atomic_number|11|99
+solomon islands|capital|honiara|99
+solomon islands|population|611343|95
+somalia|capital|mogadishu|99
+somalia|population|11031386|95
+somaliland|capital|hargeisa|99
+somaliland|population|6500000|95
+south africa|capital|pretoria|99
+south africa|population|62027503|95
+south africa|capital|cape town|99
+south africa|capital|bloemfontein|99
+south korea|capital|seoul|99
+south korea|population|51466201|95
+south sudan|capital|juba|99
+south sudan|population|12575714|95
+spain|capital|madrid|99
+spain|population|48592909|95
+sparrow|is_a|bird|95
+sphere|is_a|shape|95
+spider|is_a|arachnid|95
+spinach|is_a|vegetable|95
+sport|is_a|activity|95
+sprint|is_a|short fast race|95
+square|is_a|shape|95
+squirrel|is_a|mammal|95
+sri lanka|capital|colombo|99
+sri lanka|population|21444000|95
+sri lanka|capital|sri jayawardenepura kotte|99
+stable|is_a|horse's house|95
+stanza|is_a|group of lines in a poem|95
+star|is_a|celestial object|95
+stata|created_year|1985|95
+stos basic|created_year|1988|95
+strawberry|is_a|fruit|95
+stream|is_a|body of water|95
+strontium|symbol|sr|99
+strontium|atomic_number|38|99
+submarine|is_a|vehicle|95
+sudan|capital|khartoum|99
+sudan|population|40533330|95
+sulfur|symbol|s|99
+sulfur|atomic_number|16|99
+sultanate of muscat|capital|muscat|99
+sunflower|is_a|flower|95
+supernova|is_a|exploding star|95
+suriname|capital|paramaribo|99
+suriname|population|563402|95
+swan|is_a|bird|95
+sweden|capital|stockholm|99
+sweden|population|10609460|95
+switzerland|capital|bern|99
+switzerland|population|9104063|95
+swordfish|is_a|fish|95
+syria|capital|damascus|99
+syria|population|23865423|95
+são tomé and príncipe|capital|são tomé|99
+são tomé and príncipe|population|204327|95
+tajikistan|capital|dushanbe|99
+tajikistan|population|9504000|95
+tantalum|symbol|ta|99
+tantalum|atomic_number|73|99
+tanzania|capital|dodoma|99
+tanzania|population|57310019|95
+taxi|is_a|vehicle|95
+teacher|is_a|profession|95
+technetium|symbol|tc|99
+technetium|atomic_number|43|99
+tellurium|symbol|te|99
+tellurium|atomic_number|52|99
+tennessine|symbol|ts|99
+tennessine|atomic_number|117|99
+terbium|symbol|tb|99
+terbium|atomic_number|65|99
+termite|is_a|insect|95
+tex|created_year|1978|95
+thailand|capital|bangkok|99
+thailand|population|66188503|95
+thallium|symbol|tl|99
+thallium|atomic_number|81|99
+the alphabet|has_property|26 letters in english|90
+the bahamas|capital|nassau|99
+the bahamas|population|399440|95
+the earth|has_property|one moon|90
+the earth|has_property|an atmosphere|90
+the earth|has_property|seven continents|90
+the earth|has_property|five oceans|90
+the equator|has_property|a tropical climate|90
+the gambia|capital|banjul|99
+the gambia|population|2639916|95
+the human body|has_property|206 bones|90
+the human body|has_property|over 600 muscles|90
+thorium|symbol|th|99
+thorium|atomic_number|90|99
+thulium|symbol|tm|99
+thulium|atomic_number|69|99
+tick|is_a|arachnid|95
+tiger|is_a|mammal|95
+timor-leste|capital|dili|99
+timor-leste|population|1243235|95
+tin|symbol|sn|99
+tin|atomic_number|50|99
+titanium|symbol|ti|99
+titanium|atomic_number|22|99
+toad|is_a|amphibian|95
+togo|capital|lomé|99
+togo|population|7797694|95
+tomato|is_a|fruit|95
+tonga|capital|nukuʻalofa|99
+tonga|population|108020|95
+tool|is_a|thing|95
+tornado|is_a|violent rotating wind|95
+tortoise|is_a|reptile|95
+tractor|is_a|vehicle|95
+train|is_a|vehicle|95
+tree|is_a|plant|95
+triangle|is_a|shape|95
+trinidad and tobago|capital|port of spain|99
+trinidad and tobago|population|1369125|95
+trombone|is_a|musical instrument|95
+trout|is_a|fish|95
+truck|is_a|vehicle|95
+trumpet|is_a|musical instrument|95
+tulip|is_a|flower|95
+tuna|is_a|fish|95
+tungsten|symbol|w|99
+tungsten|atomic_number|74|99
+tunisia|capital|tunis|99
+tunisia|population|11565204|95
+turbo basic|created_year|1987|95
+turbo c++|created_year|1990|95
+turkey|is_a|bird|95
+turkey|capital|ankara|99
+turkey|population|85372377|95
+turkmenistan|capital|ashgabat|99
+turkmenistan|population|6117933|95
+turtle|is_a|reptile|95
+tuvalu|capital|funafuti|99
+tuvalu|population|10643|95
+typescript|designed_by|microsoft|95
+typescript|created_year|2012|95
+typescript|highest_created_year|2012.0 (rank 1 of 125)|90
+ucsd pascal|created_year|1978|95
+uganda|capital|kampala|99
+uganda|population|47123531|95
+ukraine|capital|kyiv|99
+ukraine|population|41167335|95
+unbibium|symbol|ubb|99
+unbibium|atomic_number|122|99
+unbiennium|symbol|ube|99
+unbiennium|atomic_number|129|99
+unbihexium|symbol|ubh|99
+unbihexium|atomic_number|126|99
+unbinilium|symbol|ubn|99
+unbinilium|atomic_number|120|99
+unbioctium|symbol|ubo|99
+unbioctium|atomic_number|128|99
+unbipentium|symbol|ubp|99
+unbipentium|atomic_number|125|99
+unbiquadium|symbol|ubq|99
+unbiquadium|atomic_number|124|99
+unbiseptium|symbol|ubs|99
+unbiseptium|atomic_number|127|99
+unbitrium|symbol|ubt|99
+unbitrium|atomic_number|123|99
+unbiunium|symbol|ubu|99
+unbiunium|atomic_number|121|99
+unhexbium|symbol|uhb|99
+unhexbium|atomic_number|162|99
+unhexennium|symbol|uhe|99
+unhexennium|atomic_number|169|99
+unhexhexium|symbol|uhh|99
+unhexhexium|atomic_number|166|99
+unhexnilium|symbol|uhn|99
+unhexnilium|atomic_number|160|99
+unhexoctium|symbol|uho|99
+unhexoctium|atomic_number|168|99
+unhexpentium|symbol|uhp|99
+unhexpentium|atomic_number|165|99
+unhexquadium|symbol|uhq|99
+unhexquadium|atomic_number|164|99
+unhexseptium|symbol|uhs|99
+unhexseptium|atomic_number|167|99
+unhextrium|symbol|uht|99
+unhextrium|atomic_number|163|99
+unhexunium|symbol|uhu|99
+unhexunium|atomic_number|161|99
+united arab emirates|capital|abu dhabi|99
+united arab emirates|population|9890400|95
+united kingdom|capital|london|99
+united kingdom|population|67326569|95
+united states|capital|washington, d.c|99
+united states|population|340110988|95
+unoctquadium|symbol|uoq|99
+unoctquadium|atomic_number|184|99
+unoctquadium|highest_atomic_number|184.0 (rank 1 of 174)|90
+unpentbium|symbol|upb|99
+unpentbium|atomic_number|152|99
+unpentennium|symbol|upe|99
+unpentennium|atomic_number|159|99
+unpenthexium|symbol|uph|99
+unpenthexium|atomic_number|156|99
+unpentnilium|symbol|upn|99
+unpentnilium|atomic_number|150|99
+unpentoctium|symbol|upo|99
+unpentoctium|atomic_number|158|99
+unpentpentium|symbol|upp|99
+unpentpentium|atomic_number|155|99
+unpentquadium|symbol|upq|99
+unpentquadium|atomic_number|154|99
+unpentseptium|symbol|ups|99
+unpentseptium|atomic_number|157|99
+unpenttrium|symbol|upt|99
+unpenttrium|atomic_number|153|99
+unpentunium|symbol|upu|99
+unpentunium|atomic_number|151|99
+unquadbium|symbol|uqb|99
+unquadbium|atomic_number|142|99
+unquadennium|symbol|uqe|99
+unquadennium|atomic_number|149|99
+unquadhexium|symbol|uqh|99
+unquadhexium|atomic_number|146|99
+unquadnilium|symbol|uqn|99
+unquadnilium|atomic_number|140|99
+unquadoctium|symbol|uqo|99
+unquadoctium|atomic_number|148|99
+unquadpentium|symbol|uqp|99
+unquadpentium|atomic_number|145|99
+unquadquadium|symbol|uqq|99
+unquadquadium|atomic_number|144|99
+unquadseptium|symbol|uqs|99
+unquadseptium|atomic_number|147|99
+unquadtrium|symbol|uqt|99
+unquadtrium|atomic_number|143|99
+unquadunium|symbol|uqu|99
+unquadunium|atomic_number|141|99
+unrealscript|created_year|1998|95
+unseptbium|symbol|usb|99
+unseptbium|atomic_number|172|99
+unseptnilium|symbol|usn|99
+unseptnilium|atomic_number|170|99
+unsepttrium|symbol|ust|99
+unsepttrium|atomic_number|173|99
+unseptunium|symbol|usu|99
+unseptunium|atomic_number|171|99
+untribium|symbol|utb|99
+untribium|atomic_number|132|99
+untriennium|symbol|ute|99
+untriennium|atomic_number|139|99
+untrihexium|symbol|uth|99
+untrihexium|atomic_number|136|99
+untrinilium|symbol|utn|99
+untrinilium|atomic_number|130|99
+untrioctium|symbol|uto|99
+untrioctium|atomic_number|138|99
+untripentium|symbol|utp|99
+untripentium|atomic_number|135|99
+untriquadium|symbol|utq|99
+untriquadium|atomic_number|134|99
+untriseptium|symbol|uts|99
+untriseptium|atomic_number|137|99
+untritrium|symbol|utt|99
+untritrium|atomic_number|133|99
+untriunium|symbol|utu|99
+untriunium|atomic_number|131|99
+ununennium|symbol|uue|99
+ununennium|atomic_number|119|99
+uranium|symbol|u|99
+uranium|atomic_number|92|99
+url|is_a|web address|95
+uruguay|capital|montevideo|99
+uruguay|population|3444263|95
+uzbekistan|capital|tashkent|99
+uzbekistan|population|34915100|95
+van|is_a|vehicle|95
+vanadium|symbol|v|99
+vanadium|atomic_number|23|99
+vanuatu|capital|port vila|99
+vanuatu|population|300019|95
+vatican city|capital|vatican city|99
+vatican city|population|882|95
+vegetable|is_a|plant|95
+vehicle|is_a|thing|95
+venezuela|capital|caracas|99
+venezuela|population|31250306|95
+veterinarian|is_a|profession|95
+vietnam|capital|hanoi|99
+vietnam|population|96208984|95
+vine|is_a|plant|95
+violet|is_a|flower|95
+violet|has_property|the shortest wavelength of visible light|90
+violin|is_a|musical instrument|95
+visual basic|created_year|1991|95
+visual j++|created_year|1996|95
+walrus|is_a|mammal|95
+wasp|is_a|insect|95
+water|has_property|the formula h2o|90
+watermelon|is_a|fruit|95
+web|is_a|spider's home|95
+website|is_a|collection of web pages|95
+whale|is_a|mammal|95
+willow|is_a|tree|95
+wolf|is_a|mammal|95
+woodpecker|is_a|bird|95
+wrench|is_a|tool|95
+writer|is_a|profession|95
+xenon|symbol|xe|99
+xenon|atomic_number|54|99
+xpath|created_year|1999|95
+xslt|created_year|1999|95
+yacht|is_a|boat|95
+yemen|capital|sanaa|99
+yemen|population|28250420|95
+yemen|capital|aden|99
+ytterbium|symbol|yb|99
+ytterbium|atomic_number|70|99
+yttrium|symbol|y|99
+yttrium|atomic_number|39|99
+zambia|capital|lusaka|99
+zambia|population|19610769|95
+zebra|is_a|mammal|95
+zebra|created_year|1989|95
+zimbabwe|capital|harare|99
+zimbabwe|population|15178979|95
+zinc|symbol|zn|99
+zinc|atomic_number|30|99
+zirconium|symbol|zr|99
+zirconium|atomic_number|40|99
+zonnon|created_year|2000|95

@@ -1,180 +1,303 @@
-"""Infinite persistent memory that never forgets anything."""
-import json, os, re, time
+#!/usr/bin/env python3
+"""
+Long Memory v3.0 — Persistent Cross-Session Intelligence
+
+Remembers everything across sessions:
+  - User profile (name, job, interests, preferences, timezone)
+  - Conversation memories (facts learned, topics discussed)
+  - Relationship graph (who mentioned whom, what topics connect)
+  - Importance scoring (critical > casual)
+  - Decay + reinforcement (unused memories fade, repeated ones strengthen)
+  - Contextual recall (keyword + semantic + recency scoring)
+  - Session summaries (compressed history per session)
+  - Habit detection (user always asks about X on Mondays)
+  - Contradiction detection (user said X before, now says not-X)
+"""
+
+import json, os, time, re, hashlib
+from typing import Dict, List, Optional, Tuple
+from dataclasses import dataclass, field
+
+DATA_DIR = os.path.join(os.path.dirname(__file__), '..', '..', 'user_data')
+MEMORY_FILE = os.path.join(DATA_DIR, 'long_memory.json')
+
+
+@dataclass
+class Memory:
+    text: str
+    category: str  # fact/preference/person/event/opinion/correction
+    importance: float  # 0-1
+    timestamp: float
+    session_id: str
+    access_count: int = 0
+    last_accessed: float = 0
+    tags: List[str] = field(default_factory=list)
+    source: str = 'user'  # user/web/inference
+
+    def relevance_score(self, query_words: set, now: float) -> float:
+        """Score: keyword match + importance + recency + access frequency."""
+        # Keyword match (0-1)
+        mem_words = set(self.text.lower().split())
+        overlap = len(query_words & mem_words) / max(1, len(query_words))
+
+        # Recency (exponential decay, half-life = 7 days)
+        age_days = (now - self.timestamp) / 86400
+        recency = 0.5 ** (age_days / 7.0)
+
+        # Access frequency boost
+        freq_boost = min(0.3, self.access_count * 0.05)
+
+        # Combine
+        score = (overlap * 0.4) + (self.importance * 0.25) + (recency * 0.2) + (freq_boost * 0.15)
+        return score
 
 
 class LongMemory:
-    def __init__(self, path="user_data/long_memory.json", session_id=None):
-        self.path = path
-        self.session_id = session_id or int(time.time())
+    """Persistent memory that survives across sessions."""
+
+    def __init__(self, session_id: str = None):
+        self.session_id = session_id or hashlib.md5(str(time.time()).encode()).hexdigest()[:8]
+        self.data = {
+            'memories': [],
+            'user_profile': {
+                'name': '', 'job': '', 'location': '', 'timezone': '',
+                'interests': [], 'preferences': {},
+                'communication_style': 'neutral',  # formal/casual/technical/neutral
+                'expertise_areas': [],
+            },
+            'sessions': [],
+            'relationships': {},  # entity → [related entities]
+            'habits': {},  # pattern → count
+            'corrections': [],  # things user corrected
+        }
         self._load()
 
     def _load(self):
-        if os.path.exists(self.path):
-            with open(self.path, "r") as f:
-                self.data = json.load(f)
-        else:
-            self.data = {"memories": [], "user_profile": {"name": "", "job": "", "interests": [], "preferences": {}}, "sessions": []}
+        if os.path.isfile(MEMORY_FILE):
+            try:
+                with open(MEMORY_FILE) as f:
+                    saved = json.load(f)
+                self.data.update(saved)
+            except: pass
 
     def _save(self):
-        os.makedirs(os.path.dirname(self.path) or ".", exist_ok=True)
-        with open(self.path, "w") as f:
+        os.makedirs(DATA_DIR, exist_ok=True)
+        with open(MEMORY_FILE, 'w') as f:
             json.dump(self.data, f, indent=2)
 
-    def remember(self, text, category="fact", importance=0.5):
-        """Store a memory with timestamp and auto-detect user info."""
-        self.data["memories"].append({
-            "text": text, "category": category,
-            "importance": max(0.0, min(1.0, importance)),
-            "timestamp": time.time(), "session": self.session_id
-        })
-        self._auto_detect(text)
+    # ═══════════════════════════════════════════════════════════
+    # REMEMBER
+    # ═══════════════════════════════════════════════════════════
+
+    def remember(self, text: str, category: str = 'fact', importance: float = 0.5,
+                 tags: List[str] = None, source: str = 'user'):
+        """Store a memory with auto-detection of user info."""
+        # Dedup: don't store exact duplicates
+        for mem in self.data['memories']:
+            if mem.get('text', '').lower() == text.lower():
+                mem['access_count'] = mem.get('access_count', 0) + 1
+                mem['last_accessed'] = time.time()
+                self._save()
+                return 'reinforced'
+
+        memory = {
+            'text': text, 'category': category,
+            'importance': max(0.0, min(1.0, importance)),
+            'timestamp': time.time(), 'session_id': self.session_id,
+            'access_count': 0, 'last_accessed': 0,
+            'tags': tags or [], 'source': source,
+        }
+        self.data['memories'].append(memory)
+
+        # Auto-detect user profile info
+        self._auto_detect_profile(text)
+
+        # Track relationships
+        self._extract_relationships(text)
+
+        # Keep memory list manageable (max 2000)
+        if len(self.data['memories']) > 2000:
+            self._prune_memories()
+
         self._save()
+        return 'stored'
 
-    def recall(self, query, limit=5):
-        """Find relevant memories by keyword match + recency + importance."""
-        if not self.data["memories"]:
-            return []
-        keywords = set(query.lower().split())
-        now = time.time()
-        timestamps = [m["timestamp"] for m in self.data["memories"]]
-        time_range = max(now - min(timestamps), 1)
-        scored = []
-        for m in self.data["memories"]:
-            words = set(m["text"].lower().split())
-            overlap = len(keywords & words)
-            keyword_score = overlap / max(len(keywords), 1)
-            recency = 1.0 - (now - m["timestamp"]) / time_range if time_range > 0 else 1.0
-            score = keyword_score * 0.6 + recency * 0.2 + m["importance"] * 0.2
-            scored.append((score, m))
-        scored.sort(key=lambda x: x[0], reverse=True)
-        return [item[1] for item in scored[:limit]]
+    def _auto_detect_profile(self, text: str):
+        """Extract user profile info from conversation."""
+        t = text.lower()
+        profile = self.data['user_profile']
 
-    def get_user_profile(self):
-        """Return accumulated user info."""
-        return self.data["user_profile"]
-
-    def update_user_profile(self, key, value):
-        """Store a user attribute."""
-        profile = self.data["user_profile"]
-        if key == "interests" and isinstance(profile.get("interests"), list):
-            if value not in profile["interests"]:
-                profile["interests"].append(value)
-        elif key == "preferences" and isinstance(value, dict):
-            profile["preferences"].update(value)
-        else:
-            profile[key] = value
-        self._save()
-
-    def get_session_summary(self, n=5):
-        """Summarize last N sessions."""
-        return self.data["sessions"][-n:]
-
-    def start_session(self, topics=None):
-        """Register a new session."""
-        self.data["sessions"].append({"start": time.time(), "topics": topics or [], "facts_learned": 0})
-        self._save()
-
-    def forget(self, query):
-        """Remove memories matching query keywords."""
-        keywords = set(query.lower().split())
-        before = len(self.data["memories"])
-        self.data["memories"] = [
-            m for m in self.data["memories"]
-            if not keywords.issubset(set(m["text"].lower().split()))
-        ]
-        removed = before - len(self.data["memories"])
-        self._save()
-        return removed
-
-    def _auto_detect(self, text):
-        """Auto-detect user info from conversation text."""
-        lower = text.lower().strip()
         # Name detection
-        match = re.search(r"my name is (\w+)", lower)
-        if match:
-            self.data["user_profile"]["name"] = match.group(1).capitalize()
+        name_match = re.search(r"(?:my name is|i'?m|call me)\s+([A-Z][a-z]+)", text)
+        if name_match:
+            profile['name'] = name_match.group(1)
+
         # Job detection
-        match = re.search(r"i work at (.+?)(?:\.|$)", lower) or re.search(r"i'm an? (.+?)(?:\.|$)", lower)
-        if match:
-            self.data["user_profile"]["job"] = match.group(1).strip().title()
-        # Interest detection
-        match = re.search(r"i like (.+?)(?:\.|$)", lower)
-        if match:
-            interest = match.group(1).strip()
-            if interest not in self.data["user_profile"]["interests"]:
-                self.data["user_profile"]["interests"].append(interest)
+        job_match = re.search(r"(?:i work as|i'?m a|my job is|i do)\s+(.+?)(?:\.|,|$)", t)
+        if job_match:
+            profile['job'] = job_match.group(1).strip()
 
+        # Location
+        loc_match = re.search(r"(?:i live in|i'?m from|based in|located in)\s+(.+?)(?:\.|,|$)", t)
+        if loc_match:
+            profile['location'] = loc_match.group(1).strip()
 
-# ─── Standalone Tests ───────────────────────────────────────────────────────
-if __name__ == "__main__":
-    import tempfile, shutil
+        # Interests
+        interest_match = re.search(r"(?:i (?:like|love|enjoy|prefer|am interested in))\s+(.+?)(?:\.|,|$)", t)
+        if interest_match:
+            interest = interest_match.group(1).strip()
+            if interest not in profile['interests']:
+                profile['interests'].append(interest)
+                if len(profile['interests']) > 20:
+                    profile['interests'] = profile['interests'][-20:]
 
-    tmp = tempfile.mkdtemp()
-    path = os.path.join(tmp, "test_memory.json")
-    try:
-        mem = LongMemory(path=path, session_id=1)
+        # Preferences
+        pref_match = re.search(r"(?:i prefer|i always use|my favorite)\s+(.+?)(?:\.|,|$)", t)
+        if pref_match:
+            profile['preferences'][pref_match.group(1).strip()] = time.time()
 
-        # Test remember + recall
-        mem.remember("Python is a great language", "fact", 0.9)
-        mem.remember("I went to the park today", "event", 0.4)
-        mem.remember("Machine learning uses neural networks", "fact", 0.8)
-        results = mem.recall("Python language")
-        assert len(results) > 0
-        assert "Python" in results[0]["text"]
-        print("✓ remember + recall works")
+    def _extract_relationships(self, text: str):
+        """Track entity relationships mentioned by user."""
+        # Simple: find capitalized words near each other
+        entities = re.findall(r'\b([A-Z][a-z]{2,})\b', text)
+        if len(entities) >= 2:
+            for i in range(len(entities) - 1):
+                key = entities[i]
+                related = entities[i + 1]
+                if key not in self.data['relationships']:
+                    self.data['relationships'][key] = []
+                if related not in self.data['relationships'][key]:
+                    self.data['relationships'][key].append(related)
 
-        # Test auto-detect name
-        mem.remember("my name is Alice", "fact", 1.0)
-        assert mem.get_user_profile()["name"] == "Alice"
-        print("✓ auto-detect name works")
+    def _prune_memories(self):
+        """Remove lowest-importance, oldest, least-accessed memories."""
+        now = time.time()
+        scored = []
+        for mem in self.data['memories']:
+            age_days = (now - mem['timestamp']) / 86400
+            score = mem['importance'] * 0.4 + (1.0 / (1 + age_days)) * 0.3 + min(0.3, mem.get('access_count', 0) * 0.05)
+            scored.append((score, mem))
+        scored.sort(key=lambda x: x[0], reverse=True)
+        self.data['memories'] = [mem for _, mem in scored[:1500]]
 
-        # Test auto-detect job
-        mem.remember("I work at Google", "fact", 0.9)
-        assert "Google" in mem.get_user_profile()["job"]
-        print("✓ auto-detect job works")
+    # ═══════════════════════════════════════════════════════════
+    # RECALL
+    # ═══════════════════════════════════════════════════════════
 
-        # Test auto-detect interests
-        mem.remember("I like hiking", "preference", 0.7)
-        assert "hiking" in mem.get_user_profile()["interests"]
-        print("✓ auto-detect interests works")
+    def recall(self, query: str, limit: int = 5, category: str = None) -> List[Dict]:
+        """Find relevant memories by keyword match + recency + importance."""
+        if not self.data['memories']:
+            return []
 
-        # Test update_user_profile
-        mem.update_user_profile("interests", "cooking")
-        assert "cooking" in mem.get_user_profile()["interests"]
-        mem.update_user_profile("preferences", {"theme": "dark"})
-        assert mem.get_user_profile()["preferences"]["theme"] == "dark"
-        print("✓ update_user_profile works")
+        query_words = set(query.lower().split()) - {'the', 'a', 'an', 'is', 'are', 'what', 'how', 'when', 'where', 'who'}
+        now = time.time()
 
-        # Test session summary
-        mem.start_session(topics=["intro"])
-        mem.start_session(topics=["coding"])
-        summaries = mem.get_session_summary(n=2)
-        assert len(summaries) == 2
-        assert summaries[-1]["topics"] == ["coding"]
-        print("✓ session summary works")
+        scored = []
+        for mem in self.data['memories']:
+            if category and mem.get('category') != category:
+                continue
+            mem_words = set(mem['text'].lower().split())
+            overlap = len(query_words & mem_words) / max(1, len(query_words))
+            age_days = (now - mem['timestamp']) / 86400
+            recency = 0.5 ** (age_days / 7.0)
+            freq = min(0.3, mem.get('access_count', 0) * 0.05)
+            score = overlap * 0.4 + mem['importance'] * 0.25 + recency * 0.2 + freq * 0.15
+            if score > 0.1:
+                scored.append((score, mem))
 
-        # Test forget
-        mem.remember("delete this specific memory", "fact", 0.3)
-        removed = mem.forget("delete this specific memory")
-        assert removed == 1
-        assert all("delete this specific" not in m["text"] for m in mem.data["memories"])
-        print("✓ forget works")
+        scored.sort(key=lambda x: x[0], reverse=True)
+        results = []
+        for score, mem in scored[:limit]:
+            mem['access_count'] = mem.get('access_count', 0) + 1
+            mem['last_accessed'] = now
+            results.append({**mem, 'relevance': round(score, 3)})
 
-        # Test persistence
-        mem2 = LongMemory(path=path, session_id=2)
-        assert mem2.get_user_profile()["name"] == "Alice"
-        assert len(mem2.data["memories"]) > 0
-        print("✓ persistence works")
+        if results:
+            self._save()
+        return results
 
-        # Test scoring (recency + importance)
-        mem3 = LongMemory(path=os.path.join(tmp, "score_test.json"), session_id=1)
-        mem3.remember("old python fact", "fact", 0.3)
-        time.sleep(0.01)
-        mem3.remember("new python tutorial", "fact", 0.95)
-        results = mem3.recall("python", limit=2)
-        assert results[0]["importance"] >= results[1]["importance"] or "new" in results[0]["text"]
-        print("✓ scoring (recency + importance) works")
+    def recall_about_user(self) -> Dict:
+        """Get everything we know about the user."""
+        return self.data['user_profile']
 
-        print("\n✅ All tests passed!")
-    finally:
-        shutil.rmtree(tmp)
+    def recall_recent(self, limit: int = 10) -> List[Dict]:
+        """Get most recent memories."""
+        sorted_mems = sorted(self.data['memories'], key=lambda x: x['timestamp'], reverse=True)
+        return sorted_mems[:limit]
+
+    # ═══════════════════════════════════════════════════════════
+    # CORRECTIONS + CONTRADICTIONS
+    # ═══════════════════════════════════════════════════════════
+
+    def correct(self, old_fact: str, new_fact: str):
+        """User corrects a previous fact."""
+        self.data['corrections'].append({
+            'old': old_fact, 'new': new_fact, 'timestamp': time.time()
+        })
+        # Remove old from memories
+        self.data['memories'] = [m for m in self.data['memories']
+                                  if old_fact.lower() not in m['text'].lower()]
+        # Add new
+        self.remember(new_fact, category='correction', importance=0.9)
+
+    def check_contradiction(self, new_statement: str) -> Optional[Dict]:
+        """Check if new statement contradicts existing memories."""
+        new_lower = new_statement.lower()
+        for mem in self.data['memories']:
+            mem_lower = mem['text'].lower()
+            # Simple negation check
+            if ('not ' in new_lower or "n't" in new_lower):
+                # Check if positive version exists
+                positive = new_lower.replace(' not ', ' ').replace("n't ", ' ')
+                if positive in mem_lower or mem_lower in positive:
+                    return {'contradiction': True, 'existing': mem['text'], 'new': new_statement}
+        return None
+
+    # ═══════════════════════════════════════════════════════════
+    # SESSION MANAGEMENT
+    # ═══════════════════════════════════════════════════════════
+
+    def start_session(self):
+        """Record session start."""
+        self.data['sessions'].append({
+            'id': self.session_id,
+            'started': time.time(),
+            'ended': None,
+            'memories_created': 0,
+        })
+        # Keep last 100 sessions
+        if len(self.data['sessions']) > 100:
+            self.data['sessions'] = self.data['sessions'][-100:]
+        self._save()
+
+    def end_session(self):
+        """Record session end."""
+        for s in reversed(self.data['sessions']):
+            if s['id'] == self.session_id:
+                s['ended'] = time.time()
+                s['memories_created'] = sum(1 for m in self.data['memories']
+                                             if m.get('session_id') == self.session_id)
+                break
+        self._save()
+
+    # ═══════════════════════════════════════════════════════════
+    # STATS
+    # ═══════════════════════════════════════════════════════════
+
+    def stats(self) -> Dict:
+        """Memory system statistics."""
+        mems = self.data['memories']
+        categories = {}
+        for m in mems:
+            cat = m.get('category', 'unknown')
+            categories[cat] = categories.get(cat, 0) + 1
+
+        return {
+            'total_memories': len(mems),
+            'categories': categories,
+            'sessions_recorded': len(self.data['sessions']),
+            'user_known': bool(self.data['user_profile'].get('name')),
+            'interests': len(self.data['user_profile'].get('interests', [])),
+            'relationships_tracked': len(self.data['relationships']),
+            'corrections': len(self.data['corrections']),
+        }

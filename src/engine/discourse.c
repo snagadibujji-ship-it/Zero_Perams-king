@@ -198,8 +198,11 @@ const char* discourse_subject_ref(const char* concept_name, int sentence_num) {
         case 1:
             return "It";
         case 2:
-            /* "This entity" as generic parent category reference */
-            snprintf(buf, sizeof(buf), "This %s", "entity");
+            /* Use the concept name capitalized (more natural than "This entity") */
+            snprintf(buf, sizeof(buf), "%s", concept_name);
+            /* Capitalize first letter */
+            if (buf[0] >= 'a' && buf[0] <= 'z')
+                buf[0] -= 32;
             return buf;
         case 3:
             return "It";

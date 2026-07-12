@@ -1,0 +1,1072 @@
+bolivia capital la paz
+bolivia population 12244159
+bolivia capital sucre
+bolivia population 12244159
+trinidad and tobago capital port of spain
+trinidad and tobago population 1369125
+saint vincent and the grenadines capital kingstown
+saint vincent and the grenadines population 109897
+saint lucia capital castries
+saint lucia population 167591
+saint kitts and nevis capital basseterre
+saint kitts and nevis population 46922
+jamaica capital kingston
+jamaica population 2697983
+grenada capital st. george's
+grenada population 114299
+guatemala capital guatemala city
+guatemala population 17263239
+the bahamas capital nassau
+the bahamas population 399440
+antigua and barbuda capital st. john's
+antigua and barbuda population 101489
+honduras capital tegucigalpa
+honduras population 8303771
+dominica capital roseau
+dominica population 74656
+dominican republic capital santo domingo
+dominican republic population 10760028
+haiti capital port-au-prince
+haiti population 10981229
+el salvador capital san salvador
+el salvador population 6029976
+iran capital tehran
+iran population 92417700
+iraq capital baghdad
+iraq population 38274618
+costa rica capital san josé
+costa rica population 5265575
+israel capital jerusalem
+israel population 9840000
+panama capital panama city
+panama population 4570133
+yemen capital sanaa
+yemen population 28250420
+yemen capital aden
+yemen population 28250420
+jordan capital amman
+jordan population 10428241
+nicaragua capital managua
+nicaragua population 5142098
+kyrgyzstan capital bishkek
+kyrgyzstan population 7281800
+kuwait capital kuwait city
+kuwait population 4464000
+laos capital vientiane
+laos population 6858160
+lebanon capital beirut
+lebanon population 6100075
+maldives capital malé
+maldives population 436330
+malaysia capital kuala lumpur
+malaysia population 32447385
+myanmar capital naypyidaw
+myanmar population 53370609
+nepal capital kathmandu
+nepal population 29164578
+oman capital muscat
+oman population 4829480
+pakistan capital islamabad
+pakistan population 223773700
+qatar capital doha
+qatar population 2639211
+saudi arabia capital riyadh
+saudi arabia population 33000000
+sri lanka capital colombo
+sri lanka population 21444000
+sri lanka capital sri jayawardenepura kotte
+sri lanka population 21444000
+syria capital damascus
+syria population 23865423
+tajikistan capital dushanbe
+tajikistan population 9504000
+thailand capital bangkok
+thailand population 66188503
+turkmenistan capital ashgabat
+turkmenistan population 6117933
+united arab emirates capital abu dhabi
+united arab emirates population 9890400
+vietnam capital hanoi
+vietnam population 96208984
+south korea capital seoul
+south korea population 51466201
+afghanistan capital kabul
+afghanistan population 41454761
+bangladesh capital dhaka
+bangladesh population 171466990
+mali capital bamako
+mali population 22395489
+angola capital luanda
+angola population 36749906
+bhutan capital thimphu
+bhutan population 787424
+brunei capital bandar seri begawan
+brunei population 458949
+tanzania capital dodoma
+tanzania population 57310019
+philippines capital manila
+philippines population 112729484
+central african republic capital bangui
+central african republic population 5152421
+togo capital lomé
+togo population 7797694
+tunisia capital tunis
+tunisia population 11565204
+zambia capital lusaka
+zambia population 19610769
+zimbabwe capital harare
+zimbabwe population 15178979
+south sudan capital juba
+south sudan population 12575714
+benin capital porto-novo
+benin population 14111034
+botswana capital gaborone
+botswana population 2480244
+burkina faso capital ouagadougou
+burkina faso population 23025776
+burundi capital gitega
+burundi population 13689450
+comoros capital moroni
+comoros population 902348
+republic of the congo capital brazzaville
+republic of the congo population 6142180
+democratic republic of the congo capital kinshasa
+democratic republic of the congo population 105789731
+djibouti capital djibouti
+djibouti population 1152944
+equatorial guinea capital ciudad de la paz
+equatorial guinea population 1847549
+eritrea capital asmara
+eritrea population 3497000
+gabon capital libreville
+gabon population 2025137
+the gambia capital banjul
+the gambia population 2639916
+guinea capital conakry
+guinea population 12717176
+guinea-bissau capital bissau
+guinea-bissau population 1861283
+ivory coast capital yamoussoukro
+ivory coast population 31165654
+cameroon capital yaoundé
+cameroon population 28372687
+cape verde capital praia
+cape verde population 555988
+lesotho capital maseru
+lesotho population 2007201
+liberia capital monrovia
+liberia population 5214030
+libya capital tripoli
+libya population 7381023
+madagascar capital antananarivo
+madagascar population 31964956
+malawi capital lilongwe
+malawi population 17563749
+mauritania capital nouakchott
+mauritania population 4736139
+mauritius capital port louis
+mauritius population 1264613
+morocco capital rabat
+morocco population 36828330
+mozambique capital maputo
+mozambique population 29668834
+namibia capital windhoek
+namibia population 2533794
+niger capital niamey
+niger population 21477348
+nigeria capital abuja
+nigeria population 211400708
+uganda capital kampala
+uganda population 47123531
+rwanda capital kigali
+rwanda population 14569341
+são tomé and príncipe capital são tomé
+são tomé and príncipe population 204327
+senegal capital dakar
+senegal population 16876720
+seychelles capital victoria
+seychelles population 119773
+sierra leone capital freetown
+sierra leone population 7557212
+somalia capital mogadishu
+somalia population 11031386
+sudan capital khartoum
+sudan population 40533330
+eswatini capital mbabane
+eswatini population 1230506
+eswatini capital lobamba
+eswatini population 1230506
+kosovo capital pristina
+kosovo population 1586659
+cook islands capital avarua
+cook islands population 14222
+kingdom of the netherlands capital amsterdam
+kingdom of the netherlands population 17100715
+niue capital alofi
+niue population 1821
+somaliland capital hargeisa
+somaliland population 6500000
+muscat and oman capital muscat
+principality of waldeck capital bad arolsen
+principality of waldeck population 59000
+principality of waldeck capital waldeck
+principality of waldeck population 59000
+palestine capital ramallah
+palestine population 5227193
+palestine capital east jerusalem
+palestine population 5227193
+kingdom of denmark capital copenhagen
+kingdom of denmark population 5930987
+emirate of lengeh capital bandar lengeh
+sultanate of muscat capital muscat
+pahlavi iran capital tehran
+kashmir sultanate capital srinagar
+kashmir sultanate population 280000
+kashmir sultanate capital baramulla
+kashmir sultanate population 280000
+kashmir sultanate capital sopore
+kashmir sultanate population 280000
+kashmir sultanate capital nowshera
+kashmir sultanate population 280000
+kashmir sultanate capital nowhatta
+kashmir sultanate population 280000
+kashmir sultanate capital chanderkot
+kashmir sultanate population 280000
+emirate of al qawasim capital ras al-khaimah
+maragheh khanate capital maragheh
+ecuador capital quito
+ecuador population 16938986
+colombia capital bogotá
+colombia population 52321152
+aruba capital oranjestad
+aruba population 106739
+northern cyprus capital north nicosia
+northern cyprus population 476214
+curaçao capital willemstad
+curaçao population 152849
+sint maarten capital philipsburg
+sint maarten population 43847
+canada capital ottawa
+canada population 36991981
+japan capital tokyo
+japan population 123802000
+norway capital oslo
+norway population 5627400
+ireland capital dublin
+ireland population 5149139
+hungary capital budapest
+hungary population 9603634
+spain capital madrid
+spain population 48592909
+united states capital washington, d.c.
+united states population 340110988
+belgium capital brussels
+belgium population 11825551
+luxembourg capital luxembourg
+luxembourg population 681973
+finland capital helsinki
+finland population 5652881
+sweden capital stockholm
+sweden population 10609460
+denmark capital copenhagen
+denmark population 5822863
+poland capital warsaw
+poland population 37563071
+lithuania capital vilnius
+lithuania population 2860002
+italy capital rome
+italy population 58850717
+switzerland capital bern
+switzerland population 9104063
+austria capital vienna
+austria population 8979894
+greece capital athens
+greece population 10482487
+turkey capital ankara
+turkey population 85372377
+portugal capital lisbon
+portugal population 10347892
+netherlands capital amsterdam
+netherlands population 17942942
+uruguay capital montevideo
+uruguay population 3444263
+egypt capital cairo
+egypt population 114535772
+mexico capital mexico city
+mexico population 132274416
+kenya capital nairobi
+kenya population 48468138
+ethiopia capital addis ababa
+ethiopia population 128691692
+ghana capital accra
+ghana population 32833031
+france capital paris
+france population 68605616
+united kingdom capital london
+united kingdom population 67326569
+people's republic of china capital beijing
+people's republic of china population 1404890000
+brazil capital brasília
+brazil population 213421037
+russia capital moscow
+russia population 146119928
+germany capital berlin
+germany population 83577140
+belarus capital minsk
+belarus population 9056080
+iceland capital reykjavík
+iceland population 364260
+estonia capital tallinn
+estonia population 1369995
+latvia capital riga
+latvia population 1845096
+ukraine capital kyiv
+ukraine population 41167335
+czech republic capital prague
+czech republic population 10909500
+slovakia capital bratislava
+slovakia population 5409407
+slovenia capital ljubljana
+slovenia population 2066880
+moldova capital chișinău
+moldova population 2409207
+romania capital bucharest
+romania population 19053815
+bulgaria capital sofia
+bulgaria population 6423207
+north macedonia capital skopje
+north macedonia population 1836713
+albania capital tirana
+albania population 2811655
+greenland capital nuuk
+greenland population 56609
+croatia capital zagreb
+croatia population 3871833
+bosnia and herzegovina capital sarajevo
+bosnia and herzegovina population 3816459
+azerbaijan capital baku
+azerbaijan population 10180770
+andorra capital andorra la vella
+andorra population 87486
+cyprus capital nicosia
+cyprus population 1344976
+georgia capital tbilisi
+georgia population 3694600
+kazakhstan capital astana
+kazakhstan population 20139914
+malta capital valletta
+malta population 553214
+monaco capital monaco
+monaco population 38857
+montenegro capital podgorica
+montenegro population 617213
+vatican city capital vatican city
+vatican city population 882
+san marino capital san marino
+san marino population 33600
+cuba capital havana
+cuba population 10985974
+belize capital belmopan
+belize population 411106
+barbados capital bridgetown
+barbados population 303431
+indonesia capital jakarta
+indonesia population 275439000
+south africa capital pretoria
+south africa population 62027503
+south africa capital cape town
+south africa population 62027503
+south africa capital bloemfontein
+south africa population 62027503
+algeria capital algiers
+algeria population 46164219
+uzbekistan capital tashkent
+uzbekistan population 34915100
+chile capital santiago
+chile population 19458000
+singapore capital singapore
+singapore population 5866139
+liechtenstein capital vaduz
+liechtenstein population 37922
+bahrain capital manama
+bahrain population 1569666
+armenia capital yerevan
+armenia population 2930450
+serbia capital belgrade
+serbia population 6605168
+australia capital canberra
+australia population 27614411
+argentina capital buenos aires
+argentina population 47327407
+peru capital lima
+peru population 33726000
+north korea capital pyongyang
+north korea population 26418204
+cambodia capital phnom penh
+cambodia population 17423880
+timor-leste capital dili
+timor-leste population 1243235
+chad capital n'djamena
+chad population 19319064
+new zealand capital wellington
+new zealand population 5307800
+india capital new delhi
+india population 1326093247
+tuvalu capital funafuti
+tuvalu population 10643
+tonga capital nukuʻalofa
+tonga population 108020
+samoa capital apia
+samoa population 200010
+solomon islands capital honiara
+solomon islands population 611343
+vanuatu capital port vila
+vanuatu population 300019
+papua new guinea capital port moresby
+papua new guinea population 8935000
+palau capital ngerulmud
+palau population 21729
+nauru capital yaren district
+nauru population 13650
+federated states of micronesia capital palikir
+federated states of micronesia population 75817
+marshall islands capital majuro
+marshall islands population 53127
+kiribati capital south tarawa
+kiribati population 134518
+mongolia capital ulaanbaatar
+mongolia population 3409939
+fiji capital suva
+fiji population 926276
+venezuela capital caracas
+venezuela population 31250306
+suriname capital paramaribo
+suriname population 563402
+paraguay capital asunción
+paraguay population 6811297
+guyana capital georgetown
+guyana population 878674
+hydrogen symbol H
+hydrogen atomic_number 1
+helium symbol He
+helium atomic_number 2
+lithium symbol Li
+lithium atomic_number 3
+beryllium symbol Be
+beryllium atomic_number 4
+boron symbol B
+boron atomic_number 5
+carbon symbol C
+carbon atomic_number 6
+nitrogen symbol N
+nitrogen atomic_number 7
+oxygen symbol O
+oxygen atomic_number 8
+fluorine symbol F
+fluorine atomic_number 9
+neon symbol Ne
+neon atomic_number 10
+sodium symbol Na
+sodium atomic_number 11
+magnesium symbol Mg
+magnesium atomic_number 12
+aluminium symbol Al
+aluminium atomic_number 13
+silicon symbol Si
+silicon atomic_number 14
+francium symbol Fr
+francium atomic_number 87
+phosphorus symbol P
+phosphorus atomic_number 15
+iron symbol Fe
+iron atomic_number 26
+sulfur symbol S
+sulfur atomic_number 16
+chlorine symbol Cl
+chlorine atomic_number 17
+argon symbol Ar
+argon atomic_number 18
+potassium symbol K
+potassium atomic_number 19
+calcium symbol Ca
+calcium atomic_number 20
+lead symbol Pb
+lead atomic_number 82
+scandium symbol Sc
+scandium atomic_number 21
+titanium symbol Ti
+titanium atomic_number 22
+vanadium symbol V
+vanadium atomic_number 23
+chromium symbol Cr
+chromium atomic_number 24
+manganese symbol Mn
+manganese atomic_number 25
+rhenium symbol Re
+rhenium atomic_number 75
+cobalt symbol Co
+cobalt atomic_number 27
+tungsten symbol W
+tungsten atomic_number 74
+nickel symbol Ni
+nickel atomic_number 28
+osmium symbol Os
+osmium atomic_number 76
+copper symbol Cu
+copper atomic_number 29
+zinc symbol Zn
+zinc atomic_number 30
+gallium symbol Ga
+gallium atomic_number 31
+germanium symbol Ge
+germanium atomic_number 32
+arsenic symbol As
+arsenic atomic_number 33
+selenium symbol Se
+selenium atomic_number 34
+iridium symbol Ir
+iridium atomic_number 77
+bromine symbol Br
+bromine atomic_number 35
+platinum symbol Pt
+platinum atomic_number 78
+krypton symbol Kr
+krypton atomic_number 36
+rubidium symbol Rb
+rubidium atomic_number 37
+gold symbol Au
+gold atomic_number 79
+mercury symbol Hg
+mercury atomic_number 80
+thallium symbol Tl
+thallium atomic_number 81
+strontium symbol Sr
+strontium atomic_number 38
+yttrium symbol Y
+yttrium atomic_number 39
+bismuth symbol Bi
+bismuth atomic_number 83
+polonium symbol Po
+polonium atomic_number 84
+astatine symbol At
+astatine atomic_number 85
+zirconium symbol Zr
+zirconium atomic_number 40
+niobium symbol Nb
+niobium atomic_number 41
+molybdenum symbol Mo
+molybdenum atomic_number 42
+technetium symbol Tc
+technetium atomic_number 43
+ruthenium symbol Ru
+ruthenium atomic_number 44
+rhodium symbol Rh
+rhodium atomic_number 45
+palladium symbol Pd
+palladium atomic_number 46
+silver symbol Ag
+silver atomic_number 47
+cadmium symbol Cd
+cadmium atomic_number 48
+indium symbol In
+indium atomic_number 49
+tin symbol Sn
+tin atomic_number 50
+uranium symbol U
+uranium atomic_number 92
+antimony symbol Sb
+antimony atomic_number 51
+tellurium symbol Te
+tellurium atomic_number 52
+plutonium symbol Pu
+plutonium atomic_number 94
+iodine symbol I
+iodine atomic_number 53
+neptunium symbol Np
+neptunium atomic_number 93
+xenon symbol Xe
+xenon atomic_number 54
+caesium symbol Cs
+caesium atomic_number 55
+protactinium symbol Pa
+protactinium atomic_number 91
+barium symbol Ba
+barium atomic_number 56
+thorium symbol Th
+thorium atomic_number 90
+hafnium symbol Hf
+hafnium atomic_number 72
+actinium symbol Ac
+actinium atomic_number 89
+tantalum symbol Ta
+tantalum atomic_number 73
+radium symbol Ra
+radium atomic_number 88
+radon symbol Rn
+radon atomic_number 86
+ununennium symbol Uue
+ununennium atomic_number 119
+unbinilium symbol Ubn
+unbinilium atomic_number 120
+rutherfordium symbol Rf
+rutherfordium atomic_number 104
+dubnium symbol Db
+dubnium atomic_number 105
+seaborgium symbol Sg
+seaborgium atomic_number 106
+bohrium symbol Bh
+bohrium atomic_number 107
+hassium symbol Hs
+hassium atomic_number 108
+meitnerium symbol Mt
+meitnerium atomic_number 109
+darmstadtium symbol Ds
+darmstadtium atomic_number 110
+roentgenium symbol Rg
+roentgenium atomic_number 111
+copernicium symbol Cn
+copernicium atomic_number 112
+nihonium symbol Nh
+nihonium atomic_number 113
+flerovium symbol Fl
+flerovium atomic_number 114
+moscovium symbol Mc
+moscovium atomic_number 115
+livermorium symbol Lv
+livermorium atomic_number 116
+tennessine symbol Ts
+tennessine atomic_number 117
+oganesson symbol Og
+oganesson atomic_number 118
+cerium symbol Ce
+cerium atomic_number 58
+praseodymium symbol Pr
+praseodymium atomic_number 59
+neodymium symbol Nd
+neodymium atomic_number 60
+europium symbol Eu
+europium atomic_number 63
+unbiunium symbol Ubu
+unbiunium atomic_number 121
+lanthanum symbol La
+lanthanum atomic_number 57
+promethium symbol Pm
+promethium atomic_number 61
+samarium symbol Sm
+samarium atomic_number 62
+gadolinium symbol Gd
+gadolinium atomic_number 64
+terbium symbol Tb
+terbium atomic_number 65
+dysprosium symbol Dy
+dysprosium atomic_number 66
+holmium symbol Ho
+holmium atomic_number 67
+erbium symbol Er
+erbium atomic_number 68
+thulium symbol Tm
+thulium atomic_number 69
+ytterbium symbol Yb
+ytterbium atomic_number 70
+lutetium symbol Lu
+lutetium atomic_number 71
+americium symbol Am
+americium atomic_number 95
+curium symbol Cm
+curium atomic_number 96
+berkelium symbol Bk
+berkelium atomic_number 97
+californium symbol Cf
+californium atomic_number 98
+einsteinium symbol Es
+einsteinium atomic_number 99
+fermium symbol Fm
+fermium atomic_number 100
+mendelevium symbol Md
+mendelevium atomic_number 101
+nobelium symbol No
+nobelium atomic_number 102
+lawrencium symbol Lr
+lawrencium atomic_number 103
+unbibium symbol Ubb
+unbibium atomic_number 122
+unbihexium symbol Ubh
+unbihexium atomic_number 126
+untriunium symbol Utu
+untriunium atomic_number 131
+untribium symbol Utb
+untribium atomic_number 132
+unbiennium symbol Ube
+unbiennium atomic_number 129
+untrinilium symbol Utn
+untrinilium atomic_number 130
+unbipentium symbol Ubp
+unbipentium atomic_number 125
+unbiseptium symbol Ubs
+unbiseptium atomic_number 127
+unbioctium symbol Ubo
+unbioctium atomic_number 128
+unbiquadium symbol Ubq
+unbiquadium atomic_number 124
+unbitrium symbol Ubt
+unbitrium atomic_number 123
+untriennium symbol Ute
+untriennium atomic_number 139
+untrihexium symbol Uth
+untrihexium atomic_number 136
+untrioctium symbol Uto
+untrioctium atomic_number 138
+untriseptium symbol Uts
+untriseptium atomic_number 137
+unquadennium symbol Uqe
+unquadennium atomic_number 149
+unquadnilium symbol Uqn
+unquadnilium atomic_number 140
+unpentbium symbol Upb
+unpentbium atomic_number 152
+unpentnilium symbol Upn
+unpentnilium atomic_number 150
+unpentunium symbol Upu
+unpentunium atomic_number 151
+unpenttrium symbol Upt
+unpenttrium atomic_number 153
+unquadhexium symbol Uqh
+unquadhexium atomic_number 146
+unquadbium symbol Uqb
+unquadbium atomic_number 142
+unquadoctium symbol Uqo
+unquadoctium atomic_number 148
+unquadseptium symbol Uqs
+unquadseptium atomic_number 147
+unquadpentium symbol Uqp
+unquadpentium atomic_number 145
+unquadquadium symbol Uqq
+unquadquadium atomic_number 144
+unquadtrium symbol Uqt
+unquadtrium atomic_number 143
+unquadunium symbol Uqu
+unquadunium atomic_number 141
+untripentium symbol Utp
+untripentium atomic_number 135
+untriquadium symbol Utq
+untriquadium atomic_number 134
+untritrium symbol Utt
+untritrium atomic_number 133
+unsepttrium symbol Ust
+unsepttrium atomic_number 173
+unseptbium symbol Usb
+unseptbium atomic_number 172
+unhexoctium symbol Uho
+unhexoctium atomic_number 168
+unhexseptium symbol Uhs
+unhexseptium atomic_number 167
+unhexpentium symbol Uhp
+unhexpentium atomic_number 165
+unhexennium symbol Uhe
+unhexennium atomic_number 169
+unpentquadium symbol Upq
+unpentquadium atomic_number 154
+unpentpentium symbol Upp
+unpentpentium atomic_number 155
+unhexquadium symbol Uhq
+unhexquadium atomic_number 164
+unpenthexium symbol Uph
+unpenthexium atomic_number 156
+unpentseptium symbol Ups
+unpentseptium atomic_number 157
+unpentoctium symbol Upo
+unpentoctium atomic_number 158
+unhexnilium symbol Uhn
+unhexnilium atomic_number 160
+unpentennium symbol Upe
+unpentennium atomic_number 159
+unhexunium symbol Uhu
+unhexunium atomic_number 161
+unhexbium symbol Uhb
+unhexbium atomic_number 162
+unhextrium symbol Uht
+unhextrium atomic_number 163
+unhexhexium symbol Uhh
+unhexhexium atomic_number 166
+unseptnilium symbol Usn
+unseptnilium atomic_number 170
+unseptunium symbol Usu
+unseptunium atomic_number 171
+unoctquadium symbol Uoq
+unoctquadium atomic_number 184
+java designed_by sun microsystems
+java created_year 1995
+java designed_by james gosling
+java created_year 1995
+q2005 designed_by brendan eich
+q2005 created_year 1995
+q2370 designed_by microsoft
+q2370 created_year 2001
+q2370 designed_by anders hejlsberg
+q2370 created_year 2001
+q2370 designed_by mads torgersen
+q2370 created_year 2001
+visual basic created_year 1991
+q2407 designed_by bjarne stroustrup
+q2407 created_year 1983
+tex created_year 1978
+q15777 designed_by dennis m. ritchie
+q15777 created_year 1972
+xpath created_year 1999
+agda created_year 2007
+xslt created_year 1999
+q34010 designed_by simon peyton jones
+q34010 created_year 1990
+q34010 designed_by warren burton
+q34010 created_year 1990
+q34010 designed_by philip wadler
+q34010 created_year 1990
+q34010 designed_by erik meijer
+q34010 created_year 1990
+q34010 designed_by john hughes
+q34010 created_year 1990
+q34010 designed_by lennart augustsson
+q34010 created_year 1990
+q34010 designed_by paul hudak
+q34010 created_year 1990
+q34010 designed_by thomas johnsson
+q34010 created_year 1990
+q34010 designed_by john launchbury
+q34010 created_year 1990
+q34010 designed_by kevin hammond
+q34010 created_year 1990
+q34010 designed_by alastair reid
+q34010 created_year 1990
+plankalkül designed_by konrad zuse
+plankalkül created_year 1942
+go designed_by rob pike
+go created_year 2009
+go designed_by q1107006
+go created_year 2009
+go designed_by robert griesemer
+go created_year 2009
+pl/sql created_year 1992
+q42478 designed_by larry wall
+q42478 created_year 1987
+cascading style sheets created_year 1996
+q47607 designed_by raymond f. boyce
+q47607 created_year 1974
+q47607 designed_by donald d. chamberlin
+q47607 created_year 1974
+clojure created_year 2007
+cyclone designed_by at&t labs
+cyclone created_year 2002
+mathematica created_year 1988
+c-- designed_by simon peyton jones
+c-- created_year 1997
+c-- designed_by norman ramsey
+c-- created_year 1997
+fortran designed_by john backus
+fortran created_year 1957
+ceylon created_year 2011
+q131140 designed_by grace hopper
+q131140 created_year 1959
+maple created_year 1982
+blitz basic created_year 2000
+q154755 designed_by jean ichbiah
+q154755 created_year 1980
+q154755 designed_by s. tucker taft
+q154755 created_year 1980
+q161053 designed_by yukihiro matsumoto
+q161053 created_year 1995
+prolog designed_by alain colmerauer
+prolog created_year 1972
+prolog designed_by philippe roussel
+prolog created_year 1972
+prolog designed_by robert kowalski
+prolog created_year 1972
+clips created_year 1985
+assembly language created_year 1949
+zebra created_year 1989
+matlab designed_by cleve moler
+matlab created_year 1984
+ibm basic created_year 1981
+ucsd pascal created_year 1978
+q187560 designed_by gerald jay sussman
+q187560 created_year 1975
+q187560 designed_by guy l. steele jr.
+q187560 created_year 1975
+algol designed_by alan perlis
+algol created_year 1959
+algol designed_by friedrich l. bauer
+algol created_year 1959
+algol designed_by peter naur
+algol created_year 1959
+algol designed_by heinz rutishauser
+algol created_year 1959
+algol designed_by john mccarthy
+algol created_year 1959
+algol designed_by john backus
+algol created_year 1959
+algol designed_by klaus samelson
+algol created_year 1959
+algol designed_by adriaan van wijngaarden
+algol created_year 1959
+algol designed_by julien green
+algol created_year 1959
+algol designed_by bernard vauquois
+algol created_year 1959
+algol designed_by charles katz
+algol created_year 1959
+algol designed_by hermann bottenbruch
+algol created_year 1959
+algol designed_by joseph henry wegstein
+algol created_year 1959
+objective-c designed_by brad cox
+objective-c created_year 1984
+freebasic created_year 2004
+logo designed_by seymour papert
+logo created_year 1967
+logo designed_by cynthia solomon
+logo created_year 1967
+logo designed_by wally feurzeig
+logo created_year 1967
+karel designed_by richard e. pattis
+karel created_year 1981
+mercury created_year 1995
+r designed_by robert gentleman
+r created_year 1993
+r designed_by ross ihaka
+r created_year 1993
+lua designed_by roberto ierusalimschy
+lua created_year 1993
+simula designed_by ole-johan dahl
+simula created_year 1962
+q218170 designed_by john warnock
+q218170 created_year 1982
+zonnon created_year 2000
+pl/i designed_by ibm
+pl/i created_year 1964
+gnu octave created_year 1988
+actionscript designed_by gary grossman
+actionscript created_year 1998
+smalltalk designed_by adele goldberg
+smalltalk created_year 1972
+smalltalk designed_by alan kay
+smalltalk created_year 1972
+smalltalk designed_by parc
+smalltalk created_year 1972
+4dos created_year 1988
+brainfuck created_year 1993
+extensible application markup language created_year 2008
+newsqueak designed_by rob pike
+newsqueak created_year 1980
+common intermediate language created_year 2000
+msx basic created_year 1983
+scratch created_year 2003
+rpg created_year 1959
+bourne shell created_year 1979
+common lisp designed_by scott e. fahlman
+common lisp created_year 1984
+common lisp designed_by david moon
+common lisp created_year 1984
+common lisp designed_by richard p. gabriel
+common lisp created_year 1984
+ml designed_by robin milner
+ml created_year 1973
+boo designed_by rodrigo b. de oliveira
+boo created_year 2003
+q907880 designed_by niklaus wirth
+q907880 created_year 1965
+oxygene created_year 2005
+sing# created_year 2005
+root created_year 1995
+gauss created_year 1984
+rpl created_year 1984
+qml created_year 2009
+sawzall created_year 2003
+accent created_year 1990
+visual j++ created_year 1996
+joss created_year 1963
+cython created_year 2007
+typescript designed_by microsoft
+typescript created_year 2012
+p# created_year 2003
+snap! designed_by brian harvey
+snap! created_year 2011
+snap! designed_by jens mönig
+snap! created_year 2011
+chip-8 created_year 1970
+cmu common lisp created_year 1980
+comal created_year 1975
+comit designed_by victor yngve
+comit created_year 1957
+monkey x created_year 2011
+mesa created_year 1976
+etoys designed_by alan kay
+etoys created_year 1996
+q1049202 created_year 1983
+a# created_year 2004
+rc designed_by tom duff
+rc created_year 1989
+processing created_year 2001
+intercal created_year 1972
+quickbasic created_year 1985
+abc designed_by lambert meertens
+abc created_year 1975
+abc designed_by steven pemberton
+abc created_year 1975
+c shell created_year 1978
+charm++ designed_by laxmikant kale
+algol 58 designed_by alan perlis
+algol 58 designed_by friedrich l. bauer
+algol 58 designed_by heinz rutishauser
+algol 58 designed_by john backus
+algol 58 designed_by klaus samelson
+algol 58 designed_by charles katz
+clarion created_year 1986
+cluster created_year 1990
+genie created_year 2008
+coffeescript designed_by jeremy ashkenas
+coffeescript created_year 2009
+component pascal created_year 1997
+mathcad created_year 1986
+alice created_year 2000
+alice created_year 2000
+curl designed_by massachusetts institute of technology
+curl created_year 1998
+curl designed_by steve ward
+curl created_year 1998
+cics created_year 1968
+cω created_year 2005
+icon designed_by ralph griswold
+icon created_year 1977
+j# created_year 2002
+stos basic created_year 1988
+seed7 created_year 2005
+unrealscript created_year 1998
+turbo c++ created_year 1990
+microsoft basic created_year 1975
+stata created_year 1985
+oz designed_by gert smolka
+oz created_year 1991
+algol 60 designed_by john backus
+racket created_year 1995
+joy created_year 2001
+metapost created_year 1994
+dylan created_year 1992
+elan designed_by cornelis h. a. koster
+elan created_year 1974
+executive systems problem oriented language created_year 1966
+jovial designed_by system development corporation
+jovial created_year 1960
+s created_year 1976
+turbo basic created_year 1987
+oberon designed_by niklaus wirth
+oberon created_year 1987
+emacs lisp designed_by richard stallman
+emacs lisp created_year 1985
+emacs lisp designed_by guy l. steele jr.
+emacs lisp created_year 1985
+alice created_year 1995
+rebol designed_by carl sassenrath
+rebol created_year 1997
+euphoria created_year 1993
+people's republic of china highest_population 1404890000.0 (rank 1 of 208)
+unoctquadium highest_atomic_number 184.0 (rank 1 of 174)
+typescript highest_created_year 2012.0 (rank 1 of 125)

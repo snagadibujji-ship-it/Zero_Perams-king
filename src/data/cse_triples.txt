@@ -1,0 +1,1485 @@
+4dos|created_year|1988|95
+a bee|has_property|a stinger|90
+a bicycle|has_property|two wheels|90
+a bicycle|has_property|pedals|90
+a bird|has_property|wings|90
+a bird|has_property|feathers|90
+a bird|has_property|a beak|90
+a bird|has_property|two legs|90
+a bird|has_property|hollow bones|90
+a boat|has_property|a hull|90
+a book|has_property|pages|90
+a book|has_property|a cover|90
+a butterfly|has_property|colorful wings|90
+a camel|has_property|humps|90
+a car|has_property|four wheels|90
+a car|has_property|an engine|90
+a car|has_property|a steering wheel|90
+a cat|has_property|four legs|90
+a cat|has_property|fur|90
+a cat|has_property|whiskers|90
+a cat|has_property|a tail|90
+a cat|has_property|claws|90
+a cat|has_property|ears|90
+a clock|has_property|hands|90
+a clock|has_property|numbers|90
+a computer|has_property|a processor|90
+a computer|has_property|memory|90
+a cow|has_property|four legs|90
+a cow|has_property|an udder|90
+a cow|has_property|horns|90
+a cow|has_property|a tail|90
+a crocodile|has_property|strong jaws|90
+a crocodile|has_property|a long tail|90
+a cube|has_property|six faces|90
+a day|has_property|twenty-four hours|90
+a dog|has_property|four legs|90
+a dog|has_property|fur|90
+a dog|has_property|a tail|90
+a dog|has_property|teeth|90
+a dog|has_property|a nose|90
+a dog|has_property|ears|90
+a dolphin|has_property|a dorsal fin|90
+a dolphin|has_property|a streamlined body|90
+a fish|has_property|gills|90
+a fish|has_property|scales|90
+a fish|has_property|fins|90
+a fish|has_property|a tail|90
+a forest|has_property|many trees|90
+a frog|has_property|webbed feet|90
+a frog|has_property|smooth skin|90
+a giraffe|has_property|a long neck|90
+a giraffe|has_property|spots|90
+a guitar|has_property|six strings|90
+a hammer|has_property|a head and handle|90
+a heart|has_property|four chambers|90
+a helicopter|has_property|a rotor|90
+a hexagon|has_property|six sides|90
+a horse|has_property|four legs|90
+a horse|has_property|a mane|90
+a horse|has_property|a tail|90
+a horse|has_property|hooves|90
+a kangaroo|has_property|a pouch|90
+a kangaroo|has_property|strong hind legs|90
+a knife|has_property|a blade|90
+a lion|has_property|a mane|90
+a minute|has_property|sixty seconds|90
+a motorcycle|has_property|two wheels|90
+a motorcycle|has_property|an engine|90
+a penguin|has_property|flippers|90
+a pentagon|has_property|five sides|90
+a phone|has_property|a screen|90
+a piano|has_property|88 keys|90
+a pig|has_property|four legs|90
+a pig|has_property|a snout|90
+a pig|has_property|a curly tail|90
+a porcupine|has_property|quills|90
+a pyramid|has_property|a pointed top|90
+a rabbit|has_property|long ears|90
+a rabbit|has_property|a short tail|90
+a rainbow|has_property|seven colors|90
+a rectangle|has_property|four sides|90
+a rhinoceros|has_property|a horn|90
+a rhinoceros|has_property|thick skin|90
+a saw|has_property|teeth|90
+a scissors|has_property|two blades|90
+a shark|has_property|sharp teeth|90
+a shark|has_property|a dorsal fin|90
+a sheep|has_property|four legs|90
+a sheep|has_property|wool|90
+a shovel|has_property|a flat blade|90
+a snail|has_property|a shell|90
+a snail|has_property|antennae|90
+a snake|has_property|scales|90
+a snake|has_property|no legs|90
+a snake|has_property|a forked tongue|90
+a song|has_property|verses and a chorus|90
+a spider|has_property|eight legs|90
+a spider|has_property|multiple eyes|90
+a square|has_property|four equal sides|90
+a story|has_property|a beginning, middle, and end|90
+a straight line|has_property|180 degrees|90
+a television|has_property|a screen|90
+a thousand|has_property|four digits|90
+a train|has_property|many cars|90
+a triangle|has_property|three sides|90
+a truck|has_property|large wheels|90
+a turtle|has_property|a shell|90
+a violin|has_property|four strings|90
+a volcano|has_property|lava|90
+a week|has_property|seven days|90
+a whale|has_property|a blowhole|90
+a year|has_property|twelve months|90
+a zebra|has_property|stripes|90
+a#|created_year|2004|95
+abc|designed_by|lambert meertens|95
+abc|created_year|1975|95
+abc|designed_by|steven pemberton|95
+accent|created_year|1990|95
+accountant|is_a|profession|95
+actinium|symbol|ac|99
+actinium|atomic_number|89|99
+actionscript|designed_by|gary grossman|95
+actionscript|created_year|1998|95
+afghanistan|capital|kabul|99
+afghanistan|population|41454761|95
+agda|created_year|2007|95
+airplane|is_a|vehicle|95
+albania|capital|tirana|99
+albania|population|2811655|95
+algeria|capital|algiers|99
+algeria|population|46164219|95
+algol|designed_by|alan perlis|95
+algol|created_year|1959|95
+algol|designed_by|friedrich l. bauer|95
+algol|designed_by|peter naur|95
+algol|designed_by|heinz rutishauser|95
+algol|designed_by|john mccarthy|95
+algol|designed_by|john backus|95
+algol|designed_by|klaus samelson|95
+algol|designed_by|adriaan van wijngaarden|95
+algol|designed_by|julien green|95
+algol|designed_by|bernard vauquois|95
+algol|designed_by|charles katz|95
+algol|designed_by|hermann bottenbruch|95
+algol|designed_by|joseph henry wegstein|95
+algol 58|designed_by|alan perlis|95
+algol 58|designed_by|friedrich l. bauer|95
+algol 58|designed_by|heinz rutishauser|95
+algol 58|designed_by|john backus|95
+algol 58|designed_by|klaus samelson|95
+algol 58|designed_by|charles katz|95
+algol 60|designed_by|john backus|95
+algorithm|is_a|set of steps to solve a problem|95
+alice|created_year|2000|95
+alice|created_year|1995|95
+alligator|is_a|reptile|95
+aluminium|symbol|al|99
+aluminium|atomic_number|13|99
+americium|symbol|am|99
+americium|atomic_number|95|99
+amphibian|is_a|animal|95
+an airplane|has_property|wings|90
+an airplane|has_property|an engine|90
+an airport|has_property|runways|90
+an ant|has_property|six legs|90
+an atom|has_property|protons, neutrons, and electrons|90
+an axe|has_property|a sharp edge|90
+an eagle|has_property|sharp talons|90
+an eagle|has_property|keen eyesight|90
+an egg|has_property|a shell|90
+an egg|has_property|a yolk|90
+an elephant|has_property|a trunk|90
+an elephant|has_property|large ears|90
+an elephant|has_property|tusks|90
+an hour|has_property|sixty minutes|90
+an octagon|has_property|eight sides|90
+an octopus|has_property|eight tentacles|90
+an owl|has_property|large eyes|90
+an owl|has_property|silent flight|90
+andorra|capital|andorra la vella|99
+andorra|population|87486|95
+angola|capital|luanda|99
+angola|population|36749906|95
+animal|is_a|living thing|95
+ant|is_a|insect|95
+antigua and barbuda|capital|st. john's|99
+antigua and barbuda|population|101489|95
+antimony|symbol|sb|99
+antimony|atomic_number|51|99
+apartment|is_a|type of home|95
+ape|is_a|mammal|95
+app|is_a|software application|95
+apple|is_a|fruit|95
+apple tree|is_a|tree|95
+arachnid|is_a|animal|95
+architect|is_a|profession|95
+argentina|capital|buenos aires|99
+argentina|population|47327407|95
+argon|symbol|ar|99
+argon|atomic_number|18|99
+armenia|capital|yerevan|99
+armenia|population|2930450|95
+arsenic|symbol|as|99
+arsenic|atomic_number|33|99
+artist|is_a|profession|95
+aruba|capital|oranjestad|99
+aruba|population|106739|95
+assembly language|created_year|1949|95
+astatine|symbol|at|99
+astatine|atomic_number|85|99
+asteroid|is_a|celestial object|95
+australia|capital|canberra|99
+australia|population|27614411|95
+austria|capital|vienna|99
+austria|population|8979894|95
+axe|is_a|tool|95
+azerbaijan|capital|baku|99
+azerbaijan|population|10180770|95
+bahrain|capital|manama|99
+bahrain|population|1569666|95
+banana|is_a|fruit|95
+bangladesh|capital|dhaka|99
+bangladesh|population|171466990|95
+barbados|capital|bridgetown|99
+barbados|population|303431|95
+barium|symbol|ba|99
+barium|atomic_number|56|99
+bass|is_a|fish|95
+bass|is_a|musical instrument|95
+bat|is_a|mammal|95
+bean|is_a|vegetable|95
+bear|is_a|mammal|95
+beaver|is_a|mammal|95
+bee|is_a|insect|95
+beetle|is_a|insect|95
+belarus|capital|minsk|99
+belarus|population|9056080|95
+belgium|capital|brussels|99
+belgium|population|11825551|95
+belize|capital|belmopan|99
+belize|population|411106|95
+benin|capital|porto-novo|99
+benin|population|14111034|95
+berkelium|symbol|bk|99
+berkelium|atomic_number|97|99
+beryllium|symbol|be|99
+beryllium|atomic_number|4|99
+bhutan|capital|thimphu|99
+bhutan|population|787424|95
+bicycle|is_a|vehicle|95
+birch|is_a|tree|95
+bird|is_a|animal|95
+bismuth|symbol|bi|99
+bismuth|atomic_number|83|99
+black hole|is_a|astronomical body so compact that its gravity prevents anything, including light, from escaping|90
+blitz basic|created_year|2000|95
+blizzard|is_a|severe snowstorm|95
+blog|is_a|personal website|95
+blueberry|is_a|fruit|95
+boat|is_a|vehicle|95
+body of water|is_a|thing|95
+bohrium|symbol|bh|99
+bohrium|atomic_number|107|99
+bolivia|capital|la paz|99
+bolivia|population|12244159|95
+bolivia|capital|sucre|99
+boo|designed_by|rodrigo b. de oliveira|95
+boo|created_year|2003|95
+boot|is_a|tall shoe|95
+boron|symbol|b|99
+boron|atomic_number|5|99
+bosnia and herzegovina|capital|sarajevo|99
+bosnia and herzegovina|population|3816459|95
+botswana|capital|gaborone|99
+botswana|population|2480244|95
+bourne shell|created_year|1979|95
+brainfuck|created_year|1993|95
+brazil|capital|brasília|99
+brazil|population|213421037|95
+broccoli|is_a|vegetable|95
+bromine|symbol|br|99
+bromine|atomic_number|35|99
+broom|is_a|tool|95
+brunei|capital|bandar seri begawan|99
+brunei|population|458949|95
+bug|is_a|error in software|95
+bulgaria|capital|sofia|99
+bulgaria|population|6423207|95
+burkina faso|capital|ouagadougou|99
+burkina faso|population|23025776|95
+burrow|is_a|rabbit's home|95
+burundi|capital|gitega|99
+burundi|population|13689450|95
+bus|is_a|vehicle|95
+bush|is_a|plant|95
+butterfly|is_a|insect|95
+c shell|created_year|1978|95
+c--|designed_by|simon peyton jones|95
+c--|created_year|1997|95
+c--|designed_by|norman ramsey|95
+cactus|is_a|plant|95
+cadmium|symbol|cd|99
+cadmium|atomic_number|48|99
+caesium|symbol|cs|99
+caesium|atomic_number|55|99
+calcium|symbol|ca|99
+calcium|atomic_number|20|99
+californium|symbol|cf|99
+californium|atomic_number|98|99
+cambodia|capital|phnom penh|99
+cambodia|population|17423880|95
+camel|is_a|mammal|95
+cameroon|capital|yaoundé|99
+cameroon|population|28372687|95
+canada|capital|ottawa|99
+canada|population|36991981|95
+canoe|is_a|boat|95
+cape verde|capital|praia|99
+cape verde|population|555988|95
+car|is_a|vehicle|95
+carbon|symbol|c|99
+carbon|atomic_number|6|99
+carnation|is_a|flower|95
+carpenter|is_a|profession|95
+carrot|is_a|vegetable|95
+cascading style sheets|created_year|1996|95
+cat|is_a|mammal|95
+catfish|is_a|fish|95
+cedar|is_a|tree|95
+celestial object|is_a|thing|95
+cello|is_a|musical instrument|95
+central african republic|capital|bangui|99
+central african republic|population|5152421|95
+cerium|symbol|ce|99
+cerium|atomic_number|58|99
+ceylon|created_year|2011|95
+chad|capital|n'djamena|99
+chad|population|19319064|95
+chameleon|is_a|reptile|95
+chapter|is_a|section of a book|95
+charm++|designed_by|laxmikant kale|95
+cheetah|is_a|mammal|95
+chef|is_a|profession|95
+cherry|is_a|fruit|95
+cherry tree|is_a|tree|95
+chicken|is_a|bird|95
+chile|capital|santiago|99
+chile|population|19458000|95
+chimpanzee|is_a|ape|95
+china|has_property|more people than france|90
+chip-8|created_year|1970|95
+chisel|is_a|tool|95
+chlorine|symbol|cl|99
+chlorine|atomic_number|17|99
+chromium|symbol|cr|99
+chromium|atomic_number|24|99
+cics|created_year|1968|95
+circle|is_a|shape|95
+city|is_a|place|95
+clarinet|is_a|musical instrument|95
+clarion|created_year|1986|95
+clips|created_year|1985|95
+clojure|created_year|2007|95
+clownfish|is_a|fish|95
+cluster|created_year|1990|95
+cmu common lisp|created_year|1980|95
+cobalt|symbol|co|99
+cobalt|atomic_number|27|99
+cobra|is_a|snake|95
+cockroach|is_a|insect|95
+cod|is_a|fish|95
+coffeescript|designed_by|jeremy ashkenas|95
+coffeescript|created_year|2009|95
+cold|is_a|disease|95
+colombia|capital|bogotá|99
+colombia|population|52321152|95
+color|is_a|thing|95
+comal|created_year|1975|95
+comet|is_a|celestial object|95
+comit|designed_by|victor yngve|95
+comit|created_year|1957|95
+common intermediate language|created_year|2000|95
+common lisp|designed_by|scott e. fahlman|95
+common lisp|created_year|1984|95
+common lisp|designed_by|david moon|95
+common lisp|designed_by|richard p. gabriel|95
+comoros|capital|moroni|99
+comoros|population|902348|95
+component pascal|created_year|1997|95
+cone|is_a|shape|95
+cook islands|capital|avarua|99
+cook islands|population|14222|95
+copernicium|symbol|cn|99
+copernicium|atomic_number|112|99
+copper|symbol|cu|99
+copper|atomic_number|29|99
+corn|is_a|vegetable|95
+costa rica|capital|san josé|99
+costa rica|population|5265575|95
+country|is_a|place|95
+cow|is_a|mammal|95
+cricket|is_a|insect|95
+croatia|capital|zagreb|99
+croatia|population|3871833|95
+crocodile|is_a|reptile|95
+crow|is_a|bird|95
+cuba|capital|havana|99
+cuba|population|10985974|95
+cube|is_a|shape|95
+cucumber|is_a|vegetable|95
+curaçao|capital|willemstad|99
+curaçao|population|152849|95
+curium|symbol|cm|99
+curium|atomic_number|96|99
+curl|designed_by|massachusetts institute of technology|95
+curl|created_year|1998|95
+curl|designed_by|steve ward|95
+cyclone|designed_by|at&t labs|95
+cyclone|created_year|2002|95
+cylinder|is_a|shape|95
+cyprus|capital|nicosia|99
+cyprus|population|1344976|95
+cython|created_year|2007|95
+czech republic|capital|prague|99
+czech republic|population|10909500|95
+cω|created_year|2005|95
+daffodil|is_a|flower|95
+daisy|is_a|flower|95
+darmstadtium|symbol|ds|99
+darmstadtium|atomic_number|110|99
+deer|is_a|mammal|95
+democratic republic of the congo|capital|kinshasa|99
+democratic republic of the congo|population|105789731|95
+den|is_a|bear's home|95
+denmark|capital|copenhagen|99
+denmark|population|5822863|95
+dentist|is_a|profession|95
+disease|is_a|thing|95
+djibouti|capital|djibouti|99
+djibouti|population|1152944|95
+doctor|is_a|profession|95
+dog|is_a|mammal|95
+dolphin|is_a|mammal|95
+dominica|capital|roseau|99
+dominica|population|74656|95
+dominican republic|capital|santo domingo|99
+dominican republic|population|10760028|95
+dragonfly|is_a|insect|95
+drill|is_a|tool|95
+drink|is_a|thing|95
+drone|is_a|unmanned aircraft|95
+drought|is_a|long period without rain|95
+drum|is_a|musical instrument|95
+dubnium|symbol|db|99
+dubnium|atomic_number|105|99
+duck|is_a|bird|95
+dylan|created_year|1992|95
+dysprosium|symbol|dy|99
+dysprosium|atomic_number|66|99
+eagle|is_a|bird|95
+ecuador|capital|quito|99
+ecuador|population|16938986|95
+eel|is_a|fish|95
+egypt|capital|cairo|99
+egypt|population|114535772|95
+einsteinium|symbol|es|99
+einsteinium|atomic_number|99|99
+el salvador|capital|san salvador|99
+el salvador|population|6029976|95
+elan|designed_by|cornelis h. a. koster|95
+elan|created_year|1974|95
+electrician|is_a|profession|95
+element|is_a|thing|95
+elephant|is_a|mammal|95
+elm|is_a|tree|95
+emacs lisp|designed_by|richard stallman|95
+emacs lisp|created_year|1985|95
+emacs lisp|designed_by|guy l. steele jr|95
+emirate of al qawasim|capital|ras al-khaimah|99
+emirate of lengeh|capital|bandar lengeh|99
+emotion|is_a|thing|95
+engineer|is_a|profession|95
+equatorial guinea|capital|ciudad de la paz|99
+equatorial guinea|population|1847549|95
+erbium|symbol|er|99
+erbium|atomic_number|68|99
+eritrea|capital|asmara|99
+eritrea|population|3497000|95
+estonia|capital|tallinn|99
+estonia|population|1369995|95
+eswatini|capital|mbabane|99
+eswatini|population|1230506|95
+eswatini|capital|lobamba|99
+ethiopia|capital|addis ababa|99
+ethiopia|population|128691692|95
+etoys|designed_by|alan kay|95
+etoys|created_year|1996|95
+euphoria|created_year|1993|95
+europium|symbol|eu|99
+europium|atomic_number|63|99
+executive systems problem oriented language|created_year|1966|95
+extensible application markup language|created_year|2008|95
+falcon|is_a|bird|95
+family|is_a|social unit|95
+farmer|is_a|profession|95
+federated states of micronesia|capital|palikir|99
+federated states of micronesia|population|75817|95
+fermium|symbol|fm|99
+fermium|atomic_number|100|99
+fern|is_a|plant|95
+ferry|is_a|boat|95
+fiji|capital|suva|99
+fiji|population|926276|95
+finland|capital|helsinki|99
+finland|population|5652881|95
+firefighter|is_a|profession|95
+fish|is_a|animal|95
+flamingo|is_a|bird|95
+flerovium|symbol|fl|99
+flerovium|atomic_number|114|99
+flower|is_a|plant|95
+fluorine|symbol|f|99
+fluorine|atomic_number|9|99
+flute|is_a|musical instrument|95
+flute|is_a|wind instrument|95
+fly|is_a|insect|95
+food|is_a|thing|95
+fortran|designed_by|john backus|95
+fortran|created_year|1957|95
+fox|is_a|mammal|95
+france|capital|paris|99
+france|population|68605616|95
+francium|symbol|fr|99
+francium|atomic_number|87|99
+freebasic|created_year|2004|95
+frog|is_a|amphibian|95
+fruit|is_a|plant product|95
+gabon|capital|libreville|99
+gabon|population|2025137|95
+gadolinium|symbol|gd|99
+gadolinium|atomic_number|64|99
+galaxy|is_a|celestial object|95
+gallium|symbol|ga|99
+gallium|atomic_number|31|99
+gauss|created_year|1984|95
+gecko|is_a|reptile|95
+genie|created_year|2008|95
+georgia|capital|tbilisi|99
+georgia|population|3694600|95
+germanium|symbol|ge|99
+germanium|atomic_number|32|99
+germany|capital|berlin|99
+germany|population|83577140|95
+ghana|capital|accra|99
+ghana|population|32833031|95
+giraffe|is_a|mammal|95
+gnu octave|created_year|1988|95
+go|designed_by|rob pike|95
+go|created_year|2009|95
+go|designed_by|q1107006|95
+go|designed_by|robert griesemer|95
+goat|is_a|mammal|95
+gold|symbol|au|99
+gold|atomic_number|79|99
+goldfish|is_a|fish|95
+goose|is_a|bird|95
+gorilla|is_a|ape|95
+grape|is_a|fruit|95
+grass|is_a|plant|95
+grasshopper|is_a|insect|95
+greece|capital|athens|99
+greece|population|10482487|95
+greenland|capital|nuuk|99
+greenland|population|56609|95
+grenada|capital|st. george's|99
+grenada|population|114299|95
+guatemala|capital|guatemala city|99
+guatemala|population|17263239|95
+guinea|capital|conakry|99
+guinea|population|12717176|95
+guinea-bissau|capital|bissau|99
+guinea-bissau|population|1861283|95
+guitar|is_a|musical instrument|95
+guyana|capital|georgetown|99
+guyana|population|878674|95
+hafnium|symbol|hf|99
+hafnium|atomic_number|72|99
+haiti|capital|port-au-prince|99
+haiti|population|10981229|95
+hammer|is_a|tool|95
+harp|is_a|musical instrument|95
+hassium|symbol|hs|99
+hassium|atomic_number|108|99
+hawk|is_a|bird|95
+hedgehog|is_a|mammal|95
+helicopter|is_a|vehicle|95
+helium|symbol|he|99
+helium|atomic_number|2|99
+herring|is_a|fish|95
+hexagon|is_a|shape|95
+highway|is_a|fast road|95
+hippopotamus|is_a|mammal|95
+hive|is_a|bee's home|95
+holmium|symbol|ho|99
+holmium|atomic_number|67|99
+honduras|capital|tegucigalpa|99
+honduras|population|8303771|95
+horse|is_a|mammal|95
+hummingbird|is_a|bird|95
+hungary|capital|budapest|99
+hungary|population|9603634|95
+hurricane|is_a|powerful storm|95
+hydrogen|symbol|h|99
+hydrogen|atomic_number|1|99
+ibm basic|created_year|1981|95
+iceland|capital|reykjavík|99
+iceland|population|364260|95
+icon|designed_by|ralph griswold|95
+icon|created_year|1977|95
+iguana|is_a|reptile|95
+india|has_property|more people than japan|90
+india|capital|new delhi|99
+india|population|1326093247|95
+indium|symbol|in|99
+indium|atomic_number|49|99
+indonesia|capital|jakarta|99
+indonesia|population|275439000|95
+insect|is_a|animal|95
+intercal|created_year|1972|95
+iodine|symbol|i|99
+iodine|atomic_number|53|99
+iran|capital|tehran|99
+iran|population|92417700|95
+iraq|capital|baghdad|99
+iraq|population|38274618|95
+ireland|capital|dublin|99
+ireland|population|5149139|95
+iridium|symbol|ir|99
+iridium|atomic_number|77|99
+iron|symbol|fe|99
+iron|atomic_number|26|99
+israel|capital|jerusalem|99
+israel|population|9840000|95
+italy|capital|rome|99
+italy|population|58850717|95
+ivory coast|capital|yamoussoukro|99
+ivory coast|population|31165654|95
+j#|created_year|2002|95
+jamaica|capital|kingston|99
+jamaica|population|2697983|95
+japan|capital|tokyo|99
+japan|population|123802000|95
+java|designed_by|sun microsystems|95
+java|created_year|1995|95
+java|designed_by|james gosling|95
+jordan|capital|amman|99
+jordan|population|10428241|95
+joss|created_year|1963|95
+journalist|is_a|profession|95
+jovial|designed_by|system development corporation|95
+jovial|created_year|1960|95
+joy|created_year|2001|95
+kangaroo|is_a|mammal|95
+karel|designed_by|richard e. pattis|95
+karel|created_year|1981|95
+kashmir sultanate|capital|srinagar|99
+kashmir sultanate|population|280000|95
+kashmir sultanate|capital|baramulla|99
+kashmir sultanate|capital|sopore|99
+kashmir sultanate|capital|nowshera|99
+kashmir sultanate|capital|nowhatta|99
+kashmir sultanate|capital|chanderkot|99
+kazakhstan|capital|astana|99
+kazakhstan|population|20139914|95
+kennel|is_a|dog's house|95
+kenya|capital|nairobi|99
+kenya|population|48468138|95
+kingdom of denmark|capital|copenhagen|99
+kingdom of denmark|population|5930987|95
+kingdom of the netherlands|capital|amsterdam|99
+kingdom of the netherlands|population|17100715|95
+kiribati|capital|south tarawa|99
+kiribati|population|134518|95
+knife|is_a|tool|95
+koala|is_a|mammal|95
+kosovo|capital|pristina|99
+kosovo|population|1586659|95
+krypton|symbol|kr|99
+krypton|atomic_number|36|99
+kuwait|capital|kuwait city|99
+kuwait|population|4464000|95
+kyrgyzstan|capital|bishkek|99
+kyrgyzstan|population|7281800|95
+ladder|is_a|tool|95
+ladybug|is_a|insect|95
+lake|is_a|body of water|95
+lanthanum|symbol|la|99
+lanthanum|atomic_number|57|99
+laos|capital|vientiane|99
+laos|population|6858160|95
+latvia|capital|riga|99
+latvia|population|1845096|95
+lawrencium|symbol|lr|99
+lawrencium|atomic_number|103|99
+lawyer|is_a|profession|95
+lead|symbol|pb|99
+lead|atomic_number|82|99
+lebanon|capital|beirut|99
+lebanon|population|6100075|95
+lemon|is_a|fruit|95
+leopard|is_a|mammal|95
+lesotho|capital|maseru|99
+lesotho|population|2007201|95
+level|is_a|tool|95
+liberia|capital|monrovia|99
+liberia|population|5214030|95
+libya|capital|tripoli|99
+libya|population|7381023|95
+liechtenstein|capital|vaduz|99
+liechtenstein|population|37922|95
+lily|is_a|flower|95
+lion|is_a|mammal|95
+lithium|symbol|li|99
+lithium|atomic_number|3|99
+lithuania|capital|vilnius|99
+lithuania|population|2860002|95
+livermorium|symbol|lv|99
+livermorium|atomic_number|116|99
+living thing|is_a|thing|95
+lizard|is_a|reptile|95
+logo|designed_by|seymour papert|95
+logo|created_year|1967|95
+logo|designed_by|cynthia solomon|95
+logo|designed_by|wally feurzeig|95
+lotus|is_a|flower|95
+lua|designed_by|roberto ierusalimschy|95
+lua|created_year|1993|95
+lutetium|symbol|lu|99
+lutetium|atomic_number|71|99
+luxembourg|capital|luxembourg|99
+luxembourg|population|681973|95
+madagascar|capital|antananarivo|99
+madagascar|population|31964956|95
+magnesium|symbol|mg|99
+magnesium|atomic_number|12|99
+malawi|capital|lilongwe|99
+malawi|population|17563749|95
+malaysia|capital|kuala lumpur|99
+malaysia|population|32447385|95
+maldives|capital|malé|99
+maldives|population|436330|95
+mali|capital|bamako|99
+mali|population|22395489|95
+malta|capital|valletta|99
+malta|population|553214|95
+mammal|is_a|animal|95
+manganese|symbol|mn|99
+manganese|atomic_number|25|99
+mango|is_a|fruit|95
+maple|is_a|tree|95
+maple|created_year|1982|95
+maragheh khanate|capital|maragheh|99
+mars|has_property|two moons|90
+marshall islands|capital|majuro|99
+marshall islands|population|53127|95
+material|is_a|thing|95
+mathcad|created_year|1986|95
+mathematica|created_year|1988|95
+matlab|designed_by|cleve moler|95
+matlab|created_year|1984|95
+mauritania|capital|nouakchott|99
+mauritania|population|4736139|95
+mauritius|capital|port louis|99
+mauritius|population|1264613|95
+meitnerium|symbol|mt|99
+meitnerium|atomic_number|109|99
+melody|is_a|sequence of notes|95
+mendelevium|symbol|md|99
+mendelevium|atomic_number|101|99
+mercury|symbol|hg|99
+mercury|atomic_number|80|99
+mercury|created_year|1995|95
+mesa|created_year|1976|95
+metapost|created_year|1994|95
+mexico|capital|mexico city|99
+mexico|population|132274416|95
+microsoft basic|created_year|1975|95
+ml|designed_by|robin milner|95
+ml|created_year|1973|95
+moldova|capital|chișinău|99
+moldova|population|2409207|95
+molybdenum|symbol|mo|99
+molybdenum|atomic_number|42|99
+monaco|capital|monaco|99
+monaco|population|38857|95
+mongolia|capital|ulaanbaatar|99
+mongolia|population|3409939|95
+monkey|is_a|mammal|95
+monkey x|created_year|2011|95
+montenegro|capital|podgorica|99
+montenegro|population|617213|95
+moon|is_a|celestial object|95
+morocco|capital|rabat|99
+morocco|population|36828330|95
+moscovium|symbol|mc|99
+moscovium|atomic_number|115|99
+mosquito|is_a|insect|95
+moss|is_a|plant|95
+moth|is_a|insect|95
+motorcycle|is_a|vehicle|95
+mouse|is_a|mammal|95
+mozambique|capital|maputo|99
+mozambique|population|29668834|95
+msx basic|created_year|1983|95
+muscat and oman|capital|muscat|99
+musical instrument|is_a|thing|95
+musician|is_a|profession|95
+myanmar|capital|naypyidaw|99
+myanmar|population|53370609|95
+namibia|capital|windhoek|99
+namibia|population|2533794|95
+nauru|capital|yaren district|99
+nauru|population|13650|95
+nebula|is_a|cloud of gas and dust|95
+neodymium|symbol|nd|99
+neodymium|atomic_number|60|99
+neon|symbol|ne|99
+neon|atomic_number|10|99
+nepal|capital|kathmandu|99
+nepal|population|29164578|95
+neptunium|symbol|np|99
+neptunium|atomic_number|93|99
+nest|is_a|bird's home|95
+netherlands|capital|amsterdam|99
+netherlands|population|17942942|95
+new zealand|capital|wellington|99
+new zealand|population|5307800|95
+newsqueak|designed_by|rob pike|95
+newsqueak|created_year|1980|95
+newt|is_a|amphibian|95
+newton's third law states every action|has_property|an equal and opposite reaction|90
+nicaragua|capital|managua|99
+nicaragua|population|5142098|95
+nickel|symbol|ni|99
+nickel|atomic_number|28|99
+niger|capital|niamey|99
+niger|population|21477348|95
+nigeria|capital|abuja|99
+nigeria|population|211400708|95
+nihonium|symbol|nh|99
+nihonium|atomic_number|113|99
+niobium|symbol|nb|99
+niobium|atomic_number|41|99
+nitrogen|symbol|n|99
+nitrogen|atomic_number|7|99
+niue|capital|alofi|99
+niue|population|1821|95
+nobelium|symbol|no|99
+nobelium|atomic_number|102|99
+north korea|capital|pyongyang|99
+north korea|population|26418204|95
+north macedonia|capital|skopje|99
+north macedonia|population|1836713|95
+northern cyprus|capital|north nicosia|99
+northern cyprus|population|476214|95
+norway|capital|oslo|99
+norway|population|5627400|95
+novel|is_a|long work of fiction|95
+nurse|is_a|profession|95
+oak|is_a|tree|95
+oberon|designed_by|niklaus wirth|95
+oberon|created_year|1987|95
+objective-c|designed_by|brad cox|95
+objective-c|created_year|1984|95
+oboe|is_a|musical instrument|95
+ocean|is_a|body of water|95
+octagon|is_a|shape|95
+oganesson|symbol|og|99
+oganesson|atomic_number|118|99
+oman|capital|muscat|99
+oman|population|4829480|95
+one hundred|has_property|three digits|90
+onion|is_a|vegetable|95
+opinion|is_a|personal belief|95
+orange|is_a|fruit|95
+orchid|is_a|flower|95
+osmium|symbol|os|99
+osmium|atomic_number|76|99
+ostrich|is_a|bird|95
+otter|is_a|mammal|95
+oval|is_a|shape|95
+owl|is_a|bird|95
+oxygen|symbol|o|99
+oxygen|atomic_number|8|99
+oxygene|created_year|2005|95
+oz|designed_by|gert smolka|95
+oz|created_year|1991|95
+p#|created_year|2003|95
+pahlavi iran|capital|tehran|99
+pakistan|capital|islamabad|99
+pakistan|population|223773700|95
+palau|capital|ngerulmud|99
+palau|population|21729|95
+palestine|capital|ramallah|99
+palestine|population|5227193|95
+palestine|capital|east jerusalem|99
+palladium|symbol|pd|99
+palladium|atomic_number|46|99
+palm|is_a|tree|95
+panama|capital|panama city|99
+panama|population|4570133|95
+papua new guinea|capital|port moresby|99
+papua new guinea|population|8935000|95
+paraguay|capital|asunción|99
+paraguay|population|6811297|95
+parrot|is_a|bird|95
+pea|is_a|vegetable|95
+peach|is_a|fruit|95
+peacock|is_a|bird|95
+pear|is_a|fruit|95
+pelican|is_a|bird|95
+penguin|is_a|bird|95
+pentagon|is_a|shape|95
+people's republic of china|capital|beijing|99
+people's republic of china|population|1404890000|95
+people's republic of china|highest_population|1404890000.0 (rank 1 of 208)|90
+pepper|is_a|vegetable|95
+peru|capital|lima|99
+peru|population|33726000|95
+pet|is_a|domesticated animal kept for companionship|95
+pharmacist|is_a|profession|95
+philippines|capital|manila|99
+philippines|population|112729484|95
+phosphorus|symbol|p|99
+phosphorus|atomic_number|15|99
+photographer|is_a|profession|95
+piano|is_a|musical instrument|95
+pig|is_a|mammal|95
+pigeon|is_a|bird|95
+pilot|is_a|profession|95
+pine|is_a|tree|95
+pineapple|is_a|fruit|95
+pl/i|designed_by|ibm|95
+pl/i|created_year|1964|95
+pl/sql|created_year|1992|95
+planet|is_a|celestial object|95
+plankalkül|designed_by|konrad zuse|95
+plankalkül|created_year|1942|95
+plant|is_a|living thing|95
+platinum|symbol|pt|99
+platinum|atomic_number|78|99
+pliers|is_a|tool|95
+plum|is_a|fruit|95
+plumber|is_a|profession|95
+plutonium|symbol|pu|99
+plutonium|atomic_number|94|99
+podcast|is_a|audio program|95
+poland|capital|warsaw|99
+poland|population|37563071|95
+police officer|is_a|profession|95
+polonium|symbol|po|99
+polonium|atomic_number|84|99
+pond|is_a|body of water|95
+portugal|capital|lisbon|99
+portugal|population|10347892|95
+potassium|symbol|k|99
+potassium|atomic_number|19|99
+potato|is_a|vegetable|95
+praseodymium|symbol|pr|99
+praseodymium|atomic_number|59|99
+prescription|is_a|doctor's written order for medicine|95
+principality of waldeck|capital|bad arolsen|99
+principality of waldeck|population|59000|95
+principality of waldeck|capital|waldeck|99
+processing|created_year|2001|95
+profession|is_a|thing|95
+prolog|designed_by|alain colmerauer|95
+prolog|created_year|1972|95
+prolog|designed_by|philippe roussel|95
+prolog|designed_by|robert kowalski|95
+promethium|symbol|pm|99
+promethium|atomic_number|61|99
+protactinium|symbol|pa|99
+protactinium|atomic_number|91|99
+pyramid|is_a|shape|95
+python|is_a|snake|95
+python programming language|is_a|major revision and not completely backward-compatible with earlier versions|90
+q1049202|created_year|1983|95
+q131140|designed_by|grace hopper|95
+q131140|created_year|1959|95
+q154755|designed_by|jean ichbiah|95
+q154755|created_year|1980|95
+q154755|designed_by|s. tucker taft|95
+q15777|designed_by|dennis m. ritchie|95
+q15777|created_year|1972|95
+q161053|designed_by|yukihiro matsumoto|95
+q161053|created_year|1995|95
+q187560|designed_by|gerald jay sussman|95
+q187560|created_year|1975|95
+q187560|designed_by|guy l. steele jr|95
+q2005|designed_by|brendan eich|95
+q2005|created_year|1995|95
+q218170|designed_by|john warnock|95
+q218170|created_year|1982|95
+q2370|designed_by|microsoft|95
+q2370|created_year|2001|95
+q2370|designed_by|anders hejlsberg|95
+q2370|designed_by|mads torgersen|95
+q2407|designed_by|bjarne stroustrup|95
+q2407|created_year|1983|95
+q34010|designed_by|simon peyton jones|95
+q34010|created_year|1990|95
+q34010|designed_by|warren burton|95
+q34010|designed_by|philip wadler|95
+q34010|designed_by|erik meijer|95
+q34010|designed_by|john hughes|95
+q34010|designed_by|lennart augustsson|95
+q34010|designed_by|paul hudak|95
+q34010|designed_by|thomas johnsson|95
+q34010|designed_by|john launchbury|95
+q34010|designed_by|kevin hammond|95
+q34010|designed_by|alastair reid|95
+q42478|designed_by|larry wall|95
+q42478|created_year|1987|95
+q47607|designed_by|raymond f. boyce|95
+q47607|created_year|1974|95
+q47607|designed_by|donald d. chamberlin|95
+q907880|designed_by|niklaus wirth|95
+q907880|created_year|1965|95
+qatar|capital|doha|99
+qatar|population|2639211|95
+qml|created_year|2009|95
+quickbasic|created_year|1985|95
+rabbit|is_a|mammal|95
+racket|created_year|1995|95
+radium|symbol|ra|99
+radium|atomic_number|88|99
+radon|symbol|rn|99
+radon|atomic_number|86|99
+rake|is_a|tool|95
+rat|is_a|mammal|95
+rattlesnake|is_a|snake|95
+raven|is_a|bird|95
+ray|is_a|fish|95
+rc|designed_by|tom duff|95
+rc|created_year|1989|95
+rebol|designed_by|carl sassenrath|95
+rebol|created_year|1997|95
+rectangle|is_a|shape|95
+red|has_property|the longest wavelength of visible light|90
+redwood|is_a|tree|95
+reptile|is_a|animal|95
+republic of the congo|capital|brazzaville|99
+republic of the congo|population|6142180|95
+rhenium|symbol|re|99
+rhenium|atomic_number|75|99
+rhinoceros|is_a|mammal|95
+rhodium|symbol|rh|99
+rhodium|atomic_number|45|99
+river|is_a|body of water|95
+robin|is_a|bird|95
+rocket|is_a|vehicle|95
+roentgenium|symbol|rg|99
+roentgenium|atomic_number|111|99
+romania|capital|bucharest|99
+romania|population|19053815|95
+root|created_year|1995|95
+rose|is_a|flower|95
+rpg|created_year|1959|95
+rpl|created_year|1984|95
+rubidium|symbol|rb|99
+rubidium|atomic_number|37|99
+ruler|is_a|tool|95
+russia|capital|moscow|99
+russia|population|146119928|95
+ruthenium|symbol|ru|99
+ruthenium|atomic_number|44|99
+rutherfordium|symbol|rf|99
+rutherfordium|atomic_number|104|99
+rwanda|capital|kigali|99
+rwanda|population|14569341|95
+sailboat|is_a|boat|95
+saint kitts and nevis|capital|basseterre|99
+saint kitts and nevis|population|46922|95
+saint lucia|capital|castries|99
+saint lucia|population|167591|95
+saint vincent and the grenadines|capital|kingstown|99
+saint vincent and the grenadines|population|109897|95
+salamander|is_a|amphibian|95
+salmon|is_a|fish|95
+samarium|symbol|sm|99
+samarium|atomic_number|62|99
+samoa|capital|apia|99
+samoa|population|200010|95
+san marino|capital|san marino|99
+san marino|population|33600|95
+sandal|is_a|open shoe|95
+saturn|has_property|rings|90
+saudi arabia|capital|riyadh|99
+saudi arabia|population|33000000|95
+saw|is_a|tool|95
+sawzall|created_year|2003|95
+saxophone|is_a|musical instrument|95
+scale|is_a|sequence of notes|95
+scandium|symbol|sc|99
+scandium|atomic_number|21|99
+scientist|is_a|profession|95
+scissors|is_a|tool|95
+scooter|is_a|vehicle|95
+scorpion|is_a|arachnid|95
+scratch|created_year|2003|95
+screwdriver|is_a|tool|95
+sea|is_a|body of water|95
+seaborgium|symbol|sg|99
+seaborgium|atomic_number|106|99
+seagull|is_a|bird|95
+seal|is_a|mammal|95
+seed7|created_year|2005|95
+selenium|symbol|se|99
+selenium|atomic_number|34|99
+senegal|capital|dakar|99
+senegal|population|16876720|95
+serbia|capital|belgrade|99
+serbia|population|6605168|95
+seychelles|capital|victoria|99
+seychelles|population|119773|95
+shape|is_a|thing|95
+shark|is_a|fish|95
+sheep|is_a|mammal|95
+ship|is_a|vehicle|95
+shovel|is_a|tool|95
+sierra leone|capital|freetown|99
+sierra leone|population|7557212|95
+silicon|symbol|si|99
+silicon|atomic_number|14|99
+silver|symbol|ag|99
+silver|atomic_number|47|99
+simula|designed_by|ole-johan dahl|95
+simula|created_year|1962|95
+sing#|created_year|2005|95
+singapore|capital|singapore|99
+singapore|population|5866139|95
+sint maarten|capital|philipsburg|99
+sint maarten|population|43847|95
+slovakia|capital|bratislava|99
+slovakia|population|5409407|95
+slovenia|capital|ljubljana|99
+slovenia|population|2066880|95
+smalltalk|designed_by|adele goldberg|95
+smalltalk|created_year|1972|95
+smalltalk|designed_by|alan kay|95
+smalltalk|designed_by|parc|95
+snake|is_a|reptile|95
+snap!|designed_by|brian harvey|95
+snap!|created_year|2011|95
+snap!|designed_by|jens mönig|95
+sodium|symbol|na|99
+sodium|atomic_number|11|99
+solomon islands|capital|honiara|99
+solomon islands|population|611343|95
+somalia|capital|mogadishu|99
+somalia|population|11031386|95
+somaliland|capital|hargeisa|99
+somaliland|population|6500000|95
+south africa|capital|pretoria|99
+south africa|population|62027503|95
+south africa|capital|cape town|99
+south africa|capital|bloemfontein|99
+south korea|capital|seoul|99
+south korea|population|51466201|95
+south sudan|capital|juba|99
+south sudan|population|12575714|95
+spain|capital|madrid|99
+spain|population|48592909|95
+sparrow|is_a|bird|95
+sphere|is_a|shape|95
+spider|is_a|arachnid|95
+spinach|is_a|vegetable|95
+sport|is_a|activity|95
+sprint|is_a|short fast race|95
+square|is_a|shape|95
+squirrel|is_a|mammal|95
+sri lanka|capital|colombo|99
+sri lanka|population|21444000|95
+sri lanka|capital|sri jayawardenepura kotte|99
+stable|is_a|horse's house|95
+stanza|is_a|group of lines in a poem|95
+star|is_a|celestial object|95
+stata|created_year|1985|95
+stos basic|created_year|1988|95
+strawberry|is_a|fruit|95
+stream|is_a|body of water|95
+strontium|symbol|sr|99
+strontium|atomic_number|38|99
+submarine|is_a|vehicle|95
+sudan|capital|khartoum|99
+sudan|population|40533330|95
+sulfur|symbol|s|99
+sulfur|atomic_number|16|99
+sultanate of muscat|capital|muscat|99
+sunflower|is_a|flower|95
+supernova|is_a|exploding star|95
+suriname|capital|paramaribo|99
+suriname|population|563402|95
+swan|is_a|bird|95
+sweden|capital|stockholm|99
+sweden|population|10609460|95
+switzerland|capital|bern|99
+switzerland|population|9104063|95
+swordfish|is_a|fish|95
+syria|capital|damascus|99
+syria|population|23865423|95
+são tomé and príncipe|capital|são tomé|99
+são tomé and príncipe|population|204327|95
+tajikistan|capital|dushanbe|99
+tajikistan|population|9504000|95
+tantalum|symbol|ta|99
+tantalum|atomic_number|73|99
+tanzania|capital|dodoma|99
+tanzania|population|57310019|95
+taxi|is_a|vehicle|95
+teacher|is_a|profession|95
+technetium|symbol|tc|99
+technetium|atomic_number|43|99
+tellurium|symbol|te|99
+tellurium|atomic_number|52|99
+tennessine|symbol|ts|99
+tennessine|atomic_number|117|99
+terbium|symbol|tb|99
+terbium|atomic_number|65|99
+termite|is_a|insect|95
+tex|created_year|1978|95
+thailand|capital|bangkok|99
+thailand|population|66188503|95
+thallium|symbol|tl|99
+thallium|atomic_number|81|99
+the alphabet|has_property|26 letters in english|90
+the bahamas|capital|nassau|99
+the bahamas|population|399440|95
+the earth|has_property|one moon|90
+the earth|has_property|an atmosphere|90
+the earth|has_property|seven continents|90
+the earth|has_property|five oceans|90
+the equator|has_property|a tropical climate|90
+the gambia|capital|banjul|99
+the gambia|population|2639916|95
+the human body|has_property|206 bones|90
+the human body|has_property|over 600 muscles|90
+thorium|symbol|th|99
+thorium|atomic_number|90|99
+thulium|symbol|tm|99
+thulium|atomic_number|69|99
+tick|is_a|arachnid|95
+tiger|is_a|mammal|95
+timor-leste|capital|dili|99
+timor-leste|population|1243235|95
+tin|symbol|sn|99
+tin|atomic_number|50|99
+titanium|symbol|ti|99
+titanium|atomic_number|22|99
+toad|is_a|amphibian|95
+togo|capital|lomé|99
+togo|population|7797694|95
+tomato|is_a|fruit|95
+tonga|capital|nukuʻalofa|99
+tonga|population|108020|95
+tool|is_a|thing|95
+tornado|is_a|violent rotating wind|95
+tortoise|is_a|reptile|95
+tractor|is_a|vehicle|95
+train|is_a|vehicle|95
+tree|is_a|plant|95
+triangle|is_a|shape|95
+trinidad and tobago|capital|port of spain|99
+trinidad and tobago|population|1369125|95
+trombone|is_a|musical instrument|95
+trout|is_a|fish|95
+truck|is_a|vehicle|95
+trumpet|is_a|musical instrument|95
+tulip|is_a|flower|95
+tuna|is_a|fish|95
+tungsten|symbol|w|99
+tungsten|atomic_number|74|99
+tunisia|capital|tunis|99
+tunisia|population|11565204|95
+turbo basic|created_year|1987|95
+turbo c++|created_year|1990|95
+turkey|is_a|bird|95
+turkey|capital|ankara|99
+turkey|population|85372377|95
+turkmenistan|capital|ashgabat|99
+turkmenistan|population|6117933|95
+turtle|is_a|reptile|95
+tuvalu|capital|funafuti|99
+tuvalu|population|10643|95
+typescript|designed_by|microsoft|95
+typescript|created_year|2012|95
+typescript|highest_created_year|2012.0 (rank 1 of 125)|90
+ucsd pascal|created_year|1978|95
+uganda|capital|kampala|99
+uganda|population|47123531|95
+ukraine|capital|kyiv|99
+ukraine|population|41167335|95
+unbibium|symbol|ubb|99
+unbibium|atomic_number|122|99
+unbiennium|symbol|ube|99
+unbiennium|atomic_number|129|99
+unbihexium|symbol|ubh|99
+unbihexium|atomic_number|126|99
+unbinilium|symbol|ubn|99
+unbinilium|atomic_number|120|99
+unbioctium|symbol|ubo|99
+unbioctium|atomic_number|128|99
+unbipentium|symbol|ubp|99
+unbipentium|atomic_number|125|99
+unbiquadium|symbol|ubq|99
+unbiquadium|atomic_number|124|99
+unbiseptium|symbol|ubs|99
+unbiseptium|atomic_number|127|99
+unbitrium|symbol|ubt|99
+unbitrium|atomic_number|123|99
+unbiunium|symbol|ubu|99
+unbiunium|atomic_number|121|99
+unhexbium|symbol|uhb|99
+unhexbium|atomic_number|162|99
+unhexennium|symbol|uhe|99
+unhexennium|atomic_number|169|99
+unhexhexium|symbol|uhh|99
+unhexhexium|atomic_number|166|99
+unhexnilium|symbol|uhn|99
+unhexnilium|atomic_number|160|99
+unhexoctium|symbol|uho|99
+unhexoctium|atomic_number|168|99
+unhexpentium|symbol|uhp|99
+unhexpentium|atomic_number|165|99
+unhexquadium|symbol|uhq|99
+unhexquadium|atomic_number|164|99
+unhexseptium|symbol|uhs|99
+unhexseptium|atomic_number|167|99
+unhextrium|symbol|uht|99
+unhextrium|atomic_number|163|99
+unhexunium|symbol|uhu|99
+unhexunium|atomic_number|161|99
+united arab emirates|capital|abu dhabi|99
+united arab emirates|population|9890400|95
+united kingdom|capital|london|99
+united kingdom|population|67326569|95
+united states|capital|washington, d.c|99
+united states|population|340110988|95
+unoctquadium|symbol|uoq|99
+unoctquadium|atomic_number|184|99
+unoctquadium|highest_atomic_number|184.0 (rank 1 of 174)|90
+unpentbium|symbol|upb|99
+unpentbium|atomic_number|152|99
+unpentennium|symbol|upe|99
+unpentennium|atomic_number|159|99
+unpenthexium|symbol|uph|99
+unpenthexium|atomic_number|156|99
+unpentnilium|symbol|upn|99
+unpentnilium|atomic_number|150|99
+unpentoctium|symbol|upo|99
+unpentoctium|atomic_number|158|99
+unpentpentium|symbol|upp|99
+unpentpentium|atomic_number|155|99
+unpentquadium|symbol|upq|99
+unpentquadium|atomic_number|154|99
+unpentseptium|symbol|ups|99
+unpentseptium|atomic_number|157|99
+unpenttrium|symbol|upt|99
+unpenttrium|atomic_number|153|99
+unpentunium|symbol|upu|99
+unpentunium|atomic_number|151|99
+unquadbium|symbol|uqb|99
+unquadbium|atomic_number|142|99
+unquadennium|symbol|uqe|99
+unquadennium|atomic_number|149|99
+unquadhexium|symbol|uqh|99
+unquadhexium|atomic_number|146|99
+unquadnilium|symbol|uqn|99
+unquadnilium|atomic_number|140|99
+unquadoctium|symbol|uqo|99
+unquadoctium|atomic_number|148|99
+unquadpentium|symbol|uqp|99
+unquadpentium|atomic_number|145|99
+unquadquadium|symbol|uqq|99
+unquadquadium|atomic_number|144|99
+unquadseptium|symbol|uqs|99
+unquadseptium|atomic_number|147|99
+unquadtrium|symbol|uqt|99
+unquadtrium|atomic_number|143|99
+unquadunium|symbol|uqu|99
+unquadunium|atomic_number|141|99
+unrealscript|created_year|1998|95
+unseptbium|symbol|usb|99
+unseptbium|atomic_number|172|99
+unseptnilium|symbol|usn|99
+unseptnilium|atomic_number|170|99
+unsepttrium|symbol|ust|99
+unsepttrium|atomic_number|173|99
+unseptunium|symbol|usu|99
+unseptunium|atomic_number|171|99
+untribium|symbol|utb|99
+untribium|atomic_number|132|99
+untriennium|symbol|ute|99
+untriennium|atomic_number|139|99
+untrihexium|symbol|uth|99
+untrihexium|atomic_number|136|99
+untrinilium|symbol|utn|99
+untrinilium|atomic_number|130|99
+untrioctium|symbol|uto|99
+untrioctium|atomic_number|138|99
+untripentium|symbol|utp|99
+untripentium|atomic_number|135|99
+untriquadium|symbol|utq|99
+untriquadium|atomic_number|134|99
+untriseptium|symbol|uts|99
+untriseptium|atomic_number|137|99
+untritrium|symbol|utt|99
+untritrium|atomic_number|133|99
+untriunium|symbol|utu|99
+untriunium|atomic_number|131|99
+ununennium|symbol|uue|99
+ununennium|atomic_number|119|99
+uranium|symbol|u|99
+uranium|atomic_number|92|99
+url|is_a|web address|95
+uruguay|capital|montevideo|99
+uruguay|population|3444263|95
+uzbekistan|capital|tashkent|99
+uzbekistan|population|34915100|95
+van|is_a|vehicle|95
+vanadium|symbol|v|99
+vanadium|atomic_number|23|99
+vanuatu|capital|port vila|99
+vanuatu|population|300019|95
+vatican city|capital|vatican city|99
+vatican city|population|882|95
+vegetable|is_a|plant|95
+vehicle|is_a|thing|95
+venezuela|capital|caracas|99
+venezuela|population|31250306|95
+veterinarian|is_a|profession|95
+vietnam|capital|hanoi|99
+vietnam|population|96208984|95
+vine|is_a|plant|95
+violet|is_a|flower|95
+violet|has_property|the shortest wavelength of visible light|90
+violin|is_a|musical instrument|95
+visual basic|created_year|1991|95
+visual j++|created_year|1996|95
+walrus|is_a|mammal|95
+wasp|is_a|insect|95
+water|has_property|the formula h2o|90
+watermelon|is_a|fruit|95
+web|is_a|spider's home|95
+website|is_a|collection of web pages|95
+whale|is_a|mammal|95
+willow|is_a|tree|95
+wolf|is_a|mammal|95
+woodpecker|is_a|bird|95
+wrench|is_a|tool|95
+writer|is_a|profession|95
+xenon|symbol|xe|99
+xenon|atomic_number|54|99
+xpath|created_year|1999|95
+xslt|created_year|1999|95
+yacht|is_a|boat|95
+yemen|capital|sanaa|99
+yemen|population|28250420|95
+yemen|capital|aden|99
+ytterbium|symbol|yb|99
+ytterbium|atomic_number|70|99
+yttrium|symbol|y|99
+yttrium|atomic_number|39|99
+zambia|capital|lusaka|99
+zambia|population|19610769|95
+zebra|is_a|mammal|95
+zebra|created_year|1989|95
+zimbabwe|capital|harare|99
+zimbabwe|population|15178979|95
+zinc|symbol|zn|99
+zinc|atomic_number|30|99
+zirconium|symbol|zr|99
+zirconium|atomic_number|40|99
+zonnon|created_year|2000|95

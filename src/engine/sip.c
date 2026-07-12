@@ -99,10 +99,14 @@ SIPResult sip_parse(const char *input) {
         r.intent = SIP_HYPOTHETICAL; r.confidence = 0.95f; goto extract;
     }
     
-    /* COMPARATIVE: "vs" / "versus" / "compare" / "difference between" / "better" */
+    /* COMPARATIVE: "vs" / "versus" / "compare" / "difference between" / "better" / "heavier" */
     if (ci_contains(lower, " vs ") || ci_contains(lower, "versus") ||
         ci_contains(lower, "compare") || ci_contains(lower, "difference between") ||
-        ci_contains(lower, "which is better")) {
+        ci_contains(lower, "which is better") || ci_contains(lower, "heavier") ||
+        ci_contains(lower, "lighter") || ci_contains(lower, "bigger") ||
+        ci_contains(lower, "smaller") || ci_contains(lower, "faster") ||
+        ci_contains(lower, "taller") || ci_contains(lower, "stronger") ||
+        (ci_contains(lower, " or ") && (ci_contains(lower, "what is") || ci_contains(lower, "which")))) {
         r.intent = SIP_COMPARATIVE; r.confidence = 0.9f; goto extract;
     }
     
@@ -114,10 +118,23 @@ SIPResult sip_parse(const char *input) {
         r.intent = SIP_SUPERLATIVE; r.confidence = 0.9f; goto extract;
     }
     
-    /* NUMERICAL: "calculate" / "compute" / math expressions */
+    /* NUMERICAL: "calculate" / "compute" / math expressions / natural math */
     if (ci_contains(lower, "calculate") || ci_contains(lower, "compute") ||
-        ci_contains(lower, "solve") || ci_contains(lower, "evaluate")) {
+        ci_contains(lower, "solve") || ci_contains(lower, "evaluate") ||
+        ci_contains(lower, " times ") || ci_contains(lower, " plus ") ||
+        ci_contains(lower, " minus ") || ci_contains(lower, " divided ") ||
+        ci_contains(lower, "square root") || ci_contains(lower, "sqrt") ||
+        ci_contains(lower, " multiply ") || ci_contains(lower, " add ") ||
+        ci_contains(lower, " subtract ") || ci_contains(lower, "factorial") ||
+        ci_contains(lower, " power of") || ci_contains(lower, "raised to") ||
+        ci_contains(lower, " cubed") || ci_contains(lower, " squared")) {
         r.intent = SIP_NUMERICAL; r.confidence = 0.95f; goto extract;
+    }
+    
+    /* BOOLEAN with math: "is X prime" / "is X even" / "is X odd" */
+    if ((ci_contains(lower, "is ") || ci_contains(lower, "are ")) &&
+        (ci_contains(lower, " prime") || ci_contains(lower, " even") || ci_contains(lower, " odd"))) {
+        r.intent = SIP_NUMERICAL; r.confidence = 0.90f; goto extract;
     }
     
     /* CAUSAL: "why" / "what causes" / "because" / "reason" */

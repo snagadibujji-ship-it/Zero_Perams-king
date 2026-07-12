@@ -1,0 +1,1072 @@
+bolivia|capital|la paz|99
+bolivia|population|12244159|95
+bolivia|capital|sucre|99
+bolivia|population|12244159|95
+trinidad and tobago|capital|port of spain|99
+trinidad and tobago|population|1369125|95
+saint vincent and the grenadines|capital|kingstown|99
+saint vincent and the grenadines|population|109897|95
+saint lucia|capital|castries|99
+saint lucia|population|167591|95
+saint kitts and nevis|capital|basseterre|99
+saint kitts and nevis|population|46922|95
+jamaica|capital|kingston|99
+jamaica|population|2697983|95
+grenada|capital|st. george's|99
+grenada|population|114299|95
+guatemala|capital|guatemala city|99
+guatemala|population|17263239|95
+the bahamas|capital|nassau|99
+the bahamas|population|399440|95
+antigua and barbuda|capital|st. john's|99
+antigua and barbuda|population|101489|95
+honduras|capital|tegucigalpa|99
+honduras|population|8303771|95
+dominica|capital|roseau|99
+dominica|population|74656|95
+dominican republic|capital|santo domingo|99
+dominican republic|population|10760028|95
+haiti|capital|port-au-prince|99
+haiti|population|10981229|95
+el salvador|capital|san salvador|99
+el salvador|population|6029976|95
+iran|capital|tehran|99
+iran|population|92417700|95
+iraq|capital|baghdad|99
+iraq|population|38274618|95
+costa rica|capital|san josé|99
+costa rica|population|5265575|95
+israel|capital|jerusalem|99
+israel|population|9840000|95
+panama|capital|panama city|99
+panama|population|4570133|95
+yemen|capital|sanaa|99
+yemen|population|28250420|95
+yemen|capital|aden|99
+yemen|population|28250420|95
+jordan|capital|amman|99
+jordan|population|10428241|95
+nicaragua|capital|managua|99
+nicaragua|population|5142098|95
+kyrgyzstan|capital|bishkek|99
+kyrgyzstan|population|7281800|95
+kuwait|capital|kuwait city|99
+kuwait|population|4464000|95
+laos|capital|vientiane|99
+laos|population|6858160|95
+lebanon|capital|beirut|99
+lebanon|population|6100075|95
+maldives|capital|malé|99
+maldives|population|436330|95
+malaysia|capital|kuala lumpur|99
+malaysia|population|32447385|95
+myanmar|capital|naypyidaw|99
+myanmar|population|53370609|95
+nepal|capital|kathmandu|99
+nepal|population|29164578|95
+oman|capital|muscat|99
+oman|population|4829480|95
+pakistan|capital|islamabad|99
+pakistan|population|223773700|95
+qatar|capital|doha|99
+qatar|population|2639211|95
+saudi arabia|capital|riyadh|99
+saudi arabia|population|33000000|95
+sri lanka|capital|colombo|99
+sri lanka|population|21444000|95
+sri lanka|capital|sri jayawardenepura kotte|99
+sri lanka|population|21444000|95
+syria|capital|damascus|99
+syria|population|23865423|95
+tajikistan|capital|dushanbe|99
+tajikistan|population|9504000|95
+thailand|capital|bangkok|99
+thailand|population|66188503|95
+turkmenistan|capital|ashgabat|99
+turkmenistan|population|6117933|95
+united arab emirates|capital|abu dhabi|99
+united arab emirates|population|9890400|95
+vietnam|capital|hanoi|99
+vietnam|population|96208984|95
+south korea|capital|seoul|99
+south korea|population|51466201|95
+afghanistan|capital|kabul|99
+afghanistan|population|41454761|95
+bangladesh|capital|dhaka|99
+bangladesh|population|171466990|95
+mali|capital|bamako|99
+mali|population|22395489|95
+angola|capital|luanda|99
+angola|population|36749906|95
+bhutan|capital|thimphu|99
+bhutan|population|787424|95
+brunei|capital|bandar seri begawan|99
+brunei|population|458949|95
+tanzania|capital|dodoma|99
+tanzania|population|57310019|95
+philippines|capital|manila|99
+philippines|population|112729484|95
+central african republic|capital|bangui|99
+central african republic|population|5152421|95
+togo|capital|lomé|99
+togo|population|7797694|95
+tunisia|capital|tunis|99
+tunisia|population|11565204|95
+zambia|capital|lusaka|99
+zambia|population|19610769|95
+zimbabwe|capital|harare|99
+zimbabwe|population|15178979|95
+south sudan|capital|juba|99
+south sudan|population|12575714|95
+benin|capital|porto-novo|99
+benin|population|14111034|95
+botswana|capital|gaborone|99
+botswana|population|2480244|95
+burkina faso|capital|ouagadougou|99
+burkina faso|population|23025776|95
+burundi|capital|gitega|99
+burundi|population|13689450|95
+comoros|capital|moroni|99
+comoros|population|902348|95
+republic of the congo|capital|brazzaville|99
+republic of the congo|population|6142180|95
+democratic republic of the congo|capital|kinshasa|99
+democratic republic of the congo|population|105789731|95
+djibouti|capital|djibouti|99
+djibouti|population|1152944|95
+equatorial guinea|capital|ciudad de la paz|99
+equatorial guinea|population|1847549|95
+eritrea|capital|asmara|99
+eritrea|population|3497000|95
+gabon|capital|libreville|99
+gabon|population|2025137|95
+the gambia|capital|banjul|99
+the gambia|population|2639916|95
+guinea|capital|conakry|99
+guinea|population|12717176|95
+guinea-bissau|capital|bissau|99
+guinea-bissau|population|1861283|95
+ivory coast|capital|yamoussoukro|99
+ivory coast|population|31165654|95
+cameroon|capital|yaoundé|99
+cameroon|population|28372687|95
+cape verde|capital|praia|99
+cape verde|population|555988|95
+lesotho|capital|maseru|99
+lesotho|population|2007201|95
+liberia|capital|monrovia|99
+liberia|population|5214030|95
+libya|capital|tripoli|99
+libya|population|7381023|95
+madagascar|capital|antananarivo|99
+madagascar|population|31964956|95
+malawi|capital|lilongwe|99
+malawi|population|17563749|95
+mauritania|capital|nouakchott|99
+mauritania|population|4736139|95
+mauritius|capital|port louis|99
+mauritius|population|1264613|95
+morocco|capital|rabat|99
+morocco|population|36828330|95
+mozambique|capital|maputo|99
+mozambique|population|29668834|95
+namibia|capital|windhoek|99
+namibia|population|2533794|95
+niger|capital|niamey|99
+niger|population|21477348|95
+nigeria|capital|abuja|99
+nigeria|population|211400708|95
+uganda|capital|kampala|99
+uganda|population|47123531|95
+rwanda|capital|kigali|99
+rwanda|population|14569341|95
+são tomé and príncipe|capital|são tomé|99
+são tomé and príncipe|population|204327|95
+senegal|capital|dakar|99
+senegal|population|16876720|95
+seychelles|capital|victoria|99
+seychelles|population|119773|95
+sierra leone|capital|freetown|99
+sierra leone|population|7557212|95
+somalia|capital|mogadishu|99
+somalia|population|11031386|95
+sudan|capital|khartoum|99
+sudan|population|40533330|95
+eswatini|capital|mbabane|99
+eswatini|population|1230506|95
+eswatini|capital|lobamba|99
+eswatini|population|1230506|95
+kosovo|capital|pristina|99
+kosovo|population|1586659|95
+cook islands|capital|avarua|99
+cook islands|population|14222|95
+kingdom of the netherlands|capital|amsterdam|99
+kingdom of the netherlands|population|17100715|95
+niue|capital|alofi|99
+niue|population|1821|95
+somaliland|capital|hargeisa|99
+somaliland|population|6500000|95
+muscat and oman|capital|muscat|99
+principality of waldeck|capital|bad arolsen|99
+principality of waldeck|population|59000|95
+principality of waldeck|capital|waldeck|99
+principality of waldeck|population|59000|95
+palestine|capital|ramallah|99
+palestine|population|5227193|95
+palestine|capital|east jerusalem|99
+palestine|population|5227193|95
+kingdom of denmark|capital|copenhagen|99
+kingdom of denmark|population|5930987|95
+emirate of lengeh|capital|bandar lengeh|99
+sultanate of muscat|capital|muscat|99
+pahlavi iran|capital|tehran|99
+kashmir sultanate|capital|srinagar|99
+kashmir sultanate|population|280000|95
+kashmir sultanate|capital|baramulla|99
+kashmir sultanate|population|280000|95
+kashmir sultanate|capital|sopore|99
+kashmir sultanate|population|280000|95
+kashmir sultanate|capital|nowshera|99
+kashmir sultanate|population|280000|95
+kashmir sultanate|capital|nowhatta|99
+kashmir sultanate|population|280000|95
+kashmir sultanate|capital|chanderkot|99
+kashmir sultanate|population|280000|95
+emirate of al qawasim|capital|ras al-khaimah|99
+maragheh khanate|capital|maragheh|99
+ecuador|capital|quito|99
+ecuador|population|16938986|95
+colombia|capital|bogotá|99
+colombia|population|52321152|95
+aruba|capital|oranjestad|99
+aruba|population|106739|95
+northern cyprus|capital|north nicosia|99
+northern cyprus|population|476214|95
+curaçao|capital|willemstad|99
+curaçao|population|152849|95
+sint maarten|capital|philipsburg|99
+sint maarten|population|43847|95
+canada|capital|ottawa|99
+canada|population|36991981|95
+japan|capital|tokyo|99
+japan|population|123802000|95
+norway|capital|oslo|99
+norway|population|5627400|95
+ireland|capital|dublin|99
+ireland|population|5149139|95
+hungary|capital|budapest|99
+hungary|population|9603634|95
+spain|capital|madrid|99
+spain|population|48592909|95
+united states|capital|washington, d.c.|99
+united states|population|340110988|95
+belgium|capital|brussels|99
+belgium|population|11825551|95
+luxembourg|capital|luxembourg|99
+luxembourg|population|681973|95
+finland|capital|helsinki|99
+finland|population|5652881|95
+sweden|capital|stockholm|99
+sweden|population|10609460|95
+denmark|capital|copenhagen|99
+denmark|population|5822863|95
+poland|capital|warsaw|99
+poland|population|37563071|95
+lithuania|capital|vilnius|99
+lithuania|population|2860002|95
+italy|capital|rome|99
+italy|population|58850717|95
+switzerland|capital|bern|99
+switzerland|population|9104063|95
+austria|capital|vienna|99
+austria|population|8979894|95
+greece|capital|athens|99
+greece|population|10482487|95
+turkey|capital|ankara|99
+turkey|population|85372377|95
+portugal|capital|lisbon|99
+portugal|population|10347892|95
+netherlands|capital|amsterdam|99
+netherlands|population|17942942|95
+uruguay|capital|montevideo|99
+uruguay|population|3444263|95
+egypt|capital|cairo|99
+egypt|population|114535772|95
+mexico|capital|mexico city|99
+mexico|population|132274416|95
+kenya|capital|nairobi|99
+kenya|population|48468138|95
+ethiopia|capital|addis ababa|99
+ethiopia|population|128691692|95
+ghana|capital|accra|99
+ghana|population|32833031|95
+france|capital|paris|99
+france|population|68605616|95
+united kingdom|capital|london|99
+united kingdom|population|67326569|95
+people's republic of china|capital|beijing|99
+people's republic of china|population|1404890000|95
+brazil|capital|brasília|99
+brazil|population|213421037|95
+russia|capital|moscow|99
+russia|population|146119928|95
+germany|capital|berlin|99
+germany|population|83577140|95
+belarus|capital|minsk|99
+belarus|population|9056080|95
+iceland|capital|reykjavík|99
+iceland|population|364260|95
+estonia|capital|tallinn|99
+estonia|population|1369995|95
+latvia|capital|riga|99
+latvia|population|1845096|95
+ukraine|capital|kyiv|99
+ukraine|population|41167335|95
+czech republic|capital|prague|99
+czech republic|population|10909500|95
+slovakia|capital|bratislava|99
+slovakia|population|5409407|95
+slovenia|capital|ljubljana|99
+slovenia|population|2066880|95
+moldova|capital|chișinău|99
+moldova|population|2409207|95
+romania|capital|bucharest|99
+romania|population|19053815|95
+bulgaria|capital|sofia|99
+bulgaria|population|6423207|95
+north macedonia|capital|skopje|99
+north macedonia|population|1836713|95
+albania|capital|tirana|99
+albania|population|2811655|95
+greenland|capital|nuuk|99
+greenland|population|56609|95
+croatia|capital|zagreb|99
+croatia|population|3871833|95
+bosnia and herzegovina|capital|sarajevo|99
+bosnia and herzegovina|population|3816459|95
+azerbaijan|capital|baku|99
+azerbaijan|population|10180770|95
+andorra|capital|andorra la vella|99
+andorra|population|87486|95
+cyprus|capital|nicosia|99
+cyprus|population|1344976|95
+georgia|capital|tbilisi|99
+georgia|population|3694600|95
+kazakhstan|capital|astana|99
+kazakhstan|population|20139914|95
+malta|capital|valletta|99
+malta|population|553214|95
+monaco|capital|monaco|99
+monaco|population|38857|95
+montenegro|capital|podgorica|99
+montenegro|population|617213|95
+vatican city|capital|vatican city|99
+vatican city|population|882|95
+san marino|capital|san marino|99
+san marino|population|33600|95
+cuba|capital|havana|99
+cuba|population|10985974|95
+belize|capital|belmopan|99
+belize|population|411106|95
+barbados|capital|bridgetown|99
+barbados|population|303431|95
+indonesia|capital|jakarta|99
+indonesia|population|275439000|95
+south africa|capital|pretoria|99
+south africa|population|62027503|95
+south africa|capital|cape town|99
+south africa|population|62027503|95
+south africa|capital|bloemfontein|99
+south africa|population|62027503|95
+algeria|capital|algiers|99
+algeria|population|46164219|95
+uzbekistan|capital|tashkent|99
+uzbekistan|population|34915100|95
+chile|capital|santiago|99
+chile|population|19458000|95
+singapore|capital|singapore|99
+singapore|population|5866139|95
+liechtenstein|capital|vaduz|99
+liechtenstein|population|37922|95
+bahrain|capital|manama|99
+bahrain|population|1569666|95
+armenia|capital|yerevan|99
+armenia|population|2930450|95
+serbia|capital|belgrade|99
+serbia|population|6605168|95
+australia|capital|canberra|99
+australia|population|27614411|95
+argentina|capital|buenos aires|99
+argentina|population|47327407|95
+peru|capital|lima|99
+peru|population|33726000|95
+north korea|capital|pyongyang|99
+north korea|population|26418204|95
+cambodia|capital|phnom penh|99
+cambodia|population|17423880|95
+timor-leste|capital|dili|99
+timor-leste|population|1243235|95
+chad|capital|n'djamena|99
+chad|population|19319064|95
+new zealand|capital|wellington|99
+new zealand|population|5307800|95
+india|capital|new delhi|99
+india|population|1326093247|95
+tuvalu|capital|funafuti|99
+tuvalu|population|10643|95
+tonga|capital|nukuʻalofa|99
+tonga|population|108020|95
+samoa|capital|apia|99
+samoa|population|200010|95
+solomon islands|capital|honiara|99
+solomon islands|population|611343|95
+vanuatu|capital|port vila|99
+vanuatu|population|300019|95
+papua new guinea|capital|port moresby|99
+papua new guinea|population|8935000|95
+palau|capital|ngerulmud|99
+palau|population|21729|95
+nauru|capital|yaren district|99
+nauru|population|13650|95
+federated states of micronesia|capital|palikir|99
+federated states of micronesia|population|75817|95
+marshall islands|capital|majuro|99
+marshall islands|population|53127|95
+kiribati|capital|south tarawa|99
+kiribati|population|134518|95
+mongolia|capital|ulaanbaatar|99
+mongolia|population|3409939|95
+fiji|capital|suva|99
+fiji|population|926276|95
+venezuela|capital|caracas|99
+venezuela|population|31250306|95
+suriname|capital|paramaribo|99
+suriname|population|563402|95
+paraguay|capital|asunción|99
+paraguay|population|6811297|95
+guyana|capital|georgetown|99
+guyana|population|878674|95
+hydrogen|symbol|H|99
+hydrogen|atomic_number|1|99
+helium|symbol|He|99
+helium|atomic_number|2|99
+lithium|symbol|Li|99
+lithium|atomic_number|3|99
+beryllium|symbol|Be|99
+beryllium|atomic_number|4|99
+boron|symbol|B|99
+boron|atomic_number|5|99
+carbon|symbol|C|99
+carbon|atomic_number|6|99
+nitrogen|symbol|N|99
+nitrogen|atomic_number|7|99
+oxygen|symbol|O|99
+oxygen|atomic_number|8|99
+fluorine|symbol|F|99
+fluorine|atomic_number|9|99
+neon|symbol|Ne|99
+neon|atomic_number|10|99
+sodium|symbol|Na|99
+sodium|atomic_number|11|99
+magnesium|symbol|Mg|99
+magnesium|atomic_number|12|99
+aluminium|symbol|Al|99
+aluminium|atomic_number|13|99
+silicon|symbol|Si|99
+silicon|atomic_number|14|99
+francium|symbol|Fr|99
+francium|atomic_number|87|99
+phosphorus|symbol|P|99
+phosphorus|atomic_number|15|99
+iron|symbol|Fe|99
+iron|atomic_number|26|99
+sulfur|symbol|S|99
+sulfur|atomic_number|16|99
+chlorine|symbol|Cl|99
+chlorine|atomic_number|17|99
+argon|symbol|Ar|99
+argon|atomic_number|18|99
+potassium|symbol|K|99
+potassium|atomic_number|19|99
+calcium|symbol|Ca|99
+calcium|atomic_number|20|99
+lead|symbol|Pb|99
+lead|atomic_number|82|99
+scandium|symbol|Sc|99
+scandium|atomic_number|21|99
+titanium|symbol|Ti|99
+titanium|atomic_number|22|99
+vanadium|symbol|V|99
+vanadium|atomic_number|23|99
+chromium|symbol|Cr|99
+chromium|atomic_number|24|99
+manganese|symbol|Mn|99
+manganese|atomic_number|25|99
+rhenium|symbol|Re|99
+rhenium|atomic_number|75|99
+cobalt|symbol|Co|99
+cobalt|atomic_number|27|99
+tungsten|symbol|W|99
+tungsten|atomic_number|74|99
+nickel|symbol|Ni|99
+nickel|atomic_number|28|99
+osmium|symbol|Os|99
+osmium|atomic_number|76|99
+copper|symbol|Cu|99
+copper|atomic_number|29|99
+zinc|symbol|Zn|99
+zinc|atomic_number|30|99
+gallium|symbol|Ga|99
+gallium|atomic_number|31|99
+germanium|symbol|Ge|99
+germanium|atomic_number|32|99
+arsenic|symbol|As|99
+arsenic|atomic_number|33|99
+selenium|symbol|Se|99
+selenium|atomic_number|34|99
+iridium|symbol|Ir|99
+iridium|atomic_number|77|99
+bromine|symbol|Br|99
+bromine|atomic_number|35|99
+platinum|symbol|Pt|99
+platinum|atomic_number|78|99
+krypton|symbol|Kr|99
+krypton|atomic_number|36|99
+rubidium|symbol|Rb|99
+rubidium|atomic_number|37|99
+gold|symbol|Au|99
+gold|atomic_number|79|99
+mercury|symbol|Hg|99
+mercury|atomic_number|80|99
+thallium|symbol|Tl|99
+thallium|atomic_number|81|99
+strontium|symbol|Sr|99
+strontium|atomic_number|38|99
+yttrium|symbol|Y|99
+yttrium|atomic_number|39|99
+bismuth|symbol|Bi|99
+bismuth|atomic_number|83|99
+polonium|symbol|Po|99
+polonium|atomic_number|84|99
+astatine|symbol|At|99
+astatine|atomic_number|85|99
+zirconium|symbol|Zr|99
+zirconium|atomic_number|40|99
+niobium|symbol|Nb|99
+niobium|atomic_number|41|99
+molybdenum|symbol|Mo|99
+molybdenum|atomic_number|42|99
+technetium|symbol|Tc|99
+technetium|atomic_number|43|99
+ruthenium|symbol|Ru|99
+ruthenium|atomic_number|44|99
+rhodium|symbol|Rh|99
+rhodium|atomic_number|45|99
+palladium|symbol|Pd|99
+palladium|atomic_number|46|99
+silver|symbol|Ag|99
+silver|atomic_number|47|99
+cadmium|symbol|Cd|99
+cadmium|atomic_number|48|99
+indium|symbol|In|99
+indium|atomic_number|49|99
+tin|symbol|Sn|99
+tin|atomic_number|50|99
+uranium|symbol|U|99
+uranium|atomic_number|92|99
+antimony|symbol|Sb|99
+antimony|atomic_number|51|99
+tellurium|symbol|Te|99
+tellurium|atomic_number|52|99
+plutonium|symbol|Pu|99
+plutonium|atomic_number|94|99
+iodine|symbol|I|99
+iodine|atomic_number|53|99
+neptunium|symbol|Np|99
+neptunium|atomic_number|93|99
+xenon|symbol|Xe|99
+xenon|atomic_number|54|99
+caesium|symbol|Cs|99
+caesium|atomic_number|55|99
+protactinium|symbol|Pa|99
+protactinium|atomic_number|91|99
+barium|symbol|Ba|99
+barium|atomic_number|56|99
+thorium|symbol|Th|99
+thorium|atomic_number|90|99
+hafnium|symbol|Hf|99
+hafnium|atomic_number|72|99
+actinium|symbol|Ac|99
+actinium|atomic_number|89|99
+tantalum|symbol|Ta|99
+tantalum|atomic_number|73|99
+radium|symbol|Ra|99
+radium|atomic_number|88|99
+radon|symbol|Rn|99
+radon|atomic_number|86|99
+ununennium|symbol|Uue|99
+ununennium|atomic_number|119|99
+unbinilium|symbol|Ubn|99
+unbinilium|atomic_number|120|99
+rutherfordium|symbol|Rf|99
+rutherfordium|atomic_number|104|99
+dubnium|symbol|Db|99
+dubnium|atomic_number|105|99
+seaborgium|symbol|Sg|99
+seaborgium|atomic_number|106|99
+bohrium|symbol|Bh|99
+bohrium|atomic_number|107|99
+hassium|symbol|Hs|99
+hassium|atomic_number|108|99
+meitnerium|symbol|Mt|99
+meitnerium|atomic_number|109|99
+darmstadtium|symbol|Ds|99
+darmstadtium|atomic_number|110|99
+roentgenium|symbol|Rg|99
+roentgenium|atomic_number|111|99
+copernicium|symbol|Cn|99
+copernicium|atomic_number|112|99
+nihonium|symbol|Nh|99
+nihonium|atomic_number|113|99
+flerovium|symbol|Fl|99
+flerovium|atomic_number|114|99
+moscovium|symbol|Mc|99
+moscovium|atomic_number|115|99
+livermorium|symbol|Lv|99
+livermorium|atomic_number|116|99
+tennessine|symbol|Ts|99
+tennessine|atomic_number|117|99
+oganesson|symbol|Og|99
+oganesson|atomic_number|118|99
+cerium|symbol|Ce|99
+cerium|atomic_number|58|99
+praseodymium|symbol|Pr|99
+praseodymium|atomic_number|59|99
+neodymium|symbol|Nd|99
+neodymium|atomic_number|60|99
+europium|symbol|Eu|99
+europium|atomic_number|63|99
+unbiunium|symbol|Ubu|99
+unbiunium|atomic_number|121|99
+lanthanum|symbol|La|99
+lanthanum|atomic_number|57|99
+promethium|symbol|Pm|99
+promethium|atomic_number|61|99
+samarium|symbol|Sm|99
+samarium|atomic_number|62|99
+gadolinium|symbol|Gd|99
+gadolinium|atomic_number|64|99
+terbium|symbol|Tb|99
+terbium|atomic_number|65|99
+dysprosium|symbol|Dy|99
+dysprosium|atomic_number|66|99
+holmium|symbol|Ho|99
+holmium|atomic_number|67|99
+erbium|symbol|Er|99
+erbium|atomic_number|68|99
+thulium|symbol|Tm|99
+thulium|atomic_number|69|99
+ytterbium|symbol|Yb|99
+ytterbium|atomic_number|70|99
+lutetium|symbol|Lu|99
+lutetium|atomic_number|71|99
+americium|symbol|Am|99
+americium|atomic_number|95|99
+curium|symbol|Cm|99
+curium|atomic_number|96|99
+berkelium|symbol|Bk|99
+berkelium|atomic_number|97|99
+californium|symbol|Cf|99
+californium|atomic_number|98|99
+einsteinium|symbol|Es|99
+einsteinium|atomic_number|99|99
+fermium|symbol|Fm|99
+fermium|atomic_number|100|99
+mendelevium|symbol|Md|99
+mendelevium|atomic_number|101|99
+nobelium|symbol|No|99
+nobelium|atomic_number|102|99
+lawrencium|symbol|Lr|99
+lawrencium|atomic_number|103|99
+unbibium|symbol|Ubb|99
+unbibium|atomic_number|122|99
+unbihexium|symbol|Ubh|99
+unbihexium|atomic_number|126|99
+untriunium|symbol|Utu|99
+untriunium|atomic_number|131|99
+untribium|symbol|Utb|99
+untribium|atomic_number|132|99
+unbiennium|symbol|Ube|99
+unbiennium|atomic_number|129|99
+untrinilium|symbol|Utn|99
+untrinilium|atomic_number|130|99
+unbipentium|symbol|Ubp|99
+unbipentium|atomic_number|125|99
+unbiseptium|symbol|Ubs|99
+unbiseptium|atomic_number|127|99
+unbioctium|symbol|Ubo|99
+unbioctium|atomic_number|128|99
+unbiquadium|symbol|Ubq|99
+unbiquadium|atomic_number|124|99
+unbitrium|symbol|Ubt|99
+unbitrium|atomic_number|123|99
+untriennium|symbol|Ute|99
+untriennium|atomic_number|139|99
+untrihexium|symbol|Uth|99
+untrihexium|atomic_number|136|99
+untrioctium|symbol|Uto|99
+untrioctium|atomic_number|138|99
+untriseptium|symbol|Uts|99
+untriseptium|atomic_number|137|99
+unquadennium|symbol|Uqe|99
+unquadennium|atomic_number|149|99
+unquadnilium|symbol|Uqn|99
+unquadnilium|atomic_number|140|99
+unpentbium|symbol|Upb|99
+unpentbium|atomic_number|152|99
+unpentnilium|symbol|Upn|99
+unpentnilium|atomic_number|150|99
+unpentunium|symbol|Upu|99
+unpentunium|atomic_number|151|99
+unpenttrium|symbol|Upt|99
+unpenttrium|atomic_number|153|99
+unquadhexium|symbol|Uqh|99
+unquadhexium|atomic_number|146|99
+unquadbium|symbol|Uqb|99
+unquadbium|atomic_number|142|99
+unquadoctium|symbol|Uqo|99
+unquadoctium|atomic_number|148|99
+unquadseptium|symbol|Uqs|99
+unquadseptium|atomic_number|147|99
+unquadpentium|symbol|Uqp|99
+unquadpentium|atomic_number|145|99
+unquadquadium|symbol|Uqq|99
+unquadquadium|atomic_number|144|99
+unquadtrium|symbol|Uqt|99
+unquadtrium|atomic_number|143|99
+unquadunium|symbol|Uqu|99
+unquadunium|atomic_number|141|99
+untripentium|symbol|Utp|99
+untripentium|atomic_number|135|99
+untriquadium|symbol|Utq|99
+untriquadium|atomic_number|134|99
+untritrium|symbol|Utt|99
+untritrium|atomic_number|133|99
+unsepttrium|symbol|Ust|99
+unsepttrium|atomic_number|173|99
+unseptbium|symbol|Usb|99
+unseptbium|atomic_number|172|99
+unhexoctium|symbol|Uho|99
+unhexoctium|atomic_number|168|99
+unhexseptium|symbol|Uhs|99
+unhexseptium|atomic_number|167|99
+unhexpentium|symbol|Uhp|99
+unhexpentium|atomic_number|165|99
+unhexennium|symbol|Uhe|99
+unhexennium|atomic_number|169|99
+unpentquadium|symbol|Upq|99
+unpentquadium|atomic_number|154|99
+unpentpentium|symbol|Upp|99
+unpentpentium|atomic_number|155|99
+unhexquadium|symbol|Uhq|99
+unhexquadium|atomic_number|164|99
+unpenthexium|symbol|Uph|99
+unpenthexium|atomic_number|156|99
+unpentseptium|symbol|Ups|99
+unpentseptium|atomic_number|157|99
+unpentoctium|symbol|Upo|99
+unpentoctium|atomic_number|158|99
+unhexnilium|symbol|Uhn|99
+unhexnilium|atomic_number|160|99
+unpentennium|symbol|Upe|99
+unpentennium|atomic_number|159|99
+unhexunium|symbol|Uhu|99
+unhexunium|atomic_number|161|99
+unhexbium|symbol|Uhb|99
+unhexbium|atomic_number|162|99
+unhextrium|symbol|Uht|99
+unhextrium|atomic_number|163|99
+unhexhexium|symbol|Uhh|99
+unhexhexium|atomic_number|166|99
+unseptnilium|symbol|Usn|99
+unseptnilium|atomic_number|170|99
+unseptunium|symbol|Usu|99
+unseptunium|atomic_number|171|99
+unoctquadium|symbol|Uoq|99
+unoctquadium|atomic_number|184|99
+java|designed_by|sun microsystems|95
+java|created_year|1995|95
+java|designed_by|james gosling|95
+java|created_year|1995|95
+q2005|designed_by|brendan eich|95
+q2005|created_year|1995|95
+q2370|designed_by|microsoft|95
+q2370|created_year|2001|95
+q2370|designed_by|anders hejlsberg|95
+q2370|created_year|2001|95
+q2370|designed_by|mads torgersen|95
+q2370|created_year|2001|95
+visual basic|created_year|1991|95
+q2407|designed_by|bjarne stroustrup|95
+q2407|created_year|1983|95
+tex|created_year|1978|95
+q15777|designed_by|dennis m. ritchie|95
+q15777|created_year|1972|95
+xpath|created_year|1999|95
+agda|created_year|2007|95
+xslt|created_year|1999|95
+q34010|designed_by|simon peyton jones|95
+q34010|created_year|1990|95
+q34010|designed_by|warren burton|95
+q34010|created_year|1990|95
+q34010|designed_by|philip wadler|95
+q34010|created_year|1990|95
+q34010|designed_by|erik meijer|95
+q34010|created_year|1990|95
+q34010|designed_by|john hughes|95
+q34010|created_year|1990|95
+q34010|designed_by|lennart augustsson|95
+q34010|created_year|1990|95
+q34010|designed_by|paul hudak|95
+q34010|created_year|1990|95
+q34010|designed_by|thomas johnsson|95
+q34010|created_year|1990|95
+q34010|designed_by|john launchbury|95
+q34010|created_year|1990|95
+q34010|designed_by|kevin hammond|95
+q34010|created_year|1990|95
+q34010|designed_by|alastair reid|95
+q34010|created_year|1990|95
+plankalkül|designed_by|konrad zuse|95
+plankalkül|created_year|1942|95
+go|designed_by|rob pike|95
+go|created_year|2009|95
+go|designed_by|q1107006|95
+go|created_year|2009|95
+go|designed_by|robert griesemer|95
+go|created_year|2009|95
+pl/sql|created_year|1992|95
+q42478|designed_by|larry wall|95
+q42478|created_year|1987|95
+cascading style sheets|created_year|1996|95
+q47607|designed_by|raymond f. boyce|95
+q47607|created_year|1974|95
+q47607|designed_by|donald d. chamberlin|95
+q47607|created_year|1974|95
+clojure|created_year|2007|95
+cyclone|designed_by|at&t labs|95
+cyclone|created_year|2002|95
+mathematica|created_year|1988|95
+c--|designed_by|simon peyton jones|95
+c--|created_year|1997|95
+c--|designed_by|norman ramsey|95
+c--|created_year|1997|95
+fortran|designed_by|john backus|95
+fortran|created_year|1957|95
+ceylon|created_year|2011|95
+q131140|designed_by|grace hopper|95
+q131140|created_year|1959|95
+maple|created_year|1982|95
+blitz basic|created_year|2000|95
+q154755|designed_by|jean ichbiah|95
+q154755|created_year|1980|95
+q154755|designed_by|s. tucker taft|95
+q154755|created_year|1980|95
+q161053|designed_by|yukihiro matsumoto|95
+q161053|created_year|1995|95
+prolog|designed_by|alain colmerauer|95
+prolog|created_year|1972|95
+prolog|designed_by|philippe roussel|95
+prolog|created_year|1972|95
+prolog|designed_by|robert kowalski|95
+prolog|created_year|1972|95
+clips|created_year|1985|95
+assembly language|created_year|1949|95
+zebra|created_year|1989|95
+matlab|designed_by|cleve moler|95
+matlab|created_year|1984|95
+ibm basic|created_year|1981|95
+ucsd pascal|created_year|1978|95
+q187560|designed_by|gerald jay sussman|95
+q187560|created_year|1975|95
+q187560|designed_by|guy l. steele jr.|95
+q187560|created_year|1975|95
+algol|designed_by|alan perlis|95
+algol|created_year|1959|95
+algol|designed_by|friedrich l. bauer|95
+algol|created_year|1959|95
+algol|designed_by|peter naur|95
+algol|created_year|1959|95
+algol|designed_by|heinz rutishauser|95
+algol|created_year|1959|95
+algol|designed_by|john mccarthy|95
+algol|created_year|1959|95
+algol|designed_by|john backus|95
+algol|created_year|1959|95
+algol|designed_by|klaus samelson|95
+algol|created_year|1959|95
+algol|designed_by|adriaan van wijngaarden|95
+algol|created_year|1959|95
+algol|designed_by|julien green|95
+algol|created_year|1959|95
+algol|designed_by|bernard vauquois|95
+algol|created_year|1959|95
+algol|designed_by|charles katz|95
+algol|created_year|1959|95
+algol|designed_by|hermann bottenbruch|95
+algol|created_year|1959|95
+algol|designed_by|joseph henry wegstein|95
+algol|created_year|1959|95
+objective-c|designed_by|brad cox|95
+objective-c|created_year|1984|95
+freebasic|created_year|2004|95
+logo|designed_by|seymour papert|95
+logo|created_year|1967|95
+logo|designed_by|cynthia solomon|95
+logo|created_year|1967|95
+logo|designed_by|wally feurzeig|95
+logo|created_year|1967|95
+karel|designed_by|richard e. pattis|95
+karel|created_year|1981|95
+mercury|created_year|1995|95
+r|designed_by|robert gentleman|95
+r|created_year|1993|95
+r|designed_by|ross ihaka|95
+r|created_year|1993|95
+lua|designed_by|roberto ierusalimschy|95
+lua|created_year|1993|95
+simula|designed_by|ole-johan dahl|95
+simula|created_year|1962|95
+q218170|designed_by|john warnock|95
+q218170|created_year|1982|95
+zonnon|created_year|2000|95
+pl/i|designed_by|ibm|95
+pl/i|created_year|1964|95
+gnu octave|created_year|1988|95
+actionscript|designed_by|gary grossman|95
+actionscript|created_year|1998|95
+smalltalk|designed_by|adele goldberg|95
+smalltalk|created_year|1972|95
+smalltalk|designed_by|alan kay|95
+smalltalk|created_year|1972|95
+smalltalk|designed_by|parc|95
+smalltalk|created_year|1972|95
+4dos|created_year|1988|95
+brainfuck|created_year|1993|95
+extensible application markup language|created_year|2008|95
+newsqueak|designed_by|rob pike|95
+newsqueak|created_year|1980|95
+common intermediate language|created_year|2000|95
+msx basic|created_year|1983|95
+scratch|created_year|2003|95
+rpg|created_year|1959|95
+bourne shell|created_year|1979|95
+common lisp|designed_by|scott e. fahlman|95
+common lisp|created_year|1984|95
+common lisp|designed_by|david moon|95
+common lisp|created_year|1984|95
+common lisp|designed_by|richard p. gabriel|95
+common lisp|created_year|1984|95
+ml|designed_by|robin milner|95
+ml|created_year|1973|95
+boo|designed_by|rodrigo b. de oliveira|95
+boo|created_year|2003|95
+q907880|designed_by|niklaus wirth|95
+q907880|created_year|1965|95
+oxygene|created_year|2005|95
+sing#|created_year|2005|95
+root|created_year|1995|95
+gauss|created_year|1984|95
+rpl|created_year|1984|95
+qml|created_year|2009|95
+sawzall|created_year|2003|95
+accent|created_year|1990|95
+visual j++|created_year|1996|95
+joss|created_year|1963|95
+cython|created_year|2007|95
+typescript|designed_by|microsoft|95
+typescript|created_year|2012|95
+p#|created_year|2003|95
+snap!|designed_by|brian harvey|95
+snap!|created_year|2011|95
+snap!|designed_by|jens mönig|95
+snap!|created_year|2011|95
+chip-8|created_year|1970|95
+cmu common lisp|created_year|1980|95
+comal|created_year|1975|95
+comit|designed_by|victor yngve|95
+comit|created_year|1957|95
+monkey x|created_year|2011|95
+mesa|created_year|1976|95
+etoys|designed_by|alan kay|95
+etoys|created_year|1996|95
+q1049202|created_year|1983|95
+a#|created_year|2004|95
+rc|designed_by|tom duff|95
+rc|created_year|1989|95
+processing|created_year|2001|95
+intercal|created_year|1972|95
+quickbasic|created_year|1985|95
+abc|designed_by|lambert meertens|95
+abc|created_year|1975|95
+abc|designed_by|steven pemberton|95
+abc|created_year|1975|95
+c shell|created_year|1978|95
+charm++|designed_by|laxmikant kale|95
+algol 58|designed_by|alan perlis|95
+algol 58|designed_by|friedrich l. bauer|95
+algol 58|designed_by|heinz rutishauser|95
+algol 58|designed_by|john backus|95
+algol 58|designed_by|klaus samelson|95
+algol 58|designed_by|charles katz|95
+clarion|created_year|1986|95
+cluster|created_year|1990|95
+genie|created_year|2008|95
+coffeescript|designed_by|jeremy ashkenas|95
+coffeescript|created_year|2009|95
+component pascal|created_year|1997|95
+mathcad|created_year|1986|95
+alice|created_year|2000|95
+alice|created_year|2000|95
+curl|designed_by|massachusetts institute of technology|95
+curl|created_year|1998|95
+curl|designed_by|steve ward|95
+curl|created_year|1998|95
+cics|created_year|1968|95
+cω|created_year|2005|95
+icon|designed_by|ralph griswold|95
+icon|created_year|1977|95
+j#|created_year|2002|95
+stos basic|created_year|1988|95
+seed7|created_year|2005|95
+unrealscript|created_year|1998|95
+turbo c++|created_year|1990|95
+microsoft basic|created_year|1975|95
+stata|created_year|1985|95
+oz|designed_by|gert smolka|95
+oz|created_year|1991|95
+algol 60|designed_by|john backus|95
+racket|created_year|1995|95
+joy|created_year|2001|95
+metapost|created_year|1994|95
+dylan|created_year|1992|95
+elan|designed_by|cornelis h. a. koster|95
+elan|created_year|1974|95
+executive systems problem oriented language|created_year|1966|95
+jovial|designed_by|system development corporation|95
+jovial|created_year|1960|95
+s|created_year|1976|95
+turbo basic|created_year|1987|95
+oberon|designed_by|niklaus wirth|95
+oberon|created_year|1987|95
+emacs lisp|designed_by|richard stallman|95
+emacs lisp|created_year|1985|95
+emacs lisp|designed_by|guy l. steele jr.|95
+emacs lisp|created_year|1985|95
+alice|created_year|1995|95
+rebol|designed_by|carl sassenrath|95
+rebol|created_year|1997|95
+euphoria|created_year|1993|95
+people's republic of china|highest_population|1404890000.0 (rank 1 of 208)|90
+unoctquadium|highest_atomic_number|184.0 (rank 1 of 174)|90
+typescript|highest_created_year|2012.0 (rank 1 of 125)|90
