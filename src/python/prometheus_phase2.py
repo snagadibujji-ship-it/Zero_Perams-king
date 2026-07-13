@@ -877,16 +877,35 @@ class ConjectureTester:
         """Parse conjecture into a function that returns True/False for given n."""
         low = statement.lower()
 
-        # "n^2 + n is always even"
+        def _prep_expr(e):
+            """Prepare expression for Python eval: ^ → **, handle math."""
+            return e.replace('^', '**')
+
+        def _is_prime(num):
+            """Check if number is prime."""
+            if num < 2: return False
+            if num < 4: return True
+            if num % 2 == 0 or num % 3 == 0: return False
+            i = 5
+            while i * i <= num:
+                if num % i == 0 or num % (i+2) == 0: return False
+                i += 6
+            return True
+
+        # "n^2 + n is always even/odd/prime/positive/divisible by k"
         m = re.search(r'([\w\^\*\+\-\s]+)\s+is\s+(?:always\s+)?(?:divisible by|even|odd|positive|negative|prime)', low)
         if m:
-            expr = m.group(1).strip()
+            expr = _prep_expr(m.group(1).strip())
             if 'even' in low:
                 return lambda n, e=expr: eval(e.replace('n', str(n))) % 2 == 0
             if 'odd' in low:
                 return lambda n, e=expr: eval(e.replace('n', str(n))) % 2 == 1
+            if 'prime' in low:
+                return lambda n, e=expr: _is_prime(int(eval(e.replace('n', str(n)))))
             if 'positive' in low:
                 return lambda n, e=expr: eval(e.replace('n', str(n))) > 0
+            if 'negative' in low:
+                return lambda n, e=expr: eval(e.replace('n', str(n))) < 0
             m2 = re.search(r'divisible by (\d+)', low)
             if m2:
                 d = int(m2.group(1))
@@ -895,14 +914,14 @@ class ConjectureTester:
         # "n^2 > n for all n > 1"
         m = re.search(r'([\w\^\*\+\-\s]+)\s*(>|<|>=|<=)\s*([\w\^\*\+\-\s]+)', low)
         if m:
-            lhs, op, rhs = m.group(1).strip(), m.group(2), m.group(3).strip()
+            lhs, op, rhs = _prep_expr(m.group(1).strip()), m.group(2), _prep_expr(m.group(3).strip())
             return lambda n, l=lhs, o=op, r=rhs: eval(f"({l.replace('n',str(n))}) {o} ({r.replace('n',str(n))})")
 
         # "sum of first n odd numbers = n^2"
         if 'sum' in low and '=' in statement:
             m = re.search(r'=\s*([\w\^\*\+\-\(\)/\s]+)', statement)
             if m:
-                rhs = m.group(1).strip()
+                rhs = _prep_expr(m.group(1).strip())
                 if 'odd' in low:
                     return lambda n, r=rhs: sum(2*i+1 for i in range(n)) == eval(r.replace('n', str(n)))
                 if 'even' in low:
@@ -948,7 +967,11 @@ class PrometheusAdvanced:
         if 'prove' in low and ('divisible' in low or 'for all' in low or 'if' in low):
             return self._handle_proof(problem)
 
-        # Analogy: detect disguised problems
+        # Optimization: maximize/minimize (pass to main Prometheus)
+        if 'maximize' in low or 'minimize' in low:
+            return None  # Let main engine handle
+
+        # Analogy: detect disguised problems (not for simple optimize/solve)
         analogy = self.analogy.find_analogy(problem)
         if analogy:
             return self._handle_analogy(problem, analogy)
