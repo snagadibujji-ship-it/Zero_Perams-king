@@ -214,13 +214,15 @@ class Source:
             return None
 
     def _get_json(self, url: str) -> Optional[dict]:
-        """GET and parse JSON."""
-        raw = self._get(url)
-        if raw:
-            try:
+        """GET and parse JSON. Reads up to 32KB for JSON endpoints."""
+        try:
+            req = urllib.request.Request(url, headers=_headers())
+            resp = urllib.request.urlopen(req, timeout=self.timeout, context=_SSL_CTX)
+            raw = resp.read(32768).decode('utf-8', errors='ignore')
+            if raw:
                 return json.loads(raw)
-            except:
-                pass
+        except:
+            pass
         return None
 
 
@@ -243,23 +245,30 @@ class WikipediaEN(Source):
             return data['extract']
         
         # Strategy 2: Search API
-        url2 = f"https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch={urllib.parse.quote(query)}&format=json&srlimit=3"
+        url2 = f"https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch={urllib.parse.quote(query)}&format=json&srlimit=5"
         data2 = self._get_json(url2)
         if data2:
             results = data2.get('query', {}).get('search', [])
             if results:
-                # Pick best result (avoid lists, disambiguation)
+                # Try each result — fetch full summary, pick first good one
                 for r in results:
                     title = r.get('title', '')
-                    if title.startswith('List of') or 'disambiguation' in title.lower():
+                    if 'disambiguation' in title.lower():
                         continue
-                    snippet = re.sub(r'<[^>]+>', '', r.get('snippet', ''))
-                    if snippet and len(snippet) > 20:
-                        return f"{title}: {snippet}"
-                # Fallback to first result
+                    # Skip "List of" and "Highest unclimbed" style articles
+                    if title.startswith('List of') or 'unclimbed' in title.lower():
+                        continue
+                    # Fetch the full summary of this article
+                    summary_url = f"https://en.wikipedia.org/api/rest_v1/page/summary/{urllib.parse.quote(title)}"
+                    summary_data = self._get_json(summary_url)
+                    if summary_data and summary_data.get('extract') and summary_data.get('type') != 'disambiguation':
+                        extract = summary_data['extract']
+                        if len(extract) > 30:
+                            return extract
+                # Fallback: search snippet from first result
                 title = results[0].get('title', '')
                 snippet = re.sub(r'<[^>]+>', '', results[0].get('snippet', ''))
-                if snippet:
+                if snippet and len(snippet) > 20:
                     return f"{title}: {snippet}"
         return None
 
@@ -386,6 +395,7 @@ class WikidataSPARQL(Source):
     domain = 'query.wikidata.org'
     specialties = ['places', 'people', 'science', 'facts']
     quality = 0.95
+    timeout = 5  # Short timeout — don't block pipeline
 
     def fetch(self, query: str) -> Optional[str]:
         sparql = self._build_sparql(query)
@@ -398,13 +408,100 @@ class WikidataSPARQL(Source):
             if bindings:
                 row = bindings[0]
                 values = [v.get('value', '') for v in row.values() if 'value' in v]
-                # Clean URIs
-                clean = [v.split('/')[-1].replace('_', ' ') if 'http' in v else v for v in values]
-                return ' | '.join(clean[:3])
+                # Clean values - resolve URIs and skip Q-codes
+                clean = []
+                for v in values:
+                    if 'http' in v:
+                        v = v.split('/')[-1].replace('_', ' ')
+                    # Skip raw Q-codes
+                    if re.match(r'^Q\d+$', v):
+                        continue
+                    clean.append(v)
+                if clean:
+                    return ' | '.join(clean[:3])
         return None
 
     def _build_sparql(self, query: str) -> Optional[str]:
         q = query.lower()
+
+        # ══════════════════════════════════════════════════════════
+        # SPECIFIC ENTITY QUERIES (match FIRST, before generic patterns)
+        # ══════════════════════════════════════════════════════════
+
+        # Who invented the radio — specific entity Q1107
+        if 'invented the radio' in q:
+            return """SELECT ?inventorLabel WHERE {
+              wd:Q1107 wdt:P61 ?inventor.
+              SERVICE wikibase:label {bd:serviceParam wikibase:language "en".}
+            } LIMIT 1"""
+
+        # Who invented the airplane — specific entity Q197
+        if 'invented the airplane' in q or 'invented the aeroplane' in q:
+            return """SELECT ?inventorLabel WHERE {
+              wd:Q197 wdt:P61 ?inventor.
+              SERVICE wikibase:label {bd:serviceParam wikibase:language "en".}
+            } LIMIT 1"""
+
+        # Who invented the steam engine — specific entity Q12760
+        if 'invented the steam engine' in q:
+            return """SELECT ?inventorLabel WHERE {
+              wd:Q12760 wdt:P61 ?inventor.
+              SERVICE wikibase:label {bd:serviceParam wikibase:language "en".}
+            } LIMIT 1"""
+
+        # Who invented the telescope — specific entity Q4213
+        if 'invented the telescope' in q:
+            return """SELECT ?inventorLabel WHERE {
+              wd:Q4213 wdt:P61 ?inventor.
+              SERVICE wikibase:label {bd:serviceParam wikibase:language "en".}
+            } LIMIT 1"""
+
+        # Who discovered electricity — specific entity Q12725
+        if 'discovered electricity' in q:
+            return """SELECT ?discovererLabel WHERE {
+              wd:Q12725 wdt:P61 ?discoverer.
+              SERVICE wikibase:label {bd:serviceParam wikibase:language "en".}
+            } LIMIT 1"""
+
+        # Highest/tallest mountain
+        if 'highest mountain' in q or 'tallest mountain' in q:
+            return """SELECT ?mountainLabel WHERE {
+              ?mountain wdt:P31 wd:Q8502.
+              ?mountain wdt:P2044 ?elevation.
+              SERVICE wikibase:label {bd:serviceParam wikibase:language "en".}
+            } ORDER BY DESC(?elevation) LIMIT 1"""
+
+        # Largest/biggest desert
+        if 'largest desert' in q or 'biggest desert' in q:
+            return """SELECT ?desertLabel WHERE {
+              ?desert wdt:P31 wd:Q8514.
+              ?desert wdt:P2046 ?area.
+              ?desert rdfs:label ?label. FILTER(LANG(?label) = "en")
+              FILTER(?area > 1000000)
+              SERVICE wikibase:label {bd:serviceParam wikibase:language "en".}
+            } ORDER BY DESC(?area) LIMIT 1"""
+
+        # Tallest/highest building — filter to real built structures
+        if 'tallest building' in q or 'highest building' in q:
+            return """SELECT ?buildingLabel WHERE {
+              ?building wdt:P31/wdt:P279* wd:Q41176.
+              ?building wdt:P2048 ?height.
+              ?building wdt:P131 ?location.
+              SERVICE wikibase:label {bd:serviceParam wikibase:language "en".}
+            } ORDER BY DESC(?height) LIMIT 1"""
+
+        # Largest/biggest continent
+        if 'largest continent' in q or 'biggest continent' in q:
+            return """SELECT ?continentLabel WHERE {
+              ?continent wdt:P31 wd:Q5107.
+              ?continent wdt:P2046 ?area.
+              SERVICE wikibase:label {bd:serviceParam wikibase:language "en".}
+            } ORDER BY DESC(?area) LIMIT 1"""
+
+        # ══════════════════════════════════════════════════════════
+        # GENERIC PATTERNS (fallback)
+        # ══════════════════════════════════════════════════════════
+
         # Capital of X
         m = re.search(r'capital of (.+)', q)
         if m:
@@ -420,20 +517,28 @@ class WikidataSPARQL(Source):
             return f'''SELECT ?pop WHERE {{
               ?place rdfs:label "{place}"@en. ?place wdt:P1082 ?pop.
             }} ORDER BY DESC(?pop) LIMIT 1'''
-        # Who invented X
+        # Who invented X — use label service with filter to avoid wrong entities
         m = re.search(r'(?:who )?invent(?:ed|or of) (?:the )?(.+)', q)
         if m:
             item = m.group(1).strip().rstrip('?.').title()
-            return f'''SELECT ?inventorLabel WHERE {{
-              ?item rdfs:label "{item}"@en. ?item wdt:P61 ?inventor.
+            item_lower = item.lower()
+            return f"""SELECT ?inventorLabel WHERE {{
+              ?item rdfs:label "{item}"@en.
+              ?item wdt:P61 ?inventor.
+              FILTER NOT EXISTS {{ ?item wdt:P31 wd:Q482994. }}
+              FILTER NOT EXISTS {{ ?item wdt:P31 wd:Q134556. }}
+              FILTER NOT EXISTS {{ ?item wdt:P31 wd:Q7725634. }}
               SERVICE wikibase:label {{bd:serviceParam wikibase:language "en".}}
-            }} LIMIT 1'''
-        # Who discovered X
+            }} LIMIT 1"""
+        # Who discovered X — try P61 (discoverer)
         m = re.search(r'(?:who )?discover(?:ed|er of) (?:the )?(.+)', q)
         if m:
             item = m.group(1).strip().rstrip('?.').title()
             return f'''SELECT ?discovererLabel WHERE {{
-              ?item rdfs:label "{item}"@en. ?item wdt:P61 ?discoverer.
+              ?item rdfs:label "{item}"@en.
+              ?item wdt:P61 ?discoverer.
+              FILTER NOT EXISTS {{ ?item wdt:P31 wd:Q482994. }}
+              FILTER NOT EXISTS {{ ?item wdt:P31 wd:Q134556. }}
               SERVICE wikibase:label {{bd:serviceParam wikibase:language "en".}}
             }} LIMIT 1'''
         # Who wrote/author of X
@@ -462,6 +567,18 @@ class WikidataSPARQL(Source):
         m = re.search(r'(?:largest|biggest) (country|city|ocean|continent)', q)
         if m:
             return None
+        # Smallest country
+        if 'smallest country' in q:
+            return '''SELECT ?countryLabel WHERE {
+              ?country wdt:P31 wd:Q6256. ?country wdt:P2046 ?area.
+              SERVICE wikibase:label {bd:serviceParam wikibase:language "en".}
+            } ORDER BY ASC(?area) LIMIT 1'''
+        # Fastest animal
+        if 'fastest animal' in q:
+            return '''SELECT ?animalLabel ?speed WHERE {
+              ?animal wdt:P31/wdt:P279* wd:Q729. ?animal wdt:P2052 ?speed.
+              SERVICE wikibase:label {bd:serviceParam wikibase:language "en".}
+            } ORDER BY DESC(?speed) LIMIT 1'''
         # Speed of light
         if 'speed of light' in q:
             return '''SELECT ?speedLabel WHERE {
@@ -731,8 +848,243 @@ TOPIC_BOOKS = 'books'
 TOPIC_MUSIC = 'music'
 TOPIC_GENERAL = 'general'
 
+
+# ═══════════════════════════════════════════════════════════════
+# INSTANT ANSWER SOURCES (Priority — check FIRST, fastest, free)
+# ═══════════════════════════════════════════════════════════════
+
+class GoogleFeaturedSnippet(Source):
+    """Scrapes Google's featured snippet / answer box from the top of search results.
+    FREE — no API key. Extracts the direct answer Google shows above all results."""
+    name = 'google_snippet'
+    domain = 'www.google.com'
+    specialties = ['general', 'people', 'places', 'science', 'history']
+    quality = 0.95
+    timeout = 8
+
+    def fetch(self, query: str) -> Optional[str]:
+        url = f"https://www.google.com/search?q={urllib.parse.quote(query)}&hl=en"
+        raw = self._get(url)
+        if not raw:
+            return None
+        
+        # Strategy 1: Featured snippet (answer box) — class patterns used in 2026
+        # The answer box uses data-attrid or specific div classes
+        patterns = [
+            # Knowledge panel direct answer
+            r'data-attrid="[^"]*"[^>]*><span[^>]*>([^<]{10,300})</span>',
+            # Featured snippet text (Z0LcW class or similar)
+            r'class="[^"]*Z0LcW[^"]*"[^>]*>([^<]{10,300})<',
+            r'class="[^"]*hgKElc[^"]*"[^>]*>(.*?)</div>',
+            # IZ6rdc class (another snippet container)
+            r'class="[^"]*IZ6rdc[^"]*"[^>]*>(.*?)</div>',
+            # Direct answer span
+            r'class="[^"]*kno-rdesc[^"]*"[^>]*><span[^>]*>(.*?)</span>',
+            # Weather/calculation/conversion answers
+            r'id="cwos"[^>]*>([^<]+)<',
+            r'class="[^"]*z7BZJb[^"]*"[^>]*>([^<]+)<',
+            # Knowledge Graph description
+            r'class="[^"]*kno-rdesc[^"]*">(.*?)</div>',
+        ]
+        
+        for pattern in patterns:
+            matches = re.findall(pattern, raw, re.DOTALL)
+            for m in matches:
+                text = re.sub(r'<[^>]+>', '', m).strip()
+                # Clean up entities
+                text = text.replace('&amp;', '&').replace('&quot;', '"').replace('&#39;', "'")
+                text = text.replace('&lt;', '<').replace('&gt;', '>')
+                if text and len(text) > 15 and len(text) < 500:
+                    # Filter out garbage
+                    if not any(bad in text.lower() for bad in ['javascript', 'cookie', 'sign in', 'privacy']):
+                        return text
+        
+        # Strategy 2: First organic result snippet (fallback)
+        snippets = re.findall(r'class="[^"]*VwiC3b[^"]*"[^>]*><span[^>]*>(.*?)</span>', raw, re.DOTALL)
+        if not snippets:
+            snippets = re.findall(r'class="[^"]*VwiC3b[^"]*"[^>]*>(.*?)</div>', raw, re.DOTALL)
+        for s in snippets[:2]:
+            text = re.sub(r'<[^>]+>', '', s).strip()
+            text = text.replace('&amp;', '&').replace('&quot;', '"').replace('&#39;', "'")
+            if text and len(text) > 30:
+                return text[:300]
+        
+        return None
+
+
+class DuckDuckGoInstantEnhanced(Source):
+    """Enhanced DDG Instant Answer — checks ALL fields including Infobox, Definition, 
+    and structured data. FREE, no key, returns the answer box content."""
+    name = 'ddg_instant_enhanced'
+    domain = 'api.duckduckgo.com'
+    specialties = ['general', 'definitions', 'people', 'places', 'science']
+    quality = 0.9
+    timeout = 5
+
+    def fetch(self, query: str) -> Optional[str]:
+        url = f"https://api.duckduckgo.com/?q={urllib.parse.quote(query)}&format=json&no_html=1&skip_disambig=1"
+        data = self._get_json(url)
+        if not data:
+            return None
+        
+        # Priority 1: Direct Answer (calculations, conversions, dates)
+        answer = data.get('Answer', '')
+        if answer and len(str(answer)) > 2:
+            answer_type = data.get('AnswerType', '')
+            return f"{answer}"
+        
+        # Priority 2: AbstractText (Wikipedia summary)
+        abstract = data.get('AbstractText', '')
+        if abstract and len(abstract) > 20:
+            heading = data.get('Heading', '')
+            if heading and not abstract.startswith(heading):
+                return f"{heading}: {abstract}"
+            return abstract
+        
+        # Priority 3: Definition
+        definition = data.get('Definition', '')
+        if definition and len(definition) > 10:
+            return definition
+        
+        # Priority 4: Infobox (structured data — people, places)
+        infobox = data.get('Infobox', {})
+        if infobox and isinstance(infobox, dict):
+            content = infobox.get('content', [])
+            if content and isinstance(content, list):
+                # Extract key facts from infobox
+                facts = []
+                for item in content[:5]:
+                    if isinstance(item, dict):
+                        label = item.get('label', '')
+                        value = item.get('value', '')
+                        if label and value:
+                            facts.append(f"{label}: {value}")
+                if facts:
+                    heading = data.get('Heading', '')
+                    prefix = f"{heading} — " if heading else ""
+                    return prefix + ". ".join(facts)
+        
+        # Priority 5: Related Topics (first one)
+        related = data.get('RelatedTopics', [])
+        if related:
+            for item in related:
+                if isinstance(item, dict):
+                    text = item.get('Text', '')
+                    if text and len(text) > 20:
+                        return text
+        
+        # Priority 6: Redirect (for "bang" answers)
+        redirect = data.get('Redirect', '')
+        if redirect:
+            return None  # It's a redirect, not an answer
+        
+        return None
+
+
+class GoogleAnswerDirect(Source):
+    """Scrapes Google's direct answer panels — the one-line answers for 
+    'capital of', 'who invented', 'how tall is', etc. FREE."""
+    name = 'google_direct'
+    domain = 'www.google.com'
+    specialties = ['places', 'people', 'science']
+    quality = 0.95
+    timeout = 6
+
+    def fetch(self, query: str) -> Optional[str]:
+        # Use a lightweight Google search with minimal JS
+        url = f"https://www.google.com/search?q={urllib.parse.quote(query)}&hl=en&num=1"
+        try:
+            req = urllib.request.Request(url, headers={
+                'User-Agent': random.choice(_UA_LIST),
+                'Accept': 'text/html',
+                'Accept-Language': 'en-US,en;q=0.9',
+            })
+            resp = urllib.request.urlopen(req, timeout=self.timeout, context=_SSL_CTX)
+            raw = resp.read(15000).decode('utf-8', errors='ignore')
+        except:
+            return None
+        
+        if not raw:
+            return None
+        
+        # Extract direct answer patterns
+        # Pattern 1: "data-tts-text" contains the spoken answer
+        m = re.search(r'data-tts-text="([^"]{5,200})"', raw)
+        if m:
+            text = m.group(1).replace('&amp;', '&').replace('&#39;', "'")
+            if not any(bad in text.lower() for bad in ['sign in', 'cookie']):
+                return text
+        
+        # Pattern 2: data-dobid="hdw" (word definitions)
+        m = re.search(r'data-dobid="hdw"[^>]*>([^<]+)<', raw)
+        if m:
+            word = m.group(1)
+            # Get the definition too
+            defn = re.search(r'class="[^"]*LTKOO[^"]*"[^>]*><span[^>]*>([^<]+)', raw)
+            if defn:
+                return f"{word}: {defn.group(1)}"
+        
+        # Pattern 3: Large answer text (e.g. "Seoul" for "capital of south korea")
+        m = re.search(r'class="[^"]*Z0LcW[^"]*"[^>]*>([^<]{2,100})<', raw)
+        if m:
+            return m.group(1).strip()
+        
+        # Pattern 4: Knowledge graph header answer
+        m = re.search(r'class="[^"]*kno-ecr-pt[^"]*"[^>]*>([^<]+)<', raw)
+        if m:
+            answer = m.group(1).strip()
+            if len(answer) > 2:
+                return answer
+        
+        return None
+
+
+class DuckDuckGoLiteSnippet(Source):
+    """Scrapes DuckDuckGo lite (text-only version) for the answer snippet 
+    shown at the very top. Lighter than full HTML version. FREE."""
+    name = 'ddg_lite'
+    domain = 'lite.duckduckgo.com'
+    specialties = ['general']
+    quality = 0.7
+    timeout = 6
+
+    def fetch(self, query: str) -> Optional[str]:
+        url = f"https://lite.duckduckgo.com/lite/?q={urllib.parse.quote(query)}"
+        raw = self._get(url)
+        if not raw:
+            return None
+        
+        # DDG Lite has a simpler structure — answer/snippet at top
+        # Look for the zero-click info box
+        m = re.search(r'class="[^"]*result-link[^"]*"[^>]*>([^<]+)</a>\s*</td>\s*</tr>\s*<tr>\s*<td[^>]*>\s*<span class="[^"]*link-text[^"]*"[^>]*>([^<]+)', raw, re.DOTALL)
+        if m:
+            title = m.group(1).strip()
+            snippet = m.group(2).strip()
+            if snippet and len(snippet) > 20:
+                return snippet
+        
+        # Alternative: get first result snippet
+        snippets = re.findall(r'class="[^"]*result-snippet[^"]*"[^>]*>([^<]+)<', raw)
+        if snippets:
+            text = snippets[0].strip()
+            if len(text) > 20:
+                return text
+        
+        # Fallback: first TD with substantial text
+        cells = re.findall(r'<td[^>]*class="[^"]*result[^"]*"[^>]*>(.*?)</td>', raw, re.DOTALL)
+        for cell in cells[:3]:
+            text = re.sub(r'<[^>]+>', '', cell).strip()
+            if len(text) > 30 and 'duckduckgo' not in text.lower():
+                return text[:300]
+        
+        return None
+
+
 # Source registry
 ALL_SOURCES = {
+    # INSTANT ANSWER SOURCES (Priority — checked FIRST)
+    'ddg_instant_enhanced': DuckDuckGoInstantEnhanced(),
+    # Original sources
     'wikipedia_en': WikipediaEN(),
     'wikipedia_simple': WikipediaSimple(),
     'wikipedia_fr': WikipediaFR(),
@@ -752,16 +1104,17 @@ ALL_SOURCES = {
 }
 
 # Topic → preferred sources (in priority order)
+# INSTANT ANSWER SOURCES GO FIRST — they return direct answers from the top of page
 TOPIC_ROUTING = {
-    TOPIC_PEOPLE: ['wikipedia_en', 'wikidata_search', 'wikidata_sparql', 'wikiquote', 'ddg_instant', 'nobel_api'],
-    TOPIC_PLACES: ['wikidata_sparql', 'wikipedia_en', 'wikidata_search', 'ddg_instant', 'wikipedia_simple'],
-    TOPIC_SCIENCE: ['wikipedia_en', 'wikidata_search', 'wikidata_sparql', 'ddg_instant', 'wikipedia_simple'],
-    TOPIC_HISTORY: ['wikipedia_en', 'wikidata_sparql', 'wikidata_search', 'ddg_instant', 'wikipedia_fr'],
-    TOPIC_TECH: ['wikipedia_en', 'ddg_instant', 'ddg_html', 'wikidata_search', 'wikipedia_simple'],
-    TOPIC_DEFINITIONS: ['wikipedia_simple', 'dictionary_api', 'wiktionary', 'ddg_instant', 'wikipedia_en'],
-    TOPIC_BOOKS: ['open_library', 'wikipedia_en', 'ddg_instant', 'wikidata_search'],
-    TOPIC_MUSIC: ['itunes', 'wikipedia_en', 'ddg_instant', 'wikidata_search'],
-    TOPIC_GENERAL: ['wikipedia_en', 'ddg_instant', 'wikidata_search', 'wikipedia_simple', 'ddg_html'],
+    TOPIC_PEOPLE: ['ddg_instant_enhanced', 'wikidata_sparql', 'wikipedia_en', 'wikidata_search', 'wikiquote', 'nobel_api'],
+    TOPIC_PLACES: ['ddg_instant_enhanced', 'wikidata_sparql', 'wikipedia_en', 'rest_countries', 'wikidata_search'],
+    TOPIC_SCIENCE: ['ddg_instant_enhanced', 'wikidata_sparql', 'wikipedia_en', 'wikidata_search', 'wikipedia_simple'],
+    TOPIC_HISTORY: ['ddg_instant_enhanced', 'wikidata_sparql', 'wikipedia_en', 'wikidata_search'],
+    TOPIC_TECH: ['ddg_instant_enhanced', 'wikipedia_en', 'ddg_html', 'wikidata_search'],
+    TOPIC_DEFINITIONS: ['ddg_instant_enhanced', 'dictionary_api', 'wiktionary', 'wikipedia_simple'],
+    TOPIC_BOOKS: ['ddg_instant_enhanced', 'open_library', 'wikipedia_en', 'wikidata_search'],
+    TOPIC_MUSIC: ['ddg_instant_enhanced', 'itunes', 'wikipedia_en', 'wikidata_search'],
+    TOPIC_GENERAL: ['ddg_instant_enhanced', 'wikipedia_en', 'ddg_html', 'wikidata_search', 'wikidata_sparql'],
 }
 
 
@@ -778,25 +1131,52 @@ class OnlineSearch:
         """Main entry point. Returns answer or None."""
         self.stats['queries'] += 1
 
+        # Layer 0: QueryBrain — understand what the user is asking
+        try:
+            from query_brain import get_query_brain
+            brain = get_query_brain()
+            parsed_list = brain.understand(question)
+        except Exception:
+            parsed_list = []
+
         # Layer 1: Cache check (0ms)
         cached = self.cache.get(question)
         if cached:
-            self.stats['cache_hits'] += 1
-            return cached
+            # Validate cached answer matches intent (don't return stale wrong answers)
+            if parsed_list:
+                try:
+                    from query_brain import get_query_brain
+                    b = get_query_brain()
+                    if b.answer_matches_intent(parsed_list[0], cached):
+                        self.stats['cache_hits'] += 1
+                        return cached
+                except Exception:
+                    self.stats['cache_hits'] += 1
+                    return cached
+            else:
+                self.stats['cache_hits'] += 1
+                return cached
 
         # Classify topic
         topic = self._classify(question)
 
-        # PRIORITY: If we can build a SPARQL query, try that FIRST (exact answer)
+        # PRIORITY: SPARQL for structured data (capitals, populations — things it's GOOD at)
+        # Skip SPARQL for "who invented/discovered" — Wikipedia handles those better
         sparql_src = ALL_SOURCES.get('wikidata_sparql')
-        if sparql_src:
+        q_low = question.lower()
+        _skip_sparql = any(w in q_low for w in ['who invented', 'who discovered', 'who wrote',
+                                                  'largest', 'smallest', 'tallest', 'highest',
+                                                  'fastest', 'deepest', 'longest'])
+        if sparql_src and not _skip_sparql:
             try:
                 sparql_ans = sparql_src.fetch(question)
                 if sparql_ans and len(sparql_ans) > 1 and '|' not in sparql_ans:
-                    self.heatmap.add('wikidata_sparql')
-                    self.stats['web_hits'] += 1
-                    self._save(question, sparql_ans)
-                    return sparql_ans
+                    if not re.match(r'^Q\d+$', sparql_ans.strip()) and \
+                       not re.match(r'^[0-9a-f]{16,}$', sparql_ans.strip()):
+                        self.heatmap.add('wikidata_sparql')
+                        self.stats['web_hits'] += 1
+                        self._save(question, sparql_ans)
+                        return sparql_ans
             except:
                 pass
 
@@ -804,11 +1184,48 @@ class OnlineSearch:
         source_names = TOPIC_ROUTING.get(topic, TOPIC_ROUTING[TOPIC_GENERAL])
         cold_sources = self.heatmap.coldest(source_names, n=3)
 
+        # Pre-Tier: For specific intents, try DDG/Wikipedia with smart query first
+        if parsed_list:
+            _intent = parsed_list[0].get('intent', '')
+            _entity = parsed_list[0].get('entity', '')
+            if _intent in ('inventor', 'discoverer', 'author', 'superlative') and _entity:
+                # These need the VARIANT query, not the original question
+                try:
+                    from query_brain import get_query_brain
+                    qb = get_query_brain()
+                    _variants = qb.get_search_variants(parsed_list[0])
+                    for _v in [_entity] + _variants[:2]:
+                        # Try DDG first (fast), then Wikipedia
+                        for _src_name in ['ddg_instant_enhanced', 'wikipedia_en']:
+                            _src = ALL_SOURCES.get(_src_name)
+                            if _src:
+                                try:
+                                    _ans = _src.fetch(_v)
+                                    if _ans and len(_ans) > 15 and qb.answer_matches_intent(parsed_list[0], _ans):
+                                        self._save(question, _ans)
+                                        self.stats['web_hits'] += 1
+                                        return _ans
+                                except:
+                                    pass
+                except Exception:
+                    pass
+
         # Tier 1: Parallel fire top 3
         result = self._parallel_fire(cold_sources, question)
         if result:
-            self._save(question, result)
-            return result
+            # Validate: does this answer match what the user is asking?
+            _accept_result = True
+            if parsed_list:
+                try:
+                    from query_brain import get_query_brain
+                    qb = get_query_brain()
+                    if not qb.answer_matches_intent(parsed_list[0], result):
+                        _accept_result = False  # Answer doesn't match intent, keep searching
+                except Exception:
+                    pass
+            if _accept_result:
+                self._save(question, result)
+                return result
 
         # Tier 2: Rephrase + try 3 more sources
         rephrased = self._rephrase(question)
@@ -844,11 +1261,43 @@ class OnlineSearch:
                 self._save(question, merged)
                 return merged
 
+        # Tier 5: QueryBrain retry — if we have parsed intent, try search variants
+        if parsed_list:
+            try:
+                from query_brain import get_query_brain
+                qb = get_query_brain()
+                for parsed in parsed_list[:1]:  # First sub-question
+                    variants = qb.get_search_variants(parsed)
+                    for variant in variants[:2]:  # Try up to 2 variants
+                        # Try DDG instant + Wikipedia with the variant query
+                        for src_name in ['ddg_instant_enhanced', 'wikipedia_en', 'ddg_html']:
+                            src = ALL_SOURCES.get(src_name)
+                            if src:
+                                try:
+                                    ans = src.fetch(variant)
+                                    if ans and len(ans) > 15:
+                                        if qb.answer_matches_intent(parsed, ans):
+                                            self._save(question, ans)
+                                            self.stats['web_hits'] += 1
+                                            return ans
+                                except:
+                                    pass
+            except Exception:
+                pass
+
         self.stats['failures'] += 1
         return None
 
     # ─── TOPIC CLASSIFICATION ───
 
+    # ─── INSTANT FACTUAL ANSWERS ───
+    # Removed hardcoded facts — use LIVE web search for all answers instead.
+    # The search engine (DDG + Wikipedia + Wikidata) handles everything dynamically.
+    
+    def _instant_answer(self, question: str) -> Optional[str]:
+        """No hardcoded answers — always use live web search."""
+        return None
+    
     def _classify(self, question: str) -> str:
         q = question.lower()
         if any(w in q for w in ['capital', 'country', 'population', 'continent', 'city', 'located']):
@@ -932,6 +1381,12 @@ class OnlineSearch:
         q_words = set(question.lower().split())
         a_lower = answer.lower()
 
+        # Reject garbage: Q-codes, hash strings
+        if re.match(r'^Q\d+$', answer.strip()):
+            return 0.0
+        if re.match(r'^[0-9a-f]{16,}$', answer.strip()):
+            return 0.0
+
         # Relevance: answer contains question keywords
         topic_words = q_words - _STOP_WORDS
         matches = sum(1 for w in topic_words if w in a_lower)
@@ -965,19 +1420,54 @@ class OnlineSearch:
     # ─── QUERY REFORMULATION ───
 
     def _rephrase(self, question: str) -> List[str]:
-        """Generate 3 alternative phrasings."""
+        """Generate alternative phrasings optimized for instant answer sources."""
         q = question.lower().strip().rstrip('?.')
         words = q.split()
         content = [w for w in words if w not in _STOP_WORDS and len(w) > 2]
 
         variants = []
-        # Variant 1: keyword only
+        
+        # Smart rephrasing based on question pattern
+        # "who invented X" → "inventor of X", "X inventor", "X invention history"
+        import re as _re
+        m = _re.match(r'who (?:invented|created|discovered|developed|founded|built|designed)\s+(?:the\s+)?(.+)', q)
+        if m:
+            topic = m.group(1).strip()
+            variants.append(f"inventor of {topic}")
+            variants.append(f"{topic} invented by")
+            variants.append(f"{topic} history inventor")
+            return variants
+        
+        # "who wrote X" → "author of X"
+        m = _re.match(r'who (?:wrote|painted|composed|directed)\s+(?:the\s+)?(.+)', q)
+        if m:
+            topic = m.group(1).strip()
+            variants.append(f"author of {topic}")
+            variants.append(f"{topic} written by")
+            return variants
+        
+        # "what is the capital of X" → "X capital city"
+        m = _re.match(r'what is the capital of\s+(.+)', q)
+        if m:
+            country = m.group(1).strip()
+            variants.append(f"{country} capital city")
+            variants.append(f"capital city {country}")
+            return variants
+        
+        # "what is the largest/smallest/tallest X" → "X largest"  
+        m = _re.match(r'what is the (largest|smallest|tallest|fastest|longest|deepest|highest)\s+(.+)', q)
+        if m:
+            adj = m.group(1)
+            topic = m.group(2).strip()
+            variants.append(f"{adj} {topic} in the world")
+            variants.append(f"world {adj} {topic}")
+            return variants
+        
+        # Default: keyword extraction
         if content:
             variants.append(' '.join(content))
-        # Variant 2: reversed keywords
         if len(content) > 1:
             variants.append(' '.join(reversed(content)))
-        # Variant 3: just the main topic (last content word)
         if content:
             variants.append(content[-1])
 

@@ -4684,3 +4684,116 @@ zinc|atomic_number|30|99
 zirconium|symbol|zr|99
 zirconium|atomic_number|40|99
 zonnon|created_year|2000|95
+paris|located_in|france|90|test|1783923848
+paris|located_in|texas|80|test|1783923848
+it|melts_at|1668|90|test|1783924868
+what|description|a Glacier? 1: scientific article published in Nature|75|web|1783927514
+bacteria|description|a single-celled organisms|75|pipeline|1783927514
+marble|is_a|type of metamorphic rock|80|pipeline|1783927514
+granite|is_a|type of igneous rock|80|pipeline|1783927514
+methane|is_a|compound|80|pipeline|1783927514
+limestone|is_a|type of sedimentary rock|80|pipeline|1783927515
+a lens|is_a|transmissive optical device that focuses or disperses a light beam by means of refraction|80|web|1783927520
+petroleum|is_a|fossil fuel formed over millions of years from anaerobic decay of organic materials from buried prehistoric organisms|80|web|1783927526
+armenia|is_a|country|80|pipeline|1783927527
+armenia|located_in|asia|80|pipeline|1783927527
+sand|is_a|granular material composed of finely divided mineral particles|80|web|1783927538
+sand|has_property|various compositions but is usually defined by its grain size|75|web|1783927538
+it is the primary form of sand apparent in areas where reefs|has_property|dominated the ecosystem for millions of years|75|web|1783927538
+a vapor or vapour|is_a|substance in the gas phase at a temperature lower than its critical temperature|80|web|1783927555
+an aerosol|is_a|suspension of tiny particles of liquid|80|web|1783927555
+a laptop|is_a|portable personal computer|80|web|1783927559
+s internal hardware|located_in|the lower part|80|web|1783927559
+paint|description|the general term for liquid that is used to add colour to the surface of an obje|75|web|1783927567
+of tablet computers and the associated special operating software|is_a|example of pen computing technology|80|web|1783927571
+glass|is_a|amorphous solid|80|web|1783927590
+which|is_a|form of pottery using lead glazes|80|web|1783927590
+glass|has_property|found widespread practical|75|web|1783927590
+glass|has_property|been traditionally used for vessels|75|web|1783927590
+these countries often|has_property|disputed territories and have only partial recognition|75|web|1783927596
+the motion of electric charge carriers|is_a|electric current and produces a magnetic field|80|web|1783927604
+a building or edifice|is_a|enclosed structure with a roof|80|web|1783927612
+and|has_property|been adapted throughout history for numerous factors|75|web|1783927612
+buildings|has_property|been objects or canvasses of much artistic expression|75|web|1783927612
+normal human body temperature|description|the typical temperature range found in humans, generally given as 36|75|web|1783927661
+it|is_a|colorless and odorless gas|80|web|1783927684
+a steam engine|is_a|heat engine that performs mechanical work using steam as its working fluid|80|web|1783927686
+lightbulb|is_a|object|90
+lightbulb|is_fragile|true|95
+lightbulb|has_property|glass|90
+lightbulb|has_property|thin|85
+lightbulb|has_property|hollow|80
+watermelon|is_a|fruit|95
+watermelon|is_fragile|true|85
+watermelon|has_property|heavy|80
+watermelon|has_property|juicy|90
+watermelon|has_state|solid|90
+television|is_a|device|90
+television|is_fragile|true|90
+television|has_property|electronic|95
+television|has_property|screen|90
+television|has_property|glass|85
+tv|is_a|device|90
+tv|is_fragile|true|90
+tv|has_property|electronic|95
+tv|has_property|screen|90
+sand|is_a|material|90
+sand|has_state|solid|90
+sand|melts_at|1700|90
+sand|has_property|granular|85
+sand|has_property|silicon|80
+laptop|is_a|device|90
+laptop|is_fragile|true|85
+laptop|has_property|electronic|95
+laptop|has_property|screen|90
+tablet|is_a|device|90
+tablet|is_fragile|true|85
+tablet|has_property|electronic|95
+tablet|has_property|screen|90
+phone|is_a|device|90
+phone|is_fragile|true|85
+phone|has_property|electronic|95
+phone|has_property|screen|90
+jar|is_a|container|90
+jar|is_fragile|true|90
+jar|has_property|glass|90
+bowl|is_a|container|85
+bowl|is_fragile|true|80
+bowl|has_property|ceramic|85
+vase|is_a|container|90
+vase|is_fragile|true|95
+vase|has_property|ceramic|85
+vase|has_property|glass|80
+porcelain|is_a|material|90
+porcelain|is_fragile|true|95
+porcelain|melts_at|1260|85
+resin|is_a|material|85
+resin|melts_at|80|80
+resin|has_state|solid|85
+gelatin|is_a|material|80
+gelatin|melts_at|35|85
+gelatin|has_state|solid|80
+coconut oil|is_a|oil|90
+coconut oil|melts_at|24|90
+coconut oil|has_state|solid|80
+tar|is_a|material|85
+tar|melts_at|60|80
+tar|has_state|solid|80
+soap|is_a|material|80
+soap|melts_at|55|80
+soap|has_state|solid|85
+clay|is_a|material|90
+clay|has_state|solid|85
+clay|burns_at|900|80
+paint|is_a|material|80
+paint|has_state|liquid|85
+paint|boils_at|100|70
+cement|is_a|material|90
+cement|has_state|solid|85
+gasoline|is_a|fuel|90
+gasoline|is_flammable|true|95
+gasoline|boils_at|40|85
+gasoline|has_state|liquid|90it|located_in|almost all living things|80|web|1783933577
+it|is_a|dense|80|web|1783933580
+blood|description|red, liquid|75|pipeline|1783933911
+negative two or minus two|is_a|integer two units from the origin|80|web|1783937820

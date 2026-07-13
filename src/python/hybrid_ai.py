@@ -4,7 +4,7 @@ Axima - Unified Interface (Cosmic Level)
 Combines C engine (fast knowledge lookup) + Python brain (deep intelligence)
 + Proactive AI + Personality + Teaching + Workflows + Persistent Context.
 """
-import subprocess, sys, os, json, time, select, fcntl
+import subprocess, sys, os, json, time, select, fcntl, re
 
 sys.path.insert(0, os.path.dirname(__file__))
 from brain import HybridBrain, engines_loaded
@@ -66,10 +66,17 @@ except Exception: SemanticBrain = None
 
 # Find C binary
 AI_BIN = None
-for path in ['../../ai', '/root/axima/ai']:
-    if os.path.isfile(path) and os.access(path, os.X_OK):
-        AI_BIN = os.path.abspath(path)
+for path in ['../../ai', '/root/hybrid-ai/ai', '/root/axima/ai', './ai']:
+    full = os.path.abspath(path)
+    if os.path.isfile(full) and os.access(full, os.X_OK):
+        AI_BIN = full
         break
+# Also check relative to this script's directory
+if not AI_BIN:
+    _script_dir = os.path.dirname(os.path.abspath(__file__))
+    _bin_path = os.path.join(_script_dir, '..', '..', 'ai')
+    if os.path.isfile(_bin_path) and os.access(_bin_path, os.X_OK):
+        AI_BIN = os.path.abspath(_bin_path)
 
 class Axima:
     """Unified AI combining C speed + Python intelligence + Cosmic features."""
@@ -80,9 +87,9 @@ class Axima:
         self.world = WorldSimulator()
         self.c_proc = None
         self.turn = 0
-        self.auto_search = False  # Auto-search web when AI doesn't know
+        self.auto_search = True   # Always-on: auto-search web when AI doesn't know
         self._c_restart_count = 0  # C engine restart counter (max 3)
-        self.auto_save = False    # Auto-save web results without asking
+        self.auto_save = True     # Always-on: auto-save web results without asking
         self.teach_mode = False   # Socratic teaching mode
         
         # Cosmic modules (graceful fallback if any fail)
@@ -117,6 +124,12 @@ class Axima:
         self._load_session()
         self._c_restart_count = 0
         self._start_c_engine()
+        
+        # Always-on online: detect internet + pre-warm search engine (background)
+        self._internet_available = False
+        self._search_engine_ready = False
+        self._warmup_thread = None
+        self._start_online_warmup()
     
     def _load_entities_from_knowledge(self):
         """Extract entity names from knowledge text files for Semantic Brain."""
@@ -180,6 +193,45 @@ class Axima:
         ]
         entities.update(compounds)
         return entities
+
+    def _start_online_warmup(self):
+        """Background thread: detect internet + pre-warm search engine."""
+        import threading
+        def _warmup():
+            # Step 1: Detect internet connectivity
+            self._internet_available = self._check_internet()
+            if not self._internet_available:
+                return
+            # Step 2: Pre-warm the search engine (creates HeatMap, FuzzyCache, tests connection)
+            try:
+                from online_search import get_engine
+                self._online_engine = get_engine()
+                self._search_engine_ready = True
+            except Exception:
+                self._search_engine_ready = False
+        
+        self._warmup_thread = threading.Thread(target=_warmup, daemon=True)
+        self._warmup_thread.start()
+    
+    @staticmethod
+    def _check_internet():
+        """Quick internet check — try to reach a fast endpoint."""
+        import socket
+        targets = [
+            ('8.8.8.8', 53),         # Google DNS
+            ('1.1.1.1', 53),         # Cloudflare DNS
+            ('208.67.222.222', 53),   # OpenDNS
+        ]
+        for host, port in targets:
+            try:
+                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                sock.settimeout(2)
+                sock.connect((host, port))
+                sock.close()
+                return True
+            except (OSError, socket.timeout):
+                continue
+        return False
 
     def _start_c_engine(self):
         """Launch C engine as a persistent subprocess with stdin/stdout pipes."""
@@ -245,7 +297,7 @@ class Axima:
     def _query_c(self, text):
         """Send query to persistent C engine via stdin, read response until next prompt."""
         if not self.c_available or self.c_proc is None:
-            return None
+            return self._query_c_oneshot(text)
         # Check if process is still alive
         if self.c_proc.poll() is not None:
             # Process died — try to restart (with limit)
@@ -281,14 +333,33 @@ class Axima:
                 if any(skip in line.lower() for skip in ['how can i', 'what can i', 'goodbye', 'session']):
                     continue
                 return line
-            return None
+            # Persistent pipe returned no valid answer — try one-shot
+            return self._query_c_oneshot(text)
         except (BrokenPipeError, OSError):
-            # Pipe broken — mark as unavailable
+            # Pipe broken — try one-shot fallback
             self.c_proc = None
-            self.c_available = False
-            return None
+            return self._query_c_oneshot(text)
         except Exception:
+            return self._query_c_oneshot(text)
+    
+    def _query_c_oneshot(self, text):
+        """Fallback: query C engine in one-shot mode (subprocess per query)."""
+        if not AI_BIN:
             return None
+        try:
+            result = subprocess.run(
+                [AI_BIN], input=f"{text}\n/quit\n",
+                capture_output=True, text=True, timeout=5
+            )
+            for line in result.stdout.split('\n'):
+                line = line.strip()
+                if line.startswith('>') and len(line) > 5:
+                    answer = line[1:].strip()
+                    if answer and 'How can I' not in answer and 'Goodbye' not in answer:
+                        return answer
+        except Exception:
+            pass
+        return None
 
     def _stop_c_engine(self):
         """Cleanly terminate the persistent C engine subprocess."""
@@ -361,12 +432,15 @@ class Axima:
             else:
                 _qtype = 'general'
             
-            # Context Gravity: detect domain for better resolution
+            # Context Gravity: detect domain + temporal context + user profile (Upgrades #2, #9)
             try:
-                from self_learning import get_gravity
+                from self_learning import get_gravity, get_profile
                 _grav = get_gravity()
                 _domain = _grav.detect_domain(user_input)
-                # Domain info available for QIR entanglement
+                # Record domain in user profile for distribution tracking
+                _prof = get_profile()
+                if _domain:
+                    _prof.record_domain(_domain)
             except Exception:
                 _domain = None
             
@@ -374,6 +448,7 @@ class Axima:
             self._qir_interpretations = self._qir_instance.resolve(user_input, _qtype)
             
             # Use best interpretation ONLY if it's a minor correction (1-2 words changed)
+            self._qir_changed_words = []  # Track changes for Upgrade #5 verification
             if self._qir_interpretations:
                 best = self._qir_interpretations[0]
                 original_lower = user_input.lower()
@@ -386,6 +461,8 @@ class Axima:
                     if len(orig_words) == len(best_words):
                         changes = sum(1 for a, b in zip(orig_words, best_words) if a != b)
                         if changes <= 2:  # max 2 words corrected
+                            # Track which words changed (for self-verifying corrections)
+                            self._qir_changed_words = [(a, b) for a, b in zip(orig_words, best_words) if a != b]
                             user_input = best.text
                             if user_input and user_input[0].islower():
                                 user_input = user_input[0].upper() + user_input[1:]
@@ -432,6 +509,29 @@ class Axima:
         # Only trigger code gen for COMMANDS, not questions like "who created X?"
         is_code_request = any(t in lower for t in code_triggers) and not lower.startswith(('who', 'what is', 'why', 'when', 'where'))
         
+        # 1.55 SYMTREE — Symbolic Math Engine (algebra, equations, calculus)
+        # Catches: solve, factor, expand, simplify, and equation-like inputs
+        _is_math = False
+        _math_triggers = ['solve', 'factor', 'expand', 'simplif', 'derivative', 'integrate',
+                          'differentiate', 'limit of', 'lim ', 'taylor', 'd/d', 'antiderivative',
+                          'laplace', 'fourier', 'z transform', 'z-transform', 'ztransform']
+        if any(t in lower for t in _math_triggers):
+            _is_math = True
+        elif '=' in user_input and any(c in user_input for c in 'xyz') and any(c in user_input for c in '+-*/^'):
+            _is_math = True  # Equation with variables and operators
+        elif re.search(r'(?:x|y|z)\s*[\^]\s*\d', lower):
+            _is_math = True  # x^2, y^3, etc.
+
+        if _is_math:
+            try:
+                from prometheus import get_prometheus
+                _sym = get_prometheus()
+                _math_result = _sym.process(user_input)
+                if _math_result and _math_result not in ('0', '', 'cannot solve symbolically'):
+                    return {"response": _math_result, "gap": False}
+            except Exception:
+                pass
+
         # 1.6 Agent system for complex tasks (math, compare, run commands)
         agent_triggers = ['calculate', 'compute', 'run command', 'list files', 'analyze']
         if any(t in lower for t in agent_triggers):
@@ -597,28 +697,40 @@ class Axima:
         # 5.5 SHORT-CIRCUIT: If C engine returned a high-quality answer, skip expensive
         # Python processing (metacognition, fluency, multipath, truthguard) and return
         # directly. This avoids Python wrapping that degrades natural C responses.
+        # BUT: check quality alignment first — don't short-circuit bad answers.
         dont_know_signals_sc = ["don't know", "don't have", "outside my knowledge",
                                 "teach me", "not sure", "can't find"]
+        _c_is_quality = False
         if (c_answer and len(c_answer) > 50
                 and not any(s in c_answer.lower() for s in dont_know_signals_sc)):
-            # High-quality C answer — run through NR v6 gate then return
-            final = self._adjust_for_mood(c_answer, self.mood)
-            if NaturalResponseV6 and self._natural_response:
-                try:
-                    nr_result = self._natural_response.respond(final, user_input, 0.95)
-                    if nr_result and nr_result.get('display'):
-                        final = nr_result['display']
-                except Exception: pass
-            if self.long_memory:
-                try:
-                    self.long_memory.store(user_input, final)
-                except Exception: pass
-            # Enrich with Response Depth Engine
+            # Check quality score before short-circuiting
             try:
-                from response_depth import enrich_response
-                final = enrich_response(user_input, final)
-            except Exception: pass
-            return {"response": final, "gap": False}
+                from self_learning import get_learner as _get_sl
+                _sl_sc = _get_sl()
+                _sc_score = _sl_sc.score_answer(user_input, c_answer, 'pipeline')
+                _c_is_quality = (_sc_score >= 7)
+            except Exception:
+                _c_is_quality = False  # if scorer fails, DON'T short-circuit (let full pipeline run)
+            
+            if _c_is_quality:
+                # High-quality C answer — run through NR v6 gate then return
+                final = self._adjust_for_mood(c_answer, self.mood)
+                if NaturalResponseV6 and self._natural_response:
+                    try:
+                        nr_result = self._natural_response.respond(final, user_input, 0.95)
+                        if nr_result and nr_result.get('display'):
+                            final = nr_result['display']
+                    except Exception: pass
+                if self.long_memory:
+                    try:
+                        self.long_memory.store(user_input, final)
+                    except Exception: pass
+                # Enrich with Response Depth Engine
+                try:
+                    from response_depth import enrich_response
+                    final = enrich_response(user_input, final)
+                except Exception: pass
+                return {"response": final, "gap": False}
         
         # 6. Check if C engine doesn't know (gap detected)
         dont_know_signals = ["don't know", "don't have", "outside my knowledge", 
@@ -734,39 +846,101 @@ class Axima:
             final = enrich_response(user_input, final)
         except Exception: pass
         
-        # 15. Self-Learning: detect errors + cache successes
+        # 15. Self-Learning: quality scoring + auto-import + verify corrections + decay
         try:
             from self_learning import get_learner
             _sl = get_learner()
-            if _sl.detect_error(user_input, final):
-                # Bad answer — log failure, try web search
-                _sl.log_failure(user_input, final)
-                # Don't return garbage — try web or gap
+            
+            # Upgrade #7: Answer Quality Score (replaces simple detect_error)
+            _quality_score = _sl.score_answer(user_input, final, 'pipeline')
+            
+            if _quality_score < 7 and self._internet_available:
+                # Bad or uncertain answer + internet available → always try web
+                if _quality_score < 4:
+                    _sl.log_failure(user_input, final)
+                    # Upgrade #8: Decay failed QIR interpretation
+                    if hasattr(self, '_qir_instance') and hasattr(self, '_qir_changed_words'):
+                        for orig, resolved in self._qir_changed_words:
+                            self._qir_instance.decay_interpretation(orig, resolved)
+                
+                # Auto-search web (always-on, no asking)
                 try:
                     web_result = self.search_and_learn(user_input)
                     if web_result and web_result.get('found'):
                         final = web_result['answer']
                         try:
-                            final = enrich_response(user_input, final)
+                            from response_depth import enrich_response as _enrich
+                            final = _enrich(user_input, final)
                         except Exception: pass
                         _sl.log_success(user_input, final, 'web_recovery')
+                        
+                        # Upgrade #1: Auto-import verified triples from web answer
+                        try:
+                            from cse_knowledge import get_knowledge
+                            _kb = get_knowledge()
+                            _kb.auto_import(user_input, final, source='web')
+                        except Exception: pass
                 except Exception: pass
-            else:
+                
+            elif _quality_score >= 7:
                 # Good answer — cache it
                 _sl.log_success(user_input, final, 'pipeline')
+                
+                # Upgrade #5: Verify QIR corrections (they led to success)
+                if hasattr(self, '_qir_instance') and hasattr(self, '_qir_changed_words'):
+                    if self._qir_changed_words:
+                        orig_list = [w[0] for w in self._qir_changed_words]
+                        resolved_list = [w[1] for w in self._qir_changed_words]
+                        self._qir_instance.verify_correction(orig_list, resolved_list, True)
+                
+                # Upgrade #1: Auto-import from pipeline answers too
+                try:
+                    from cse_knowledge import get_knowledge
+                    _kb = get_knowledge()
+                    _kb.auto_import(user_input, final, source='pipeline')
+                except Exception: pass
+            # else: score 3-4 with no internet = uncertain, don't cache
         except Exception: pass
         
         return {"response": final, "gap": False}
     
     def search_and_learn(self, query):
-        """Search the web for an answer and offer to save."""
+        """Search the web for an answer and AUTO-SAVE facts (always-on)."""
+        # Use pre-warmed engine if available
+        if hasattr(self, '_online_engine') and self._search_engine_ready:
+            answer = self._online_engine.search(query)
+            if answer:
+                # Auto-save: extract and store facts without asking
+                try:
+                    from auto_learn import _get_engine as _get_learn_engine
+                    learn_engine = _get_learn_engine()
+                    result = learn_engine.offer_search(query)
+                    if result:
+                        learn_engine.save_learned(result)  # AUTO-SAVE always
+                except Exception:
+                    pass
+                return {
+                    "found": True,
+                    "answer": answer,
+                    "source": "online_search_v3",
+                    "facts": [],
+                }
+        
+        # Fallback: use offer_search directly
         result = offer_search(query)
         if result:
+            # AUTO-SAVE: always save facts without asking
+            try:
+                from auto_learn import _get_engine as _get_learn_engine
+                learn_engine = _get_learn_engine()
+                learn_engine.save_learned(result)
+            except Exception:
+                pass
             return {
                 "found": True,
                 "answer": result["answer"],
                 "source": result["source"],
-                "facts": result["facts"],
+                "facts": result.get("facts", []),
             }
         return {"found": False}
     

@@ -4,11 +4,37 @@ AXIMA CSE Python Wrapper — Queries the compressed binary knowledge database.
 Uses subprocess to call C binary for O(1) lookups, caches results in Python.
 Also provides fallback: reads triples file directly if binary unavailable.
 """
-import os, json, subprocess
+import os, json, subprocess, re, time
+from collections import OrderedDict
 
 CSE_BINARY = os.path.join(os.path.dirname(__file__), '..', '..', 'ai')
 CSE_DB = os.path.join(os.path.dirname(__file__), '..', 'data', 'knowledge.cse')
 TRIPLES_FILE = os.path.join(os.path.dirname(__file__), '..', 'data', 'unified_knowledge.triples')
+
+# --- Upgrade constants ---
+ALLOWED_RELATIONS = {'is_a', 'has_property', 'description', 'melts_at', 'boils_at', 'located_in'}
+TRANSITIVE = {'is_a', 'located_in', 'part_of'}
+IMMUTABLE_RELATIONS = {'melts_at', 'boils_at', 'atomic_number', 'formula'}
+
+
+class LRUCache:
+    """LRU hot cache — keeps most-queried entities in a fast OrderedDict."""
+    def __init__(self, max_size=500):
+        self._cache = OrderedDict()
+        self._max = max_size
+
+    def get(self, key):
+        if key in self._cache:
+            self._cache.move_to_end(key)
+            return self._cache[key]
+        return None
+
+    def put(self, key, value):
+        self._cache[key] = value
+        self._cache.move_to_end(key)
+        if len(self._cache) > self._max:
+            self._cache.popitem(last=False)
+
 
 class CSEKnowledge:
     """Unified knowledge access — CSE binary first, triples fallback."""
@@ -16,6 +42,9 @@ class CSEKnowledge:
     def __init__(self):
         self._cache = {}  # subject → {relation → [objects]}
         self._loaded = False
+        self._inference_cache = {}  # (subject, relation) → inferred results
+        self._contradictions = []   # list of contradiction dicts
+        self._hot_cache = LRUCache(500)  # LRU hot cache for frequent queries
         self._load_triples()  # Always load triples as fallback (fast, <5ms)
     
     def _load_triples(self):
@@ -47,7 +76,13 @@ class CSEKnowledge:
         """Query knowledge about a subject. Returns list of (relation, object, confidence)."""
         subject_lower = subject.lower()
         results = []
-        
+
+        # Check LRU hot cache first
+        cache_key = (subject_lower, relation)
+        cached = self._hot_cache.get(cache_key)
+        if cached is not None:
+            return cached
+
         if subject_lower in self._cache:
             data = self._cache[subject_lower]
             if relation:
@@ -58,7 +93,9 @@ class CSEKnowledge:
                 for rel, objs in data.items():
                     for obj, conf in objs:
                         results.append((rel, obj, conf))
-        
+
+        # Populate hot cache
+        self._hot_cache.put(cache_key, results)
         return results
     
     def get_property(self, subject, relation):
@@ -146,6 +183,129 @@ class CSEKnowledge:
             'cse_file': os.path.exists(CSE_DB),
             'cse_size_kb': os.path.getsize(CSE_DB) / 1024 if os.path.exists(CSE_DB) else 0,
         }
+
+    # ═══════════════════════════════════════════════════════════════════
+    # UPGRADE #1: Auto-Import from Web
+    # ═══════════════════════════════════════════════════════════════════
+
+    def auto_import(self, question, answer, source='web'):
+        """Extract and store facts from a verified answer."""
+        triples = self._extract_triples(answer)
+        imported = 0
+        for subj, rel, obj, conf in triples:
+            if conf >= 0.7 and rel in ALLOWED_RELATIONS:
+                self.store_triple(subj, rel, obj, conf, source=source)
+                imported += 1
+        return imported
+
+    def _extract_triples(self, text):
+        """Extract (subject, relation, object, confidence) from natural language."""
+        triples = []
+        text = text.strip()
+        # Pattern: X is a Y
+        for m in re.finditer(r'([A-Za-z][a-z ]+?) is (?:a|an) ([a-z ]+?)(?:\.|,|$)', text):
+            triples.append((m.group(1).strip().lower(), 'is_a', m.group(2).strip().lower(), 0.8))
+        # Pattern: X is located in Y
+        for m in re.finditer(r'([A-Za-z][a-z ]+?) is (?:located |found )?in ([A-Za-z][a-z ]+?)(?:\.|,|$)', text):
+            triples.append((m.group(1).strip().lower(), 'located_in', m.group(2).strip().lower(), 0.8))
+        # Pattern: X melts at Y degrees
+        for m in re.finditer(r'([A-Za-z][a-z ]+?) melts at ([\d,.]+)', text):
+            triples.append((m.group(1).strip().lower(), 'melts_at', m.group(2).strip(), 0.9))
+        # Pattern: X boils at Y degrees
+        for m in re.finditer(r'([A-Za-z][a-z ]+?) boils at ([\d,.]+)', text):
+            triples.append((m.group(1).strip().lower(), 'boils_at', m.group(2).strip(), 0.9))
+        # Pattern: X has/have Y (property)
+        for m in re.finditer(r'([A-Za-z][a-z ]+?) (?:has|have) ([a-z ]+?)(?:\.|,|$)', text):
+            triples.append((m.group(1).strip().lower(), 'has_property', m.group(2).strip().lower(), 0.75))
+        # Pattern: X is Y (description - fallback)
+        if not triples:
+            m = re.match(r'([A-Za-z][a-z ]+?) is ([^.]{10,80})', text)
+            if m:
+                triples.append((m.group(1).strip().lower(), 'description', m.group(2).strip(), 0.75))
+        return triples
+
+    def store_triple(self, subject, relation, obj, confidence, source='unknown'):
+        """Store a triple in the cache and persist to triples file."""
+        subj = subject.lower().strip()
+        # Check for contradictions (Upgrade #10)
+        if self._check_contradiction(subj, relation, obj):
+            return  # blocked by immutable fact
+        if subj not in self._cache:
+            self._cache[subj] = {}
+        if relation not in self._cache[subj]:
+            self._cache[subj][relation] = []
+        # Don't duplicate
+        for existing_obj, existing_conf in self._cache[subj][relation]:
+            if existing_obj == obj:
+                return  # already exists
+        self._cache[subj][relation].append((obj, int(confidence * 100)))
+        # Invalidate hot cache for this subject
+        self._hot_cache.put((subj, relation), None)
+        self._hot_cache.put((subj, None), None)
+        # Persist to file
+        try:
+            with open(TRIPLES_FILE, 'a') as f:
+                f.write(f'{subj}|{relation}|{obj}|{int(confidence*100)}|{source}|{int(time.time())}\n')
+        except:
+            pass
+
+    # ═══════════════════════════════════════════════════════════════════
+    # UPGRADE #4: Relation Inference — Transitive Whitelist
+    # ═══════════════════════════════════════════════════════════════════
+
+    def query_with_inference(self, subject, relation, max_depth=3):
+        """Query with transitive inference if relation allows."""
+        direct = self.query(subject, relation)
+        if direct or relation not in TRANSITIVE:
+            return direct
+        # Try multi-hop inference
+        return self._infer_transitive(subject, relation, max_depth, set())
+
+    def _infer_transitive(self, subject, relation, depth, visited):
+        """Recursive transitive inference with cycle detection."""
+        if depth <= 0 or subject in visited:
+            return []
+        visited.add(subject)
+        results = []
+        parents = self.query(subject, relation)
+        for _, parent, conf1 in parents:
+            # Direct parent found
+            grandparents = self.query(parent, relation)
+            for _, gp, conf2 in grandparents:
+                inferred_conf = int((conf1 / 100) * (conf2 / 100) * 100)
+                if inferred_conf > 50:
+                    results.append((relation, gp, inferred_conf))
+            # Go deeper
+            if depth > 1:
+                deeper = self._infer_transitive(parent, relation, depth - 1, visited)
+                for rel, obj, conf in deeper:
+                    chained_conf = int((conf1 / 100) * (conf / 100) * 100)
+                    if chained_conf > 50:
+                        results.append((rel, obj, chained_conf))
+        # Cache results
+        if results and subject.lower() not in self._inference_cache:
+            self._inference_cache[(subject.lower(), relation)] = results
+        return results
+
+    # ═══════════════════════════════════════════════════════════════════
+    # UPGRADE #10: Contradiction Flagging
+    # ═══════════════════════════════════════════════════════════════════
+
+    def _check_contradiction(self, subject, relation, new_obj):
+        """Check if new fact contradicts existing. Returns True if contradiction found."""
+        existing = self.query(subject, relation)
+        for _, old_obj, conf in existing:
+            if old_obj != new_obj:
+                if relation in IMMUTABLE_RELATIONS:
+                    return True  # block: immutable fact
+                # Flag contradiction
+                self._contradictions.append({
+                    'subject': subject, 'relation': relation,
+                    'old': old_obj, 'new': new_obj,
+                    'timestamp': time.time()
+                })
+                return False  # allow but flagged
+        return False
 
 
 # Singleton

@@ -16,6 +16,8 @@ Architecture:
 Owner: Ghias / Gowtham Sangadi
 """
 
+import os
+import json
 from typing import List, Dict, Tuple, Optional
 from dataclasses import dataclass, field
 
@@ -61,6 +63,10 @@ class QIR:
         self._brain = brain
         self._knowledge = knowledge
         self._session_locks = {}  # decoherence memory: word → locked meaning
+        self._session_decay = {}  # (word, meaning) → decay_factor
+        self._corrections = {}  # original → resolved (verified typo mappings)
+        self._corrections_path = os.path.join(os.path.dirname(__file__), '..', 'user_data', 'corrections.json')
+        self._load_corrections()
         self._load_knowledge()
     
     def _load_knowledge(self):
@@ -81,6 +87,47 @@ class QIR:
             except:
                 pass
     
+    def _load_corrections(self):
+        """Load verified corrections from disk."""
+        try:
+            if os.path.exists(self._corrections_path):
+                with open(self._corrections_path, 'r') as f:
+                    self._corrections = json.load(f)
+        except: pass
+
+    def _save_corrections(self):
+        """Save corrections to disk."""
+        try:
+            import os as _os
+            _os.makedirs(os.path.dirname(self._corrections_path), exist_ok=True)
+            with open(self._corrections_path, 'w') as f:
+                json.dump(self._corrections, f, separators=(',', ':'))
+        except: pass
+
+    def verify_correction(self, original_words, resolved_words, success):
+        """Call after answer quality is determined. Stores if success."""
+        if not success:
+            return
+        for orig, resolved in zip(original_words, resolved_words):
+            if orig != resolved and len(orig) > 2:
+                self._corrections[orig.lower()] = resolved.lower()
+        # LRU eviction: keep only newest 5000
+        if len(self._corrections) > 5000:
+            keys = list(self._corrections.keys())
+            for k in keys[:len(keys) - 5000]:
+                del self._corrections[k]
+        self._save_corrections()
+
+    def decay_interpretation(self, word, meaning):
+        """Suppress a failed interpretation slightly."""
+        key = (word.lower(), meaning.lower())
+        self._session_decay[key] = self._session_decay.get(key, 1.0) * 0.95
+
+    def get_decay(self, word, meaning):
+        """Get current decay factor for a word→meaning pair."""
+        key = (word.lower(), meaning.lower())
+        return self._session_decay.get(key, 1.0)
+    
     def superpose(self, token: str) -> QuantumToken:
         """Layer 1: Get ALL possible meanings of a token."""
         qt = QuantumToken(original=token)
@@ -89,6 +136,11 @@ class QIR:
         if not t or len(t) < 1:
             qt.meanings = [Meaning(token, 1.0, 'empty')]
             return qt
+        
+        # Check verified corrections first (Upgrade #5)
+        if t in self._corrections:
+            qt.meanings.insert(0, Meaning(self._corrections[t], 0.99, 'learned_correction'))
+            return qt  # No need to fuzzy match — we KNOW this correction works
         
         # Meaning 1: The word itself (always included — prevents corruption)
         if t in self._entities:
@@ -130,6 +182,11 @@ class QIR:
         abbrevs = self._resolve_abbreviation(t)
         if abbrevs:
             qt.meanings.append(Meaning(abbrevs, 0.95, 'abbreviation'))
+        
+        # Apply session decay (Upgrade #8)
+        for meaning in qt.meanings:
+            decay = self.get_decay(qt.original, meaning.text)
+            meaning.confidence *= decay
         
         # Sort by confidence (highest first)
         qt.meanings.sort(key=lambda m: m.confidence, reverse=True)
@@ -297,6 +354,24 @@ class QIR:
         
         # Layer 1: Superposition
         quantum_tokens = [self.superpose(t) for t in tokens]
+        
+        # UPGRADE #3: Multi-Word Entity merge
+        if self._knowledge:
+            i = 0
+            while i < len(quantum_tokens) - 1:
+                pair = f"{quantum_tokens[i].original} {quantum_tokens[i+1].original}".lower()
+                # Strip punctuation from pair for matching
+                pair_clean = pair.rstrip('?!.,;:')
+                if self._knowledge.has(pair_clean):
+                    # Merge into single token
+                    merged = QuantumToken(original=pair_clean)
+                    cat = self._categories.get(pair_clean, 'compound')
+                    merged.meanings = [Meaning(pair_clean, 1.0, cat)]
+                    quantum_tokens[i] = merged
+                    quantum_tokens.pop(i + 1)
+                    # Don't increment i — check new pair with next token
+                else:
+                    i += 1
         
         # Layer 2 + 5: Entanglement + Observer effect
         quantum_tokens = self.entangle(quantum_tokens, question_type)
