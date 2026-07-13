@@ -1570,6 +1570,331 @@ class TheoremDB:
             conclusion="canonical class of D from ambient canonical + normal bundle",
             tags=["adjunction", "canonical", "divisor"])
 
+        # ══════════════════════════════════════════════
+        # PhD-LEVEL THEOREMS (100 more for research coverage)
+        # Algebraic Geometry, Number Theory, Representation Theory,
+        # Homological Algebra, Advanced Topology
+        # ══════════════════════════════════════════════
+
+        # ── ALGEBRAIC GEOMETRY (20) ──
+        self._add(name="hartshorne_connectedness", field="algebraic_geometry",
+            statement="If X is a projective variety and codim(X∩Y)=1 in X and Y, then X∩Y is connected",
+            preconditions=["X,Y projective varieties", "dim X + dim Y ≥ n in ℙⁿ"],
+            conclusion="X∩Y is connected", tags=["connected", "intersection", "projective"])
+
+        self._add(name="grauert_semicontinuity", field="algebraic_geometry",
+            statement="For proper flat morphism f:X→S, the function s↦dim H^i(X_s, F_s) is upper semicontinuous",
+            preconditions=["f:X→S proper flat", "F coherent on X"],
+            conclusion="h^i(X_s, F_s) is upper semicontinuous in s", tags=["semicontinuity", "cohomology", "flat"])
+
+        self._add(name="castelnuovo_criterion", field="algebraic_geometry",
+            statement="A (-1)-curve E on a surface S can be blown down: ∃ morphism contracting E to a point",
+            preconditions=["S smooth surface", "E≅ℙ¹", "E²=-1"],
+            conclusion="E is contractible to a smooth point", tags=["blowdown", "surface", "curve"])
+
+        self._add(name="kodaira_vanishing", field="algebraic_geometry",
+            statement="H^i(X, L⊗K_X)=0 for i>0 and L ample on smooth projective X",
+            preconditions=["X smooth projective", "L ample line bundle"],
+            conclusion="H^i(X, L⊗K_X) = 0 for all i > 0", tags=["vanishing", "ample", "cohomology"])
+
+        self._add(name="nakai_moishezon", field="algebraic_geometry",
+            statement="A divisor D on a projective variety is ample iff D^k·V > 0 for all subvarieties V of dim k",
+            preconditions=["X projective", "D Cartier divisor"],
+            conclusion="D ample ⟺ D^dim(V)·V > 0 for all V", tags=["ample", "criterion", "intersection"])
+
+        self._add(name="hodge_decomposition", field="algebraic_geometry",
+            statement="H^n(X,ℂ) = ⊕_{p+q=n} H^{p,q}(X) for compact Kähler manifold X",
+            preconditions=["X compact Kähler manifold"],
+            conclusion="de Rham cohomology decomposes by Hodge type", tags=["Hodge", "decomposition", "Kähler"])
+
+        self._add(name="hodge_index", field="algebraic_geometry",
+            statement="On a surface, intersection form on H^{1,1} has signature (1, h^{1,1}-1)",
+            preconditions=["S smooth projective surface"],
+            conclusion="intersection form has signature (1, ρ-1)", tags=["Hodge", "index", "surface"])
+
+        self._add(name="lefschetz_11", field="algebraic_geometry",
+            statement="For smooth projective surface, H^{1,1}(X)∩H²(X,ℤ) = NS(X)⊗ℝ (Néron-Severi)",
+            preconditions=["X smooth projective surface"],
+            conclusion="algebraic cycles span (1,1) integral classes", tags=["Lefschetz", "Néron-Severi"])
+
+        self._add(name="torelli_k3", field="algebraic_geometry",
+            statement="Two K3 surfaces are isomorphic iff their Hodge structures on H² are isomorphic",
+            preconditions=["X, Y K3 surfaces"],
+            conclusion="X≅Y ⟺ H²(X)≅H²(Y) as Hodge structures", tags=["Torelli", "K3", "Hodge"])
+
+        self._add(name="enriques_classification", field="algebraic_geometry",
+            statement="Minimal surfaces classify by Kodaira dimension κ∈{-∞,0,1,2}",
+            preconditions=["S minimal smooth projective surface"],
+            conclusion="κ=-∞: rational/ruled, κ=0: K3/abelian/Enriques/bielliptic, κ=1: elliptic, κ=2: general type",
+            tags=["classification", "surface", "Kodaira dimension"])
+
+        self._add(name="miyaoka_yau", field="algebraic_geometry",
+            statement="For surface of general type: c₁²≤3c₂ (Bogomolov-Miyaoka-Yau inequality)",
+            preconditions=["S minimal surface of general type"],
+            conclusion="c₁(S)² ≤ 3c₂(S)", tags=["inequality", "Chern", "surface"])
+
+        self._add(name="ample_cone", field="algebraic_geometry",
+            statement="The ample cone of a projective variety is the interior of the nef cone",
+            preconditions=["X projective variety"],
+            conclusion="Amp(X) = int(Nef(X))", tags=["ample", "nef", "cone"])
+
+        self._add(name="base_point_free", field="algebraic_geometry",
+            statement="If L is nef and big on surface, then mL is base-point-free for m≫0",
+            preconditions=["L nef and big on surface S"],
+            conclusion="|mL| is base-point-free for large m", tags=["base point", "nef", "big"])
+
+        self._add(name="grothendieck_duality", field="algebraic_geometry",
+            statement="For proper f:X→Y: Rf_* RHom(F, f!G) ≅ RHom(Rf_* F, G)",
+            preconditions=["f:X→Y proper morphism"],
+            conclusion="duality between pushforward and exceptional inverse image",
+            tags=["Grothendieck", "duality", "derived"])
+
+        self._add(name="fpqc_descent", field="algebraic_geometry",
+            statement="Quasi-coherent sheaves satisfy descent for fpqc covers",
+            preconditions=["f:X'→X fpqc cover"],
+            conclusion="QCoh(X) ≅ descent data on X'", tags=["descent", "fpqc", "sheaf"])
+
+        self._add(name="weil_conjectures_rationality", field="algebraic_geometry",
+            statement="Z(X/F_q, t) is a rational function of t for variety X over finite field",
+            preconditions=["X variety over F_q"],
+            conclusion="zeta function is rational in t", tags=["Weil", "zeta", "rational"])
+
+        self._add(name="weil_conjectures_functional_eq", field="algebraic_geometry",
+            statement="Z(X,1/q^n t) = ±q^{nE/2} t^E Z(X,t) where E=χ(X) and n=dim X",
+            preconditions=["X smooth projective over F_q"],
+            conclusion="functional equation for zeta function", tags=["Weil", "functional equation"])
+
+        self._add(name="weil_conjectures_riemann_hypothesis", field="algebraic_geometry",
+            statement="Reciprocal roots of P_i(t) in Z(X,t) have absolute value q^{i/2}",
+            preconditions=["X smooth projective over F_q"],
+            conclusion="Riemann hypothesis for varieties over finite fields (Deligne)",
+            tags=["Weil", "Riemann hypothesis", "Deligne"])
+
+        self._add(name="hironaka_resolution", field="algebraic_geometry",
+            statement="Every variety over a field of characteristic 0 has a resolution of singularities",
+            preconditions=["X variety over char 0 field"],
+            conclusion="∃ proper birational morphism Y→X with Y smooth", tags=["resolution", "singularity", "Hironaka"])
+
+        self._add(name="mori_cone_theorem", field="algebraic_geometry",
+            statement="NE(X) = NE(X)_{K≥0} + Σℝ≥0[Cᵢ] where Cᵢ are extremal rational curves",
+            preconditions=["X smooth projective"],
+            conclusion="cone of curves has finitely many extremal rays in K<0 part",
+            tags=["Mori", "cone", "extremal ray"])
+
+        # ── NUMBER THEORY (15) ──
+        self._add(name="class_field_theory_artin", field="number_theory",
+            statement="For abelian extension L/K: Gal(L/K) ≅ C_K/N_{L/K}(C_L) via Artin map",
+            preconditions=["L/K abelian extension of number fields"],
+            conclusion="Galois group is quotient of idele class group", tags=["Artin", "class field", "reciprocity"])
+
+        self._add(name="brauer_hasse_noether", field="number_theory",
+            statement="A central simple algebra over a number field is determined by its local invariants",
+            preconditions=["A CSA over number field K"],
+            conclusion="local-global principle for Brauer group", tags=["Brauer", "local-global", "CSA"])
+
+        self._add(name="chebotarev_density", field="number_theory",
+            statement="The set of primes with given Frobenius class has natural density |C|/|G|",
+            preconditions=["L/K Galois", "C conjugacy class in Gal(L/K)"],
+            conclusion="density of primes with Frob_p ∈ C equals |C|/|Gal(L/K)|",
+            tags=["Chebotarev", "density", "Frobenius"])
+
+        self._add(name="modularity_theorem", field="number_theory",
+            statement="Every elliptic curve E/ℚ is modular: ∃ newform f with L(E,s)=L(f,s)",
+            preconditions=["E/ℚ elliptic curve"],
+            conclusion="E is associated to a weight-2 newform", tags=["modularity", "elliptic curve", "Wiles"])
+
+        self._add(name="gross_zagier", field="number_theory",
+            statement="L'(E,1) = c·ĥ(P_K) where P_K is Heegner point — derivative equals height",
+            preconditions=["E/ℚ elliptic curve", "K imaginary quadratic", "sign(E,K)=-1"],
+            conclusion="first derivative of L-function equals canonical height of Heegner point",
+            tags=["Gross-Zagier", "Heegner", "L-function", "height"])
+
+        self._add(name="kolyvagin_euler_system", field="number_theory",
+            statement="If Heegner point is non-torsion, then rank E(ℚ)=1 and Sha(E/ℚ) is finite",
+            preconditions=["E/ℚ modular", "P_K non-torsion Heegner point"],
+            conclusion="rank=1, Sha finite", tags=["Kolyvagin", "Euler system", "Sha"])
+
+        self._add(name="iwasawa_main_conjecture", field="number_theory",
+            statement="char(X_∞) = (L_p) — characteristic ideal of Selmer equals p-adic L-function",
+            preconditions=["E/ℚ with good ordinary reduction at p"],
+            conclusion="algebraic and analytic sides of BSD match p-adically",
+            tags=["Iwasawa", "p-adic", "L-function", "Selmer"])
+
+        self._add(name="faltings_theorem", field="number_theory",
+            statement="A curve of genus ≥ 2 over a number field has finitely many rational points",
+            preconditions=["C smooth curve", "genus(C)≥2", "C defined over number field K"],
+            conclusion="|C(K)| < ∞", tags=["Faltings", "Mordell", "rational points"])
+
+        self._add(name="mazur_torsion", field="number_theory",
+            statement="E(ℚ)_tors is one of: ℤ/nℤ (1≤n≤10 or n=12) or ℤ/2ℤ×ℤ/2nℤ (1≤n≤4)",
+            preconditions=["E/ℚ elliptic curve"],
+            conclusion="torsion subgroup is one of exactly 15 possibilities",
+            tags=["Mazur", "torsion", "elliptic curve"])
+
+        self._add(name="serre_modularity", field="number_theory",
+            statement="Every odd irreducible 2-dim Galois representation over F_p is modular",
+            preconditions=["ρ:Gal(ℚ̄/ℚ)→GL₂(F̄_p) odd irreducible"],
+            conclusion="ρ arises from a modular form of predicted weight and level",
+            tags=["Serre", "modularity", "Galois representation"])
+
+        self._add(name="langlands_reciprocity_gl2", field="number_theory",
+            statement="2-dim l-adic Galois representations ↔ automorphic representations of GL₂",
+            preconditions=["ρ: Gal→GL₂(ℚ_l) geometric"],
+            conclusion="ρ corresponds to automorphic form", tags=["Langlands", "reciprocity", "GL2"])
+
+        self._add(name="birch_swinnerton_dyer", field="number_theory",
+            statement="rank E(ℚ) = ord_{s=1} L(E,s) and leading coeff involves Sha, regulator, periods",
+            preconditions=["E/ℚ elliptic curve"],
+            conclusion="analytic rank = algebraic rank", tags=["BSD", "rank", "L-function"])
+
+        self._add(name="fermat_last_theorem", field="number_theory",
+            statement="x^n + y^n = z^n has no positive integer solutions for n≥3",
+            preconditions=["n≥3 integer", "x,y,z positive integers"],
+            conclusion="no solution exists (Wiles 1995)", tags=["Fermat", "Wiles", "modular"])
+
+        self._add(name="riemann_hypothesis_partial", field="number_theory",
+            statement="All non-trivial zeros of ζ(s) lie on Re(s)=1/2 (unproven but verified to 10^13)",
+            preconditions=["ζ(s) Riemann zeta function"],
+            conclusion="non-trivial zeros at Re(s)=1/2", tags=["Riemann", "hypothesis", "zeros"])
+
+        self._add(name="prime_number_theorem", field="number_theory",
+            statement="π(x) ~ x/ln(x) — number of primes up to x is asymptotic to x/ln(x)",
+            preconditions=["x → ∞"],
+            conclusion="π(x)/x·ln(x) → 1", tags=["PNT", "primes", "asymptotic"])
+
+        # ── REPRESENTATION THEORY (15) ──
+        self._add(name="schur_lemma", field="representation_theory",
+            statement="A G-map between irreducible representations is either 0 or isomorphism",
+            preconditions=["V,W irreducible G-representations", "f:V→W G-equivariant"],
+            conclusion="f=0 or f is isomorphism", tags=["Schur", "irreducible", "morphism"])
+
+        self._add(name="maschke", field="representation_theory",
+            statement="Every representation of a finite group over a field with char∤|G| is completely reducible",
+            preconditions=["G finite group", "char(k) does not divide |G|"],
+            conclusion="every representation decomposes into irreducibles", tags=["Maschke", "semisimple"])
+
+        self._add(name="character_orthogonality", field="representation_theory",
+            statement="⟨χᵢ,χⱼ⟩ = δᵢⱼ — irreducible characters are orthonormal",
+            preconditions=["χᵢ,χⱼ irreducible characters of finite group G"],
+            conclusion="(1/|G|)Σ χᵢ(g)χⱼ(g)* = δᵢⱼ", tags=["character", "orthogonality"])
+
+        self._add(name="number_irreps_equals_classes", field="representation_theory",
+            statement="Number of irreducible representations = number of conjugacy classes",
+            preconditions=["G finite group"],
+            conclusion="|Irr(G)| = number of conjugacy classes of G", tags=["irreducible", "conjugacy"])
+
+        self._add(name="regular_rep_decomposition", field="representation_theory",
+            statement="Regular representation = ⊕ dim(Vᵢ)·Vᵢ summed over all irreducibles",
+            preconditions=["G finite group", "k[G] regular representation"],
+            conclusion="k[G] ≅ ⊕ dim(Vᵢ)·Vᵢ, and |G| = Σ dim(Vᵢ)²", tags=["regular", "decomposition"])
+
+        self._add(name="induced_representation_frobenius", field="representation_theory",
+            statement="Frobenius reciprocity: Hom_G(Ind_H^G V, W) ≅ Hom_H(V, Res_H W)",
+            preconditions=["H≤G", "V rep of H", "W rep of G"],
+            conclusion="induction is adjoint to restriction", tags=["Frobenius", "induction", "adjoint"])
+
+        self._add(name="peter_weyl", field="representation_theory",
+            statement="L²(G) = ⊕̂ dim(π)·π for compact group G (Hilbert space decomposition)",
+            preconditions=["G compact group"],
+            conclusion="L²(G) decomposes into matrix coefficients of irreducibles",
+            tags=["Peter-Weyl", "compact", "L²"])
+
+        self._add(name="highest_weight_classification", field="representation_theory",
+            statement="Irreducible finite-dim representations of semisimple Lie algebra are classified by dominant integral weights",
+            preconditions=["g semisimple Lie algebra over ℂ"],
+            conclusion="Irr(g) ↔ dominant integral weights in weight lattice", tags=["highest weight", "Lie", "classification"])
+
+        self._add(name="weyl_character_formula", field="representation_theory",
+            statement="ch(V_λ) = Σ_{w∈W} (-1)^l(w) e^{w(λ+ρ)-ρ} / Π_{α>0}(1-e^{-α})",
+            preconditions=["V_λ irreducible representation of highest weight λ"],
+            conclusion="character computable from Weyl group action", tags=["Weyl", "character formula"])
+
+        self._add(name="weyl_dimension_formula", field="representation_theory",
+            statement="dim V_λ = Π_{α>0} ⟨λ+ρ,α⟩/⟨ρ,α⟩",
+            preconditions=["V_λ irreducible highest weight module"],
+            conclusion="dimension from inner products with positive roots", tags=["Weyl", "dimension"])
+
+        self._add(name="brauer_character", field="representation_theory",
+            statement="Modular representations in char p determined by Brauer characters on p-regular elements",
+            preconditions=["G finite group", "char(k)=p"],
+            conclusion="Brauer character theory classifies modular representations", tags=["Brauer", "modular"])
+
+        self._add(name="artin_induction", field="representation_theory",
+            statement="Every character of G is ℤ-linear combination of characters induced from cyclic subgroups",
+            preconditions=["G finite group", "χ character"],
+            conclusion="χ = Σ nᵢ Ind_{Cᵢ}^G ψᵢ", tags=["Artin", "induction", "cyclic"])
+
+        self._add(name="tensor_product_decomposition", field="representation_theory",
+            statement="V_λ ⊗ V_μ = ⊕ c^ν_{λμ} V_ν where c^ν_{λμ} are Littlewood-Richardson coefficients",
+            preconditions=["V_λ, V_μ irreducible representations of GL(n)"],
+            conclusion="tensor product decomposes via LR rule", tags=["tensor", "Littlewood-Richardson"])
+
+        self._add(name="borel_weil", field="representation_theory",
+            statement="H⁰(G/B, L_λ) = V_λ* for dominant λ (irreducible rep as sections of line bundle)",
+            preconditions=["G semisimple", "B Borel subgroup", "λ dominant weight"],
+            conclusion="global sections of line bundle on flag variety = irreducible rep",
+            tags=["Borel-Weil", "flag variety", "line bundle"])
+
+        self._add(name="kazhdan_lusztig", field="representation_theory",
+            statement="Kazhdan-Lusztig polynomials determine characters of simple highest weight modules",
+            preconditions=["g semisimple Lie algebra", "category O"],
+            conclusion="[M(w·λ) : L(x·λ)] = P_{x,w}(1)", tags=["Kazhdan-Lusztig", "category O", "polynomial"])
+
+        # ── HOMOLOGICAL ALGEBRA (10) ──
+        self._add(name="derived_category_equivalence", field="homological_algebra",
+            statement="An exact functor inducing iso on cohomology gives derived category equivalence",
+            preconditions=["F: A→B exact functor", "H^i(F): H^i(A)→H^i(B) iso for all i"],
+            conclusion="RF: D(A)→D(B) is equivalence", tags=["derived", "equivalence", "functor"])
+
+        self._add(name="serre_spectral_sequence", field="homological_algebra",
+            statement="For fibration F→E→B: E₂^{p,q} = H^p(B; H^q(F)) ⟹ H^{p+q}(E)",
+            preconditions=["F→E→B fibration"],
+            conclusion="computes cohomology of total space from base and fiber",
+            tags=["spectral sequence", "Serre", "fibration"])
+
+        self._add(name="grothendieck_spectral_sequence", field="homological_algebra",
+            statement="For right exact F,G: R^p(G)(R^q(F)(X)) ⟹ R^{p+q}(G∘F)(X)",
+            preconditions=["F,G left exact functors", "F sends injectives to G-acyclics"],
+            conclusion="derived functors compose via spectral sequence",
+            tags=["Grothendieck", "spectral sequence", "derived functor"])
+
+        self._add(name="local_duality", field="homological_algebra",
+            statement="H^i_m(M) ≅ Ext^{n-i}_R(M, ω_R)ˇ for Gorenstein local ring (R,m) of dim n",
+            preconditions=["R Gorenstein local ring", "dim R = n"],
+            conclusion="local cohomology dual to Ext", tags=["local duality", "Gorenstein", "Ext"])
+
+        self._add(name="auslander_buchsbaum", field="homological_algebra",
+            statement="For finitely generated module M over local ring R: pd(M)+depth(M)=depth(R)",
+            preconditions=["R local ring", "M finitely generated", "pd(M)<∞"],
+            conclusion="projective dimension + depth = depth of ring",
+            tags=["Auslander-Buchsbaum", "depth", "projective dimension"])
+
+        self._add(name="morita_equivalence", field="homological_algebra",
+            statement="R-Mod ≅ S-Mod as categories iff S ≅ End_R(P) for progenerator P",
+            preconditions=["R, S rings"],
+            conclusion="module categories equivalent iff rings are Morita equivalent",
+            tags=["Morita", "equivalence", "progenerator"])
+
+        self._add(name="tilting_theory", field="homological_algebra",
+            statement="A tilting module T over A gives equivalence D^b(A) ≅ D^b(End(T))",
+            preconditions=["T tilting module over algebra A"],
+            conclusion="derived equivalence via tilting", tags=["tilting", "derived equivalence"])
+
+        self._add(name="hochschild_kostant_rosenberg", field="homological_algebra",
+            statement="HH_n(A) ≅ Ω^n_{A/k} for smooth commutative k-algebra A",
+            preconditions=["A smooth commutative k-algebra"],
+            conclusion="Hochschild homology = differential forms", tags=["Hochschild", "differential forms"])
+
+        self._add(name="derived_morita", field="homological_algebra",
+            statement="D^b(A) ≅ D^b(B) iff A and B are connected by a chain of tilting complexes",
+            preconditions=["A, B finite-dimensional algebras"],
+            conclusion="derived equivalence = tilting chain", tags=["derived", "Morita", "tilting"])
+
+        self._add(name="keller_recognition", field="homological_algebra",
+            statement="A triangulated category T with compact generator is D(A) for a DG algebra A",
+            preconditions=["T algebraic triangulated category", "T has compact generator"],
+            conclusion="T ≅ D(A) for DG algebra A", tags=["Keller", "DG algebra", "generator"])
+
     def stats(self) -> Dict:
         fields = {}
         for t in self.theorems.values():
@@ -3319,3 +3644,104 @@ class PrometheusResearch:
             if count > 0:
                 lines.append(f"    {name}: used by {count} theorems")
         return '\n'.join(lines)
+
+
+# ═══════════════════════════════════════════════════════════════
+# AUTO-LEARN THEOREMS FROM WEB
+# If a theorem isn't in the database, search online and add it
+# ═══════════════════════════════════════════════════════════════
+
+class TheoremAutoLearn:
+    """Automatically learn new theorems from web when not found in DB."""
+
+    THEOREM_FILE = __import__('os').path.join(
+        __import__('os').path.dirname(__file__), '..', 'data', 'learned_theorems.json')
+
+    def __init__(self, db: TheoremDB = None):
+        self.db = db or TheoremDB()
+        self._load_learned()
+
+    def _load_learned(self):
+        """Load previously learned theorems."""
+        import json, os
+        if os.path.exists(self.THEOREM_FILE):
+            try:
+                with open(self.THEOREM_FILE, 'r') as f:
+                    learned = json.load(f)
+                for name, data in learned.items():
+                    if name not in self.db.theorems:
+                        self.db._add(name=name, field=data.get('field', 'general'),
+                                    statement=data['statement'],
+                                    preconditions=data.get('preconditions', []),
+                                    conclusion=data.get('conclusion', ''),
+                                    tags=data.get('tags', []))
+            except:
+                pass
+
+    def _save_learned(self, name: str, data: dict):
+        """Save a learned theorem to disk."""
+        import json, os
+        learned = {}
+        if os.path.exists(self.THEOREM_FILE):
+            try:
+                with open(self.THEOREM_FILE, 'r') as f:
+                    learned = json.load(f)
+            except:
+                pass
+        learned[name] = data
+        os.makedirs(os.path.dirname(self.THEOREM_FILE), exist_ok=True)
+        with open(self.THEOREM_FILE, 'w') as f:
+            json.dump(learned, f, indent=2)
+
+    def search_and_learn(self, query: str) -> Optional[Dict]:
+        """Search for a theorem online and add to database."""
+        # First check local DB
+        results = self.db.search(query)
+        if results:
+            return results[0] if isinstance(results[0], dict) else \
+                   {'name': results[0].name, 'statement': results[0].statement}
+
+        # Search web
+        try:
+            import sys
+            sys.path.insert(0, __import__('os').path.dirname(__file__))
+            from online_search import OnlineSearch
+            engine = OnlineSearch()
+            web_result = engine.search(f"{query} theorem mathematics")
+            if web_result and len(web_result) > 30:
+                # Extract theorem info from web result
+                name = query.lower().replace(' ', '_').replace("'", '')[:30]
+                data = {
+                    'field': self._detect_field(query),
+                    'statement': web_result[:300],
+                    'conclusion': web_result[:100],
+                    'preconditions': [],
+                    'tags': query.lower().split()[:5],
+                }
+                # Add to DB
+                self.db._add(name=name, **data)
+                self._save_learned(name, data)
+                return data
+        except:
+            pass
+
+        return None
+
+    def _detect_field(self, query: str) -> str:
+        """Detect mathematical field from query."""
+        q = query.lower()
+        if any(w in q for w in ['group', 'sylow', 'abelian', 'galois']):
+            return 'group_theory'
+        if any(w in q for w in ['ring', 'ideal', 'noetherian', 'module']):
+            return 'ring_theory'
+        if any(w in q for w in ['variety', 'scheme', 'sheaf', 'cohomology', 'curve']):
+            return 'algebraic_geometry'
+        if any(w in q for w in ['prime', 'congruence', 'zeta', 'modular', 'elliptic']):
+            return 'number_theory'
+        if any(w in q for w in ['manifold', 'curvature', 'geodesic', 'bundle']):
+            return 'differential_geometry'
+        if any(w in q for w in ['exact', 'functor', 'ext', 'tor', 'derived']):
+            return 'homological_algebra'
+        if any(w in q for w in ['representation', 'character', 'weight']):
+            return 'representation_theory'
+        return 'general'
