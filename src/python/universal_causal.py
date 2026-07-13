@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-AXIMA Universal Causal Engine — Property-Based Inference
+AXIMA Universal Causal Engine (LEGACY — use causal_axiom_engine.py for new code) — Property-Based Inference
 Instead of action+object→effect LOOKUP, we DERIVE effects from:
   1. Object → Material/Category properties
   2. Action → Physical process (what it does to properties)
@@ -101,6 +101,9 @@ MATERIALS = {
     'ice': {'state': 'solid', 'melt_temp': 0, 'flammable': False, 'fragile': True,
             'elastic': False, 'conductive': False, 'magnetic': False, 'dense': True,
             'category': 'frozen_liquid'},
+    'diamond_material': {'state': 'solid', 'melt_temp': 3550, 'flammable': False, 'fragile': False,
+              'elastic': False, 'conductive': False, 'magnetic': False, 'dense': True,
+              'corrodes': False, 'malleable': False, 'category': 'mineral'},
     'rock': {'state': 'solid', 'melt_temp': 1200, 'flammable': False, 'fragile': False,
              'elastic': False, 'conductive': False, 'magnetic': False, 'dense': True,
              'category': 'mineral'},
@@ -110,6 +113,9 @@ MATERIALS = {
     'sand': {'state': 'solid', 'melt_temp': 1700, 'flammable': False, 'fragile': False,
              'elastic': False, 'conductive': False, 'magnetic': False, 'dense': True,
              'category': 'mineral'},
+    'honey_material': {'state': 'liquid', 'melt_temp': 40, 'flammable': True, 'fragile': False,
+              'elastic': False, 'conductive': False, 'magnetic': False, 'dense': True,
+              'corrodes': False, 'malleable': False, 'category': 'organic'},
     'salt': {'state': 'solid', 'melt_temp': 801, 'flammable': False, 'fragile': True,
              'elastic': False, 'conductive': False, 'magnetic': False, 'dense': True,
              'soluble': True, 'category': 'mineral'},
@@ -124,7 +130,7 @@ MATERIALS = {
 OBJECT_MATERIAL = {
     # Kitchen
     'candle': 'wax', 'butter': 'butter', 'chocolate': 'chocolate', 'cheese': 'cheese',
-    'ice cream': 'ice_cream', 'ice': 'ice', 'sugar': 'sugar', 'honey': 'sugar',
+    'ice cream': 'ice_cream', 'ice': 'ice', 'sugar': 'sugar', 'honey': 'honey_material',
     'caramel': 'sugar', 'marshmallow': 'sugar', 'candy': 'sugar',
     # Containers
     'glass': 'glass', 'cup': 'ceramic', 'plate': 'ceramic', 'bowl': 'ceramic',
@@ -154,7 +160,7 @@ OBJECT_MATERIAL = {
     'wine': 'alcohol', 'beer': 'alcohol', 'petrol': 'gasoline',
     # Stone/Earth
     'rock': 'rock', 'stone': 'rock', 'brick': 'ceramic', 'concrete': 'concrete',
-    'sand': 'sand', 'diamond': 'rock', 'marble': 'rock',
+    'sand': 'sand', 'diamond': 'diamond_material', 'marble': 'rock',
     # Food
     'egg': 'egg', 'meat': 'meat', 'bread': 'bread', 'rice': 'grain',
     'pasta': 'grain', 'pizza': 'bread', 'cake': 'bread',
@@ -460,18 +466,110 @@ class UniversalCausalReasoner:
         return results if results else None
     
     def _eval_condition(self, condition_str, props):
-        """Safely evaluate a condition string against properties."""
+        """Safely evaluate a condition string against properties without eval()."""
         try:
-            # Build local namespace from properties
-            ns = dict(props)
-            ns['category'] = props.get('category', '')
-            ns['True'] = True
-            ns['False'] = False
-            ns['None'] = None
-            # eval with restricted builtins
-            return eval(condition_str, {"__builtins__": {}, 'None': None}, ns)
-        except:
+            return self._safe_eval(condition_str, props)
+        except Exception:
             return False
+
+    def _safe_eval(self, condition_str, props):
+        """Parse and evaluate conditions safely using manual checks."""
+        condition_str = condition_str.strip()
+
+        # Handle 'or' (lowest precedence) — split on top-level ' or '
+        or_parts = self._split_logical(condition_str, ' or ')
+        if len(or_parts) > 1:
+            return any(self._safe_eval(part, props) for part in or_parts)
+
+        # Handle 'and' (next precedence)
+        and_parts = self._split_logical(condition_str, ' and ')
+        if len(and_parts) > 1:
+            return all(self._safe_eval(part, props) for part in and_parts)
+
+        # Handle 'not X'
+        if condition_str.startswith('not '):
+            return not self._safe_eval(condition_str[4:], props)
+
+        # Handle 'X is not None'
+        if ' is not None' in condition_str:
+            prop_name = condition_str.replace(' is not None', '').strip()
+            return props.get(prop_name) is not None
+
+        # Handle 'X is None'
+        if ' is None' in condition_str:
+            prop_name = condition_str.replace(' is None', '').strip()
+            return props.get(prop_name) is None
+
+        # Handle 'X=="value"' or "X=='value'"
+        if '==' in condition_str:
+            left, right = condition_str.split('==', 1)
+            left = left.strip()
+            right = right.strip().strip('"').strip("'")
+            return str(props.get(left, '')) == right
+
+        # Handle 'X!="value"'
+        if '!=' in condition_str:
+            left, right = condition_str.split('!=', 1)
+            left = left.strip()
+            right = right.strip().strip('"').strip("'")
+            return str(props.get(left, '')) != right
+
+        # Handle 'X in ("a","b","c")' or 'X not in ("a","b")'
+        if ' not in ' in condition_str:
+            left, right = condition_str.split(' not in ', 1)
+            left = left.strip()
+            values = self._parse_tuple(right.strip())
+            return props.get(left, '') not in values
+
+        if ' in ' in condition_str:
+            left, right = condition_str.split(' in ', 1)
+            left = left.strip()
+            values = self._parse_tuple(right.strip())
+            return props.get(left, '') in values
+
+        # Handle literal 'True'/'False'
+        if condition_str == 'True':
+            return True
+        if condition_str == 'False':
+            return False
+
+        # Bare property name — truthy check
+        return bool(props.get(condition_str, False))
+
+    def _split_logical(self, s, delimiter):
+        """Split on logical delimiter only when not inside parentheses."""
+        parts = []
+        depth = 0
+        current = ''
+        i = 0
+        while i < len(s):
+            if s[i] == '(':
+                depth += 1
+                current += s[i]
+            elif s[i] == ')':
+                depth -= 1
+                current += s[i]
+            elif depth == 0 and s[i:].startswith(delimiter):
+                parts.append(current.strip())
+                current = ''
+                i += len(delimiter)
+                continue
+            else:
+                current += s[i]
+            i += 1
+        if current.strip():
+            parts.append(current.strip())
+        return parts
+
+    def _parse_tuple(self, s):
+        """Parse a tuple-like string: '("a","b","c")' → ['a', 'b', 'c']."""
+        s = s.strip().strip('(').strip(')')
+        items = []
+        for item in s.split(','):
+            item = item.strip().strip('"').strip("'")
+            if item:
+                items.append(item)
+        return items
     
     def explain(self, action, obj_name, context=None):
         """Get a natural language explanation of what happens."""
@@ -498,6 +596,20 @@ def get_universal_reasoner():
 
 
 def universal_causal_explain(question):
+    """Universal causal reasoning — delegates to CAE (8-layer system)."""
+    try:
+        from causal_axiom_engine import get_cae
+        cae = get_cae()
+        result = cae.explain(question)
+        if result and result['confidence'] > 0:
+            return result['formatted']
+    except Exception:
+        pass
+    # Fallback to legacy system
+    return _legacy_universal_causal_explain(question)
+
+
+def _legacy_universal_causal_explain(question):
     """
     Universal causal reasoning for 'what happens if...' questions.
     Returns natural language answer or None if can't determine.

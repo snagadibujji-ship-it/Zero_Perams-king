@@ -39,30 +39,30 @@ from world_sim import WorldSimulator
 # Optional cosmic modules (fault-tolerant imports)
 try:
     from fluency import FluencyEngine
-except: FluencyEngine = None
+except Exception: FluencyEngine = None
 try:
     from multipath import MultipathReasoner
-except: MultipathReasoner = None
+except Exception: MultipathReasoner = None
 try:
     from long_memory import LongMemory
-except: LongMemory = None
+except Exception: LongMemory = None
 try:
     from creative import CreativeEngine
-except: CreativeEngine = None
+except Exception: CreativeEngine = None
 try:
     from truthguard import TruthGuard
-except: TruthGuard = None
+except Exception: TruthGuard = None
 try:
     from community import CommunityIntelligence
-except: CommunityIntelligence = None
+except Exception: CommunityIntelligence = None
 
 try:
     from natural_response import NaturalResponseV6
-except: NaturalResponseV6 = None
+except Exception: NaturalResponseV6 = None
 
 try:
     from semantic_brain import SemanticBrain
-except: SemanticBrain = None
+except Exception: SemanticBrain = None
 
 # Find C binary
 AI_BIN = None
@@ -81,6 +81,7 @@ class Axima:
         self.c_proc = None
         self.turn = 0
         self.auto_search = False  # Auto-search web when AI doesn't know
+        self._c_restart_count = 0  # C engine restart counter (max 3)
         self.auto_save = False    # Auto-save web results without asking
         self.teach_mode = False   # Socratic teaching mode
         
@@ -101,7 +102,7 @@ class Axima:
             try:
                 entities = self._load_entities_from_knowledge()
                 self._semantic_brain = SemanticBrain(entities=entities)
-            except:
+            except Exception:
                 self._semantic_brain = SemanticBrain()
         
         # Personality & context (C-backed but tracked in Python too)
@@ -114,6 +115,7 @@ class Axima:
         
         # Load persistent state
         self._load_session()
+        self._c_restart_count = 0
         self._start_c_engine()
     
     def _load_entities_from_knowledge(self):
@@ -163,7 +165,7 @@ class Axima:
                             subj = line.split(' can ', 1)[0].strip()
                             if 2 < len(subj) < 40:
                                 entities.add(subj)
-            except:
+            except Exception:
                 continue
         
         # Add common compound entities
@@ -246,7 +248,11 @@ class Axima:
             return None
         # Check if process is still alive
         if self.c_proc.poll() is not None:
-            # Process died — try to restart once
+            # Process died — try to restart (with limit)
+            self._c_restart_count += 1
+            if self._c_restart_count > 3:
+                self.c_available = False
+                return None
             try:
                 self._start_c_engine()
             except Exception:
@@ -304,6 +310,11 @@ class Axima:
     
     def ask(self, user_input):
         """Process user input through ALL engines (Cosmic Level)."""
+        # Input safety: limit length to prevent buffer overflow in C engine
+        if not user_input or not user_input.strip():
+            return {"response": None, "gap": True, "query": ""}
+        if len(user_input) > 2000:
+            user_input = user_input[:2000]
         self.turn += 1
         
         # 0. Track topic + detect mood
@@ -339,10 +350,13 @@ class Axima:
                                       'she','this','that','will','would','could','should','has',
                                       'have','had','was','were','been','being','get','got','make',
                                       'happens','happened','happen','happening',
+                                      'accidentally','quickly','slowly','suddenly','carefully',
+                                      'gently','roughly','violently','completely','partially',
                                       'heat','drop','burn','cut','mix','stretch','compress',
                                       'freeze','cool','hit','throw','break','push','pull',
                                       'cook','bake','fry','boil','melt','ignite','light',
                                       'electrify','magnetize','submerge','dissolve',
+                                      'eat','wash','pour','bend','shake','twist','inflate',
                                       'times','plus','minus','divided','multiply','add',
                                       'subtract','equals','sum','product','square','cube',
                                       'root','power','percent','factorial','modulo'}
@@ -353,24 +367,38 @@ class Axima:
                                 if loc[0] and loc[1] >= 0.75 and loc[0].lower() != w.lower():
                                     user_input = user_input.replace(w, loc[0])
                                     break
-            except:
+            except Exception:
                 pass
         lower = user_input.lower()
         
         # 0.5 Check workflows (keyword triggers)
         wf_result = self._check_workflows(user_input)
         if wf_result:
+            try:
+                from response_depth import enrich_response
+                wf_result = enrich_response(user_input, wf_result)
+            except Exception: pass
             return {"response": wf_result, "gap": False}
         
         # 0.6 IDENTITY — who are you, what can you do
         identity_triggers = ['who are you', 'what are you', 'what can you do', 'what do you do',
                             'tell me about yourself', 'introduce yourself', 'your name']
         if any(t in lower for t in identity_triggers):
-            return {"response": self._identity_response(lower), "gap": False}
+            identity_resp = self._identity_response(lower)
+            try:
+                from response_depth import enrich_response
+                identity_resp = enrich_response(user_input, identity_resp)
+            except Exception: pass
+            return {"response": identity_resp, "gap": False}
         
         # 1. Teaching mode (Socratic)
         if self.teach_mode:
-            return {"response": self._socratic_response(user_input), "gap": False}
+            socratic_resp = self._socratic_response(user_input)
+            try:
+                from response_depth import enrich_response
+                socratic_resp = enrich_response(user_input, socratic_resp)
+            except Exception: pass
+            return {"response": socratic_resp, "gap": False}
         
         # 1.5 Code generation (cosmic engine - 15 languages, 100+ algorithms)
         lower = user_input.lower()
@@ -382,8 +410,7 @@ class Axima:
         is_code_request = any(t in lower for t in code_triggers) and not lower.startswith(('who', 'what is', 'why', 'when', 'where'))
         
         # 1.6 Agent system for complex tasks (math, compare, run commands)
-        agent_triggers = ['calculate', 'compute', 'compare', 'vs', 'versus',
-                         'run command', 'execute', 'list files', 'analyze']
+        agent_triggers = ['calculate', 'compute', 'run command', 'list files', 'analyze']
         if any(t in lower for t in agent_triggers):
             try:
                 from agent_system import agent_process
@@ -392,10 +419,10 @@ class Axima:
                     try:
                         from response_depth import enrich_response
                         ans = enrich_response(user_input, result['answer'])
-                    except:
+                    except Exception:
                         ans = result['answer']
                     return {"response": ans, "gap": False}
-            except: pass
+            except Exception: pass
         
         if is_code_request:
             try:
@@ -405,12 +432,26 @@ class Axima:
                     lang = result['language']
                     code = result['code']
                     resp = f"[{lang.upper()} code]\n```{lang}\n{code}\n```"
+                    try:
+                        from response_depth import enrich_response
+                        resp = enrich_response(user_input, resp)
+                    except Exception: pass
                     return {"response": resp, "gap": False}
                 elif result['type'] == 'debug':
-                    return {"response": result['result'], "gap": False}
+                    debug_resp = result['result']
+                    try:
+                        from response_depth import enrich_response
+                        debug_resp = enrich_response(user_input, debug_resp)
+                    except Exception: pass
+                    return {"response": debug_resp, "gap": False}
                 elif result['type'] == 'explain':
-                    return {"response": result['result'], "gap": False}
-            except: pass
+                    explain_resp = result['result']
+                    try:
+                        from response_depth import enrich_response
+                        explain_resp = enrich_response(user_input, explain_resp)
+                    except Exception: pass
+                    return {"response": explain_resp, "gap": False}
+            except Exception: pass
         
         # 2. Check for "what if" → world simulator + Causal Axiom Engine
         lower = user_input.lower()
@@ -421,7 +462,7 @@ class Axima:
                 try:
                     from response_depth import enrich_response
                     sim_result = enrich_response(user_input, sim_result, 'causal')
-                except:
+                except Exception:
                     pass
                 return {"response": sim_result, "gap": False}
         
@@ -433,7 +474,12 @@ class Axima:
             if self._forces and self._forces.needs_clarify and self._forces.confidence < 0.4:
                 options = self._forces.clarify_options
                 if options:
-                    return {"response": options[0], "gap": False}
+                    clarify_resp = options[0]
+                    try:
+                        from response_depth import enrich_response
+                        clarify_resp = enrich_response(user_input, clarify_resp)
+                    except Exception: pass
+                    return {"response": clarify_resp, "gap": False}
         
         # 4. Multi-path reasoning (if available)
         multipath_answer = None
@@ -442,7 +488,7 @@ class Axima:
                 paths = self.multipath.reason(user_input)
                 if paths and paths.get('best_answer'):
                     multipath_answer = paths['best_answer']
-            except: pass
+            except Exception: pass
         
         # 4.3 DEBATE auto-detection — contested/opinion questions
         try:
@@ -451,8 +497,13 @@ class Axima:
             if de.is_debate_topic(user_input):
                 result = de.debate(user_input)
                 if result and result.get('verified_facts', result.get('position_a', {}).get('evidence')):
-                    return {"response": de.format_debate(result), "gap": False}
-        except: pass
+                    debate_resp = de.format_debate(result)
+                    try:
+                        from response_depth import enrich_response
+                        debate_resp = enrich_response(user_input, debate_resp)
+                    except Exception: pass
+                    return {"response": debate_resp, "gap": False}
+        except Exception: pass
 
         # 4.5 KDA Query — Check abstracted knowledge BEFORE C engine
         if query_kda:
@@ -474,8 +525,16 @@ class Axima:
                     if parts:
                         kda_answer = '. '.join(parts) + '.'
                         # Only use if it's actually informative
-                        if len(kda_answer) > 20 and 'is_a' in kda_answer or len(kda_results) >= 2:
-                            return {"response": f"[KDA] {kda_answer}", "gap": False}
+                        if len(kda_answer) > 20 and ('is_a' in kda_answer or len(kda_results) >= 2):
+                            try:
+                                from response_depth import enrich_response
+                                kda_answer = enrich_response(user_input, kda_answer)
+                            except Exception: pass
+                            try:
+                                from response_depth import enrich_response
+                                kda_answer = enrich_response(user_input, kda_answer)
+                            except Exception: pass
+                            return {"response": kda_answer, "gap": False}
         
         # 4.8 Boolean Reasoner — yes/no questions, primes, comparisons, syllogisms
         # Trigger on: "is X...", "can X...", "does X..." OR multi-statement syllogisms
@@ -490,14 +549,21 @@ class Axima:
                     # Enrich the response using RDE with the raw yes/no
                     try:
                         from response_depth import enrich_response, detect_type
-                        raw = f"{'Yes' if answer == 'yes' else 'No'}."
+                        # If answer is already a full sentence (from universal quantifier), use it
+                        if len(answer) > 5 and answer[0].isupper():
+                            raw = answer  # Already enriched by boolean_reasoner
+                        else:
+                            raw = f"{'Yes' if answer == 'yes' else 'No'}."
                         # Use specific type detection for better enrichment
                         q_type = detect_type(user_input)
                         resp = enrich_response(user_input, raw, q_type)
-                    except:
-                        resp = f"{'Yes' if answer == 'yes' else 'No'}."
+                    except Exception:
+                        if len(answer) > 5 and answer[0].isupper():
+                            resp = answer
+                        else:
+                            resp = f"{'Yes' if answer == 'yes' else 'No'}."
                     return {"response": resp, "gap": False}
-            except:
+            except Exception:
                 pass
         
         # 5. Get C engine's fast answer (knowledge graph + derive + reasoning)
@@ -517,16 +583,16 @@ class Axima:
                     nr_result = self._natural_response.respond(final, user_input, 0.95)
                     if nr_result and nr_result.get('display'):
                         final = nr_result['display']
-                except: pass
+                except Exception: pass
             if self.long_memory:
                 try:
                     self.long_memory.store(user_input, final)
-                except: pass
+                except Exception: pass
             # Enrich with Response Depth Engine
             try:
                 from response_depth import enrich_response
                 final = enrich_response(user_input, final)
-            except: pass
+            except Exception: pass
             return {"response": final, "gap": False}
         
         # 6. Check if C engine doesn't know (gap detected)
@@ -545,34 +611,51 @@ class Axima:
                         try:
                             from response_depth import enrich_response
                             ans = enrich_response(user_input, ans)
-                        except: pass
+                        except Exception: pass
                         return {"response": ans, "gap": False}
-            except: pass
+            except Exception: pass
             
             # Use multipath if it found something
             if multipath_answer:
+                try:
+                    from response_depth import enrich_response
+                    multipath_answer = enrich_response(user_input, multipath_answer)
+                except Exception: pass
+                try:
+                    from response_depth import enrich_response
+                    multipath_answer = enrich_response(user_input, multipath_answer)
+                except Exception: pass
                 return {"response": multipath_answer, "gap": False}
             
             # 6.5 AUTO WEB SEARCH — before declaring gap, try to find answer online
-            if self.auto_search or True:  # Always try web as last resort
+            # Rate limit: max 5 web searches per minute
+            import time as _time
+            if not hasattr(self, '_last_web_searches'):
+                self._last_web_searches = []
+            # Clean old entries (older than 60s)
+            now = _time.time()
+            self._last_web_searches = [t for t in self._last_web_searches if now - t < 60]
+            web_allowed = len(self._last_web_searches) < 5
+            if web_allowed:  # Rate limited: max 5/minute
                 try:
                     web_result = self.search_and_learn(user_input)
+                    self._last_web_searches.append(now)
                     if web_result and web_result.get('found'):
                         answer = web_result['answer']
                         # Enrich with RDE
                         try:
                             from response_depth import enrich_response
                             answer = enrich_response(user_input, answer)
-                        except: pass
+                        except Exception: pass
                         # Auto-save if enabled
                         if self.auto_save and web_result.get('facts'):
                             self.save_learned(web_result['facts'])
                         return {"response": answer, "gap": False}
-                except:
+                except Exception:
                     pass
             
             # Track as gap
-            topic = user_input.split()[-1] if user_input.split() else user_input
+            topic = user_input.split()[-1] if user_input.strip() else 'unknown'
             if topic not in self.gaps:
                 self.gaps.append(topic)
             return {"response": None, "gap": True, "query": user_input}
@@ -589,7 +672,7 @@ class Axima:
                 verified = self.truthguard.verify(user_input, final_answer)
                 if verified and verified.get('flagged'):
                     final_answer = f"{final_answer}\n⚠️ Note: {verified.get('reason', 'low confidence on this')}"
-            except: pass
+            except Exception: pass
         
         # 9. Fluency enhancement
         if self.fluency:
@@ -597,7 +680,7 @@ class Axima:
                 enhanced = self.fluency.enhance(final_answer)
                 if enhanced and len(enhanced) > len(final_answer) * 0.5:
                     final_answer = enhanced
-            except: pass
+            except Exception: pass
         
         # 10. Run through Python brain for intelligence enhancement
         result = self.brain.process_turn(user_input, final_answer)
@@ -612,19 +695,19 @@ class Axima:
                 nr_result = self._natural_response.respond(final, user_input, 0.9)
                 if nr_result and nr_result.get('display'):
                     final = nr_result['display']
-            except: pass
+            except Exception: pass
         
         # 13. Long-term memory storage
         if self.long_memory:
             try:
                 self.long_memory.store(user_input, final)
-            except: pass
+            except Exception: pass
         
         # 14. Response Depth Engine — enrich final answer
         try:
             from response_depth import enrich_response
             final = enrich_response(user_input, final)
-        except: pass
+        except Exception: pass
         
         return {"response": final, "gap": False}
     
@@ -660,7 +743,7 @@ class Axima:
                 self.gaps = data.get('gaps', [])
                 self.session_topics = data.get('session_topics', [])
                 self.workflows = data.get('workflows', [])
-        except: pass
+        except Exception: pass
     
     def _save_session(self):
         """Save session state for next time."""
@@ -675,7 +758,7 @@ class Axima:
             }
             with open(path, 'w') as f:
                 json.dump(data, f, indent=2)
-        except: pass
+        except Exception: pass
     
     # ── Smart Follow-up Questions (Phase GPT-killer) ─────────────
     # ── Reference Resolution (context awareness) ──────────────────
@@ -821,7 +904,11 @@ class Axima:
         return random.choice(questions)
 
     def _check_workflows(self, user_input):
-        """Check if input triggers a workflow."""
+        """Check if input triggers a workflow keyword."""
+        lower = user_input.lower()
+        for wf in self.workflows:
+            if wf.get('trigger') and wf['trigger'] in lower:
+                return wf.get('response', f"Workflow '{wf.get('name', 'unnamed')}' triggered.")
         return None
 
     def _identity_response(self, q):
@@ -952,7 +1039,7 @@ def main():
                                 try:
                                     from kda_manager import save_with_kda
                                     save_with_kda(topic, 'has_fact', f['text'][:100], 90)
-                                except: pass
+                                except Exception: pass
                     except Exception as e:
                         print(f"  Hunt error: {e}")
                 else:
@@ -1017,7 +1104,7 @@ def main():
                         print(f"  Explanation level: {levels[level]}")
                     else:
                         print("  Levels: 0=auto, 1=child, 2=student, 3=detailed, 4=expert")
-                except:
+                except Exception:
                     print("  Usage: /level 0-4")
                 print()
                 continue
@@ -1046,7 +1133,7 @@ def main():
                             print(f"  ✓ Deleted workflow '{removed['name']}'\n")
                         else:
                             print(f"  Invalid workflow number.\n")
-                    except: print("  Usage: /workflow delete <number>\n")
+                    except Exception: print("  Usage: /workflow delete <number>\n")
                 else:
                     print("  Usage: /workflow create <name> <trigger_keyword> <shell_command>")
                     print("         /workflow list")

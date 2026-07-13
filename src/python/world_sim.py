@@ -358,18 +358,18 @@ class WorldSimulator:
         return chain
 
     def _find_rule(self, action, obj, context=None):
-        """Find best matching rule using fuzzy substring matching."""
+        """Find best matching rule using word boundary matching."""
         best = None
         best_score = 0
         for rule in self.rules:
             score = 0
-            if rule.action in action or action in rule.action:
+            if rule.action == action or action == rule.action or (rule.action in action.split() or action in rule.action.split()):
                 score += 2
-            if rule.obj in obj or obj in rule.obj:
+            if rule.obj == obj or obj == rule.obj or (rule.obj in obj.split() or obj in rule.obj.split()):
                 score += 2
-            elif obj in rule.action:  # handle reversed matches
+            elif obj in rule.action.split() or rule.action in obj.split():  # handle reversed matches
                 score += 1
-            if context and rule.context and (rule.context in context or context in rule.context):
+            if context and rule.context and (rule.context == context or context == rule.context or rule.context in context.split() or context in rule.context.split()):
                 score += 3
             if score > best_score:
                 best_score = score
@@ -423,14 +423,12 @@ class WorldSimulator:
             resource = m2.group(2).strip()
             return f"no_{resource}", obj, None
 
-        # Handle "mix X and Y" → action=mix, obj=X_and_Y (underscore), context=None
+        # Handle "mix X and Y" → action=mix, obj=X, context=Y
         m_mix = re.search(r'(?:you )?mix\s+(?:a |an |the )?(.+?)\s+and\s+(?:a |an |the )?(.+)', text)
         if m_mix:
             a = m_mix.group(1).strip()
             b = m_mix.group(2).strip()
-            combined = f"{a}_and_{b}".replace(' ', '_')
-            # Try combined first, then a with context b
-            return 'mix', combined, None
+            return 'mix', a, b
 
         # Try pattern: "you [verb] [object] in/on/with [context]"
         m = re.search(r'(?:you |i |we |someone )?(\w+)\s+(?:a |an |the )?(.+?)(?:\s+(?:in|on|into|with|near)\s+(?:a |an |the )?(.+))?$', text)

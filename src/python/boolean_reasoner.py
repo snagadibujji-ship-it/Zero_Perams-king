@@ -3,7 +3,7 @@
 AXIMA Boolean Reasoner — Answers YES/NO questions from knowledge + logic.
 Handles: "is X a Y?", "is X Y?", "can X Y?", "does X Y?", comparisons, primes.
 """
-import math
+import math, re
 
 # ══════════════════════════════════════════════════════════════
 # KNOWN FACTS (verified, for boolean questions)
@@ -71,6 +71,7 @@ CAN_DO = {
 
 CANNOT_DO = {
     'fish': ['breathe air', 'walk', 'fly', 'run'],
+    'birds': ['fly'],  # NOT ALL birds can fly (penguins, ostriches, kiwis)
     'penguins': ['fly'],
     'penguin': ['fly'],
     'snakes': ['walk', 'run', 'fly'],
@@ -97,6 +98,11 @@ def answer_boolean(question):
     answer is 'yes' or 'no'.
     """
     q = question.lower().strip().rstrip('?').strip()
+    # Expand contractions
+    q = q.replace("isn't", "is not").replace("aren't", "are not")
+    q = q.replace("can't", "cannot").replace("don't", "do not")
+    q = q.replace("doesn't", "does not").replace("won't", "will not")
+    q = q.replace("wasn't", "was not").replace("weren't", "were not")
     
     # ─── PRIME NUMBER CHECK ───
     prime_match = _check_prime(q)
@@ -113,9 +119,46 @@ def answer_boolean(question):
     if eo_match is not None:
         return eo_match
     
-    # ─── "IS X A Y" / "IS X Y" ───
-    # Pattern: "is [the] X a/an Y"
+    # ─── "IS/WAS/WILL X A Y" / "IS X Y" ───
     import re
+    
+    # Past tense: "was X a Y" / "were X Y"
+    m = re.match(r'(?:was|were)\s+(?:the\s+|a\s+|an\s+)?(.+?)\s+(?:a|an)\s+(.+)', q)
+    if m:
+        subject = m.group(1).strip()
+        category = m.group(2).strip()
+        result = _check_is_a(subject, category)
+        if result:
+            return result
+    
+    # "did X Y" → check CAN_DO
+    m = re.match(r'did\s+(?:a\s+|an\s+|the\s+)?(.+?)\s+(.+)', q)
+    if m:
+        subject = m.group(1).strip()
+        action = m.group(2).strip()
+        if subject in CAN_DO and action in CAN_DO[subject]:
+            return 'yes', 0.85
+        if subject in CANNOT_DO and action in CANNOT_DO[subject]:
+            return 'no', 0.85
+    
+    # "has/have X a Y" → check IS_A
+    m = re.match(r'(?:has|have)\s+(?:the\s+|a\s+|an\s+)?(.+?)\s+(?:a|an)\s+(.+)', q)
+    if m:
+        subject = m.group(1).strip()
+        obj = m.group(2).strip()
+        # "has earth a moon" → yes
+        if subject in IS_A and obj in IS_A.get(subject, []):
+            return 'yes', 0.88
+    
+    # "will X Y" → future prediction (limited)
+    m = re.match(r'will\s+(?:the\s+|a\s+|an\s+)?(.+?)\s+(.+)', q)
+    if m:
+        subject = m.group(1).strip()
+        action = m.group(2).strip()
+        if subject in CAN_DO and action in CAN_DO[subject]:
+            return 'yes', 0.70  # lower confidence for predictions
+
+    # Pattern: "is [the] X a/an Y"
     m = re.match(r'is\s+(?:the\s+|a\s+|an\s+)?(.+?)\s+(?:a|an)\s+(.+)', q)
     if m:
         subject = m.group(1).strip()
@@ -141,7 +184,29 @@ def answer_boolean(question):
         if result:
             return result
     
-    # ─── "CAN X Y" / "DOES X Y" ───
+    # ─── "CAN X Y" / "DOES X Y" / "DO ALL X Y" ───
+    # Handle "do all" / "can all" universal quantifier
+    m_all = re.match(r'(?:can|do)\s+all\s+(?:a\s+|an\s+|the\s+)?(.+?)\s+(.+)', q)
+    if m_all:
+        subject = m_all.group(1).strip()
+        action = m_all.group(2).strip()
+        # Check all variants for CAN_DO and CANNOT_DO
+        subject_s = subject + 's' if not subject.endswith('s') else subject
+        subject_ns = subject.rstrip('s') if subject.endswith('s') else subject
+        can_do_found = False
+        cannot_do_found = False
+        for s in (subject, subject_s, subject_ns):
+            if s in CAN_DO and action in CAN_DO[s]:
+                can_do_found = True
+            if s in CANNOT_DO and action in CANNOT_DO[s]:
+                cannot_do_found = True
+        if can_do_found and cannot_do_found:
+            return f'Yes, most {subject} can {action} — though some cannot.', 0.85
+        elif cannot_do_found:
+            return 'no', 0.90
+        elif can_do_found:
+            return 'yes', 0.88
+
     m = re.match(r'(?:can|does|do)\s+(?:a\s+|an\s+|the\s+)?(.+?)\s+(.+)', q)
     if m:
         subject = m.group(1).strip()
@@ -161,6 +226,43 @@ def answer_boolean(question):
                 return 'yes', 0.88
             if s in CANNOT_DO and action in CANNOT_DO[s]:
                 return 'no', 0.88
+    
+    # ─── PAST/FUTURE TENSE: "was/were X a Y", "did X Y", "has/have X Y" ───
+    # Past tense IS_A: "was X a Y"
+    m = re.match(r'(?:was|were)\s+(?:a\s+|an\s+|the\s+)?(.+?)\s+(?:a|an)\s+(.+)', q)
+    if m:
+        subject = m.group(1).strip()
+        category = m.group(2).strip()
+        result = _check_is_a(subject, category)
+        if result:
+            return result
+    
+    # Past tense property: "was X Y"
+    m = re.match(r'(?:was|were)\s+(?:a\s+|an\s+|the\s+)?(.+?)\s+(.+)', q)
+    if m:
+        subject = m.group(1).strip()
+        prop = m.group(2).strip()
+        if subject in IS_NOT and prop in IS_NOT[subject]:
+            return 'no', 0.93
+        if subject in IS_PROPERTY and prop in IS_PROPERTY[subject]:
+            return 'yes', 0.92
+        result = _check_is_a(subject, prop)
+        if result:
+            return result
+    
+    # "did X Y" / "has/have X Y" → treat like "can/does X Y"
+    m = re.match(r'(?:did|has|have|will)\s+(?:a\s+|an\s+|the\s+)?(.+?)\s+(.+)', q)
+    if m:
+        subject = m.group(1).strip()
+        action = m.group(2).strip()
+        # Check CAN_DO / CANNOT_DO as best proxy
+        subject_s = subject + 's' if not subject.endswith('s') else subject
+        subject_ns = subject.rstrip('s') if subject.endswith('s') else subject
+        for s in (subject, subject_s, subject_ns):
+            if s in CAN_DO and action in CAN_DO[s]:
+                return 'yes', 0.85
+            if s in CANNOT_DO and action in CANNOT_DO[s]:
+                return 'no', 0.85
     
     # ─── SYLLOGISM ("all X are Y. Z is X. is Z a Y") ───
     if '. ' in q:

@@ -5,7 +5,7 @@ Invention: Derives causal effects from PHYSICS LAWS, not lookup tables.
 Works for ANY object in the universe — even ones never seen before.
 
 Architecture:
-  Layer 1: 12 Axiomatic Physics Laws
+  Layer 1: 15 Axiomatic Physics Laws
   Layer 2: Decomposition (suffix + compound split)
   Layer 3: Analogical (nearest known in semantic space)
   Layer 4: Contextual (parse adjectives/modifiers)
@@ -25,7 +25,7 @@ from typing import Dict, List, Tuple, Optional
 # ══════════════════════════════════════════════════════════════
 
 class PhysicsLaws:
-    """12 universal laws that govern all causal physical interactions."""
+    """15 universal laws that govern all causal physical interactions."""
     
     @staticmethod
     def law_state_change(props, action):
@@ -199,8 +199,151 @@ class PhysicsLaws:
             return "separates when sufficient force applied", 0.70
         return None
 
+    @staticmethod
+    def law_pour(props, action):
+        """LAW: Pouring liquid onto object — effects depend on liquid and target properties."""
+        if action not in ('pour', 'pour_water', 'pour_acid', 'splash', 'douse', 'drench'):
+            return None
+        
+        category = props.get('category', '')
+        flammable = props.get('flammable', False)
+        conductive = props.get('conductive', False)
+        soluble = props.get('soluble', False)
+        state = props.get('state', 'solid')
+        
+        # If the object IS liquid (water/acid being poured), describe the pouring effect
+        if state == 'liquid':
+            if category in ('acid',):
+                return "acid dissolves the target — corrosive reaction on contact", 0.88
+            return "liquid spreads over target — may extinguish fire, cause short circuits, or dissolve soluble materials", 0.80
+        
+        # Pour water on fire/flammable burning → extinguish
+        if flammable and category in ('organic', 'fabric', 'paper'):
+            return "extinguishes if burning — water removes heat and smothers flames", 0.88
+        
+        # Pour water on electronics/conductive → short circuit
+        if conductive and category in ('metal', 'electronic', 'polymer'):
+            return "causes short circuit — water bridges electrical contacts, potentially destroying the device", 0.90
+        
+        # Pour acid → dissolves
+        if category in ('metal',):
+            return "acid dissolves the metal — produces hydrogen gas and a salt", 0.88
+        if category in ('mineral', 'carbonate'):
+            return "acid dissolves it with fizzing — produces carbon dioxide gas", 0.87
+        if soluble:
+            return "dissolves — substance breaks apart in the liquid", 0.85
+        
+        return None
+
+    @staticmethod
+    def law_throw(props, action):
+        """LAW: Throwing object at target — similar to drop but with directed force."""
+        if action not in ('throw', 'hurl', 'fling', 'toss', 'launch', 'pitch'):
+            return None
+        
+        fragile = props.get('fragile', False)
+        dense = props.get('dense', False)
+        elastic = props.get('elastic', False)
+        malleable = props.get('malleable', False)
+        
+        if fragile:
+            return "shatters on impact — thrown force exceeds structural integrity", 0.92
+        if dense and not elastic:
+            return "dents or damages the target on impact — heavy mass transfers kinetic energy", 0.85
+        if elastic:
+            return "bounces off target — elastic material absorbs and redirects energy", 0.83
+        if malleable:
+            return "deforms on impact — soft material flattens against target", 0.80
+        return "impacts target with force proportional to mass and velocity", 0.70
+
+
+    @staticmethod
+    def law_pour(props, action):
+        """Supplemental: Pouring liquid onto something."""
+        if action not in ('pour', 'splash', 'spill', 'drench'):
+            return None
+        flammable = props.get('flammable', False)
+        conductive = props.get('conductive', False)
+        state = props.get('state', 'solid')
+        if state == 'gas':
+            return "liquid passes through — gas is displaced momentarily", 0.7
+        if conductive:
+            return "can cause short circuit if electronics — water and electricity don't mix", 0.85
+        if flammable and props.get('burn_temp'):
+            return "if currently burning, fire is extinguished (water removes heat)", 0.9
+        return "gets wet — surface absorbs or repels liquid depending on material", 0.7
+
+    @staticmethod
+    def law_throw(props, action):
+        """Supplemental: Throwing object at a target (impact)."""
+        if action not in ('throw', 'hurl', 'toss', 'launch', 'fling'):
+            return None
+        fragile = props.get('fragile', False)
+        dense = props.get('dense', False)
+        elastic = props.get('elastic', False)
+        if fragile:
+            return "shatters or breaks on impact — fragile material cannot survive collision", 0.9
+        if elastic:
+            return "bounces off — elastic material absorbs and redirects energy", 0.8
+        if dense:
+            return "hits hard and may damage the target — heavy dense object carries more momentum", 0.85
+        return "hits the target — impact force depends on mass and velocity", 0.7
+
+    @staticmethod
+    def law_biological(props, action):
+        """Supplemental: Eating, washing, biological actions."""
+        category = props.get('category', '')
+        if action in ('eat', 'ingest', 'swallow', 'consume'):
+            if category == 'food':
+                cook_temp = props.get('cook_temp')
+                if cook_temp:
+                    return "safe to eat when properly cooked — raw may contain harmful bacteria", 0.8
+                return "can be consumed — provides nutrition", 0.8
+            if props.get('flammable') and category not in ('food', 'organic'):
+                return "TOXIC — do not eat. Can cause poisoning, organ damage, or death", 0.95
+            return "NOT food — ingesting this material is harmful or dangerous", 0.9
+        if action in ('wash', 'rinse', 'clean'):
+            if category in ('fabric', 'organic'):
+                return "gets clean — water and soap remove dirt and oils", 0.85
+            if category == 'metal' and props.get('corrodes'):
+                return "clean but may rust later if not dried — water triggers oxidation", 0.8
+            return "surface gets cleaned — water removes contaminants", 0.75
+        return None
+
+    @staticmethod
+    def law_deformation(props, action):
+        """Supplemental: Bending, twisting, shaking, inflating."""
+        elastic = props.get('elastic', False)
+        fragile = props.get('fragile', False)
+        malleable = props.get('malleable', False)
+        if action in ('bend', 'twist', 'fold'):
+            if elastic:
+                return "flexes and returns to shape — material is elastic", 0.88
+            if malleable:
+                return "permanently bends — ductile material deforms without breaking", 0.85
+            if fragile:
+                return "snaps or cracks — brittle material cannot flex", 0.88
+            return "resists bending — rigid structure", 0.65
+        if action in ('shake', 'vibrate', 'rattle'):
+            if fragile:
+                return "can crack or break — vibration weakens brittle structure", 0.7
+            if props.get('state') == 'liquid':
+                return "sloshes around — liquid moves freely within container", 0.85
+            return "vibrates but holds together — solid structure absorbs motion", 0.7
+        if action in ('inflate', 'pump', 'blow_up'):
+            if elastic:
+                return "expands as air fills it — stretches until pressure equalizes or it bursts", 0.88
+            if fragile:
+                return "can rupture — pressure exceeds structural strength", 0.8
+            return "resists inflation — material is not flexible enough", 0.6
+        if action in ('explode', 'detonate', 'blow_up'):
+            if props.get('flammable'):
+                return "explodes violently — rapid combustion releases enormous energy as shockwave", 0.9
+            return "destroyed by the blast — shockwave shatters or deforms material", 0.85
+        return None
+
     def apply_all(self, props, action):
-        """Try all 12 laws. Return first match with highest confidence."""
+        """Try all laws. Return first match with highest confidence."""
         laws = [
             self.law_state_change,
             self.law_force_fracture,
@@ -213,6 +356,12 @@ class PhysicsLaws:
             self.law_oxidation,
             self.law_pressure,
             self.law_cutting,
+            self.law_pour,
+            self.law_throw,
+            self.law_biological,
+            self.law_deformation,
+            self.law_pour,
+            self.law_throw,
         ]
         
         results = []
@@ -269,6 +418,7 @@ COMPONENT_HINTS = {
     'wax': {'melt_temp': 60, 'flammable': True, 'category': 'organic'},
     'candle': {'melt_temp': 60, 'flammable': True, 'category': 'organic'},
     'oil': {'flammable': True, 'state': 'liquid', 'category': 'liquid'},
+    'acid': {'state': 'liquid', 'category': 'acid'},
     'water': {'state': 'liquid', 'boil_temp': 100, 'melt_temp': 0},
     'foam': {'fragile': True, 'elastic': True, 'dense': False},
     'concrete': {'dense': True, 'fragile': True, 'category': 'mineral'},
@@ -300,6 +450,13 @@ COMPONENT_HINTS = {
     'butter': {'state': 'solid', 'melt_temp': 35},
     'chocolate': {'state': 'solid', 'melt_temp': 34},
     'cheese': {'state': 'solid', 'melt_temp': 65, 'flammable': False},
+    'cat': {'state': 'solid', 'elastic': True, 'fragile': False, 'category': 'living'},
+    'dog': {'state': 'solid', 'elastic': True, 'fragile': False, 'category': 'living'},
+    'human': {'state': 'solid', 'fragile': True, 'category': 'living'},
+    'bird': {'state': 'solid', 'fragile': True, 'dense': False, 'category': 'living'},
+    'fish': {'state': 'solid', 'elastic': True, 'category': 'living'},
+    'insect': {'state': 'solid', 'fragile': True, 'dense': False, 'category': 'living'},
+    'plant': {'state': 'solid', 'fragile': True, 'flammable': True, 'category': 'living'},
 }
 
 def decompose_object(name):
@@ -314,9 +471,9 @@ def decompose_object(name):
             props.update(hints)
             confidence = max(confidence, 0.75)
     
-    # Strategy 2: Suffix analysis
+    # Strategy 2: Suffix analysis (only match when word is long enough to avoid false positives)
     for suffix, category in SUFFIX_MAP:
-        if name_lower.endswith(suffix):
+        if name_lower.endswith(suffix) and len(name_lower) > 6 and len(name_lower) - len(suffix) > 2:
             props['category'] = category
             # Apply category defaults
             cat_defaults = {
@@ -506,7 +663,7 @@ SUBSTANCE_CATEGORIES = {
     'gasoline': 'fuel', 'oil': 'fuel', 'alcohol': 'fuel', 'propane': 'fuel',
     'hydrogen peroxide': 'oxidizer', 'oxygen': 'oxidizer',
     'water': 'water', 'limestone': 'carbonate', 'chalk': 'carbonate',
-    'marble': 'carbonate', 'baking soda': 'carbonate',
+    'marble': 'carbonate', 'sodium bicarbonate': 'carbonate',
 }
 
 def compositional_reaction(obj_a, obj_b):
@@ -764,6 +921,8 @@ class CausalAxiomEngine:
         self._queries_answered = 0
         self._web_lookups = 0
     
+    _cache = {}  # Memoization cache for repeated queries
+    
     def reason(self, action, obj_name, context=None, full_question="", allow_web=False):
         """
         8-layer causal reasoning. Returns (effect, confidence, layer_used, reasoning).
@@ -776,8 +935,30 @@ class CausalAxiomEngine:
         """
         self._queries_answered += 1
         
+        # Cache check
+        cache_key = (action, obj_name, context)
+        if cache_key in self._cache:
+            self._queries_answered += 1
+            return self._cache[cache_key]
+        
+        # ─── PRE-PROCESSING: strip possessives, plurals, articles ───
+        import re as _re
+        obj_name = _re.sub(r'^(my|your|his|her|its|our|their|this|that|these|those|some) ', '', obj_name)
+        # Try singular if not found
+        obj_singular = obj_name.rstrip('s') if obj_name.endswith('s') and not obj_name.endswith('ss') else obj_name
+        if obj_name.endswith('es') and len(obj_name) > 4:
+            obj_singular = obj_name[:-2]
+        
         # ─── LAYER 1: Check knowledge store (CSE-compressed) ───
-        stored_props = self.store.get(obj_name)
+        stored_props = self.store.get(obj_name) or self.store.get(obj_singular)
+        # Try singular/plural forms if not found
+        if stored_props is None:
+            if obj_name.endswith('es'):
+                stored_props = self.store.get(obj_name[:-2])
+            if stored_props is None and obj_name.endswith('s'):
+                stored_props = self.store.get(obj_name.rstrip('s'))
+            if stored_props is None:
+                stored_props = self.store.get(obj_name + 's')
         if stored_props:
             result = self.physics.apply_all(stored_props, action)
             if result:
@@ -877,19 +1058,81 @@ class CausalAxiomEngine:
                 q = q[len(prefix):].strip()
                 break
         
+        # Strip possessives/determiners from anywhere in query
+        q = re.sub(r'\b(my|your|his|her|its|our|their|this|that|some)\s+', '', q)
+        
+        # Strip adverbs before action verb
+        adverbs = ('accidentally','quickly','slowly','suddenly','carefully',
+                   'gently','roughly','violently','completely','partially',
+                   'immediately','gradually','eventually','repeatedly')
+        for adv in adverbs:
+            if q.startswith(adv + ' '):
+                q = q[len(adv)+1:]
+                break
+        
+        # Handle passive voice: "X is heated" → action=heat, obj=X
+        m_pass = re.match(r'(?:a |an |the )?(.+?)\s+(?:is|are|gets?)\s+(heated|dropped|burned|burnt|frozen|cut|stretched|compressed|melted|broken|crushed|bent|shattered|dissolved|ignited|electrified|magnetized|submerged|cooled)', q)
+        if m_pass:
+            obj = m_pass.group(1).strip()
+            verb_map = {'heated':'heat','dropped':'drop','burned':'burn','burnt':'burn',
+                        'frozen':'freeze','cut':'cut','stretched':'stretch',
+                        'compressed':'compress','melted':'heat','broken':'drop',
+                        'crushed':'compress','bent':'bend','shattered':'drop',
+                        'dissolved':'dissolve','ignited':'burn','electrified':'electrify',
+                        'magnetized':'magnetize','submerged':'submerge','cooled':'cool'}
+            action = verb_map.get(m_pass.group(2), m_pass.group(2))
+            return action, obj, None
+        
         # Handle "mix X and Y"
         m_mix = re.match(r'(?:you )?mix\s+(?:a |an |the )?(.+?)\s+and\s+(?:a |an |the )?(.+)', q)
         if m_mix:
             return 'mix', m_mix.group(1).strip(), m_mix.group(2).strip()
         
+        # Handle passive voice: "X is heated/dropped/burned" → action=heat/drop/burn, obj=X
+        m_passive = re.match(r'(?:a |an |the )?(.+?)\s+(?:is|are|gets?)\s+(heated|dropped|burned|frozen|cut|stretched|compressed|melted|broken|crushed|bent|shattered)', q)
+        if m_passive:
+            subject = m_passive.group(1).strip()
+            past_participle = m_passive.group(2).strip()
+            # Convert past participle to base verb
+            verb_map = {
+                'heated': 'heat', 'dropped': 'drop', 'burned': 'burn',
+                'frozen': 'freeze', 'cut': 'cut', 'stretched': 'stretch',
+                'compressed': 'compress', 'melted': 'heat', 'broken': 'drop',
+                'crushed': 'compress', 'bent': 'bend', 'shattered': 'drop',
+            }
+            verb_base = verb_map.get(past_participle, past_participle.rstrip('ed'))
+            return verb_base, subject, None
+        
+        # Strip leading adverbs that get captured as action verbs
+        adverbs = {'accidentally', 'quickly', 'slowly', 'suddenly', 'carefully',
+                   'gently', 'roughly', 'violently', 'completely', 'partially'}
+        # Strip subject pronouns first for adverb check
+        q_stripped = q
+        for pronoun in ('you ', 'i ', 'we ', 'someone '):
+            if q_stripped.startswith(pronoun):
+                q_stripped = q_stripped[len(pronoun):]
+                break
+        first_word = q_stripped.split()[0] if q_stripped.split() else ''
+        if first_word in adverbs:
+            # Remove the adverb from q (keeping the pronoun if present)
+            q = re.sub(r'\b' + first_word + r'\b\s*', '', q, count=1).strip()
+            q = re.sub(r'\s{2,}', ' ', q)  # normalize spaces
+        
         # Standard: "you [verb] [object]"
         m = re.match(r'(?:you |i |we |someone )?(\w+)\s+(?:a |an |the )?(.+?)(?:\s+(?:in|on|into|with)\s+(?:a |an |the )?(.+))?$', q)
         if m:
-            return m.group(1), m.group(2).strip(), m.group(3).strip() if m.group(3) else None
+            obj = m.group(2).strip()
+            # Strip possessives and determiners from obj
+            obj = re.sub(r'^(my|your|his|her|its|our|their|this|that|these|those|some|the|a|an)\s+', '', obj)
+            context = m.group(3).strip() if m.group(3) else None
+            return m.group(1), obj, context
         
         words = q.split()
         if len(words) >= 2:
-            return words[0], ' '.join(words[1:]).strip(), None
+            obj = ' '.join(words[1:]).strip()
+            # Strip possessives and determiners from obj
+            obj = re.sub(r'^(my|your|his|her|its|our|their|this|that|these|those|some|the|a|an)\s+', '', obj)
+            return words[0], obj, None
         return None, None, None
     
     def stats(self):
