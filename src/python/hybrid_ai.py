@@ -325,51 +325,46 @@ class Axima:
         user_input = self._resolve_references(user_input)
         lower = user_input.lower()
         
-        # 0.2 SEMANTIC BRAIN — Field Theory understanding
-        # Resolves misspellings, identifies entities, detects intent
+        # 0.2 QIR — Quantum Intent Resolution (replaces old Semantic Brain rewrite)
+        # Never modifies input. Creates parallel interpretations. Tries best first.
         self._forces = None
-        _is_causal = any(p in user_input.lower() for p in ['what happens if', 'what would happen', 'what if you', 'what if i'])
-        if self._semantic_brain and '. ' not in user_input and not _is_causal:
-            try:
-                self._forces = self._semantic_brain.understand(user_input)
-                # If brain found the entity with high confidence and it differs from input,
-                # REWRITE the query for the C engine (misspelling correction)
-                if self._forces.gravity and self._forces.confidence >= 0.75:
-                    resolved = self._forces.gravity
-                    # Only rewrite if it's a bare query (1-3 words, no question structure)
-                    words = user_input.strip().split()
-                    is_bare = (len(words) <= 3
-                               and not any(w.lower() in ('what','who','why','how','when','where','is','are','does','can','do')
-                                           for w in words))
-                    if is_bare and resolved.lower() != ' '.join(words).lower():
-                        user_input = f"What is {resolved}?"
-                    elif not is_bare and not any(c.isdigit() for c in user_input):
-                        # For structured questions, replace misspelled entity IN the question
-                        # Skip common verbs and question structure words
-                        skip_words = {'what','who','why','how','when','where','is','are','does',
-                                      'can','do','a','an','the','if','you','it','we','they','he',
-                                      'she','this','that','will','would','could','should','has',
-                                      'have','had','was','were','been','being','get','got','make',
-                                      'happens','happened','happen','happening',
-                                      'accidentally','quickly','slowly','suddenly','carefully',
-                                      'gently','roughly','violently','completely','partially',
-                                      'heat','drop','burn','cut','mix','stretch','compress',
-                                      'freeze','cool','hit','throw','break','push','pull',
-                                      'cook','bake','fry','boil','melt','ignite','light',
-                                      'electrify','magnetize','submerge','dissolve',
-                                      'eat','wash','pour','bend','shake','twist','inflate',
-                                      'times','plus','minus','divided','multiply','add',
-                                      'subtract','equals','sum','product','square','cube',
-                                      'root','power','percent','factorial','modulo'}
-                        for w in words:
-                            if (w.lower() not in skip_words and len(w) > 2):
-                                # Check if brain resolved this word differently
-                                loc = self._semantic_brain._locate_word(w.lower()) if hasattr(self._semantic_brain, '_locate_word') else (None, 0)
-                                if loc[0] and loc[1] >= 0.75 and loc[0].lower() != w.lower():
-                                    user_input = user_input.replace(w, loc[0])
-                                    break
-            except Exception:
-                pass
+        self._qir_interpretations = None
+        try:
+            from qir import get_qir
+            if not hasattr(self, '_qir_instance'):
+                brain = self._semantic_brain
+                try:
+                    from cse_knowledge import get_knowledge
+                    knowledge = get_knowledge()
+                except Exception:
+                    knowledge = None
+                self._qir_instance = get_qir(brain=brain, knowledge=knowledge)
+            
+            # Detect question type for observer effect
+            _lower_tmp = user_input.lower()
+            if any(p in _lower_tmp for p in ['what happens', 'what if', 'what would']):
+                _qtype = 'causal'
+            elif _lower_tmp.startswith(('is ', 'can ', 'does ', 'do ', 'was ', 'were ')):
+                _qtype = 'boolean'
+            elif _lower_tmp.startswith(('what is', 'who is', 'what are')):
+                _qtype = 'factual'
+            else:
+                _qtype = 'general'
+            
+            # Get interpretations (non-destructive)
+            self._qir_interpretations = self._qir_instance.resolve(user_input, _qtype)
+            
+            # Use best interpretation as the working input
+            if self._qir_interpretations:
+                best = self._qir_interpretations[0]
+                if best.text != user_input.lower() and best.total_confidence > 0.7:
+                    user_input = best.text
+                    # Restore capitalization of first char if original had it
+                    if user_input and user_input[0].islower():
+                        user_input = user_input[0].upper() + user_input[1:]
+        except Exception:
+            pass
+        
         lower = user_input.lower()
         
         # 0.5 Check workflows (keyword triggers)
