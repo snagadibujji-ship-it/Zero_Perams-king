@@ -1571,6 +1571,169 @@ class TheoremDB:
             tags=["adjunction", "canonical", "divisor"])
 
         # ══════════════════════════════════════════════
+        # ══════════════════════════════════════════════
+        # FOUNDATIONAL BRIDGE THEOREMS (26)
+        # These appear across ALL fields — the backbone of mathematics
+        # ══════════════════════════════════════════════
+
+        self._add(name="zorns_lemma", field="foundations",
+            statement="Every non-empty partially ordered set in which every chain has an upper bound contains a maximal element",
+            preconditions=["P non-empty poset", "every chain in P has upper bound"],
+            conclusion="P has a maximal element",
+            tags=["Zorn", "maximal", "choice", "foundations"])
+
+        self._add(name="yoneda_lemma", field="category_theory",
+            statement="Nat(Hom(A,-), F) ≅ F(A) — natural transformations from representable functor determined by value at identity",
+            preconditions=["C locally small category", "F: C→Set functor"],
+            conclusion="natural transformations from h^A to F biject with F(A)",
+            tags=["Yoneda", "representable", "natural transformation"])
+
+        self._add(name="adjoint_functor_theorem", field="category_theory",
+            statement="A functor G: D→C has a left adjoint iff G preserves limits and satisfies solution set condition",
+            preconditions=["G: D→C", "D complete", "G preserves limits", "solution set exists"],
+            conclusion="∃ left adjoint F: C→D with Hom(FA,B)≅Hom(A,GB)",
+            tags=["adjoint", "functor", "universal"])
+
+        self._add(name="implicit_function_theorem", field="analysis",
+            statement="If F(a,b)=0 and ∂F/∂y is invertible at (a,b), then y=g(x) locally solves F(x,y)=0",
+            preconditions=["F:ℝⁿ⁺ᵐ→ℝᵐ smooth", "F(a,b)=0", "D_yF(a,b) invertible"],
+            conclusion="∃ smooth g: F(x,g(x))=0 near (a,b)",
+            tags=["implicit", "local", "smooth", "invertible"])
+
+        self._add(name="inverse_function_theorem", field="analysis",
+            statement="If f'(a) is invertible, then f is a local diffeomorphism near a",
+            preconditions=["f:ℝⁿ→ℝⁿ smooth", "Df(a) invertible"],
+            conclusion="f is local diffeomorphism: ∃ smooth inverse near f(a)",
+            tags=["inverse", "diffeomorphism", "Jacobian"])
+
+        self._add(name="general_stokes", field="differential_geometry",
+            statement="∫_M dω = ∫_{∂M} ω — integral of exterior derivative equals boundary integral",
+            preconditions=["M oriented manifold with boundary", "ω (n-1)-form"],
+            conclusion="∫_M dω = ∫_{∂M} ω (unifies Green, Gauss, classical Stokes)",
+            tags=["Stokes", "manifold", "boundary", "form"])
+
+        self._add(name="atiyah_singer_index", field="differential_geometry",
+            statement="index(D) = ∫_M ch(σ(D))·td(TM⊗ℂ) — analytical index equals topological index",
+            preconditions=["D elliptic operator on compact manifold M"],
+            conclusion="dim ker D - dim coker D computable from topology",
+            tags=["Atiyah-Singer", "index", "elliptic", "topology"])
+
+        self._add(name="riemann_mapping", field="complex_analysis",
+            statement="Every simply connected proper subset of ℂ is biholomorphic to the unit disk",
+            preconditions=["U⊂ℂ simply connected", "U≠ℂ"],
+            conclusion="∃ biholomorphic f: U→D",
+            tags=["Riemann mapping", "conformal", "disk"])
+
+        self._add(name="uniformization", field="complex_analysis",
+            statement="Every simply connected Riemann surface is conformally equivalent to ℂ, ℍ, or ℙ¹",
+            preconditions=["S simply connected Riemann surface"],
+            conclusion="S ≅ ℂ (parabolic), ℍ (hyperbolic), or ℙ¹ (elliptic)",
+            tags=["uniformization", "Riemann surface", "universal cover"])
+
+        self._add(name="structure_theorem_pid", field="ring_theory",
+            statement="Every finitely generated module over a PID is ⊕ R/(d_i) with d₁|d₂|...|dₖ (invariant factors)",
+            preconditions=["R is PID", "M finitely generated R-module"],
+            conclusion="M ≅ R^r ⊕ R/(d₁) ⊕ ... ⊕ R/(dₖ) with d₁|d₂|...|dₖ",
+            tags=["structure", "PID", "module", "invariant factors"])
+
+        self._add(name="krull_schmidt", field="ring_theory",
+            statement="Every module of finite length has a unique decomposition into indecomposable summands",
+            preconditions=["M module of finite length"],
+            conclusion="M = M₁⊕...⊕Mₙ indecomposable, unique up to order and isomorphism",
+            tags=["Krull-Schmidt", "indecomposable", "unique decomposition"])
+
+        self._add(name="wedderburn_artin", field="ring_theory",
+            statement="Every semisimple ring is a finite product of matrix rings over division rings",
+            preconditions=["R semisimple ring (left Artinian, Jacobson radical = 0)"],
+            conclusion="R ≅ M_{n₁}(D₁) × ... × M_{nₖ}(Dₖ) for division rings Dᵢ",
+            tags=["Wedderburn", "Artin", "semisimple", "matrix ring"])
+
+        self._add(name="fundamental_theorem_calculus", field="analysis",
+            statement="∫_a^b f'(x)dx = f(b)-f(a) and d/dx ∫_a^x f(t)dt = f(x)",
+            preconditions=["f continuous on [a,b]"],
+            conclusion="differentiation and integration are inverse operations",
+            tags=["FTC", "integral", "derivative", "fundamental"])
+
+        self._add(name="picard_lindelof", field="analysis",
+            statement="y'=f(t,y) with f Lipschitz in y has a unique local solution through any initial condition",
+            preconditions=["f continuous", "f Lipschitz in y"],
+            conclusion="∃! local solution to IVP y'=f(t,y), y(t₀)=y₀",
+            tags=["Picard", "Lindelöf", "ODE", "existence", "uniqueness"])
+
+        self._add(name="uniform_boundedness", field="analysis",
+            statement="If {T_α} bounded pointwise on Banach space X, then sup||T_α|| < ∞",
+            preconditions=["X Banach", "{T_α}⊂B(X,Y)", "sup_α ||T_α(x)||<∞ for each x"],
+            conclusion="sup_α ||T_α|| < ∞ (uniformly bounded)",
+            tags=["Banach-Steinhaus", "uniform boundedness", "Baire"])
+
+        self._add(name="radon_nikodym", field="analysis",
+            statement="If ν≪μ (absolute continuity), then dν=f dμ for some measurable f",
+            preconditions=["μ,ν σ-finite measures", "ν absolutely continuous w.r.t. μ"],
+            conclusion="∃f≥0 measurable: ν(A)=∫_A f dμ (Radon-Nikodym derivative)",
+            tags=["Radon-Nikodym", "measure", "absolute continuity", "derivative"])
+
+        self._add(name="fubini_tonelli", field="analysis",
+            statement="∫∫f(x,y)dxdy = ∫(∫f(x,y)dy)dx = ∫(∫f(x,y)dx)dy for integrable/non-negative f",
+            preconditions=["f measurable", "f integrable or f≥0"],
+            conclusion="iterated integrals equal double integral (order interchangeable)",
+            tags=["Fubini", "Tonelli", "iterated integral", "product measure"])
+
+        self._add(name="lebesgue_differentiation", field="analysis",
+            statement="For f∈L¹_loc: lim_{r→0} (1/|B_r|)∫_{B_r(x)} f(y)dy = f(x) a.e.",
+            preconditions=["f locally integrable on ℝⁿ"],
+            conclusion="average over shrinking balls converges to function value a.e.",
+            tags=["Lebesgue", "differentiation", "average", "a.e."])
+
+        self._add(name="compactness_theorem_logic", field="foundations",
+            statement="A set of first-order sentences is satisfiable iff every finite subset is satisfiable",
+            preconditions=["Σ set of first-order sentences"],
+            conclusion="Σ satisfiable ⟺ every finite Σ₀⊂Σ is satisfiable",
+            tags=["compactness", "logic", "model theory", "satisfiable"])
+
+        self._add(name="godel_completeness", field="foundations",
+            statement="A first-order sentence is provable iff it is true in all models",
+            preconditions=["φ first-order sentence", "T consistent theory"],
+            conclusion="T⊢φ ⟺ T⊨φ (provable iff semantically true)",
+            tags=["Gödel", "completeness", "provable", "models"])
+
+        self._add(name="godel_incompleteness_1", field="foundations",
+            statement="Any consistent formal system containing arithmetic has statements that are true but unprovable",
+            preconditions=["T consistent", "T contains arithmetic (PA)"],
+            conclusion="∃φ: φ is true but T⊬φ and T⊬¬φ",
+            tags=["Gödel", "incompleteness", "undecidable", "arithmetic"])
+
+        self._add(name="godel_incompleteness_2", field="foundations",
+            statement="No consistent formal system containing arithmetic can prove its own consistency",
+            preconditions=["T consistent", "T contains arithmetic"],
+            conclusion="T cannot prove Con(T)",
+            depends_on=["godel_incompleteness_1"],
+            tags=["Gödel", "incompleteness", "consistency"])
+
+        self._add(name="riesz_markov_kakutani", field="analysis",
+            statement="Every positive linear functional on C_c(X) is integration against a regular Borel measure",
+            preconditions=["X locally compact Hausdorff", "Λ:C_c(X)→ℝ positive linear"],
+            conclusion="∃! regular Borel measure μ: Λ(f)=∫f dμ",
+            tags=["Riesz-Markov", "measure", "functional", "representation"])
+
+        self._add(name="axiom_of_choice_equivalences", field="foundations",
+            statement="AC ⟺ Zorn's Lemma ⟺ Well-Ordering Principle ⟺ Tychonoff Theorem",
+            preconditions=["ZF set theory"],
+            conclusion="all four statements are equivalent in ZF",
+            depends_on=["zorns_lemma"],
+            tags=["choice", "Zorn", "well-ordering", "Tychonoff", "equivalence"])
+
+        self._add(name="galois_fundamental_theorem", field="field_theory",
+            statement="For Galois extension L/K: intermediate fields ↔ subgroups of Gal(L/K), order-reversing",
+            preconditions=["L/K Galois extension"],
+            conclusion="K⊆E⊆L ↔ Gal(L/K)⊇H⊇{e}, with [E:K]=|Gal(L/K)|/|H|",
+            tags=["Galois", "correspondence", "fundamental", "subgroup", "field"])
+
+        self._add(name="de_rham_theorem", field="differential_geometry",
+            statement="H^k_dR(M) ≅ H^k(M;ℝ) — de Rham cohomology equals singular cohomology with real coefficients",
+            preconditions=["M smooth manifold"],
+            conclusion="closed forms mod exact forms ≅ singular cohomology",
+            tags=["de Rham", "cohomology", "forms", "singular"])
+
         # PhD-LEVEL THEOREMS (100 more for research coverage)
         # Algebraic Geometry, Number Theory, Representation Theory,
         # Homological Algebra, Advanced Topology
