@@ -450,6 +450,19 @@ int main(void) {
         }
 
         /* SIP: Parse intent to route to correct engine */
+        /* But FIRST: check boolean questions (primes, comparisons, yes/no facts) */
+        {
+            LogicResult bool_res = logic_boolean(input);
+            if (bool_res.valid) {
+                printf("  %s\n\n> ", bool_res.answer);
+                memory_add(&g_memory, ROLE_USER, input);
+                memory_add(&g_memory, ROLE_AI, bool_res.answer);
+                metrics_record_message();
+                metrics_record_query(1);
+                continue;
+            }
+        }
+        
         SIPResult sip = sip_parse(input);
         
         /* IDENTITY: "who are you" / "what can you do" */

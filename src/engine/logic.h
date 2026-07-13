@@ -436,4 +436,125 @@ static LogicResult logic_solve(const char *full_input) {
     return res;
 }
 
+/* ═══════════════════════════════════════════════════════════════ */
+/* BOOLEAN QUESTION HANDLER                                        */
+/* Handles: "is X a Y", "is X Y", "can X Y", comparisons, primes */
+/* ═══════════════════════════════════════════════════════════════ */
+
+static int is_prime_number(int n) {
+    if (n < 2) return 0;
+    if (n == 2) return 1;
+    if (n % 2 == 0) return 0;
+    for (int i = 3; i * i <= n; i += 2)
+        if (n % i == 0) return 0;
+    return 1;
+}
+
+static LogicResult logic_boolean(const char *input) {
+    LogicResult res = {0, -1, 0.0, "", ""};
+    char buf[512];
+    logic_lower(buf, input, sizeof(buf));
+    logic_trim(buf);
+    
+    /* ─── PRIME CHECK ─── */
+    if (strstr(buf, "prime")) {
+        int n = 0;
+        if (sscanf(buf, "is %d a prime number", &n) == 1 ||
+            sscanf(buf, "is %d prime", &n) == 1) {
+            res.valid = 1;
+            res.confidence = 0.99;
+            if (is_prime_number(n)) {
+                res.result = 1;
+                snprintf(res.answer, sizeof(res.answer),
+                    "Yes, %d is prime — it's only divisible by 1 and itself.", n);
+            } else {
+                res.result = 0;
+                /* Find smallest factor */
+                int factor = 0;
+                for (int i = 2; i * i <= n; i++) {
+                    if (n % i == 0) { factor = i; break; }
+                }
+                if (factor > 0)
+                    snprintf(res.answer, sizeof(res.answer),
+                        "No, %d is not prime. %d = %d × %d.", n, n, factor, n/factor);
+                else
+                    snprintf(res.answer, sizeof(res.answer),
+                        "No, %d is not prime.", n);
+            }
+            return res;
+        }
+    }
+    
+    /* ─── EVEN/ODD CHECK ─── */
+    if (strstr(buf, "even") || strstr(buf, "odd")) {
+        int n = 0;
+        if (strstr(buf, "even") && sscanf(buf, "is %d even", &n) == 1) {
+            res.valid = 1; res.confidence = 0.99;
+            res.result = (n % 2 == 0) ? 1 : 0;
+            snprintf(res.answer, sizeof(res.answer), "%s, %d is %seven.",
+                (n % 2 == 0) ? "Yes" : "No", n, (n % 2 == 0) ? "" : "not ");
+            return res;
+        }
+        if (strstr(buf, "odd") && sscanf(buf, "is %d odd", &n) == 1) {
+            res.valid = 1; res.confidence = 0.99;
+            res.result = (n % 2 != 0) ? 1 : 0;
+            snprintf(res.answer, sizeof(res.answer), "%s, %d is %sodd.",
+                (n % 2 != 0) ? "Yes" : "No", n, (n % 2 != 0) ? "" : "not ");
+            return res;
+        }
+    }
+    
+    /* ─── COMPARISON ─── */
+    if (strstr(buf, "greater") || strstr(buf, "less") || strstr(buf, "bigger") || strstr(buf, "smaller")) {
+        int a = 0, b = 0;
+        if (sscanf(buf, "is %d greater than %d", &a, &b) == 2 ||
+            sscanf(buf, "is %d more than %d", &a, &b) == 2 ||
+            sscanf(buf, "is %d bigger than %d", &a, &b) == 2) {
+            res.valid = 1; res.confidence = 0.99;
+            res.result = (a > b) ? 1 : 0;
+            snprintf(res.answer, sizeof(res.answer), "%s, %d is %sgreater than %d.",
+                (a > b) ? "Yes" : "No", a, (a > b) ? "" : "not ", b);
+            return res;
+        }
+        if (sscanf(buf, "is %d less than %d", &a, &b) == 2 ||
+            sscanf(buf, "is %d smaller than %d", &a, &b) == 2) {
+            res.valid = 1; res.confidence = 0.99;
+            res.result = (a < b) ? 1 : 0;
+            snprintf(res.answer, sizeof(res.answer), "%s, %d is %sless than %d.",
+                (a < b) ? "Yes" : "No", a, (a < b) ? "" : "not ", b);
+            return res;
+        }
+    }
+    
+    /* ─── BOOLEAN KNOWLEDGE: "is X a Y" / "is X Y" ─── */
+    /* These need semantic core — handled by caller if res.valid == 0 */
+    
+    /* Check simple known facts */
+    struct { const char *q; int answer; const char *response; } facts[] = {
+        {"is the sun a star", 1, "Yes! The Sun is a G-type main-sequence star (G2V), about 4.6 billion years old."},
+        {"is the earth flat", 0, "No, the Earth is not flat. It's an oblate spheroid with a circumference of ~40,075 km."},
+        {"is fire cold", 0, "No, fire is not cold — it's extremely hot. Typical flames reach 600-1400°C."},
+        {"is ice hot", 0, "No, ice is not hot — it's frozen water at 0°C or below."},
+        {"is water wet", 1, "Yes, water is wet — it's a liquid that makes other things wet on contact."},
+        {"is gold a metal", 1, "Yes! Gold (Au) is a metal — dense, conductive, malleable, element 79."},
+        {"is oxygen a gas", 1, "Yes, oxygen is a gas at room temperature (element 8, 21% of atmosphere)."},
+        {"is mercury a liquid", 1, "Yes! Mercury is the only metal that's liquid at room temperature (melts at -39°C)."},
+        {"can birds fly", 1, "Yes! Most birds can fly — though some like penguins, ostriches, and kiwis cannot."},
+        {"can fish breathe air", 0, "No — fish extract oxygen from water through gills, not lungs."},
+        {NULL, 0, NULL}
+    };
+    
+    for (int i = 0; facts[i].q != NULL; i++) {
+        if (strstr(buf, facts[i].q)) {
+            res.valid = 1;
+            res.result = facts[i].answer;
+            res.confidence = 0.93;
+            strncpy(res.answer, facts[i].response, sizeof(res.answer)-1);
+            return res;
+        }
+    }
+    
+    return res;  /* valid=0 means "not handled" */
+}
+
 #endif /* LOGIC_H */
