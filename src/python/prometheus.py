@@ -958,6 +958,12 @@ class Prometheus:
         # Detect command
         low = text.lower()
 
+        # ── EXPLANATIONS: "what is", "explain", "how to" ──
+        if any(low.startswith(w) for w in ['what is', 'what are', 'explain', 'how to', 'how do', 'define']):
+            explanation = self._handle_explain(text, low)
+            if explanation:
+                return explanation
+
         # DIFFERENTIAL EQUATIONS: y' = f(x), dy/dx = f(x) — check BEFORE solve
         if ("y'" in text or "y''" in text or 'dy/dx' in low or 'dy/dt' in low):
             return self._handle_ode(text)
@@ -1200,6 +1206,49 @@ class Prometheus:
         calc = Calculus()
         result = calc.taylor_series(ast, var, center, terms)
         return self.printer.to_string(result)
+
+    def _handle_explain(self, text: str, low: str) -> Optional[str]:
+        """Explain math concepts with step-by-step teaching."""
+        # Remove prefix
+        topic = re.sub(r'^(?:what is|what are|explain|how to|how do you|define)\s+(?:a\s+|an\s+|the\s+)?', '', low).strip().rstrip('?')
+
+        # Check if it's actually asking to compute something (has numbers/variables mixed in)
+        if re.search(r'\d+\s*[+\-*/^]\s*\d+', topic) or '=' in topic:
+            return None  # Let compute handle it
+
+        # Math concept explanations (teach, not compute)
+        explanations = {
+            'derivative': "A derivative measures how a function changes as its input changes.\n\nNotation: f'(x) or dy/dx or d/dx[f(x)]\n\nRules:\n  • d/dx(x^n) = n·x^(n-1)  (power rule)\n  • d/dx(f+g) = f' + g'  (sum rule)\n  • d/dx(f·g) = f'g + fg'  (product rule)\n  • d/dx(f(g)) = f'(g)·g'  (chain rule)\n\nExample: d/dx(x^3) = 3x^2\n\nUse 'differentiate [expr]' to compute one.",
+            'differentiation': "Differentiation is the process of finding a derivative.\n\nIt tells you the RATE OF CHANGE of a function.\n\nBasic rules:\n  • Power: d/dx(x^n) = n·x^(n-1)\n  • Sum: d/dx(f+g) = f' + g'\n  • Product: d/dx(fg) = f'g + fg'\n  • Chain: d/dx(f(g(x))) = f'(g(x))·g'(x)\n\nExample: d/dx(3x^2 + 2x) = 6x + 2\n\nUse 'differentiate [expr]' to compute.",
+            'integration': "Integration is the reverse of differentiation.\n\nNotation: ∫f(x)dx\n\nRules:\n  • ∫x^n dx = x^(n+1)/(n+1) + C  (power rule)\n  • ∫sin(x) dx = -cos(x) + C\n  • ∫cos(x) dx = sin(x) + C\n  • ∫e^x dx = e^x + C\n  • ∫1/x dx = ln|x| + C\n\nExample: ∫x^2 dx = x^3/3 + C\n\nUse 'integrate [expr] dx' to compute.",
+            'integral': "An integral computes the area under a curve or reverses differentiation.\n\nTypes:\n  • Indefinite: ∫f(x)dx = F(x) + C (antiderivative)\n  • Definite: ∫[a,b] f(x)dx = F(b) - F(a) (area)\n\nBasic integrals:\n  • ∫x^n dx = x^(n+1)/(n+1) + C\n  • ∫sin(x) dx = -cos(x) + C\n  • ∫e^x dx = e^x + C\n\nUse 'integrate [expr] dx' to compute.",
+            'quadratic equation': "A quadratic equation has the form: ax² + bx + c = 0\n\nSolution (quadratic formula):\n  x = (-b ± √(b²-4ac)) / 2a\n\nDiscriminant (b²-4ac) determines roots:\n  • > 0: two real roots\n  • = 0: one repeated root\n  • < 0: two complex roots\n\nExample: x² + 5x + 6 = 0\n  a=1, b=5, c=6\n  x = (-5 ± √(25-24)) / 2 = (-5 ± 1) / 2\n  x = -2 or x = -3\n\nUse 'solve [equation] = 0' to solve one.",
+            'laplace transform': "The Laplace transform converts a time-domain function into the s-domain.\n\nDefinition: L{f(t)} = ∫₀^∞ f(t)·e^(-st) dt\n\nCommon transforms:\n  • L{1} = 1/s\n  • L{t} = 1/s²\n  • L{t^n} = n!/s^(n+1)\n  • L{e^(at)} = 1/(s-a)\n  • L{sin(wt)} = w/(s²+w²)\n  • L{cos(wt)} = s/(s²+w²)\n\nUsed in: control systems, circuit analysis, differential equations.\n\nUse 'laplace transform of [expr]' to compute.",
+            'fourier transform': "The Fourier transform decomposes a signal into its frequency components.\n\nDefinition: F{f(t)} = ∫₋∞^∞ f(t)·e^(-iωt) dt\n\nKey properties:\n  • Linearity: F{af+bg} = aF{f} + bF{g}\n  • Time shift: F{f(t-a)} = e^(-iaω)·F{f}\n  • Frequency shift: F{e^(iat)·f} = F(ω-a)\n  • Convolution: F{f*g} = F{f}·F{g}\n\nUsed in: signal processing, image processing, physics.\n\nUse 'fourier transform of [expr]' to compute.",
+            'factorial': "Factorial (n!) is the product of all positive integers up to n.\n\nDefinition: n! = n × (n-1) × (n-2) × ... × 2 × 1\n\nExamples:\n  • 5! = 5×4×3×2×1 = 120\n  • 0! = 1 (by definition)\n  • 10! = 3,628,800\n\nUsed in: permutations, combinations, probability, Taylor series.\n\nFormula: C(n,r) = n! / (r! × (n-r)!)",
+            'limit': "A limit describes the value a function approaches as input approaches a point.\n\nNotation: lim(x→a) f(x) = L\n\nRules:\n  • Direct substitution: try f(a) first\n  • 0/0 form: use L'Hôpital's rule (take derivatives of top and bottom)\n  • ∞/∞ form: also use L'Hôpital\n\nExample: lim(x→0) sin(x)/x = 1\n\nUse 'limit of [expr] as x->[value]' to compute.",
+            'taylor series': "A Taylor series approximates any function as a polynomial.\n\nFormula: f(x) = Σ f^(n)(a)/n! · (x-a)^n\n\nCommon series (around 0):\n  • e^x = 1 + x + x²/2 + x³/6 + ...\n  • sin(x) = x - x³/6 + x⁵/120 - ...\n  • cos(x) = 1 - x²/2 + x⁴/24 - ...\n  • 1/(1-x) = 1 + x + x² + x³ + ...\n\nUse 'taylor series of [expr] [n] terms' to compute.",
+            'complex number': "A complex number has a real part and an imaginary part.\n\nForm: z = a + bi, where i² = -1\n\nOperations:\n  • Addition: (a+bi) + (c+di) = (a+c) + (b+d)i\n  • Multiplication: (a+bi)(c+di) = (ac-bd) + (ad+bc)i\n  • Modulus: |z| = √(a² + b²)\n  • Conjugate: z̄ = a - bi\n\nEuler's formula: e^(ix) = cos(x) + i·sin(x)",
+            'induction': "Mathematical induction proves statements for all natural numbers.\n\nSteps:\n  1. BASE CASE: Prove for n=1 (or smallest value)\n  2. INDUCTIVE HYPOTHESIS: Assume true for n=k\n  3. INDUCTIVE STEP: Prove true for n=k+1 using the assumption\n\nExample: Prove 1+2+...+n = n(n+1)/2\n  Base: n=1 → 1 = 1(2)/2 ✓\n  Step: Assume for k. Then for k+1:\n    1+...+k+(k+1) = k(k+1)/2 + (k+1) = (k+1)(k+2)/2 ✓\n\nUse 'prove [statement]' for proofs.",
+        }
+
+        # Partial matching
+        for key, explanation in explanations.items():
+            if key in topic or topic in key:
+                return explanation
+
+        # "how to solve" → explain solving method
+        if 'solve' in topic:
+            if 'quadratic' in topic or 'x^2' in topic:
+                return explanations['quadratic equation']
+            return "To solve an equation:\n  1. Move all terms to one side (= 0)\n  2. Factor if possible\n  3. For linear (ax+b=0): x = -b/a\n  4. For quadratic (ax²+bx+c=0): use quadratic formula\n  5. For cubic: try rational roots, then factor\n\nUse 'solve [equation] = 0' to solve."
+
+        # "what is a+b" type (algebraic expression explanation)
+        if re.match(r'^[a-z\s\+\-\*\/\^]+$', topic):
+            # It's a simple algebraic expression
+            return f"'{topic}' is an algebraic expression.\n\nIt represents the mathematical operation between variables.\nWithout knowing the values of the variables, it stays as '{topic}'.\n\nTo evaluate: provide values (e.g., 'simplify {topic}' or substitute numbers)\nTo compute with numbers: type the expression directly (e.g., '3+5')"
+
+        return None  # Not an explanation request, let other handlers try
 
     def _handle_ode(self, text: str) -> str:
         """Solve ordinary differential equations by integration."""
