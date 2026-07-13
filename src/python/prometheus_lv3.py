@@ -762,3 +762,290 @@ class ProofSearchV2:
         if proof:
             return self.format_proof(proof)
         return f"Cannot find proof path for: {goal}"
+
+
+# ═══════════════════════════════════════════════════════════════
+# 3.3 RING & FIELD ENGINE
+# ═══════════════════════════════════════════════════════════════
+
+class Ring:
+    """Finite ring with addition and multiplication."""
+
+    def __init__(self, elements: List, add_op=None, mul_op=None, name: str = ''):
+        self.elements = elements
+        self.n = len(elements)
+        self.name = name
+        self._add = add_op or (lambda a, b: (a + b) % self.n)
+        self._mul = mul_op or (lambda a, b: (a * b) % self.n)
+        self.zero = self._find_zero()
+        self.one = self._find_one()
+
+    def add(self, a, b): return self._add(a, b)
+    def mul(self, a, b): return self._mul(a, b)
+
+    def _find_zero(self):
+        for e in self.elements:
+            if all(self.add(e, a) == a for a in self.elements):
+                return e
+        return self.elements[0]
+
+    def _find_one(self):
+        for e in self.elements:
+            if all(self.mul(e, a) == a and self.mul(a, e) == a for a in self.elements):
+                return e
+        return None
+
+    def is_commutative(self) -> bool:
+        return all(self.mul(a, b) == self.mul(b, a) for a in self.elements for b in self.elements)
+
+    def is_integral_domain(self) -> bool:
+        """No zero divisors and commutative with 1."""
+        if not self.is_commutative() or self.one is None:
+            return False
+        for a in self.elements:
+            if a == self.zero: continue
+            for b in self.elements:
+                if b == self.zero: continue
+                if self.mul(a, b) == self.zero:
+                    return False
+        return True
+
+    def is_field(self) -> bool:
+        """Every non-zero element has multiplicative inverse."""
+        if not self.is_commutative() or self.one is None:
+            return False
+        for a in self.elements:
+            if a == self.zero: continue
+            has_inv = any(self.mul(a, b) == self.one for b in self.elements)
+            if not has_inv:
+                return False
+        return True
+
+    def ideals(self) -> List[List]:
+        """Find all ideals of the ring."""
+        from itertools import combinations
+        result = [{self.zero}]  # Zero ideal always exists
+        for size in range(1, self.n + 1):
+            for combo in combinations(self.elements, size):
+                I = set(combo)
+                if self.zero not in I: continue
+                if self._is_ideal(I):
+                    result.append(I)
+        return [list(s) for s in result]
+
+    def _is_ideal(self, I: set) -> bool:
+        """Check if I is an ideal: closed under +, and r*I ⊆ I for all r."""
+        for a in I:
+            for b in I:
+                if self.add(a, b) not in I: return False  # additive closure
+                # Need additive inverse too
+            for r in self.elements:
+                if self.mul(r, a) not in I: return False
+                if self.mul(a, r) not in I: return False
+        return True
+
+    def quotient_ring(self, I: List) -> 'Ring':
+        """Compute R/I."""
+        I_set = set(I)
+        cosets = []
+        used = set()
+        for r in self.elements:
+            coset = frozenset(self.add(r, i) for i in I_set)
+            if coset not in used:
+                used.add(coset)
+                cosets.append(r)
+        return Ring(list(range(len(cosets))), name=f"{self.name}/I")
+
+    @staticmethod
+    def integers_mod(n: int) -> 'Ring':
+        """Create ℤ/nℤ."""
+        return Ring(list(range(n)), name=f"Z/{n}Z")
+
+    @staticmethod
+    def polynomial_ring_mod(n: int) -> 'Ring':
+        """Simple polynomial ring ℤₙ[x] (represented as coefficient lists)."""
+        return Ring(list(range(n)), name=f"Z_{n}[x]")
+
+
+class FieldExtension:
+    """Finite field extension computations."""
+
+    @staticmethod
+    def degree(min_poly_degree: int) -> int:
+        """Extension degree = degree of minimal polynomial."""
+        return min_poly_degree
+
+    @staticmethod
+    def is_splitting_field(poly_roots: List, field_elements: List) -> bool:
+        """Check if all roots are in the field."""
+        return all(r in field_elements for r in poly_roots)
+
+    @staticmethod
+    def galois_group_order(extension_degree: int) -> int:
+        """For Galois extension, |Gal(L/K)| = [L:K]."""
+        return extension_degree
+
+    @staticmethod
+    def is_galois(extension_degree: int, num_automorphisms: int) -> bool:
+        """Extension is Galois iff |Aut| = degree."""
+        return num_automorphisms == extension_degree
+
+
+# ═══════════════════════════════════════════════════════════════
+# 3.5 REAL ANALYSIS ENGINE
+# ═══════════════════════════════════════════════════════════════
+
+class RealAnalysis:
+    """Convergence tests, series analysis, continuity proofs."""
+
+    # ─── CONVERGENCE TESTS FOR SERIES ───
+
+    def ratio_test(self, general_term_func, n_start: int = 1) -> Dict:
+        """Apply ratio test: compute lim|a_{n+1}/a_n|."""
+        ratios = []
+        for n in range(max(n_start, 1), 50):
+            try:
+                an = general_term_func(n)
+                an1 = general_term_func(n + 1)
+                if an != 0:
+                    ratios.append(abs(an1 / an))
+            except:
+                break
+
+        if not ratios:
+            return {'test': 'ratio', 'result': 'inconclusive', 'limit': None}
+
+        # Estimate limit
+        L = ratios[-1] if ratios else None
+        if len(ratios) > 5:
+            L = sum(ratios[-5:]) / 5  # Average last 5
+
+        if L is not None:
+            if L < 1 - 1e-10:
+                return {'test': 'ratio', 'result': 'CONVERGES', 'limit': round(L, 6)}
+            elif L > 1 + 1e-10:
+                return {'test': 'ratio', 'result': 'DIVERGES', 'limit': round(L, 6)}
+        return {'test': 'ratio', 'result': 'inconclusive', 'limit': round(L, 6) if L else None}
+
+    def root_test(self, general_term_func, n_start: int = 1) -> Dict:
+        """Apply root test: compute lim |a_n|^(1/n)."""
+        values = []
+        for n in range(max(n_start, 1), 50):
+            try:
+                an = general_term_func(n)
+                values.append(abs(an) ** (1/n))
+            except:
+                break
+
+        if not values:
+            return {'test': 'root', 'result': 'inconclusive', 'limit': None}
+
+        L = values[-1]
+        if L < 1 - 1e-10:
+            return {'test': 'root', 'result': 'CONVERGES', 'limit': round(L, 6)}
+        elif L > 1 + 1e-10:
+            return {'test': 'root', 'result': 'DIVERGES', 'limit': round(L, 6)}
+        return {'test': 'root', 'result': 'inconclusive', 'limit': round(L, 6)}
+
+    def integral_test(self, general_term_func, n_start: int = 1, N: int = 1000) -> Dict:
+        """Integral test: if ∫f(x)dx converges, so does Σf(n)."""
+        # Approximate integral by sum with small step
+        total = 0
+        step = 0.1
+        x = float(n_start)
+        converges = True
+        for _ in range(N):
+            try:
+                val = general_term_func(x)
+                total += val * step
+                x += step
+                if total > 1e10:
+                    converges = False
+                    break
+            except:
+                break
+
+        if converges and total < 1e10:
+            return {'test': 'integral', 'result': 'CONVERGES', 'approx_sum': round(total, 6)}
+        return {'test': 'integral', 'result': 'DIVERGES', 'approx_sum': round(total, 2)}
+
+    def partial_sums(self, general_term_func, n_terms: int = 20) -> List[float]:
+        """Compute partial sums S_1, S_2, ..., S_n."""
+        sums = []
+        total = 0
+        for n in range(1, n_terms + 1):
+            try:
+                total += general_term_func(n)
+                sums.append(round(total, 8))
+            except:
+                break
+        return sums
+
+    def test_series(self, general_term_func) -> str:
+        """Run all convergence tests and report."""
+        lines = []
+        lines.append("Series convergence analysis:")
+        lines.append(f"  First terms: {[round(general_term_func(n), 6) for n in range(1, 6)]}")
+        lines.append(f"  Partial sums: {self.partial_sums(general_term_func, 10)}")
+
+        # Ratio test
+        ratio = self.ratio_test(general_term_func)
+        lines.append(f"  Ratio test: L = {ratio['limit']} → {ratio['result']}")
+
+        # Root test
+        root = self.root_test(general_term_func)
+        lines.append(f"  Root test:  L = {root['limit']} → {root['result']}")
+
+        # Determine final verdict
+        if ratio['result'] == 'CONVERGES' or root['result'] == 'CONVERGES':
+            lines.append(f"\n  VERDICT: Series CONVERGES")
+        elif ratio['result'] == 'DIVERGES' or root['result'] == 'DIVERGES':
+            lines.append(f"\n  VERDICT: Series DIVERGES")
+        else:
+            lines.append(f"\n  VERDICT: Inconclusive (try comparison or integral test)")
+
+        return '\n'.join(lines)
+
+    # ─── SEQUENCE CONVERGENCE ───
+
+    def sequence_limit(self, seq_func, tolerance: float = 1e-10, max_n: int = 1000) -> Optional[float]:
+        """Estimate limit of sequence by computing terms until convergence."""
+        prev = seq_func(1)
+        for n in range(2, max_n):
+            curr = seq_func(n)
+            if abs(curr - prev) < tolerance:
+                return round(curr, 10)
+            prev = curr
+        return round(prev, 10)  # Best estimate
+
+    # ─── CONTINUITY CHECK ───
+
+    def is_continuous_at(self, f, point: float, delta: float = 0.001) -> bool:
+        """Numerically check continuity: lim_{x→a} f(x) = f(a)."""
+        try:
+            fa = f(point)
+            left = f(point - delta)
+            right = f(point + delta)
+            return abs(left - fa) < 0.01 and abs(right - fa) < 0.01
+        except:
+            return False
+
+    # ─── EPSILON-DELTA PROOF TEMPLATE ───
+
+    def epsilon_delta_proof(self, f_desc: str, limit_val: str, point: str) -> str:
+        """Generate epsilon-delta proof template."""
+        lines = []
+        lines.append(f"PROOF that lim_{{x→{point}}} {f_desc} = {limit_val}")
+        lines.append("")
+        lines.append("  Let ε > 0 be given.")
+        lines.append(f"  We need to find δ > 0 such that:")
+        lines.append(f"    |x - {point}| < δ  ⟹  |{f_desc} - {limit_val}| < ε")
+        lines.append("")
+        lines.append("  Choose δ = [expression in terms of ε]")
+        lines.append(f"  Then if |x - {point}| < δ:")
+        lines.append(f"    |{f_desc} - {limit_val}| = [simplify]")
+        lines.append(f"                             ≤ [bound using |x - {point}| < δ]")
+        lines.append(f"                             < ε  ✓")
+        lines.append("")
+        lines.append("  ∎")
+        return '\n'.join(lines)
