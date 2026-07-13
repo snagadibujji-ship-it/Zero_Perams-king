@@ -2232,13 +2232,14 @@ class PhysicsIdentifier:
         ],
         "electromagnetism": [
             "electric", "magnetic", "charge", "current", "voltage", "resistance",
-            "capacit", "inductor", "maxwell", "gauss", "faraday", "ampere",
+            "capacit", "inductor", "inductance", "maxwell", "gauss", "faraday", "ampere",
             "coulomb", "lorentz", "electromagnetic", "radiation", "antenna",
             "wave", "polariz", "refract", "reflect", "lens", "mirror",
             "diffract", "interfer", "circuit", "ohm", "dielectric",
             "dipole", "flux", "emf", "transformer", "impedance", "waveguide",
             "skin depth", "copper", "fresnel", "snell", "kramers",
-            "kronig", "dispersion", "optic"
+            "kronig", "dispersion", "optic", "toroid", "coil",
+            "total internal reflection", "critical angle"
         ],
         "quantum_mechanics": [
             "quantum", "wavefunction", "schrodinger", "schrödinger", "operator",
@@ -2252,7 +2253,8 @@ class PhysicsIdentifier:
             "clebsch", "gordan", "angular momentum", "berry phase",
             "no-cloning", "cloning theorem", "path integral",
             "fermi golden", "golden rule", "anharmonic",
-            "ground state energy", "expectation value"
+            "ground state energy", "expectation value",
+            "fine structure", "spin-orbit"
         ],
         "statistical_mechanics": [
             "entropy", "temperature", "thermodynamic", "heat", "boltzmann",
@@ -2264,7 +2266,9 @@ class PhysicsIdentifier:
             "ising", "mean field", "order parameter", "condensat",
             "renormalization group", "critical phenomena", "clausius",
             "clapeyron", "jarzynski", "non-equilibrium", "mixing",
-            "Wien", "peak wavelength", "radiation spectrum"
+            "Wien", "peak wavelength", "radiation spectrum",
+            "maxwell distribution", "speed distribution",
+            "chemical potential", "helmholtz", "gibbs"
         ],
         "relativity": [
             "relativity", "relativistic", "lorentz", "spacetime", "metric",
@@ -2285,7 +2289,8 @@ class PhysicsIdentifier:
             "asymptotic freedom", "confinement", "anomaly", "gauge",
             "symmetry breaking", "goldstone", "CKM", "PMNS", "flavor",
             "coleman", "mandula", "supersymmetry", "SUSY",
-            "oscillation", "compton", "muon g-2"
+            "oscillation", "compton", "muon g-2",
+            "parton", "deep inelastic", "effective field theory"
         ],
         "condensed_matter": [
             "crystal", "lattice", "phonon", "band", "semiconductor",
@@ -2297,7 +2302,7 @@ class PhysicsIdentifier:
             "anderson localization", "debye", "specific heat",
             "kohn-sham", "DFT", "density functional",
             "laughlin", "fractional", "landau level",
-            "gap equation"
+            "gap equation", "tight-binding", "graphene", "semimetal"
         ],
         "quantum_optics": [
             "laser", "photon", "coherent state", "squeezed", "cavity QED",
@@ -2305,7 +2310,9 @@ class PhysicsIdentifier:
             "nonlinear optic", "second harmonic", "parametric",
             "quantum key", "QKD", "antibunching",
             "jaynes", "cummings", "rabi", "purcell",
-            "hong-ou-mandel", "down-conversion"
+            "hong-ou-mandel", "down-conversion",
+            "fock state", "number state", "photon number",
+            "laser cooling", "magneto-optical trap", "MOT"
         ],
         "plasma_physics": [
             "plasma", "MHD", "magnetohydro", "fusion", "tokamak",
@@ -2329,12 +2336,55 @@ class PhysicsIdentifier:
         ],
         "research_frontier": [
             "AdS/CFT", "holograph", "amplituhedron", "ER=EPR",
-            "swampland", "eigenstate thermalization", "ETH",
+            "swampland", "eigenstate thermalization",
             "many-body localization", "MBL", "fracton",
             "floquet", "time crystal", "measurement-induced",
             "tensor network", "MERA", "celestial",
             "SYK", "sachdev", "quantum supremacy",
             "information paradox", "page curve", "island formula"
+        ],
+    }
+
+    # Priority phrases: multi-word patterns that STRONGLY indicate a domain
+    # These get 5x weight to override single-word matches like "quantum"
+    PRIORITY_PHRASES = {
+        "condensed_matter": [
+            "quantum hall", "hall effect", "laughlin", "fractional hall",
+            "BCS", "cooper pair", "bloch theorem", "band structure",
+            "topological insulator", "kondo effect", "hubbard model",
+            "anderson localization", "josephson", "superconductor",
+            "phonon", "debye model", "fermi surface", "landau level",
+            "brillouin zone", "density functional", "kohn-sham",
+            "rashba", "semiconductor", "tight-binding", "graphene"
+        ],
+        "research_frontier": [
+            "ER=EPR", "er=epr", "ads/cft", "AdS/CFT", "amplituhedron",
+            "eigenstate thermalization", "many-body localization",
+            "measurement-induced", "fracton", "floquet", "time crystal",
+            "tensor network", "MERA", "celestial holography", "SYK",
+            "swampland", "page curve", "island formula",
+            "quantum supremacy", "information paradox"
+        ],
+        "cosmology": [
+            "jeans mass", "jeans instability", "star formation",
+            "baryogenesis", "sakharov",
+            "dark matter candidate", "dark energy evolution",
+            "hubble tension",
+            "DESI", "distance ladder", "age of universe",
+            "nucleosynthesis", "reionization", "structure formation",
+            "lambda CDM", "ΛCDM"
+        ],
+        "quantum_optics": [
+            "cavity QED", "jaynes-cummings", "jaynes cummings",
+            "hong-ou-mandel", "squeezed light", "squeezed state",
+            "coherent state", "single photon", "entangled photon",
+            "parametric down", "photon antibunching", "purcell effect"
+        ],
+        "plasma_physics": [
+            "landau damping", "alfven wave", "magnetic reconnection",
+            "MHD equation", "vlasov equation", "plasma frequency",
+            "lawson criterion", "tokamak", "solar corona",
+            "cyclotron", "magnetic mirror"
         ],
     }
 
@@ -2345,11 +2395,25 @@ class PhysicsIdentifier:
         q_lower = question.lower()
         scores = {}
 
+        # First check priority phrases (5x weight)
+        for domain, phrases in self.PRIORITY_PHRASES.items():
+            for phrase in phrases:
+                pl = phrase.lower()
+                # Short phrases (≤4 chars) need word boundary match
+                if len(pl) <= 4:
+                    # Check as whole word
+                    import re
+                    if re.search(r'\b' + re.escape(pl) + r'\b', q_lower):
+                        scores[domain] = scores.get(domain, 0) + 5 + len(phrase) / 5
+                else:
+                    if pl in q_lower:
+                        scores[domain] = scores.get(domain, 0) + 5 + len(phrase) / 5
+
+        # Then check regular keywords
         for domain, keywords in self.DOMAIN_KEYWORDS.items():
-            score = 0
+            score = scores.get(domain, 0)
             for kw in keywords:
-                if kw in q_lower:
-                    # Longer keywords get more weight
+                if kw.lower() in q_lower:
                     score += 1 + len(kw) / 20
             if score > 0:
                 scores[domain] = score
