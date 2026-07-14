@@ -114,6 +114,7 @@ TELUGU_MARKERS = {
 # Hindi function words
 HINDI_MARKERS = {
     'kya', 'hai', 'kaise', 'kyun', 'kyon', 'bata', 'batao', 'samjhao',
+    'bta', 'btao', 'smjha', 'smjhao',  # Abbreviated forms
     'mein', 'ka', 'ki', 'ke', 'ko', 'se', 'par', 'pe', 'ne', 'aur',
     'lekin', 'kyunki', 'agar', 'toh', 'phir', 'abhi', 'yahan', 'wahan',
     'hai', 'hain', 'tha', 'the', 'hoga', 'hogi', 'karo', 'karo',
@@ -124,7 +125,7 @@ HINDI_MARKERS = {
 # Tamil function words
 TAMIL_MARKERS = {
     'enna', 'eppadi', 'yeppadi', 'epdi', 'en', 'yean', 'yen',
-    'sollu', 'sollungo', 'pathi', 'patri',
+    'sollu', 'sollungo', 'pathi', 'patri', 'sollunga', 'solluda',
     'la', 'le', 'ku', 'oda', 'um', 'aana', 'aanaa', 'athanaal',
     'inga', 'anga', 'ippo', 'appo', 'yaar', 'enga',
     'pannu', 'pannungo', 'irukku', 'illa', 'aama', 'illai',
