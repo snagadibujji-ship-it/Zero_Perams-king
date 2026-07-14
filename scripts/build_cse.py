@@ -69,17 +69,17 @@ def build_python():
         id_to_rel = [''] * len(relations)
         for text, rid in relations.items():
             id_to_rel[rid] = text
-        out.write(struct.pack('<B', len(relations)))
+        out.write(struct.pack('<H', len(relations)))  # u16 for >255 relations
         for rel in id_to_rel:
             encoded = rel.encode('utf-8')[:31]
             out.write(struct.pack('<B', len(encoded)))
             out.write(encoded)
 
-        # Facts (varint encoded: subject_varint + relation_byte + object_varint + conf_nibble)
+        # Facts (varint encoded: subject_varint + relation_varint + object_varint + conf_nibble)
         for subj_id, rel_id, obj_id, conf in facts:
             # Varint encoding
             out.write(encode_varint(subj_id))
-            out.write(struct.pack('<B', rel_id & 0xFF))
+            out.write(encode_varint(rel_id))
             out.write(encode_varint(obj_id))
             # Confidence: 4 bits (0-15 maps to 0-100)
             conf_encoded = min(15, conf * 15 // 100)
