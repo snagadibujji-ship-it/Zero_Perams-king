@@ -1187,8 +1187,30 @@ class NuclearSolver:
     m_n = 939.565    # neutron mass MeV
 
     def binding_energy(self, Z: int, A: int) -> Dict[str, float]:
-        """Semi-empirical mass formula B(Z,A)."""
+        """Semi-empirical mass formula B(Z,A). For A<12, uses experimental values."""
         N = A - Z
+
+        # Experimental values for light nuclei (SEMF inaccurate for A<12)
+        light_nuclei = {
+            (1,2): 2.224,    # deuterium
+            (1,3): 8.482,    # tritium
+            (2,3): 7.718,    # He-3
+            (2,4): 28.296,   # He-4 (very tightly bound!)
+            (3,6): 31.99,    # Li-6
+            (3,7): 39.24,    # Li-7
+            (4,9): 58.16,    # Be-9
+            (5,10): 64.75,   # B-10
+            (5,11): 76.20,   # B-11
+            (6,12): 92.16,   # C-12
+        }
+        if (Z, A) in light_nuclei:
+            B = light_nuclei[(Z, A)]
+            return {
+                "binding_energy_MeV": B,
+                "binding_per_nucleon": B/A,
+                "Z": Z, "N": N, "A": A,
+                "method": "experimental (light nucleus)",
+            }
         # Pairing term
         if A % 2 == 1:
             delta = 0
