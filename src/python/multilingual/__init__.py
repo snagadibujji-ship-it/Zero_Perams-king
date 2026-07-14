@@ -135,7 +135,256 @@ TAMIL_MARKERS = {
 
 
 # ═══════════════════════════════════════════════════════════════
-# PHASE 2: PHONETIC NORMALIZER
+# ADDITIONAL LANGUAGES (11 more = 15 total)
+# ═══════════════════════════════════════════════════════════════
+
+# Spanish function words (Romanized — already roman script)
+SPANISH_MARKERS = {
+    'que', 'qué', 'como', 'cómo', 'por', 'porque', 'porqué',
+    'es', 'son', 'esta', 'están', 'tiene', 'hay',
+    'el', 'la', 'los', 'las', 'un', 'una', 'del', 'al',
+    'me', 'te', 'se', 'nos', 'les', 'lo',
+    'pero', 'sino', 'aunque', 'porque', 'cuando', 'donde',
+    'muy', 'más', 'menos', 'también', 'siempre', 'nunca',
+    'hacer', 'haz', 'puedo', 'puede', 'quiero', 'necesito',
+    'explica', 'dime', 'calcula', 'resuelve', 'cual',
+}
+
+# French function words
+FRENCH_MARKERS = {
+    'que', 'quoi', 'comment', 'pourquoi', 'est', 'sont', 'avoir',
+    'le', 'la', 'les', 'un', 'une', 'des', 'du', 'de',
+    'je', 'tu', 'il', 'elle', 'nous', 'vous', 'ils', 'elles',
+    'ne', 'pas', 'mais', 'ou', 'et', 'donc', 'car', 'parce',
+    'ce', 'cette', 'ces', 'mon', 'ton', 'son', 'notre', 'votre',
+    'faire', 'dit', 'peux', 'peut', 'veux', 'faut',
+    'explique', 'dis', 'calcule', 'résous', 'quel', 'quelle',
+}
+
+# German function words
+GERMAN_MARKERS = {
+    'was', 'wie', 'warum', 'wer', 'wo', 'wann', 'welche',
+    'ist', 'sind', 'hat', 'haben', 'wird', 'werden',
+    'der', 'die', 'das', 'ein', 'eine', 'den', 'dem',
+    'ich', 'du', 'er', 'sie', 'wir', 'ihr',
+    'nicht', 'kein', 'aber', 'oder', 'und', 'weil', 'wenn',
+    'kann', 'muss', 'soll', 'will', 'darf',
+    'erkläre', 'berechne', 'löse', 'sage', 'zeige',
+}
+
+# Portuguese function words
+PORTUGUESE_MARKERS = {
+    'que', 'como', 'por', 'porque', 'qual', 'quem', 'onde',
+    'é', 'são', 'está', 'tem', 'há', 'foi',
+    'o', 'a', 'os', 'as', 'um', 'uma', 'do', 'da',
+    'eu', 'tu', 'ele', 'ela', 'nós', 'eles', 'elas',
+    'não', 'mas', 'ou', 'porque', 'quando', 'onde',
+    'pode', 'precisa', 'quer', 'deve', 'vai',
+    'explica', 'diz', 'calcula', 'resolve', 'mostra',
+    'muito', 'mais', 'menos', 'também', 'sempre',
+}
+
+# Arabic function words (Romanized/Franco-Arabic: numbers+letters)
+ARABIC_MARKERS = {
+    'shu', 'sho', 'eish', 'esh', 'keef', 'kif', 'lesh', 'leish',
+    'howa', 'hiya', 'hum', 'ana', 'inta', 'inti', 'ihna', 'intu',
+    'fi', 'min', 'ila', 'ala', 'ma3', 'bidun', 'ba3d', 'abl',
+    'la', 'mish', 'mush', 'bas', 'laken', 'aw', 'wa',
+    'yani', 'tab', 'tayyib', 'khalas', 'inshallah', 'wallah',
+    'mumkin', 'lazim', 'biddi', 'abgha', 'abbi',
+    'shareh', 'guli', 'e7sb', 'a3tini', 'faser',
+    '2', '3', '7', '5',  # Franco-Arabic numbers as letters
+}
+
+# Japanese function words (Romanized/Romaji)
+JAPANESE_MARKERS = {
+    'wa', 'ga', 'wo', 'ni', 'de', 'to', 'no', 'ka', 'mo',
+    'desu', 'masu', 'deshita', 'mashita', 'nai', 'masen',
+    'nani', 'naze', 'doushite', 'dou', 'ikutsu', 'dare', 'doko',
+    'kore', 'sore', 'are', 'kono', 'sono', 'ano',
+    'watashi', 'anata', 'kare', 'kanojo',
+    'shite', 'kudasai', 'onegai', 'tabun', 'totemo',
+    'oshiete', 'keisan', 'setsumei', 'imi',
+}
+
+# Korean function words (Romanized)
+KOREAN_MARKERS = {
+    'mwo', 'mwoya', 'eottoke', 'eotteoke', 'wae', 'waeyo', 'eodi', 'eonje',
+    'imnida', 'imnika', 'hamnida', 'haeyo', 'hae', 'ya',
+    'neun', 'eun', 'reul', 'eul', 'ga', 'i', 'e', 'eseo',
+    'na', 'neo', 'uri', 'geu', 'geugeo',
+    'aniya', 'aniyo', 'hajiman', 'geurigo', 'ttaemune',
+    'su', 'isseo', 'eopseo', 'hago', 'sipeo',
+    'seolmyeong', 'gyesan', 'allyeojwo', 'malhae',
+}
+
+# Russian function words (Romanized/Transliterated)
+RUSSIAN_MARKERS = {
+    'chto', 'kak', 'pochemu', 'zachem', 'gde', 'kogda', 'kto',
+    'eto', 'est', 'byl', 'budet', 'yest',
+    'ya', 'ty', 'on', 'ona', 'my', 'vy', 'oni',
+    'ne', 'no', 'ili', 'i', 'potomu', 'chtoby', 'esli',
+    'ochen', 'bolshe', 'menshe', 'tozhe', 'vsegda', 'nikogda',
+    'mogu', 'nado', 'nuzno', 'hochu', 'dolzhen',
+    'obyasni', 'rasschitay', 'reshit', 'skazhi', 'pokazi',
+}
+
+# Bengali function words (Romanized)
+BENGALI_MARKERS = {
+    'ki', 'keno', 'kivabe', 'kothay', 'kokhon', 'ke',
+    'hoy', 'holo', 'hobe', 'ache', 'chilo', 'thakbe',
+    'ami', 'tumi', 'apni', 'se', 'tara', 'amra',
+    'na', 'kintu', 'ba', 'ar', 'karon', 'jodi', 'tahole',
+    'kora', 'bola', 'dekhao', 'bojhao', 'hisab',
+    'ta', 'ti', 'te', 'r', 'er', 'ke', 'theke',
+    'bol', 'bolo', 'koro', 'dao', 'jano',
+}
+
+# Kannada function words (Romanized)
+KANNADA_MARKERS = {
+    'enu', 'yenu', 'hege', 'yaake', 'elli', 'yaavaga', 'yaaru',
+    'ide', 'ide', 'ittu', 'aaguttade', 'aaytu',
+    'naanu', 'neenu', 'avanu', 'avalu', 'naavu', 'avaru',
+    'illa', 'aadre', 'athava', 'mattu', 'yaakamdre',
+    'maadu', 'maadi', 'helu', 'heli', 'toorsu', 'torisi',
+    'ge', 'alli', 'inda', 'gu', 'nnu',
+    'gottu', 'gottilla', 'beku', 'baratte', 'aaguttade',
+}
+
+# Malayalam function words (Romanized)
+MALAYALAM_MARKERS = {
+    'enthu', 'entha', 'engane', 'enthukond', 'evide', 'eppol', 'aaru',
+    'aanu', 'und', 'undayirunnu', 'aakum',
+    'njan', 'nee', 'avan', 'aval', 'nammal', 'ningal', 'avar',
+    'alla', 'pakshe', 'atho', 'um', 'kaaranam', 'enkil',
+    'cheyyuka', 'parayuka', 'parayoo', 'kanakkukuttuka',
+    'il', 'inte', 'ude', 'ku', 'aal',
+    'ariyaam', 'ariyilla', 'venam', 'pattum', 'cheyyam',
+}
+
+# Spanish patterns
+SPANISH_PATTERNS = [
+    (r'(?:que|qué)\s+es\s+(.+)', 'what_is', 1),
+    (r'(?:como|cómo)\s+(?:funciona|trabaja)\s+(.+)', 'how', 1),
+    (r'(?:por\s*que|porqué)\s+(.+)', 'why', 1),
+    (r'explica\s+(.+)', 'explain', 1),
+    (r'calcula\s+(.+)', 'calculate', 1),
+    (r'(.+?)\s+(?:que|qué)\s+es', 'what_is', 1),
+]
+
+# French patterns
+FRENCH_PATTERNS = [
+    (r"(?:qu'est-ce que|c'est quoi)\s+(.+)", 'what_is', 1),
+    (r'comment\s+(?:fonctionne|marche)\s+(.+)', 'how', 1),
+    (r'pourquoi\s+(.+)', 'why', 1),
+    (r'explique\s+(.+)', 'explain', 1),
+    (r'calcule\s+(.+)', 'calculate', 1),
+]
+
+# German patterns
+GERMAN_PATTERNS = [
+    (r'was\s+ist\s+(.+)', 'what_is', 1),
+    (r'wie\s+(?:funktioniert|geht)\s+(.+)', 'how', 1),
+    (r'warum\s+(.+)', 'why', 1),
+    (r'(?:erkläre|erklär)\s+(.+)', 'explain', 1),
+    (r'berechne\s+(.+)', 'calculate', 1),
+]
+
+# Arabic patterns (Romanized)
+ARABIC_PATTERNS = [
+    (r'(?:shu|eish|esh)\s+(?:howa|hiya|ya3ni)?\s*(.+)', 'what_is', 1),
+    (r'(?:keef|kif)\s+(.+)', 'how', 1),
+    (r'(?:lesh|leish)\s+(.+)', 'why', 1),
+    (r'(?:shareh|faser)\s+(.+)', 'explain', 1),
+    (r'(?:e7sb|e7seb)\s+(.+)', 'calculate', 1),
+]
+
+# Japanese patterns (Romaji)
+JAPANESE_PATTERNS = [
+    (r'(.+?)\s+(?:wa|tte)\s+(?:nani|nan)\s*(?:desu ka)?', 'what_is', 1),
+    (r'(.+?)\s+(?:wa|tte)\s+(?:dou|douyatte)', 'how', 1),
+    (r'(?:naze|doushite)\s+(.+)', 'why', 1),
+    (r'(.+?)\s+(?:oshiete|setsumei)', 'explain', 1),
+    (r'(.+?)\s+(?:keisan|keisan shite)', 'calculate', 1),
+]
+
+# Korean patterns (Romanized)
+KOREAN_PATTERNS = [
+    (r'(.+?)\s+(?:mwo|mwoya|mweoya)', 'what_is', 1),
+    (r'(.+?)\s+(?:eottoke)', 'how', 1),
+    (r'(.+?)\s+(?:wae|waeyo)', 'why', 1),
+    (r'(.+?)\s+(?:seolmyeong|allyeojwo)', 'explain', 1),
+    (r'(.+?)\s+(?:gyesan)', 'calculate', 1),
+]
+
+# Russian patterns (Romanized)
+RUSSIAN_PATTERNS = [
+    (r'(?:chto\s+takoe|chto\s+eto)\s+(.+)', 'what_is', 1),
+    (r'(?:kak)\s+(?:rabotaet|delaet)\s+(.+)', 'how', 1),
+    (r'(?:pochemu|zachem)\s+(.+)', 'why', 1),
+    (r'(?:obyasni)\s+(.+)', 'explain', 1),
+    (r'(?:rasschitay|vychisli)\s+(.+)', 'calculate', 1),
+]
+
+# Bengali patterns (Romanized)
+BENGALI_PATTERNS = [
+    (r'(.+?)\s+(?:ki|kire)', 'what_is', 1),
+    (r'(.+?)\s+(?:kivabe|kemon\s+kore)', 'how', 1),
+    (r'(.+?)\s+(?:keno)', 'why', 1),
+    (r'(.+?)\s+(?:bojhao|bolo)', 'explain', 1),
+    (r'(.+?)\s+(?:hisab\s+koro)', 'calculate', 1),
+]
+
+# Kannada patterns (Romanized)
+KANNADA_PATTERNS = [
+    (r'(.+?)\s+(?:enu|yenu)', 'what_is', 1),
+    (r'(.+?)\s+(?:hege)\s*(.*)', 'how', 1),
+    (r'(.+?)\s+(?:yaake)', 'why', 1),
+    (r'(.+?)\s+(?:helu|heli|torisi)', 'explain', 1),
+]
+
+# Malayalam patterns (Romanized)
+MALAYALAM_PATTERNS = [
+    (r'(.+?)\s+(?:enthu|entha)', 'what_is', 1),
+    (r'(.+?)\s+(?:engane)', 'how', 1),
+    (r'(.+?)\s+(?:enthukond)', 'why', 1),
+    (r'(.+?)\s+(?:parayoo|parayuka)', 'explain', 1),
+]
+
+# All language patterns combined for the detector
+ALL_LANGUAGE_PATTERNS = {
+    'te': TELUGU_PATTERNS,
+    'hi': HINDI_PATTERNS,
+    'ta': TAMIL_PATTERNS,
+    'es': SPANISH_PATTERNS,
+    'fr': FRENCH_PATTERNS,
+    'de': GERMAN_PATTERNS,
+    'pt': [],  # Portuguese uses Spanish-like patterns
+    'ar': ARABIC_PATTERNS,
+    'ja': JAPANESE_PATTERNS,
+    'ko': KOREAN_PATTERNS,
+    'ru': RUSSIAN_PATTERNS,
+    'bn': BENGALI_PATTERNS,
+    'kn': KANNADA_PATTERNS,
+    'ml': MALAYALAM_PATTERNS,
+}
+
+ALL_LANGUAGE_MARKERS = {
+    'te': TELUGU_MARKERS,
+    'hi': HINDI_MARKERS,
+    'ta': TAMIL_MARKERS,
+    'es': SPANISH_MARKERS,
+    'fr': FRENCH_MARKERS,
+    'de': GERMAN_MARKERS,
+    'pt': PORTUGUESE_MARKERS,
+    'ar': ARABIC_MARKERS,
+    'ja': JAPANESE_MARKERS,
+    'ko': KOREAN_MARKERS,
+    'ru': RUSSIAN_MARKERS,
+    'bn': BENGALI_MARKERS,
+    'kn': KANNADA_MARKERS,
+    'ml': MALAYALAM_MARKERS,
+}
 # Handle spelling variations in Romanized text
 # ═══════════════════════════════════════════════════════════════
 
@@ -342,28 +591,17 @@ class MultilingualEngine:
             if lang:
                 fuzzy_lang_votes[lang] += 1
 
-        # Count exact function word hits per language
-        te_score = sum(1 for w in words if w in TELUGU_MARKERS)
-        hi_score = sum(1 for w in words if w in HINDI_MARKERS)
-        ta_score = sum(1 for w in words if w in TAMIL_MARKERS)
-
-        # Add fuzzy votes
-        te_score += fuzzy_lang_votes['te']
-        hi_score += fuzzy_lang_votes['hi']
-        ta_score += fuzzy_lang_votes['ta']
-
-        # COSMIC: Also match against normalized text
+        # Count exact function word hits — ALL 14 LANGUAGES
         norm_words = normalized.split()
-        te_score += sum(1 for w in norm_words if w in TELUGU_MARKERS)
-        hi_score += sum(1 for w in norm_words if w in HINDI_MARKERS)
-        ta_score += sum(1 for w in norm_words if w in TAMIL_MARKERS)
-
-        # Try patterns in order of score
-        candidates = [
-            ('te', te_score, TELUGU_PATTERNS),
-            ('hi', hi_score, HINDI_PATTERNS),
-            ('ta', ta_score, TAMIL_PATTERNS),
-        ]
+        candidates = []
+        for lang_code, markers in ALL_LANGUAGE_MARKERS.items():
+            score = sum(1 for w in words if w in markers)
+            score += sum(1 for w in norm_words if w in markers)
+            if lang_code in fuzzy_lang_votes:
+                score += fuzzy_lang_votes[lang_code]
+            if score > 0:
+                patterns = ALL_LANGUAGE_PATTERNS.get(lang_code, [])
+                candidates.append((lang_code, score, patterns))
         candidates.sort(key=lambda x: -x[1])
 
         for lang, score, patterns in candidates:
@@ -420,14 +658,14 @@ class MultilingualEngine:
 
     def _clean_topic(self, topic: str, lang: str) -> str:
         """Remove function words from topic, keep content words."""
-        markers = TELUGU_MARKERS if lang == 'te' else HINDI_MARKERS if lang == 'hi' else TAMIL_MARKERS
+        markers = ALL_LANGUAGE_MARKERS.get(lang, set())
         words = topic.split()
         clean = [w for w in words if w.lower() not in markers]
         return ' '.join(clean).strip()
 
     def _extract_topic_by_removal(self, text: str, lang: str) -> str:
         """Extract topic by removing known function words."""
-        markers = TELUGU_MARKERS if lang == 'te' else HINDI_MARKERS if lang == 'hi' else TAMIL_MARKERS
+        markers = ALL_LANGUAGE_MARKERS.get(lang, set())
         words = text.split()
         content = [w for w in words if w.lower() not in markers]
         return ' '.join(content).strip()
