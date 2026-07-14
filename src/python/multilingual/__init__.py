@@ -44,6 +44,7 @@ TELUGU_PATTERNS = [
     (r'(.+?)\s+(?:ela|yela)\s+(?:work|panichestundi|chestundi)', 'how', 1),
     # Why: "X enduku/endhuku" → why X
     (r'(.+?)\s+(?:enduku|endhuku|enku)\s*(.*)', 'why', 1),
+    (r'(?:enduku|endhuku|enku)\s+(.+)', 'why', 1),
     # Tell/Explain: "X cheppu/cheppandi/gurinchi"
     (r'(.+?)\s+(?:gurinchi|gurinchi)\s+(?:cheppu|cheppandi|chepu)', 'explain', 1),
     (r'(.+?)\s+(?:cheppu|cheppandi|chepu|cheppava)', 'tell', 1),
@@ -65,6 +66,7 @@ HINDI_PATTERNS = [
     (r'(.+?)\s+(?:kya|ky)\s*\??', 'what_is', 1),
     # "X kaise [verb]" → how
     (r'(.+?)\s+(?:kaise|kese|kaise)\s+(.+)', 'how', 1),
+    (r'(?:kaise|kese)\s+(.+)', 'how', 1),
     # "X kyun/kyu" → why
     (r'(.+?)\s+(?:kyun|kyu|kyun|kyon)\s*(.*)', 'why', 1),
     # "X bata/batao/samjhao"
@@ -86,6 +88,7 @@ TAMIL_PATTERNS = [
     (r'(.+?)\s+(?:enna|yenna|ennanu|ennada)', 'what_is', 1),
     # "X eppadi [verb]" → how
     (r'(.+?)\s+(?:eppadi|yeppadi|epdi)\s*(.*)', 'how', 1),
+    (r'(?:eppadi|yeppadi|epdi)\s+(.+)', 'how', 1),
     # "X en/yean" → why
     (r'(.+?)\s+(?:en|yean|yen)\s*(.*)', 'why', 1),
     # "X sollu/sollungo"
@@ -119,11 +122,13 @@ HINDI_MARKERS = {
 
 # Tamil function words
 TAMIL_MARKERS = {
-    'enna', 'eppadi', 'en', 'yean', 'sollu', 'sollungo', 'pathi',
+    'enna', 'eppadi', 'yeppadi', 'epdi', 'en', 'yean', 'yen',
+    'sollu', 'sollungo', 'pathi', 'patri',
     'la', 'le', 'ku', 'oda', 'um', 'aana', 'aanaa', 'athanaal',
-    'inga', 'anga', 'ippo', 'appo', 'enna', 'yaar', 'enga',
+    'inga', 'anga', 'ippo', 'appo', 'yaar', 'enga',
     'pannu', 'pannungo', 'irukku', 'illa', 'aama', 'illai',
-    'naan', 'nee', 'avan', 'aval', 'anga', 'inge',
+    'naan', 'nee', 'avan', 'aval', 'ange', 'inge',
+    'agum', 'aagum', 'theriyum', 'paru', 'parunga', 'vaanga', 'ponga',
 }
 
 
