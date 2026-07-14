@@ -1,64 +1,127 @@
-# AXIMA MULTILINGUAL — Cosmic Level Plan
+# AXIMA MULTILINGUAL — Cosmic Level Plan (v2 UPGRADED)
 
-## The Approach: Hybrid Translation Layer
+## Weak Points in v1 Plan (FIXED)
 
-### One Sentence
-"Detect language → translate to English → process → translate back. Extract what we need from models, keep nothing we don't."
+```
+PROBLEM 1: "Extract vocabulary from Argos" — Argos word tables are contextless.
+  A word-pair table gives "cat=పిల్లి" but doesn't know WHEN to use which meaning.
+  "bank" = నది ఒడ్డు (river bank) OR బ్యాంకు (money bank)?
+  FIX: Extract with CONTEXT TAGS. Each word pair gets a domain label.
+
+PROBLEM 2: SOV→SVO reordering is too simplistic.
+  Telugu: "నేను బడికి వెళ్తాను" = "I school-to go" → "I go to school"
+  But complex sentences have nested clauses, relative clauses, etc.
+  FIX: Use DEPENDENCY STRUCTURE, not just word order swap.
+
+PROBLEM 3: Agglutinative languages (Telugu/Tamil) glue suffixes onto words.
+  "పుస్తకాలలో" = పుస్తకం (book) + ల (plural) + లో (inside) = "in the books"
+  A word-pair table won't find "పుస్తకాలలో" because it's not a single word.
+  FIX: Add MORPHOLOGICAL DECOMPOSITION layer — split suffixes before lookup.
+
+PROBLEM 4: Brain search with translated chunks loses nuance.
+  Telugu medical term translated to English might lose the specific meaning.
+  FIX: DUAL INDEXING — index BOTH original language AND English.
+  Search in BOTH, merge results, rank by combined score.
+
+PROBLEM 5: Formulas have LANGUAGE in them too.
+  "వేగం = దూరం / సమయం" (velocity = distance / time)
+  User might write formula with Telugu variable names.
+  FIX: Variable name translation layer for formulas.
+
+PROBLEM 6: No handling of CODE-SWITCHING.
+  Real users mix languages: "gravity అంటే ఏమిటి?" (English word in Telugu sentence)
+  FIX: Per-token language detection, not per-sentence.
+```
 
 ---
 
-## Architecture
+## Architecture (UPGRADED)
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                    AXIMA LANGUAGE LAYER                           │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                   │
-│  USER INPUT (any language)                                        │
-│       ↓                                                           │
-│  ┌─── LANGUAGE DETECTOR ────────────────────────────────────┐    │
-│  │  • Script detection (Telugu=తెలుగు, Hindi=हिंदी, Tamil=தமிழ்)│    │
-│  │  • No model needed — just Unicode range check             │    │
-│  │  • Returns: language code (te/hi/ta/en/es/fr/ar/etc)     │    │
-│  └───────────────────────────────────────────────────────────┘    │
-│       ↓                                                           │
-│  ┌─── TRANSLATOR (input → English) ─────────────────────────┐    │
-│  │                                                           │    │
-│  │  LAYER 1: EXACT TERM DICTIONARY (rule-based, 0 deps)     │    │
-│  │    • Math terms: "సమీకరణం" → "equation"                    │    │
-│  │    • Physics terms: "గురుత్వాకర్షణ" → "gravity"              │    │
-│  │    • Common verbs: "లెక్కించు" → "calculate"                 │    │
-│  │    • Numbers: Same in all languages (1,2,3...)            │    │
-│  │    • Size: ~500 terms per language (~5KB per language)     │    │
-│  │                                                           │    │
-│  │  LAYER 2: GRAMMAR TRANSFORMER (rule-based)                │    │
-│  │    • Telugu/Hindi/Tamil are SOV (Subject-Object-Verb)     │    │
-│  │    • English is SVO (Subject-Verb-Object)                 │    │
-│  │    • Rule: detect SOV pattern → reorder to SVO            │    │
-│  │    • Handle postpositions → prepositions                  │    │
-│  │                                                           │    │
-│  │  LAYER 3: EXTRACTED TRANSLATION GENES (from Argos model)  │    │
-│  │    • Extract the VOCABULARY MAPPING (word→word table)      │    │
-│  │    • Extract PHRASE TEMPLATES (common sentence patterns)   │    │
-│  │    • Don't keep the neural model — just the lookup tables │    │
-│  │    • Size: ~2-5MB per language (vs 50MB full model)        │    │
-│  │                                                           │    │
-│  └───────────────────────────────────────────────────────────┘    │
-│       ↓                                                           │
-│  ┌─── AXIMA CORE (all English) ──────────────────────────────┐    │
-│  │    Math → Physics → ACES → BRAIN → Voice                  │    │
-│  └───────────────────────────────────────────────────────────┘    │
-│       ↓                                                           │
-│  ┌─── TRANSLATOR (English → user language) ──────────────────┐    │
-│  │    Same 3 layers in reverse:                               │    │
-│  │    • Exact terms: "equation" → "సమీకరణం"                    │    │
-│  │    • Grammar: SVO → SOV reorder                           │    │
-│  │    • Phrase templates for natural output                   │    │
-│  └───────────────────────────────────────────────────────────┘    │
-│       ↓                                                           │
-│  OUTPUT (in user's language)                                      │
-│                                                                   │
-└─────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────┐
+│                 AXIMA LANGUAGE LAYER (UPGRADED)                       │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│  USER INPUT (any language, possibly mixed)                            │
+│       ↓                                                               │
+│  ┌─── TOKEN-LEVEL LANGUAGE DETECTOR ─────────────────────────────┐   │
+│  │  • Per-CHARACTER script detection (not per-sentence)           │   │
+│  │  • Handles code-switching: "gravity అంటే ఏమిటి?"              │   │
+│  │  • Tags each token: [gravity:EN] [అంటే:TE] [ఏమిటి:TE]        │   │
+│  │  • Returns: dominant language + per-token tags                 │   │
+│  │  • Zero deps — pure Unicode range check                       │   │
+│  └────────────────────────────────────────────────────────────────┘   │
+│       ↓                                                               │
+│  ┌─── MORPHOLOGICAL DECOMPOSER ──────────────────────────────────┐   │
+│  │  • Splits agglutinated words into root + suffixes              │   │
+│  │  • "పుస్తకాలలో" → ["పుస్తకం", "+plural", "+locative"]           │   │
+│  │  • "படிக்கிறேன்" → ["படி", "+present", "+1st person"]           │   │
+│  │  • Rule-based suffix stripping (not ML)                        │   │
+│  │  • ~100 suffix rules per language (~2KB each)                  │   │
+│  └────────────────────────────────────────────────────────────────┘   │
+│       ↓                                                               │
+│  ┌─── HYBRID TRANSLATOR (Input → English) ───────────────────────┐   │
+│  │                                                                 │   │
+│  │  LAYER 1: EXACT DOMAIN DICTIONARY (highest priority)            │   │
+│  │    • Math: 500 terms with DOMAIN TAGS                          │   │
+│  │    • Physics: 500 terms with domain tags                       │   │
+│  │    • Biology/Chemistry/CS: 300 terms each                      │   │
+│  │    • Common words: 2000 most frequent                          │   │
+│  │    • Each entry: {word, english, domain, pos, example}         │   │
+│  │                                                                 │   │
+│  │  LAYER 2: MORPHEME-AWARE LOOKUP                                │   │
+│  │    • After decomposition: look up ROOT word                    │   │
+│  │    • Re-attach English equivalents of suffixes                 │   │
+│  │    • "books" = lookup("పుస్తకం") + apply("+plural")             │   │
+│  │                                                                 │   │
+│  │  LAYER 3: DEPENDENCY-BASED REORDERING                          │   │
+│  │    • NOT just SOV→SVO swap                                     │   │
+│  │    • Parse: Subject / Object / Verb / Modifier / Postposition  │   │
+│  │    • Reorder based on ROLE, not position                       │   │
+│  │    • Handle: relative clauses, nested structures               │   │
+│  │    • Rule-based dependency parser (~200 rules per language)    │   │
+│  │                                                                 │   │
+│  │  LAYER 4: CONTEXT-AWARE DISAMBIGUATION                         │   │
+│  │    • "bank" → if domain=physics → "ఒడ్డు" (river bank)          │   │
+│  │    •        → if domain=finance → "బ్యాంకు" (money bank)        │   │
+│  │    • Uses: RouterDecision.domain from ACES shield              │   │
+│  │    • Falls back to most common meaning if no domain detected   │   │
+│  │                                                                 │   │
+│  │  LAYER 5: EXTRACTED N-GRAM PATTERNS (from Argos, one-time)     │   │
+│  │    • Common 2-3 word phrases with translations                 │   │
+│  │    • Handles idioms and fixed expressions                      │   │
+│  │    • ~10,000 n-gram pairs per language (~500KB)                │   │
+│  │                                                                 │   │
+│  │  LAYER 6: SUBWORD FALLBACK (for unknown words)                 │   │
+│  │    • Transliteration: unknown Telugu → phonetic English        │   │
+│  │    • "రామ్" → "Ram" (proper noun, just transliterate)          │   │
+│  │    • Uses character mapping tables                             │   │
+│  │                                                                 │   │
+│  └────────────────────────────────────────────────────────────────┘   │
+│       ↓                                                               │
+│  ┌─── FORMULA TRANSLATOR ────────────────────────────────────────┐   │
+│  │  • Detects formulas in any language                            │   │
+│  │  • "వేగం = దూరం / సమయం" → "velocity = distance / time"         │   │
+│  │  • Translates variable NAMES, keeps operators/numbers          │   │
+│  │  • Bidirectional: en↔te, en↔hi, en↔ta                        │   │
+│  └────────────────────────────────────────────────────────────────┘   │
+│       ↓                                                               │
+│  ┌─── AXIMA CORE (English internal) ────────────────────────────┐    │
+│  │    Math → Physics → ACES → BRAIN → Voice                      │    │
+│  └────────────────────────────────────────────────────────────────┘   │
+│       ↓                                                               │
+│  ┌─── OUTPUT TRANSLATOR (English → User Language) ───────────────┐   │
+│  │    Same layers in reverse + NATURAL LANGUAGE POLISHER:          │   │
+│  │    • Reorder SVO → SOV                                         │   │
+│  │    • Re-attach suffixes (agglutination)                        │   │
+│  │    • Apply honorifics/formality level                          │   │
+│  │    • Preserve formulas in original + translated form           │   │
+│  │    • Output: natural-sounding target language                  │   │
+│  └────────────────────────────────────────────────────────────────┘   │
+│       ↓                                                               │
+│  OUTPUT (user's language, natural, with formulas preserved)           │
+│                                                                       │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -90,66 +153,84 @@ TOTAL FOR 5 LANGUAGES (te/hi/ta/es/fr): ~12-15MB
 
 ---
 
-## BRAIN Module — Multilingual Plan
+## BRAIN Module — Multilingual Plan (UPGRADED)
 
 ### Problem
 If user uploads a Telugu textbook, searching in English won't find anything.
+v1 plan said "translate chunks to English for indexing" — but this LOSES nuance.
 
-### Solution
+### Solution: DUAL-INDEX ARCHITECTURE
 
 ```
-BRAIN MULTILINGUAL STRATEGY:
+INGESTION (upgraded):
+  1. User uploads document in ANY language
+  2. DETECT language per paragraph (could be mixed!)
+  3. MORPHOLOGICAL DECOMPOSITION of each chunk
+     → Extract root words for indexing
+  4. Store THREE versions per chunk:
+     a) ORIGINAL text (for display)
+     b) ROOT WORDS in original language (for same-language search)
+     c) TRANSLATED ROOT WORDS in English (for cross-language search)
+  5. Index ALL THREE in BM25
 
-  INGESTION:
-    1. User uploads document in ANY language
-    2. DETECT language of document
-    3. Store ORIGINAL text chunks (for display)
-    4. ALSO translate chunks to English (for indexing/search)
-    5. Store both: original + English version per chunk
+SEARCH (upgraded):
+  1. User asks question in Telugu
+  2. Decompose + extract roots from query
+  3. Search SIMULTANEOUSLY:
+     a) Telugu root index (exact language match — highest relevance)
+     b) English index (cross-language — catches translated content)
+  4. MERGE results by score (Telugu match scores 1.5x boost)
+  5. Return ORIGINAL language chunks
+  6. If explanation needed → pass through ACES → translate output
 
-  SEARCH:
-    1. User asks question in Telugu
-    2. Translate question to English
-    3. Search the English index (BM25 works on English)
-    4. Get matching chunks
-    5. Return the ORIGINAL language chunks (not the English translations)
+QUIZ GENERATION (upgraded):
+  1. Generate quiz from meaning graph (ACES v2)
+  2. Questions generated in English internally
+  3. Translate questions to user's language
+  4. But KEEP technical terms in both languages:
+     "గురుత్వాకర్షణ (Gravity) అంటే ఏమిటి?"
+     Shows both so student learns the English term too
 
-  QUIZ/FLASHCARD:
-    1. Generate quiz from English version of chunks
-    2. Translate questions + answers to user's language
-    3. Present in user's language
+FORMULA HANDLING:
+  • Formulas stored as SYMBOLIC: F=m*a
+  • Variable descriptions stored per language:
+    {F: {en: "Force", te: "బలం"}, m: {en: "mass", te: "ద్రవ్యరాశి"}}
+  • Computation always on symbolic form
+  • Display in user's preferred language
 
-  FORMULA COMPUTATION:
-    • Formulas are UNIVERSAL (F=ma works in any language)
-    • Just translate the variable descriptions
-    • "ద్రవ్యరాశి" → mass, "త్వరణం" → acceleration
+STUDY TRACKER:
+  • Tracks concepts in CANONICAL (English) form internally
+  • Displays progress in user's language
+  • "You're weak on గురుత్వాకర్షణ (gravity) — review suggested"
 
-  CROSS-BRAIN:
-    • Cross-subject connections work on English index
-    • Results displayed in user's language
+CROSS-BRAIN CONNECTIONS:
+  • Find connections between docs in DIFFERENT languages!
+  • Telugu physics textbook ↔ English chemistry textbook
+  • Connected by shared concepts in English index
+  • "ఈ Telugu physics concept relates to this English chemistry concept"
+```
 
-ARCHITECTURE:
-  ┌─────────────────────────────────────────────┐
-  │ Document (Telugu)                              │
-  │    ↓                                          │
-  │ Chunk in Telugu → store as original            │
-  │    ↓                                          │
-  │ Translate chunk → English → store as index     │
-  │    ↓                                          │
-  │ Index the English version (BM25)               │
-  └─────────────────────────────────────────────┘
+### Architecture Diagram
 
-  ┌─────────────────────────────────────────────┐
-  │ User asks (Telugu)                             │
-  │    ↓                                          │
-  │ Translate question → English                   │
-  │    ↓                                          │
-  │ Search English index                           │
-  │    ↓                                          │
-  │ Get matching chunks                            │
-  │    ↓                                          │
-  │ Return ORIGINAL Telugu chunks to user           │
-  └─────────────────────────────────────────────┘
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    BRAIN MULTILINGUAL                          │
+├─────────────────────────────────────────────────────────────┤
+│                                                               │
+│  INDEX LAYER (per chunk):                                     │
+│  ┌─────────┐ ┌──────────────┐ ┌──────────────────┐          │
+│  │ ORIGINAL │ │ NATIVE ROOTS │ │ ENGLISH ROOTS    │          │
+│  │ (display)│ │ (same-lang)  │ │ (cross-lang)     │          │
+│  └─────────┘ └──────────────┘ └──────────────────┘          │
+│       ↑              ↑                  ↑                     │
+│       │              │                  │                     │
+│  ┌────┴──────────────┴──────────────────┴───────────┐        │
+│  │         UNIFIED SEARCH (merge + rank)             │        │
+│  └───────────────────────────────────────────────────┘        │
+│       ↑                                                       │
+│  User query (any language) → decompose → search both indexes │
+│                                                               │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -235,84 +316,186 @@ SCRIPTS = {
 
 ---
 
-## Build Phases
+## Build Phases (UPGRADED — 12 phases)
 
-### Phase 1: Language Detector (Zero deps, instant)
-- Unicode range detection
-- Fallback: character frequency analysis
-- Returns ISO language code
+### Phase 1: Token-Level Language Detector
+- Per-character Unicode script detection
+- Handle mixed-language input (code-switching)
+- Return: dominant language + per-token language tags
+- Size: 0 KB (pure code, no data)
 
-### Phase 2: Domain Term Dictionaries
-- Build 500-term dictionaries for Telugu, Hindi, Tamil
-- Math terms + Physics terms + Common verbs + Question words
-- Pure JSON files, ~5KB each
+### Phase 2: Morphological Decomposer
+- Suffix stripping rules for Telugu, Hindi, Tamil
+- Handles: plurals, case markers, tense markers, honorifics
+- ~100 rules per language
+- Output: root word + suffix list
+- Size: ~2KB per language
 
-### Phase 3: Grammar Transformer
-- SOV → SVO reordering rules
-- Postposition → preposition mapping
-- Suffix/prefix handling (agglutinative languages)
+### Phase 3: Domain Term Dictionaries (with context tags)
+- 500+ terms per language per domain (math/physics/bio/chem/cs)
+- Each entry: {native, english, domain, part_of_speech, example_sentence}
+- Handles ambiguity: same word, different meaning per domain
+- Size: ~30KB per language
 
-### Phase 4: Extract Vocabulary from Argos
+### Phase 4: Dependency-Based Reordering
+- NOT simple SOV→SVO swap
+- Parse sentence into: Subject / Object / Verb / Modifier / Clause
+- Reorder based on grammatical ROLE
+- Handle: relative clauses ("which", "that"), nested structures
+- ~200 grammar rules per language
+- Size: ~10KB per language
+
+### Phase 5: N-gram Pattern Extraction (from Argos)
 - Install Argos temporarily
-- Dump word-pair tables for te↔en, hi↔en, ta↔en
-- Save as compressed lookup files (~2MB each)
+- Extract: phrase pairs, idiom translations, fixed expressions
+- Extract: subword tokenizer vocabulary (for unknown words)
+- Save as compressed lookup tables
 - Uninstall Argos
+- Size: ~2MB per language
 
-### Phase 5: Translation Engine
-- Layer 1: Exact dictionary lookup
-- Layer 2: Grammar reorder
-- Layer 3: Vocabulary table fallback
-- Bidirectional: input→English AND English→output
+### Phase 6: Transliteration Engine
+- For proper nouns and unknown words
+- Telugu→Latin: "రామ్" → "Ram"
+- Latin→Telugu: "Newton" → "న్యూటన్"
+- Character-by-character mapping tables
+- Size: ~5KB per language
 
-### Phase 6: Wire into AXIMA
-- Wrap ALL existing modules with language layer
-- Math/Physics/ACES/Brain all get multilingual input/output
-- Single entry point: `axima.process(text)` auto-detects language
+### Phase 7: Formula Translator
+- Detect formulas in any language
+- Translate variable NAMES, keep operators/numbers
+- "వేగం = దూరం / సమయం" → "velocity = distance / time"
+- Bidirectional (for output too)
+- Preserve original + translated in output
 
-### Phase 7: BRAIN Multilingual
-- Dual-store: original + English translation per chunk
-- Search on English index, return originals
-- Quiz/flashcard generation in user's language
+### Phase 8: Output Language Polisher
+- SVO → SOV reordering for output
+- Re-agglutinate suffixes
+- Apply honorifics (formal/informal based on context)
+- Ensure grammatical correctness in target language
+- Show bilingual terms: "గురుత్వాకర్షణ (Gravity)"
 
-### Phase 8: Test Suite
-- Test with real Telugu/Hindi/Tamil math questions
-- Verify: "2 + 3 ఎంత?" → processes correctly → returns "5" in Telugu
-- Verify: BRAIN search works across languages
+### Phase 9: BRAIN Multilingual Wiring
+- Triple-index per chunk (original + native roots + English roots)
+- Unified search across all indexes
+- Cross-language document connections
+- Quiz generation in user's language with bilingual terms
+
+### Phase 10: Voice Multilingual
+- Telugu/Hindi/Tamil G2P rules (phoneme sets)
+- Map to area functions in the tube model
+- Same physics engine, different phoneme→area mappings
+- Emotional prosody rules per language (intonation patterns differ)
+
+### Phase 11: Integration + Single Entry Point
+- `axima.process(text)` auto-detects language, routes everything
+- Works transparently — user never thinks about language
+- Math in Telugu → answer in Telugu
+- ACES explanation in Hindi → formatted in Hindi
+
+### Phase 12: Test Suite (Multilingual Benchmark)
+- 50 test questions per language (te/hi/ta)
+- Mix of: math, physics, general knowledge, brain search
+- Verify: correct translation + correct answer + natural output
+- Score: translation accuracy + answer accuracy + naturalness
 
 ---
 
-## Size Budget
+## NEW: Smart Features (Cosmic Level)
 
-| Component | Size |
-|-----------|------|
-| Language detector | 0 KB (built into code) |
-| Term dictionaries (3 languages) | 15 KB |
-| Grammar rules (3 languages) | 15 KB |
-| Extracted vocabulary (3 languages) | 6-9 MB |
-| **TOTAL** | **~10 MB for 3 languages** |
+### Bilingual Learning Mode
+```
+When user is LEARNING English through their native language:
+  • Show answer in BOTH languages side by side
+  • Technical terms always shown as: "నేటివ్ (English)"
+  • Build vocabulary: track which English terms user has learned
+  • Gradually increase English content as user improves
+```
 
-Compare: Google Translate app = 50MB per language. Ours = 3MB per language.
+### Context Memory Across Languages
+```
+If user asked about "gravity" in English yesterday,
+and asks about "గురుత్వాకర్షణ" in Telugu today,
+the system KNOWS it's the same topic and says:
+"You asked about this before. Here's what's new..."
+```
+
+### Script Auto-Complete
+```
+If user types "grav" in Telugu input mode:
+  → Suggest: "gravity" (EN) or "గురుత్వాకర్షణ" (TE)
+User can type in ANY script and get suggestions in their preferred one.
+```
+
+### Language Confidence Score
+```
+Each translation gets a confidence:
+  • Dictionary exact match: 0.95
+  • N-gram pattern match: 0.80
+  • Morpheme-based construction: 0.70
+  • Transliteration fallback: 0.50
+
+If confidence < 0.6:
+  Show user: "I translated this as X — is that correct?"
+  User corrects → system LEARNS (adds to dictionary)
+```
 
 ---
 
-## What Makes This Cosmic
+## Size Budget (UPGRADED)
 
-1. **Truly offline** — No internet for any language
-2. **Extract & delete** — Take what we need from models, keep nothing heavy
-3. **Universal** — Same approach for ANY new language (just add dictionary + vocabulary)
-4. **Brain-aware** — Documents in any language searchable from any language
-5. **Formula-universal** — Math works identically regardless of language
-6. **Growable** — Community can add new language files (just JSON)
-7. **Tiny** — 3MB per language vs 50MB+ for traditional approaches
+| Component | Per Language | 3 Languages |
+|-----------|-------------|-------------|
+| Language detector | 0 KB | 0 KB |
+| Morphological rules | 2 KB | 6 KB |
+| Domain term dictionaries | 30 KB | 90 KB |
+| Grammar/reorder rules | 10 KB | 30 KB |
+| N-gram patterns (from Argos) | 2 MB | 6 MB |
+| Transliteration tables | 5 KB | 15 KB |
+| Formula term mappings | 10 KB | 30 KB |
+| **TOTAL** | **~2.1 MB** | **~6.2 MB** |
+
+Compare:
+- Google Translate offline: 50MB per language
+- AXIMA: 2.1MB per language (24x smaller)
 
 ---
 
-## Success Criteria
+## Success Criteria (UPGRADED)
 
-- [ ] "2 + 3 ఎంత?" → "5" (Telugu math)
-- [ ] "గురుత్వాకర్షణ అంటే ఏమిటి?" → Gravity explanation in Telugu
-- [ ] "F=ma ను వివరించు" → Step-by-step in Telugu
-- [ ] Brain: Upload Telugu textbook → search in Telugu → get Telugu results
-- [ ] Quiz: Generate flashcards in Telugu from Telugu source
-- [ ] Works with ZERO internet, ZERO cloud
-- [ ] Under 10MB total for 3 languages
+### Must Pass (Core)
+- [ ] "2 + 3 ఎంత?" → "5"
+- [ ] "గురుత్వాకర్షణ అంటే ఏమిటి?" → Correct explanation in Telugu
+- [ ] "F=ma ను వివరించు" → Step-by-step in Telugu with formula
+- [ ] Mixed: "gravity force ఎంత if mass=10?" → Handles code-switching
+- [ ] Brain: Telugu textbook → search in Telugu → Telugu results
+- [ ] Quiz: Telugu flashcards from Telugu source material
+
+### Must Pass (Quality)
+- [ ] Morphology: "పుస్తకాలలో" correctly decomposed and translated
+- [ ] Ambiguity: "bank" resolves correctly per domain context
+- [ ] Formulas: "వేగం = దూరం/సమయం" → correct symbolic computation
+- [ ] Output: Natural Telugu (not word-by-word translation garbage)
+- [ ] Bilingual: Technical terms shown in both languages
+
+### Must Pass (System)
+- [ ] ZERO internet required
+- [ ] Under 2.5MB per language
+- [ ] Translation < 50ms per sentence
+- [ ] Works on phone CPU
+- [ ] New language addable by community (just JSON files)
+
+---
+
+## The Philosophy
+
+```
+"Every other system translates the WORDS.
+AXIMA translates the MEANING.
+
+We decompose → understand structure → translate structure → reconstruct.
+This is why our 2MB beats their 50MB.
+They memorize phrases. We understand grammar.
+
+Same philosophy as everything in AXIMA:
+  DERIVE from principles. Never memorize."
+```
