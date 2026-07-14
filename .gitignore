@@ -17,3 +17,13 @@ src/data/knowledge.dat
 # OS
 .DS_Store
 *.swp
+
+# Piper models (too large for git, download separately)
+models/piper/*.onnx
+models/piper/*.onnx.json
+
+# Generated WAV files
+src/python/voice/genes/wavs/
+src/python/voice/genes/calibration/
+/tmp/*.wav
+*.wav
