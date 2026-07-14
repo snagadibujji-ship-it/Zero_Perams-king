@@ -533,6 +533,39 @@ class Axima:
                 pass
 
         # 1.6 Agent system for complex tasks (math, compare, run commands)
+        # 1.56 PROMETHEUS PHYSICS ENGINE — Solve physics problems numerically
+        _is_physics = False
+        _physics_triggers = ['force', 'velocity', 'acceleration', 'momentum', 'energy',
+                            'projectile', 'orbit', 'pendulum', 'spring', 'collision',
+                            'electric field', 'magnetic field', 'voltage', 'resistance',
+                            'capacitor', 'circuit', 'wavelength', 'frequency', 'diffraction',
+                            'interference', 'doppler', 'refraction', 'lens', 'mirror',
+                            'quantum', 'hydrogen atom', 'tunneling', 'spin',
+                            'temperature', 'pressure', 'entropy', 'partition function',
+                            'black hole', 'redshift', 'time dilation', 'relativity',
+                            'binding energy', 'decay', 'half-life', 'fusion',
+                            'luminosity', 'escape velocity', 'schwarzschild',
+                            'calculate the', 'find the', 'what is the period',
+                            'what is the speed', 'what is the force']
+        if any(t in lower for t in _physics_triggers):
+            # Check with PhysicsIdentifier for confidence
+            try:
+                from prometheus_physics import PhysicsIdentifier
+                _pi = PhysicsIdentifier()
+                _domains = _pi.identify(user_input)
+                if _domains[0][0] != "unknown" and _domains[0][1] > 0.5:
+                    _is_physics = True
+            except Exception:
+                pass
+
+        if _is_physics:
+            try:
+                _phys_result = self._solve_physics(user_input, lower)
+                if _phys_result:
+                    return {"response": _phys_result, "gap": False}
+            except Exception:
+                pass
+
         agent_triggers = ['calculate', 'compute', 'run command', 'list files', 'analyze']
         if any(t in lower for t in agent_triggers):
             try:
@@ -1171,6 +1204,193 @@ class Axima:
         })
         self._save_session()
         return f"✅ Workflow '{name}' created! Triggers on: {trigger_type}='{trigger_value}'"
+
+    def _solve_physics(self, question: str, lower: str) -> Optional[str]:
+        """Route physics question to appropriate solver and return answer."""
+        import re
+        from prometheus_physics import PhysicsIdentifier, PhysicsLawDB, PhysicsConstants
+        from prometheus_physics_solve import (NewtonianSolver, EMSolver, WaveSolver,
+            QuantumSolver, StatMechSolver, RelativitySolver, NuclearSolver, AstroSolver,
+            DerivationEngine, FermiEstimator, LagrangianSolver)
+
+        pi = PhysicsIdentifier()
+        domains = pi.identify(question)
+        top_domain = domains[0][0]
+
+        # Extract numbers from question
+        numbers = [float(x) for x in re.findall(r'[-+]?\d*\.?\d+(?:[eE][-+]?\d+)?', question)]
+
+        # Try derivation engine first (for "derive", "show", "prove" questions)
+        if any(w in lower for w in ['derive', 'show that', 'prove', 'derivation']):
+            DE = DerivationEngine()
+            for target in DE.available_derivations():
+                # Match by: full name in question, or any word >3 chars
+                target_lower = target.lower().replace('_', ' ')
+                if (target_lower in lower or target.lower() in lower or
+                    any(w in lower for w in target_lower.split() if len(w) > 3)):
+                    d = DE.derive(target)
+                    if d:
+                        steps = '\n'.join(d['steps'])
+                        return f"📐 {d['result']}\n\nFrom: {d['from']}\n\n{steps}"
+
+        # Try Fermi estimator (for "how many", "estimate", "order of magnitude")
+        if any(w in lower for w in ['how many', 'estimate', 'order of magnitude', 'roughly']):
+            FE = FermiEstimator()
+            est = FE.estimate(question)
+            if est:
+                reasoning = '\n'.join(f'  • {r}' for r in est['reasoning'])
+                return f"🔬 Fermi Estimate: {est['answer']}\n\nReasoning:\n{reasoning}"
+
+        # Route to domain-specific solver
+        try:
+            if top_domain == "classical_mechanics":
+                NS = NewtonianSolver()
+                if 'projectile' in lower or ('angle' in lower and ('range' in lower or 'height' in lower)):
+                    v0 = numbers[0] if numbers else 20
+                    angle = numbers[1] if len(numbers) > 1 else 45
+                    r = NS.projectile(v0, angle)
+                    return f"⚙️ Projectile Motion (v₀={v0} m/s, θ={angle}°):\n  Range: {r['range']:.2f} m\n  Max height: {r['max_height']:.2f} m\n  Time of flight: {r['time_of_flight']:.2f} s\n  {r['formula']}"
+                elif 'pendulum' in lower or 'period' in lower:
+                    L = numbers[0] if numbers else 1.0
+                    r = NS.shm(L=L)
+                    return f"⚙️ Pendulum (L={L} m):\n  Period: {r['period']:.4f} s\n  Frequency: {r['frequency']:.4f} Hz\n  ω = {r['omega']:.4f} rad/s\n  {r['formula']}"
+                elif 'orbit' in lower or 'escape' in lower:
+                    if 'escape' in lower and numbers:
+                        M = numbers[0] if numbers[0] > 1e10 else 5.972e24
+                        R = numbers[1] if len(numbers) > 1 else 6.371e6
+                        v = NS.escape_velocity(M, R)
+                        return f"⚙️ Escape velocity: {v:.0f} m/s = {v/1000:.1f} km/s"
+                elif 'collision' in lower:
+                    if len(numbers) >= 4:
+                        v1f, v2f = NS.elastic_collision_1d(numbers[0], numbers[1], numbers[2], numbers[3])
+                        return f"⚙️ Elastic Collision:\n  v₁' = {v1f:.2f} m/s\n  v₂' = {v2f:.2f} m/s"
+                elif 'moment of inertia' in lower:
+                    shape = 'solid_sphere'
+                    if 'sphere' in lower: shape = 'solid_sphere'
+                    elif 'cylinder' in lower or 'disk' in lower: shape = 'solid_cylinder'
+                    elif 'rod' in lower: shape = 'thin_rod_center'
+                    M = numbers[0] if numbers else 1
+                    R = numbers[1] if len(numbers) > 1 else 1
+                    I = NS.moment_of_inertia(shape, M, R=R)
+                    return f"⚙️ Moment of Inertia ({shape}, M={M}, R={R}):\n  I = {I:.6f} kg·m²"
+
+            elif top_domain == "electromagnetism":
+                EM = EMSolver()
+                if 'ohm' in lower or ('voltage' in lower and 'current' in lower):
+                    if len(numbers) >= 2:
+                        if 'resistance' in lower or 'R' in question:
+                            return f"⚡ Ohm's Law: V = IR = {numbers[0]*numbers[1]:.2f} V"
+                        else:
+                            return f"⚡ Ohm's Law: I = V/R = {numbers[0]/numbers[1]:.4f} A"
+                elif 'capacit' in lower and numbers:
+                    if 'energy' in lower and len(numbers) >= 2:
+                        E = EM.capacitor_energy(numbers[0], numbers[1])
+                        return f"⚡ Capacitor energy: E = ½CV² = {E:.6e} J"
+                elif 'solenoid' in lower and numbers:
+                    B = EM.magnetic_field_solenoid(numbers[0], numbers[1] if len(numbers)>1 else 1)
+                    return f"⚡ B inside solenoid: B = μ₀nI = {B:.6e} T"
+                elif 'skin depth' in lower and numbers:
+                    d = EM.skin_depth(numbers[0], numbers[1] if len(numbers)>1 else 5.8e7)
+                    return f"⚡ Skin depth: δ = {d*1e6:.2f} μm = {d:.6e} m"
+                elif 'snell' in lower or 'refract' in lower:
+                    if len(numbers) >= 3:
+                        t2 = EM.snell(numbers[0], numbers[1], numbers[2])
+                        if t2 == -1:
+                            return f"⚡ Total internal reflection! (n₁={numbers[0]} > n₂={numbers[2]}, θ > θ_c)"
+                        return f"⚡ Snell's Law: θ₂ = {t2:.2f}°"
+                elif 'resonan' in lower and len(numbers) >= 2:
+                    f = EM.resonant_frequency(numbers[0], numbers[1])
+                    return f"⚡ Resonant frequency: f₀ = 1/(2π√LC) = {f:.2f} Hz"
+
+            elif top_domain == "quantum_mechanics":
+                QS = QuantumSolver()
+                if 'hydrogen' in lower:
+                    n = int(numbers[0]) if numbers else 1
+                    r = QS.hydrogen(n)
+                    return f"⚛️ Hydrogen atom (n={n}):\n  Energy: {r['energy_eV']:.4f} eV\n  Radius: {r['radius_a0']:.1f} a₀ = {r['radius_m']:.3e} m\n  Degeneracy: {r['degeneracy']}\n  {r['formula']}"
+                elif 'tunneling' in lower or 'barrier' in lower:
+                    if len(numbers) >= 3:
+                        E = numbers[0] * 1.602e-19  # eV to J
+                        V0 = numbers[1] * 1.602e-19
+                        L = numbers[2] * 1e-9 if numbers[2] < 1 else numbers[2]
+                        T = QS.tunneling_rectangular(E, V0, L)
+                        return f"⚛️ Tunneling (E={numbers[0]}eV, V₀={numbers[1]}eV, L={numbers[2]}nm):\n  Transmission T = {T:.6e}\n  Formula: T ≈ e^{{-2κL}}"
+                elif 'infinite' in lower and 'well' in lower:
+                    n = int(numbers[0]) if numbers else 1
+                    L = numbers[1]*1e-9 if len(numbers) > 1 else 1e-9
+                    r = QS.infinite_well(n, L)
+                    return f"⚛️ Infinite Well (n={n}, L={L*1e9:.1f} nm):\n  E = {r['energy_eV']:.4f} eV\n  {r['formula']}"
+                elif 'uncertainty' in lower:
+                    if numbers:
+                        dx = numbers[0]
+                        r = QS.uncertainty(dx=dx)
+                        return f"⚛️ Heisenberg: Δx = {dx:.2e} m\n  Minimum Δp ≥ {r['min_dp']:.2e} kg·m/s\n  Minimum Δv ≥ {r['min_dv']:.2e} m/s"
+
+            elif top_domain == "statistical_mechanics":
+                SM = StatMechSolver()
+                if 'carnot' in lower and len(numbers) >= 2:
+                    r = SM.carnot(max(numbers[:2]), min(numbers[:2]))
+                    return f"🔥 Carnot (T_h={max(numbers[:2])}K, T_c={min(numbers[:2])}K):\n  Efficiency: η = {r['efficiency']:.4f} = {r['efficiency']*100:.1f}%\n  COP (heat pump): {r['COP_heat_pump']:.2f}\n  {r['formula']}"
+                elif 'wien' in lower or 'peak wavelength' in lower:
+                    T = numbers[0] if numbers else 5800
+                    lam = SM.wien_peak(T)
+                    return f"🔥 Wien's Law (T={T}K):\n  λ_max = {lam*1e9:.1f} nm = {lam*1e6:.3f} μm"
+                elif 'fermi energy' in lower:
+                    n = numbers[0] if numbers else 8.5e28
+                    Ef = SM.fermi_energy(n)
+                    return f"🔥 Fermi Energy (n={n:.2e} /m³):\n  E_F = {Ef/1.602e-19:.2f} eV"
+
+            elif top_domain == "relativity":
+                RS = RelativitySolver()
+                if 'schwarzschild' in lower or 'black hole' in lower:
+                    M = numbers[0] * 1.989e30 if numbers and numbers[0] < 1e10 else (numbers[0] if numbers else 1.989e30)
+                    rs = RS.schwarzschild_radius(M)
+                    Th = RS.hawking_temperature(M)
+                    return f"🌌 Black Hole (M={M/1.989e30:.1f} M☉):\n  Schwarzschild radius: {rs:.0f} m = {rs/1000:.2f} km\n  Hawking temperature: {Th:.2e} K\n  Evaporation time: ~10⁶⁷(M/M☉)³ years"
+                elif 'time dilation' in lower and numbers:
+                    v = numbers[0] if numbers[0] < 3e8 else numbers[0]
+                    g = RS.gamma(v)
+                    return f"🌌 Time Dilation (v={v:.2e} m/s = {v/2.998e8:.4f}c):\n  γ = {g:.6f}\n  1 second (moving) = {g:.6f} seconds (stationary)"
+                elif 'redshift' in lower and numbers:
+                    z = numbers[0]
+                    r = RS.cosmological_redshift_to_distance(z)
+                    return f"🌌 Cosmological Redshift z={z}:\n  Distance: {r['distance_Mpc']:.0f} Mpc" if r['distance_Mpc'] else f"🌌 z={z}: Need full cosmological calculation for z>0.3"
+
+            elif top_domain == "nuclear_physics":
+                NuS = NuclearSolver()
+                if 'binding' in lower and numbers:
+                    Z = int(numbers[0]) if numbers else 26
+                    A = int(numbers[1]) if len(numbers) > 1 else 56
+                    r = NuS.binding_energy(Z, A)
+                    return f"☢️ Nuclear Binding (Z={Z}, A={A}):\n  B = {r['binding_energy_MeV']:.2f} MeV\n  B/A = {r['binding_per_nucleon']:.3f} MeV/nucleon"
+                elif 'half-life' in lower or 'decay' in lower:
+                    if len(numbers) >= 2:
+                        N = NuS.decay_remaining(numbers[0], numbers[1],
+                                               numbers[2] if len(numbers)>2 else numbers[1])
+                        return f"☢️ Radioactive Decay:\n  Remaining: {N:.4e}"
+
+            elif top_domain == "cosmology":
+                AS = AstroSolver()
+                if 'jeans' in lower:
+                    T = numbers[0] if numbers else 10
+                    n = numbers[1] if len(numbers)>1 else 1e4
+                    Mj = AS.jeans_mass(T, n*1e6)  # convert to /m³
+                    return f"🌌 Jeans Mass (T={T}K, n={n}/cm³):\n  M_J = {Mj/1.989e30:.2f} M☉"
+
+        except Exception as e:
+            pass
+
+        # Fallback: return relevant laws as educational answer
+        try:
+            law_db = PhysicsLawDB()
+            relevant = pi.get_relevant_laws(question, law_db)
+            if relevant:
+                laws_text = '\n'.join(f"  • {l.name}: {l.equation}" for l in relevant[:5])
+                return f"📚 Relevant Physics Laws:\n{laws_text}\n\nDomain: {top_domain}"
+        except:
+            pass
+
+        return None
 
 
 def main():
