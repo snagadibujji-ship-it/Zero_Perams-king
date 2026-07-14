@@ -103,6 +103,7 @@ TAMIL_PATTERNS = [
 # Telugu function words (for detection, NOT translation)
 TELUGU_MARKERS = {
     'ante', 'enti', 'emi', 'emiti', 'ela', 'enduku', 'cheppu', 'cheppandi',
+    'chepu', 'chepp', 'chep',  # Abbreviated forms
     'gurinchi', 'cheyyi', 'cheyyandi', 'valla', 'kosam', 'lo', 'ki', 'tho',
     'mariyu', 'kani', 'kabatti', 'appudu', 'ippudu', 'akkada', 'ikkada',
     'tundi', 'taru', 'tanu', 'tunnaru', 'andi', 'garu', 'meeru', 'nenu',
@@ -138,21 +139,87 @@ TAMIL_MARKERS = {
 # ═══════════════════════════════════════════════════════════════
 
 class PhoneticNormalizer:
-    """Normalize Romanized spelling variations."""
+    """Normalize Romanized spelling variations — COSMIC LEVEL."""
+
+    # Common texting abbreviations → full form
+    ABBREVS = {
+        'wt': 'what', 'wht': 'what', 'hw': 'how', 'wy': 'why',
+        'bt': 'but', 'bcz': 'because', 'bcoz': 'because',
+        'abt': 'about', 'pls': 'please', 'plz': 'please',
+        'thx': 'thanks', 'u': 'you', 'r': 'are', 'ur': 'your',
+        'smthng': 'something', 'smthing': 'something',
+        'ans': 'answer', 'soln': 'solution', 'calc': 'calculate',
+        'diff': 'difference', 'b/w': 'between', 'bw': 'between',
+        'eg': 'example', 'esp': 'especially', 'govt': 'government',
+        'info': 'information', 'prob': 'problem', 'ques': 'question',
+        'smjha': 'samjha', 'smjhao': 'samjhao',  # Hindi typo
+        'chp': 'cheppu', 'chpp': 'cheppu',  # Telugu typo
+        'frml': 'formula', 'frmla': 'formula',  # Common abbrev
+        'frce': 'force', 'grvty': 'gravity',  # Content abbrevs
+        'el': 'ela', 'endku': 'enduku',  # Telugu grammar abbrevs
+    }
+
+    # Consonant skeletons for fuzzy function-word matching
+    # These catch typos in grammar glue words
+    TELUGU_SKELETONS = {
+        'nt': 'ante',     # ante/antte/ante
+        'nt': 'enti',     # enti/entti/enti
+        'chpp': 'cheppu', # cheppu/cheppu/chp
+        'l': 'ela',       # ela/yela
+        'ndk': 'enduku',  # enduku/endhuku
+        'grnch': 'gurinchi',
+    }
+
+    HINDI_SKELETONS = {
+        'ky': 'kya',      # kya/ky
+        'h': 'hai',       # hai/he/h
+        'ks': 'kaise',    # kaise/kese
+        'bt': 'bata',     # bata/batao
+        'smjh': 'samjha', # samjha/smjha
+    }
 
     def normalize(self, text: str) -> str:
-        """Normalize text for pattern matching."""
+        """Normalize text for pattern matching — handles typos + abbreviations."""
         t = text.lower().strip()
-        # Step 1: Collapse repeated letters (chepppu → cheppu)
-        t = re.sub(r'(.)\1{2,}', r'\1\1', t)
-        # Step 2: Common phonetic equivalences
-        t = t.replace('th', 't').replace('dh', 'd').replace('bh', 'b')
-        t = t.replace('sh', 's').replace('ch', 'c')
-        t = t.replace('aa', 'a').replace('ee', 'i').replace('oo', 'u')
-        t = t.replace('ou', 'u').replace('ai', 'e')
-        # Step 3: Normalize question marks and trailing vowels
-        t = re.sub(r'\?+', '?', t)
+
+        # Step 0: Remove emojis (keep for later but don't match against them)
+        t = re.sub(r'[\U0001F600-\U0001F9FF\U00002702-\U000027B0\U0001F900-\U0001F9FF]', ' ', t)
+
+        # Step 1: Expand common abbreviations
+        words = t.split()
+        words = [self.ABBREVS.get(w, w) for w in words]
+        t = ' '.join(words)
+
+        # Step 2: Collapse repeated letters (antte → ante, entti → enti)
+        t = re.sub(r'(.)\1{2,}', r'\1\1', t)  # 3+ → 2
+        t = re.sub(r'([^aeiou])\1', r'\1', t)  # double consonants → single (except vowels)
+
+        # Step 3: Normalize common phonetic equivalences
+        # Don't be aggressive here — just the most common swaps
+        t = t.replace('ph', 'f').replace('ght', 't')
+
+        # Step 4: Clean extra spaces
+        t = re.sub(r'\s+', ' ', t).strip()
+
         return t
+
+    def fuzzy_match_function_word(self, word: str) -> tuple:
+        """Try to fuzzy-match a word to known function words.
+        Returns (matched_word, language) or (None, None)."""
+        # Get consonant skeleton
+        skeleton = re.sub(r'[aeiou]', '', word.lower())
+
+        # Check Telugu
+        for skel, canonical in self.TELUGU_SKELETONS.items():
+            if skeleton == skel or skeleton.startswith(skel):
+                return canonical, 'te'
+
+        # Check Hindi
+        for skel, canonical in self.HINDI_SKELETONS.items():
+            if skeleton == skel or skeleton.startswith(skel):
+                return canonical, 'hi'
+
+        return None, None
 
     def get_consonant_skeleton(self, word: str) -> str:
         """Extract consonant skeleton for fuzzy matching."""
@@ -262,14 +329,33 @@ class MultilingualEngine:
 
     def _detect_from_patterns(self, text: str) -> Optional[Dict]:
         """Try to match grammar patterns for each language."""
-        # Normalize for matching
+        # Normalize for matching (handles typos + abbreviations)
         normalized = self.normalizer.normalize(text)
         original_lower = text.lower().strip()
 
-        # Count function word hits per language
-        te_score = sum(1 for w in original_lower.split() if w in TELUGU_MARKERS)
-        hi_score = sum(1 for w in original_lower.split() if w in HINDI_MARKERS)
-        ta_score = sum(1 for w in original_lower.split() if w in TAMIL_MARKERS)
+        # COSMIC: Also try fuzzy matching on each word
+        words = original_lower.split()
+        fuzzy_lang_votes = {'te': 0, 'hi': 0, 'ta': 0}
+        for word in words:
+            matched, lang = self.normalizer.fuzzy_match_function_word(word)
+            if lang:
+                fuzzy_lang_votes[lang] += 1
+
+        # Count exact function word hits per language
+        te_score = sum(1 for w in words if w in TELUGU_MARKERS)
+        hi_score = sum(1 for w in words if w in HINDI_MARKERS)
+        ta_score = sum(1 for w in words if w in TAMIL_MARKERS)
+
+        # Add fuzzy votes
+        te_score += fuzzy_lang_votes['te']
+        hi_score += fuzzy_lang_votes['hi']
+        ta_score += fuzzy_lang_votes['ta']
+
+        # COSMIC: Also match against normalized text
+        norm_words = normalized.split()
+        te_score += sum(1 for w in norm_words if w in TELUGU_MARKERS)
+        hi_score += sum(1 for w in norm_words if w in HINDI_MARKERS)
+        ta_score += sum(1 for w in norm_words if w in TAMIL_MARKERS)
 
         # Try patterns in order of score
         candidates = [
@@ -282,19 +368,19 @@ class MultilingualEngine:
         for lang, score, patterns in candidates:
             if score == 0:
                 continue
-            # Try each pattern
-            for pattern, intent, topic_group in patterns:
-                m = re.match(pattern, original_lower, re.IGNORECASE)
-                if m:
-                    topic = m.group(topic_group).strip() if topic_group > 0 else m.group(0).strip()
-                    # Clean topic: remove function words
-                    topic = self._clean_topic(topic, lang)
-                    return {
-                        'language': lang,
-                        'intent': intent,
-                        'topic': topic,
-                        'confidence': min(0.95, 0.5 + score * 0.15),
-                    }
+            # Try each pattern against BOTH original and normalized
+            for try_text in [original_lower, normalized]:
+                for pattern, intent, topic_group in patterns:
+                    m = re.match(pattern, try_text, re.IGNORECASE)
+                    if m:
+                        topic = m.group(topic_group).strip() if topic_group > 0 else m.group(0).strip()
+                        topic = self._clean_topic(topic, lang)
+                        return {
+                            'language': lang,
+                            'intent': intent,
+                            'topic': topic,
+                            'confidence': min(0.95, 0.5 + score * 0.15),
+                        }
 
             # Even if no pattern matched, if score >= 2, it's likely this language
             if score >= 2:
@@ -304,6 +390,29 @@ class MultilingualEngine:
                     'intent': 'general',
                     'topic': topic,
                     'confidence': 0.5 + score * 0.1,
+                }
+
+        # COSMIC: Single word + question mark = asking what it is
+        if len(words) == 1 and text.strip().endswith('?'):
+            return {
+                'language': 'en',
+                'intent': 'what_is',
+                'topic': words[0].rstrip('?'),
+                'confidence': 0.7,
+            }
+
+        # COSMIC: "wt is X" / "hw does X" — texting abbreviations already expanded
+        if normalized != original_lower:
+            # Re-check if normalized version looks like English question
+            if re.match(r'(?:what|how|why|who|where|when)\s+', normalized):
+                topic = re.sub(r'^(?:what|how|why|who|where|when)\s+(?:is|does|do|are|was)?\s*', '', normalized)
+                intent_map = {'what': 'what_is', 'how': 'how', 'why': 'why'}
+                first_word = normalized.split()[0]
+                return {
+                    'language': 'en',
+                    'intent': intent_map.get(first_word, 'general'),
+                    'topic': topic.strip('? '),
+                    'confidence': 0.75,
                 }
 
         return None
