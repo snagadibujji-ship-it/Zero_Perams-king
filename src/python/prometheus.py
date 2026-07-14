@@ -1036,13 +1036,21 @@ class Prometheus:
         if m_fact:
             n = int(m_fact.group(1))
             import math as _m
-            return str(_m.factorial(n))
+            result = _m.factorial(n)
+            if n <= 10:
+                expansion = ' × '.join(str(i) for i in range(n, 0, -1))
+                return f"{result}\n\n  {n}! = {expansion} = {result}\n  (Product of all integers from 1 to {n})"
+            return f"{result}\n\n  {n}! = {n} × {n-1} × ... × 2 × 1 = {result}"
         if low.startswith('factorial'):
             nums = re.findall(r'\d+', text)
             if nums:
                 import math as _m
                 n = int(nums[0])
-                return f"{n}! = {_m.factorial(n)}"
+                result = _m.factorial(n)
+                if n <= 10:
+                    expansion = ' × '.join(str(i) for i in range(n, 0, -1))
+                    return f"{result}\n\n  {n}! = {expansion} = {result}"
+                return f"{result}\n\n  {n}! = {n} × {n-1} × ... × 2 × 1 = {result}"
 
         # EVALUATE (just a numeric expression — no letters)
         if not any(c.isalpha() for c in text.replace('pi', '').replace('sqrt', '').replace('sin', '').replace('cos', '').replace('tan', '').replace('log', '').replace('ln', '').replace('exp', '')):
@@ -1137,9 +1145,40 @@ class Prometheus:
         if not solutions:
             return "No solution found."
 
+        # Build step-by-step explanation
+        explanation = []
+        original = text.strip()
         if len(solutions) == 1:
-            return f"{var} = {solutions[0]}"
-        return f"{var} = {', '.join(solutions)}"
+            answer = f"{var} = {solutions[0]}"
+        else:
+            answer = f"{var} = {', '.join(solutions)}"
+
+        explanation.append(answer)
+        explanation.append(f"\n  Step-by-step:")
+        explanation.append(f"  Given: {original}")
+
+        # Detect equation type and explain method
+        if '^3' in original or 'x^3' in original:
+            explanation.append(f"  Method: Cubic equation (factor or rational root theorem)")
+        elif '^2' in original or 'x^2' in original:
+            # Quadratic
+            explanation.append(f"  Method: Quadratic formula or factoring")
+            # Try to show factored form
+            if len(solutions) == 2:
+                try:
+                    r1, r2 = solutions[0], solutions[1]
+                    explanation.append(f"  Factored: ({var} - {r1})({var} - {r2}) = 0")
+                    explanation.append(f"  ∴ {var} = {r1} or {var} = {r2}")
+                except:
+                    pass
+        else:
+            explanation.append(f"  Method: Isolate {var}")
+
+        # Verification hint
+        if len(solutions) <= 3:
+            explanation.append(f"  Verify: substitute back to check ✓")
+
+        return '\n'.join(explanation)
 
     def _handle_derivative(self, text: str) -> str:
         """Compute derivative."""
@@ -1186,7 +1225,27 @@ class Prometheus:
                     result_str = f"{coeff_str}/{var_c}"
                 else:
                     result_str = f"{coeff_str}/{var_c}^{pos_exp}"
-        return result_str
+
+        # Add explanation
+        explanation = [result_str, "", "  Step-by-step:", f"  Given: d/d{var} [{text.strip()}]"]
+        # Detect which rule was used
+        text_low = text.strip().lower()
+        if 'sin' in text_low:
+            explanation.append("  Rule: d/dx sin(u) = cos(u)·u' (chain rule)")
+        elif 'cos' in text_low:
+            explanation.append("  Rule: d/dx cos(u) = -sin(u)·u' (chain rule)")
+        elif 'e^' in text_low or 'exp' in text_low:
+            explanation.append("  Rule: d/dx e^u = e^u·u' (chain rule)")
+        elif 'ln' in text_low or 'log' in text_low:
+            explanation.append("  Rule: d/dx ln(u) = u'/u (chain rule)")
+        elif 'tan' in text_low:
+            explanation.append("  Rule: d/dx tan(x) = sec²(x) = 1/cos²(x)")
+        elif '^' in text_low or 'x' in text_low:
+            explanation.append("  Rule: d/dx x^n = nx^(n-1) (power rule)")
+        if '*' in text_low:
+            explanation.append("  Rule: d/dx (fg) = f'g + fg' (product rule)")
+        explanation.append(f"  Result: {result_str}")
+        return '\n'.join(explanation)
 
     def _handle_integral(self, text: str) -> str:
         """Compute integral."""
@@ -1233,7 +1292,7 @@ class Prometheus:
         if result is None:
             return "Cannot integrate this expression symbolically."
         result_str = self.printer.to_string(result) + " + C"
-        # Post-simplify: "c*x^n/n" → "(c/n)x^n" e.g. "10*x^2/2" → "5x^2"
+        # Post-simplify: "c*x^n/n" → "(c/n)x^n"
         m = re.match(r'^(\d+)\*([a-z])\^(\d+)/(\d+)(.*)$', result_str)
         if m:
             coeff = int(m.group(1))
@@ -1251,7 +1310,22 @@ class Prometheus:
                 from math import gcd
                 g = gcd(coeff, denom)
                 result_str = f"{coeff//g}{var_ch}^{power}/{denom//g}{rest}"
-        return result_str
+
+        # Add explanation
+        text_clean = text.strip()
+        explanation = [result_str, "", "  Step-by-step:", f"  Given: ∫ {text_clean} d{var}"]
+        if 'sin' in text_clean.lower():
+            explanation.append("  Rule: ∫sin(ax)dx = -cos(ax)/a + C")
+        elif 'cos' in text_clean.lower():
+            explanation.append("  Rule: ∫cos(ax)dx = sin(ax)/a + C")
+        elif 'e^' in text_clean.lower():
+            explanation.append("  Rule: ∫e^(ax)dx = e^(ax)/a + C")
+        elif '1/x' in text_clean.lower() or 'ln' in text_clean.lower():
+            explanation.append("  Rule: ∫(1/x)dx = ln|x| + C")
+        else:
+            explanation.append("  Rule: ∫x^n dx = x^(n+1)/(n+1) + C (power rule)")
+        explanation.append(f"  Result: {result_str}")
+        return '\n'.join(explanation)
 
     def _handle_limit(self, text: str) -> str:
         """Compute limit."""
