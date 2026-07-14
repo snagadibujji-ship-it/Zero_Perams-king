@@ -18,18 +18,27 @@ class ACESV2:
     """
 
     def __init__(self):
-        # Pipeline stages (will be built in subsequent phases)
-        self.shield = None      # Phase 2
-        self.router = None      # Phase 3
-        self.parser = None      # Phase 4
-        self.graph_builder = None  # Phase 5
-        self.reasoner = None    # Phase 6
-        self.planner = None     # Phase 7
-        self.renderer = None    # Phase 8
-        self.auditor = None     # Phase 9
-        self.memory = None      # Phase 10
-        self.solver_bridge = None  # Phase 11
-        self.search_bridge = None  # Phase 12
+        # Pipeline stages — all wired up
+        from .shield import InputShield
+        from .router import Router
+        from .parser import MeaningParser
+        from .graph_builder import GraphBuilder
+        from .reasoner import Reasoner
+        from .renderer import Planner, Renderer
+        from .auditor import Auditor
+        from .memory import Memory
+
+        self.shield = InputShield()
+        self.router = Router()
+        self.parser = MeaningParser()
+        self.graph_builder = GraphBuilder()
+        self.reasoner = Reasoner()
+        self.planner = Planner()
+        self.renderer = Renderer()
+        self.auditor = Auditor()
+        self.memory = Memory()
+        self.solver_bridge = None   # Phase 11
+        self.search_bridge = None   # Phase 12
 
     def explain(self, question: str, mode: str = "deep",
                 context: Optional[str] = None) -> ExplanationFrame:
@@ -86,49 +95,29 @@ class ACESV2:
 
     def _parse(self, inp: NormalizedInput, decision: RouterDecision) -> MeaningGraph:
         """Stage 3: Extract meaning graph."""
-        if self.parser:
-            return self.parser.parse(inp, decision)
-        # Fallback: single-node graph
-        from .models import MeaningNode
-        graph = MeaningGraph()
-        graph.add_node(MeaningNode(id="q", type="concept", label=inp.clean, content=inp.clean))
+        graph = self.parser.parse(inp, decision)
+        # Enrich with graph builder
+        graph = self.graph_builder.build(graph, decision)
         return graph
 
     def _reason(self, graph: MeaningGraph, decision: RouterDecision) -> ReasonChain:
         """Stage 4: Derive reason skeleton."""
-        if self.reasoner:
-            return self.reasoner.reason(graph, decision)
-        # Fallback: chain is just the node labels
-        return ReasonChain(chain=[n.label for n in graph.nodes])
+        return self.reasoner.reason(graph, decision)
 
     def _plan(self, chain: ReasonChain, decision: RouterDecision) -> ExplanationPlan:
         """Stage 5: Plan the explanation structure."""
-        if self.planner:
-            return self.planner.plan(chain, decision)
-        # Fallback: default plan
-        return ExplanationPlan(
-            opening=chain.chain[0] if chain.chain else "",
-            section_order=chain.chain,
-            start_with="intuition"
-        )
+        return self.planner.plan(chain, decision)
 
     def _render(self, plan: ExplanationPlan, chain: ReasonChain,
                 graph: MeaningGraph, decision: RouterDecision) -> ExplanationFrame:
         """Stage 6: Render into requested format."""
-        if self.renderer:
-            return self.renderer.render(plan, chain, graph, decision)
-        # Fallback: join chain as text
-        text = '\n'.join(chain.chain) if chain.chain else "(no explanation generated)"
-        return ExplanationFrame(mode=decision.format_mode, text=text)
+        return self.renderer.render(plan, chain, graph, decision)
 
     def _audit(self, frame: ExplanationFrame, graph: MeaningGraph) -> AuditReport:
         """Stage 7: Check quality."""
-        if self.auditor:
-            return self.auditor.audit(frame, graph)
-        return AuditReport(passed=True)
+        return self.auditor.audit(frame, graph)
 
     def _remember(self, topic: str, graph: MeaningGraph,
                   chain: ReasonChain, frame: ExplanationFrame):
         """Stage 8: Store in memory."""
-        if self.memory:
-            self.memory.store(topic, graph, chain, frame)
+        self.memory.store(topic, graph, chain, frame)
