@@ -49,6 +49,17 @@ except Exception: LongMemory = None
 try:
     from creative import CreativeEngine
 except Exception: CreativeEngine = None
+
+# ═══ V3.1 Modules: Knowledge Indexer + AXIMA Coder V2 + Creator V2 ═══
+try:
+    from knowledge_index import get_index as get_knowledge_index
+except Exception: get_knowledge_index = None
+try:
+    from axima_coder import AximaCoder
+except Exception: AximaCoder = None
+try:
+    from creator.engine import Creator as CreatorV2
+except Exception: CreatorV2 = None
 try:
     from truthguard import TruthGuard
 except Exception: TruthGuard = None
@@ -97,6 +108,16 @@ class Axima:
         self.multipath = MultipathReasoner() if MultipathReasoner else None
         self.long_memory = LongMemory() if LongMemory else None
         self.creative = CreativeEngine() if CreativeEngine else None
+        
+        # V3.1 modules
+        self._knowledge_index = None
+        if get_knowledge_index:
+            try:
+                self._knowledge_index = get_knowledge_index()
+            except Exception:
+                pass
+        self._axima_coder = AximaCoder() if AximaCoder else None
+        self._creator_v2 = CreatorV2() if CreatorV2 else None
         self.truthguard = TruthGuard() if TruthGuard else None
         self.community = CommunityIntelligence() if CommunityIntelligence else None
         
@@ -502,6 +523,40 @@ class Axima:
         
         # 1.5 Code generation (cosmic engine - 15 languages, 100+ algorithms)
         lower = user_input.lower()
+
+        # 1.45 Creator V2 — Stories, songs, poems, essays, rap (context-driven, no word lists)
+        creative_triggers = ['write a story', 'write a song', 'write a poem', 'write a rap',
+                           'write an essay', 'create a story', 'create a song', 'create a poem',
+                           'make a song', 'write me a', 'compose a', 'write lyrics',
+                           'tell me a story', 'song about', 'poem about', 'story about']
+        if self._creator_v2 and any(t in lower for t in creative_triggers):
+            try:
+                creative_result = self._creator_v2.create(user_input)
+                if creative_result and len(creative_result) > 50:
+                    return {"response": creative_result, "gap": False}
+            except Exception:
+                pass
+
+        # 1.48 AXIMA Coder V2 — Full project generation (system architecture → code)
+        project_triggers = ['build me a', 'build a web', 'build an app', 'create a web app',
+                          'create an app', 'build a full', 'generate a project',
+                          'scaffold a', 'create a rest api', 'build a rest',
+                          'build a chat app', 'build a todo', 'build an e-commerce',
+                          'create a backend', 'create a server', 'build me an api']
+        if self._axima_coder and any(t in lower for t in project_triggers):
+            try:
+                files = self._axima_coder.generate_project(user_input)
+                if files:
+                    # Format output showing all generated files
+                    arch = self._axima_coder.explain_architecture(user_input)
+                    response_parts = [arch, "\n\n─── Generated Files ───\n"]
+                    for fname, content in files.items():
+                        ext = fname.split('.')[-1] if '.' in fname else ''
+                        response_parts.append(f"\n📄 {fname}:\n```{ext}\n{content}\n```")
+                    return {"response": '\n'.join(response_parts), "gap": False}
+            except Exception:
+                pass
+
         code_triggers = ['write', 'code', 'implement', 'create a function', 'build a',
                         'program a', 'script', 'algorithm', 'data structure',
                         'sort', 'fibonacci', 'factorial',
@@ -771,6 +826,23 @@ class Axima:
         is_gap = c_answer and any(s in c_answer.lower() for s in dont_know_signals)
         
         if is_gap or not c_answer:
+            # 6.1 Try Knowledge Index (V3.1) — fast BM25 search over 21K+ facts
+            if self._knowledge_index:
+                try:
+                    ki_results = self._knowledge_index.query(user_input, top_k=3)
+                    if ki_results and ki_results[0][1] > 10.0:  # Score threshold
+                        # Build answer from top results
+                        facts = [f.as_text() for f, score in ki_results if score > 8.0]
+                        if facts:
+                            ki_answer = '. '.join(facts[:3])
+                            try:
+                                from response_depth import enrich_response
+                                ki_answer = enrich_response(user_input, ki_answer)
+                            except Exception: pass
+                            return {"response": ki_answer, "gap": False}
+                except Exception:
+                    pass
+
             # Try agent system before declaring gap
             try:
                 from agent_system import agent_process

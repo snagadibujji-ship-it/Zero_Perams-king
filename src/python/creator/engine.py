@@ -29,6 +29,9 @@ class Creator:
         # Step 1: Parse seed
         seed = self.seed_parser.parse(request)
 
+        # Step 1.5: Set word harvesting context (Creator V2 upgrade)
+        self.sentence.set_context(request, seed.topic, seed.emotion)
+
         # Step 2: Grow arc
         beats = self.growth.grow(seed)
 
