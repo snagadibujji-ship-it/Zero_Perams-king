@@ -8,7 +8,7 @@ Handles: 250+ rules, common exceptions, stress assignment, sentence parsing.
 """
 
 import re
-from typing import List, Tuple, Dict
+from typing import List, Tuple, Dict, Optional
 
 
 # Phoneme set: ARPAbet-style (compatible with spectral gene bank)

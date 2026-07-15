@@ -285,6 +285,27 @@ def get_voice(name: str) -> Optional[VoiceDNA]:
         VOICES['echo'] = voice_echo()
         VOICES['storm'] = voice_storm()
         VOICES['whisper'] = voice_whisper()
+        # NEW VOICES (20 more)
+        VOICES['thunder'] = voice_thunder()
+        VOICES['velvet'] = voice_velvet()
+        VOICES['crystal'] = voice_crystal()
+        VOICES['ember'] = voice_ember()
+        VOICES['frost'] = voice_frost()
+        VOICES['shadow'] = voice_shadow()
+        VOICES['honey'] = voice_honey()
+        VOICES['titan'] = voice_titan()
+        VOICES['luna'] = voice_luna()
+        VOICES['blaze'] = voice_blaze()
+        VOICES['silk'] = voice_silk()
+        VOICES['rock'] = voice_rock()
+        VOICES['breeze'] = voice_breeze()
+        VOICES['oracle'] = voice_oracle()
+        VOICES['viper'] = voice_viper()
+        VOICES['angel'] = voice_angel()
+        VOICES['ghost'] = voice_ghost()
+        VOICES['phoenix'] = voice_phoenix()
+        VOICES['ocean'] = voice_ocean()
+        VOICES['rebel'] = voice_rebel()
 
     return VOICES.get(name.lower())
 
@@ -293,3 +314,237 @@ def list_voices() -> List[str]:
     if not VOICES:
         get_voice('atlas')  # Trigger initialization
     return list(VOICES.keys())
+
+
+# ═══════════════════════════════════════════════════════════════
+# 20 NEW VOICES — Diverse, unique, covering all vocal space
+# ═══════════════════════════════════════════════════════════════
+
+def voice_thunder() -> VoiceDNA:
+    """Thunder — Ultra-deep bass (James Earl Jones / movie trailers)."""
+    v = VoiceDNA("Thunder")
+    v.base_f0 = 75.0; v.f0_range = 0.35; v.rd_mean = 0.7
+    v.speaking_rate = 3.0; v.warmth = 0.9; v.brightness = 0.3
+    v.chest_resonance = 1.0; v.vocal_tract_length = 20.0
+    v.gender_continuum = 1.0; v.age_factor = 0.5
+    v.emphasis_strength = 1.5; v.intensity_range = 20.0
+    v.effort_level = 0.7; v.spectral_tilt = -8.0
+    return v
+
+def voice_velvet() -> VoiceDNA:
+    """Velvet — Smooth seductive female (late night radio)."""
+    v = VoiceDNA("Velvet")
+    v.base_f0 = 185.0; v.f0_range = 0.4; v.rd_mean = 1.3
+    v.speaking_rate = 3.8; v.warmth = 0.85; v.brightness = 0.4
+    v.vocal_tract_length = 15.5; v.gender_continuum = 0.1
+    v.age_factor = 0.35; v.aspiration_level = 0.04
+    v.breathiness_onset = 0.2; v.coarticulation_degree = 0.8
+    v.pause_tendency = 0.7; v.shimmer = 0.002
+    return v
+
+def voice_crystal() -> VoiceDNA:
+    """Crystal — High clear soprano (Disney princess / audiobook)."""
+    v = VoiceDNA("Crystal")
+    v.base_f0 = 240.0; v.f0_range = 0.7; v.rd_mean = 0.8
+    v.speaking_rate = 4.3; v.warmth = 0.3; v.brightness = 0.9
+    v.vocal_tract_length = 14.0; v.gender_continuum = 0.05
+    v.age_factor = 0.15; v.formant_precision = 0.98
+    v.consonant_precision = 0.95; v.jitter = 0.002
+    v.harmonic_richness = 0.95; v.head_voice_mix = 0.6
+    return v
+
+def voice_ember() -> VoiceDNA:
+    """Ember — Warm raspy female (indie singer / Adele zone)."""
+    v = VoiceDNA("Ember")
+    v.base_f0 = 175.0; v.f0_range = 0.6; v.rd_mean = 1.1
+    v.speaking_rate = 4.0; v.warmth = 0.8; v.brightness = 0.5
+    v.vocal_tract_length = 15.8; v.gender_continuum = 0.2
+    v.roughness = 0.15; v.creakiness = 0.1; v.jitter = 0.006
+    v.shimmer = 0.005; v.age_factor = 0.3
+    v.emphasis_strength = 1.3; v.aspiration_level = 0.03
+    return v
+
+def voice_frost() -> VoiceDNA:
+    """Frost — Cold precise robotic (AI assistant, clinical)."""
+    v = VoiceDNA("Frost")
+    v.base_f0 = 155.0; v.f0_range = 0.25; v.rd_mean = 0.85
+    v.speaking_rate = 5.0; v.warmth = 0.2; v.brightness = 0.7
+    v.gender_continuum = 0.5; v.age_factor = 0.25
+    v.rhythm_regularity = 0.9; v.formant_precision = 0.99
+    v.consonant_precision = 0.98; v.jitter = 0.001
+    v.shimmer = 0.001; v.f0_variability = 0.03
+    v.coarticulation_degree = 0.4; v.emphasis_strength = 0.5
+    return v
+
+def voice_shadow() -> VoiceDNA:
+    """Shadow — Dark mysterious (villain / horror narrator)."""
+    v = VoiceDNA("Shadow")
+    v.base_f0 = 98.0; v.f0_range = 0.3; v.rd_mean = 1.5
+    v.speaking_rate = 3.3; v.warmth = 0.6; v.brightness = 0.2
+    v.vocal_tract_length = 19.0; v.gender_continuum = 0.85
+    v.creakiness = 0.2; v.aspiration_level = 0.04
+    v.age_factor = 0.5; v.pause_tendency = 0.85
+    v.pause_duration = 0.4; v.spectral_tilt = -16.0
+    v.intensity_range = 6.0; v.effort_level = 0.3
+    return v
+
+def voice_honey() -> VoiceDNA:
+    """Honey — Sweet warm female (children's narrator / podcast)."""
+    v = VoiceDNA("Honey")
+    v.base_f0 = 220.0; v.f0_range = 0.55; v.rd_mean = 1.0
+    v.speaking_rate = 4.0; v.warmth = 0.75; v.brightness = 0.6
+    v.vocal_tract_length = 14.5; v.gender_continuum = 0.1
+    v.age_factor = 0.25; v.nasality = 0.05
+    v.emphasis_strength = 1.0; v.tempo_variation = 0.1
+    v.coarticulation_degree = 0.7; v.formant_precision = 0.92
+    return v
+
+def voice_titan() -> VoiceDNA:
+    """Titan — Massive commanding (stadium announcer / god voice)."""
+    v = VoiceDNA("Titan")
+    v.base_f0 = 80.0; v.f0_range = 0.5; v.rd_mean = 0.5
+    v.speaking_rate = 2.8; v.warmth = 0.7; v.brightness = 0.8
+    v.vocal_tract_length = 21.0; v.gender_continuum = 1.0
+    v.chest_resonance = 1.0; v.effort_level = 0.95
+    v.intensity_range = 25.0; v.emphasis_strength = 2.0
+    v.spectral_tilt = -6.0; v.harmonic_richness = 1.0
+    return v
+
+def voice_luna() -> VoiceDNA:
+    """Luna — Dreamy ethereal female (meditation / ASMR / ambient)."""
+    v = VoiceDNA("Luna")
+    v.base_f0 = 200.0; v.f0_range = 0.3; v.rd_mean = 2.0
+    v.speaking_rate = 3.2; v.warmth = 0.7; v.brightness = 0.4
+    v.vocal_tract_length = 15.0; v.gender_continuum = 0.1
+    v.aspiration_level = 0.06; v.hnr = 15.0
+    v.intensity_range = 4.0; v.effort_level = 0.2
+    v.pause_tendency = 0.9; v.pause_duration = 0.5
+    v.breathiness_onset = 0.3; v.vibrato_depth = 0.002
+    return v
+
+def voice_blaze() -> VoiceDNA:
+    """Blaze — Fast aggressive rapper / hype man."""
+    v = VoiceDNA("Blaze")
+    v.base_f0 = 140.0; v.f0_range = 0.4; v.rd_mean = 0.6
+    v.speaking_rate = 6.5; v.warmth = 0.4; v.brightness = 0.8
+    v.gender_continuum = 0.7; v.age_factor = 0.2
+    v.emphasis_strength = 1.6; v.effort_level = 0.85
+    v.rhythm_regularity = 0.7; v.consonant_precision = 0.9
+    v.intensity_range = 15.0; v.tempo_variation = 0.15
+    v.spectral_tilt = -8.0; v.pressed_phonation = 0.3
+    return v
+
+def voice_silk() -> VoiceDNA:
+    """Silk — Ultra-smooth jazz singer (Sinatra / Nat King Cole zone)."""
+    v = VoiceDNA("Silk")
+    v.base_f0 = 118.0; v.f0_range = 0.45; v.rd_mean = 1.2
+    v.speaking_rate = 3.8; v.warmth = 0.85; v.brightness = 0.4
+    v.vocal_tract_length = 17.5; v.gender_continuum = 0.75
+    v.age_factor = 0.45; v.coarticulation_degree = 0.8
+    v.vibrato_rate = 5.5; v.vibrato_depth = 0.008
+    v.aspiration_level = 0.025; v.transition_speed = 0.8
+    return v
+
+def voice_rock() -> VoiceDNA:
+    """Rock — Gravelly powerful male (rock singer / Springsteen)."""
+    v = VoiceDNA("Rock")
+    v.base_f0 = 125.0; v.f0_range = 0.6; v.rd_mean = 0.7
+    v.speaking_rate = 4.2; v.warmth = 0.6; v.brightness = 0.7
+    v.gender_continuum = 0.85; v.roughness = 0.2
+    v.jitter = 0.007; v.shimmer = 0.006; v.creakiness = 0.15
+    v.effort_level = 0.8; v.emphasis_strength = 1.5
+    v.spectral_tilt = -9.0; v.pressed_phonation = 0.2
+    return v
+
+def voice_breeze() -> VoiceDNA:
+    """Breeze — Light airy androgynous (nature documentary)."""
+    v = VoiceDNA("Breeze")
+    v.base_f0 = 170.0; v.f0_range = 0.35; v.rd_mean = 1.4
+    v.speaking_rate = 4.0; v.warmth = 0.5; v.brightness = 0.5
+    v.gender_continuum = 0.4; v.aspiration_level = 0.035
+    v.breathiness_onset = 0.15; v.intensity_range = 8.0
+    v.effort_level = 0.3; v.vocal_tract_length = 16.0
+    v.age_factor = 0.3; v.pause_tendency = 0.6
+    return v
+
+def voice_oracle() -> VoiceDNA:
+    """Oracle — Ancient mystical (fantasy narrator / wizard)."""
+    v = VoiceDNA("Oracle")
+    v.base_f0 = 100.0; v.f0_range = 0.4; v.rd_mean = 1.6
+    v.speaking_rate = 3.0; v.warmth = 0.7; v.brightness = 0.3
+    v.vocal_tract_length = 19.5; v.gender_continuum = 0.8
+    v.age_factor = 0.9; v.jitter = 0.009; v.shimmer = 0.007
+    v.pause_tendency = 0.9; v.pause_duration = 0.5
+    v.creakiness = 0.15; v.vibrato_rate = 4.0
+    v.vibrato_depth = 0.006; v.spectral_tilt = -15.0
+    return v
+
+def voice_viper() -> VoiceDNA:
+    """Viper — Sharp sibilant threatening (villain / snake-like)."""
+    v = VoiceDNA("Viper")
+    v.base_f0 = 135.0; v.f0_range = 0.3; v.rd_mean = 0.9
+    v.speaking_rate = 4.5; v.warmth = 0.2; v.brightness = 0.9
+    v.gender_continuum = 0.6; v.consonant_precision = 1.0
+    v.spectral_tilt = -6.0; v.intensity_range = 10.0
+    v.emphasis_strength = 1.2; v.pressed_phonation = 0.15
+    v.nasality = 0.15; v.aspiration_level = 0.02
+    return v
+
+def voice_angel() -> VoiceDNA:
+    """Angel — Pure heavenly soprano (choir soloist / ethereal)."""
+    v = VoiceDNA("Angel")
+    v.base_f0 = 260.0; v.f0_range = 0.8; v.rd_mean = 0.85
+    v.speaking_rate = 3.8; v.warmth = 0.4; v.brightness = 0.8
+    v.vocal_tract_length = 13.5; v.gender_continuum = 0.0
+    v.head_voice_mix = 0.8; v.harmonic_richness = 0.95
+    v.jitter = 0.001; v.shimmer = 0.001
+    v.vibrato_rate = 6.0; v.vibrato_depth = 0.01
+    v.formant_precision = 0.98; v.effort_level = 0.4
+    return v
+
+def voice_ghost() -> VoiceDNA:
+    """Ghost — Eerie whispered with reverb feel (horror / supernatural)."""
+    v = VoiceDNA("Ghost")
+    v.base_f0 = 145.0; v.f0_range = 0.2; v.rd_mean = 2.3
+    v.speaking_rate = 3.0; v.warmth = 0.3; v.brightness = 0.4
+    v.aspiration_level = 0.07; v.hnr = 10.0
+    v.intensity_range = 3.0; v.effort_level = 0.15
+    v.gender_continuum = 0.5; v.creakiness = 0.1
+    v.f0_variability = 0.02; v.pause_tendency = 0.95
+    return v
+
+def voice_phoenix() -> VoiceDNA:
+    """Phoenix — Rising powerful female (inspirational / TED talk)."""
+    v = VoiceDNA("Phoenix")
+    v.base_f0 = 195.0; v.f0_range = 0.65; v.rd_mean = 0.85
+    v.speaking_rate = 4.5; v.warmth = 0.6; v.brightness = 0.7
+    v.vocal_tract_length = 15.2; v.gender_continuum = 0.15
+    v.emphasis_strength = 1.4; v.intensity_range = 16.0
+    v.effort_level = 0.7; v.age_factor = 0.3
+    v.tempo_variation = 0.12; v.pause_tendency = 0.5
+    v.chest_resonance = 0.7; v.formant_precision = 0.94
+    return v
+
+def voice_ocean() -> VoiceDNA:
+    """Ocean — Deep calming female (meditation / yoga instructor)."""
+    v = VoiceDNA("Ocean")
+    v.base_f0 = 175.0; v.f0_range = 0.25; v.rd_mean = 1.5
+    v.speaking_rate = 3.2; v.warmth = 0.8; v.brightness = 0.3
+    v.vocal_tract_length = 15.5; v.gender_continuum = 0.15
+    v.aspiration_level = 0.04; v.intensity_range = 5.0
+    v.effort_level = 0.25; v.pause_tendency = 0.85
+    v.pause_duration = 0.6; v.f0_variability = 0.05
+    v.breathiness_onset = 0.2; v.rhythm_regularity = 0.3
+    return v
+
+def voice_rebel() -> VoiceDNA:
+    """Rebel — Punk/edgy young (alternative / counter-culture)."""
+    v = VoiceDNA("Rebel")
+    v.base_f0 = 155.0; v.f0_range = 0.5; v.rd_mean = 0.7
+    v.speaking_rate = 5.5; v.warmth = 0.3; v.brightness = 0.8
+    v.gender_continuum = 0.55; v.age_factor = 0.15
+    v.roughness = 0.1; v.jitter = 0.005; v.creakiness = 0.1
+    v.emphasis_strength = 1.3; v.intensity_range = 14.0
+    v.consonant_precision = 0.7; v.vowel_reduction = 0.7
+    v.tempo_variation = 0.15; v.rhythm_regularity = 0.3
+    return v

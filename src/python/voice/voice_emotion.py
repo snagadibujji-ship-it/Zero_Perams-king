@@ -65,6 +65,72 @@ EMOTIONS: Dict[str, EmotionProfile] = {
     "tender": EmotionProfile(
         "tender", 0.95, 0.7, 0.9, 0.3, -3.0, 0.6, 0.5, 0.03,
         "smooth, warm, gentle, breathy"),
+
+    # ═══ 16 NEW EMOTIONS ═══
+
+    "excited": EmotionProfile(
+        "excited", 1.3, 1.6, 1.25, -0.3, 5.0, 0.8, 0.7, 0.0,
+        "very_high_energy, fast, wide_range"),
+
+    "anxious": EmotionProfile(
+        "anxious", 1.15, 1.2, 1.2, 0.0, -1.0, 2.5, 2.0, 0.02,
+        "tense_restless, slightly_fast, unsteady"),
+
+    "confident": EmotionProfile(
+        "confident", 1.05, 1.1, 0.95, -0.2, 2.0, 0.5, 0.5, 0.0,
+        "steady, strong, measured, authoritative"),
+
+    "sarcastic": EmotionProfile(
+        "sarcastic", 1.1, 1.5, 0.9, 0.1, 0.0, 1.0, 1.0, 0.0,
+        "exaggerated_contour, slow_on_key_words"),
+
+    "bored": EmotionProfile(
+        "bored", 0.9, 0.4, 0.85, 0.3, -3.0, 0.8, 0.8, 0.01,
+        "flat, monotone, low_effort, reduced_range"),
+
+    "nostalgic": EmotionProfile(
+        "nostalgic", 0.92, 0.7, 0.85, 0.2, -2.0, 0.9, 0.8, 0.02,
+        "warm, slightly_sad, reflective, gentle"),
+
+    "proud": EmotionProfile(
+        "proud", 1.08, 1.2, 0.9, -0.2, 3.0, 0.6, 0.6, 0.0,
+        "full, resonant, measured, strong"),
+
+    "jealous": EmotionProfile(
+        "jealous", 1.05, 0.9, 1.1, -0.1, 1.0, 1.5, 1.3, 0.0,
+        "tense, slightly_pressed, bitter_edge"),
+
+    "loving": EmotionProfile(
+        "loving", 0.95, 0.8, 0.85, 0.3, -2.0, 0.5, 0.5, 0.03,
+        "warm, soft, breathy, intimate, smooth"),
+
+    "furious": EmotionProfile(
+        "furious", 1.2, 1.5, 1.3, -0.7, 8.0, 3.0, 2.5, 0.0,
+        "extreme_anger, shouting, pressed, rough, maximum_effort"),
+
+    "playful": EmotionProfile(
+        "playful", 1.2, 1.5, 1.15, -0.1, 2.0, 0.7, 0.7, 0.0,
+        "bouncy, varied, sing-song, light"),
+
+    "desperate": EmotionProfile(
+        "desperate", 1.2, 1.3, 1.2, -0.3, 4.0, 2.5, 2.0, 0.02,
+        "strained, urgent, pleading, high_effort"),
+
+    "calm": EmotionProfile(
+        "calm", 0.95, 0.6, 0.85, 0.2, -2.0, 0.5, 0.5, 0.01,
+        "steady, even, peaceful, minimal_variation"),
+
+    "mysterious": EmotionProfile(
+        "mysterious", 0.9, 0.5, 0.8, 0.4, -3.0, 1.0, 0.9, 0.03,
+        "low, slow, breathy, pauses, dark"),
+
+    "manic": EmotionProfile(
+        "manic", 1.3, 2.0, 1.4, -0.3, 5.0, 2.0, 1.5, 0.01,
+        "extremely_fast, wide_swings, unpredictable, high_energy"),
+
+    "seductive": EmotionProfile(
+        "seductive", 0.92, 0.6, 0.8, 0.4, -4.0, 0.5, 0.4, 0.05,
+        "very_breathy, slow, intimate, low, smooth_transitions"),
 }
 
 
