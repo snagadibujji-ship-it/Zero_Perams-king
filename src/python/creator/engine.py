@@ -7,6 +7,13 @@ from typing import List
 from . import SeedParser, GrowthEngine, Seed, Beat
 from .physics import SentencePhysics, WordPhysics, RhymeEngine, CoherenceEngine, STYLE_PRESETS
 
+# V3.0 Narrative Intelligence (graceful fallback)
+try:
+    from .narrative_intelligence import NarrativeIntelligence, get_narrative_intelligence
+except ImportError:
+    NarrativeIntelligence = None
+    get_narrative_intelligence = None
+
 
 class Creator:
     """The AXIMA Content Creator. Grows content from seeds."""
@@ -18,6 +25,8 @@ class Creator:
         self.words = WordPhysics()
         self.rhyme = RhymeEngine()
         self.coherence = CoherenceEngine()
+        # V3.0 Narrative Intelligence (deep literary generation)
+        self.narrative_ai = get_narrative_intelligence() if get_narrative_intelligence else None
 
     def create(self, request: str) -> str:
         """Create content from a user request.
@@ -45,6 +54,20 @@ class Creator:
         elif seed.form == "essay":
             return self._create_essay(seed, beats)
         else:
+            # Use Narrative Intelligence for stories (deep literary generation)
+            if self.narrative_ai:
+                try:
+                    return self.narrative_ai.generate_full_piece(
+                        topic=seed.topic,
+                        form=seed.form,
+                        emotion=seed.emotion,
+                        tension=seed.tension,
+                        style=seed.style,
+                        sentence_engine=self.sentence,
+                        num_beats=len(beats),
+                    )
+                except Exception:
+                    pass  # Fallback to basic engine
             return self._create_story(seed, beats)
 
     def _create_story(self, seed: Seed, beats: List[Beat]) -> str:
