@@ -1,198 +1,274 @@
-# AXIMA CREATOR v2 — The Real Plan (No Word Lists)
+# AXIMA CREATOR v3 — Final Plan (All Weak Points Fixed)
 
-## The Problem With Current Creator
-
-```
-CURRENT: Store 100+ adjectives/verbs in pools → pick from them
-RESULT:  Every story sounds the same. Generic. Doesn't match topic.
-         "A story about cooking" uses same words as "a story about war"
-         THIS IS WORD-LIST THINKING. Violates AXIMA philosophy.
-```
-
-## The Correct Approach
+## Current State: BROKEN
 
 ```
-WORDS COME FROM:
-  1. The USER'S OWN REQUEST (they give us the vocabulary)
-  2. The KNOWLEDGE BASE (facts about the topic provide domain words)
-  3. PHONETIC DERIVATION (transform existing words by sound rules)
+OUTPUT: "In the grow, Losing everything and rising again everything, with"
+THIS IS GARBAGE. Unusable. Must be completely rewritten.
 
-AXIMA NEVER STORES content words.
-AXIMA ONLY STORES grammar rules (sentence structures).
-
-"Write a story about a chef who lost his restaurant"
-  → Words available: chef, lost, restaurant, cook, food, fire, kitchen, taste
-  → These come FROM the request + knowledge lookup
-  → Grammar arranges them: "The chef {verb} the {noun}, {feeling-clause}"
-  → Phonetics picks which verb SOUNDS right for the mood
+ROOT CAUSES:
+  1. Generic word pools don't match topic
+  2. Grammar skeletons filled with random words
+  3. No actual content/narrative generation
+  4. Too short (170 words when 1000 requested)
+  5. No character/event persistence between beats
+  6. No sentence-level quality check
 ```
 
-## The Architecture
+## Weak Points in Previous Plans (FIXED)
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│         CREATOR v2: CONTEXT-DRIVEN GENERATION                │
-├─────────────────────────────────────────────────────────────┤
-│                                                               │
-│  INPUT: "Write a story about a chef who lost his restaurant"  │
-│       ↓                                                       │
-│  ┌─── WORD HARVESTER ────────────────────────────────────┐   │
-│  │                                                        │   │
-│  │  SOURCE 1: User's request                             │   │
-│  │    Extract ALL nouns, verbs, adjectives from input     │   │
-│  │    "chef" "lost" "restaurant"                          │   │
-│  │                                                        │   │
-│  │  SOURCE 2: Knowledge base lookup                       │   │
-│  │    Query: "chef" → "kitchen, cook, fire, taste, knife" │   │
-│  │    Query: "restaurant" → "table, guest, menu, door"    │   │
-│  │    Query: "lost" → "gone, empty, memory, before"       │   │
-│  │    These are RETRIEVED not STORED in Creator            │   │
-│  │                                                        │   │
-│  │  SOURCE 3: Phonetic expansion                          │   │
-│  │    "lost" → words with same dark vowel feel:           │   │
-│  │    (compute from phonetics, not a list)                │   │
-│  │    soft_o sound → "gone", "long", "song", "wrong"     │   │
-│  │    These EMERGE from sound rules                       │   │
-│  │                                                        │   │
-│  │  RESULT: Word pool is BUILT PER REQUEST                │   │
-│  │          Different topic = different words = unique     │   │
-│  │                                                        │   │
-│  └────────────────────────────────────────────────────────┘   │
-│       ↓                                                       │
-│  ┌─── GRAMMAR ENGINE (this is what we STORE) ────────────┐   │
-│  │                                                        │   │
-│  │  Grammar structures (sentence skeletons):              │   │
-│  │    High energy: "{noun} {verb}. {fragment}."           │   │
-│  │    Low energy: "In the {noun}, {subject} {verb}..."    │   │
-│  │                                                        │   │
-│  │  These are UNIVERSAL — work for any topic.             │   │
-│  │  They're GRAMMAR not VOCABULARY.                       │   │
-│  │  Same skeleton + cooking words = cooking story         │   │
-│  │  Same skeleton + war words = war story                 │   │
-│  │                                                        │   │
-│  └────────────────────────────────────────────────────────┘   │
-│       ↓                                                       │
-│  ┌─── COMBINER ──────────────────────────────────────────┐   │
-│  │                                                        │   │
-│  │  Takes: harvested words + grammar skeleton + targets   │   │
-│  │  Produces: sentences that match the TOPIC naturally    │   │
-│  │                                                        │   │
-│  │  "The chef stood in the empty kitchen,                 │   │
-│  │   the taste of fire still on his tongue."              │   │
-│  │                                                        │   │
-│  │  ALL words came from topic context.                    │   │
-│  │  Grammar provided the shape.                           │   │
-│  │  Energy targets chose short vs long structure.         │   │
-│  │                                                        │   │
-│  └────────────────────────────────────────────────────────┘   │
-│                                                               │
+WEAK POINT 1: "Words from knowledge base" — but knowledge has FACTS not STORY words
+  Problem: Knowledge says "gravity is a force" — that doesn't help write a love story
+  FIX: Knowledge provides ASSOCIATED CONCEPTS, not direct text.
+       "scientist" → [lab, experiment, discovery, late nights, equations, failure, breakthrough]
+       These associations are the VOCABULARY POOL for this specific story.
+       If no knowledge match → derive from INPUT words only.
+
+WEAK POINT 2: "Grammar skeletons" still produce robotic output
+  Problem: Even with right words, "The scientist {verb} the {noun}" sounds mechanical
+  FIX: Don't use fill-in-the-blank templates.
+       Instead: SENTENCE TYPES that vary structure:
+       - Simple: "He worked late."
+       - Compound: "He worked late, and the lab grew cold."
+       - Complex: "When the data finally aligned, he understood."
+       - Fragment: "Gone. All of it."
+       - Dialogue: "'It works,' he whispered."
+       Each type is a GRAMMAR RULE, not a template with blanks.
+
+WEAK POINT 3: "Tension physics" sounds nice but HOW does it produce SENTENCES?
+  Problem: "tension_rising" is abstract — what actual words does it generate?
+  FIX: Tension level controls SENTENCE PROPERTIES:
+       Low tension → longer sentences, more description, slower pace
+       High tension → short sentences, action words, fragments
+       Peak → single words, exclamations, reversals
+       This is CONCRETE: tension=0.8 → max sentence length = 6 words.
+
+WEAK POINT 4: No way to generate SPECIFIC content
+  Problem: Can't produce "The scientist adjusted his glasses and looked at the screen"
+           because "glasses" and "screen" aren't in any system
+  FIX: SCENE BUILDING from topic.
+       Topic: "scientist discovers time travel"
+       → Scene elements: scientist(person), lab(place), time machine(object)
+       → Actions: researches, builds, tests, fails, discovers
+       → Details: late night, flickering screens, coffee gone cold, equations on whiteboard
+       These are DERIVED from the topic LOGICALLY, not from word lists.
+       "scientist works in" → logically "lab"
+       "lab has" → logically "equipment, screens, whiteboards"
+       "late work means" → logically "coffee, tired eyes, dim lights"
+
+WEAK POINT 5: Length control doesn't exist
+  Problem: Always produces ~170 words regardless of request
+  FIX: EXPLICIT word budget system.
+       User wants 1000 words → budget = 1000
+       Split across beats: 6 beats × ~166 words each
+       Each beat generates sentences UNTIL its word budget is reached.
+       More beats for longer content, fewer for shorter.
+
+WEAK POINT 6: No dialogue
+  Problem: Stories without dialogue feel like summaries, not stories
+  FIX: DIALOGUE GENERATION:
+       - Characters get names (derived from topic or generated: "the scientist" → "Dr. Karev")
+       - Dialogue lines alternate between characters
+       - Dialogue reveals conflict/emotion (not just information)
+       - Format: "text," character said. (standard fiction format)
+
+WEAK POINT 7: Everything sounds the same
+  Problem: Sad story and happy story use same sentence structures
+  FIX: MOOD → SENTENCE STYLE mapping:
+       Happy: open vowels, rising rhythm, longer sentences, light words
+       Sad: closed sounds, falling rhythm, trailing sentences...
+       Tense: short. Punchy. Fragments. Questions.
+       Peaceful: flowing sentences with commas, and gentle descriptions, like water.
+       THIS is real sentence physics — mood shapes HOW you write, not just WHAT.
+
+WEAK POINT 8: Songs don't rhyme properly  
+  Problem: Current rhyme engine picks random words from sound groups
+  FIX: Rhyme is CONSTRAINED by meaning.
+       End of line 1 → identifies rhyme-possible endings
+       Line 2 is CONSTRUCTED to end with a meaningful rhyme
+       Not: find rhyme word then force it in
+       But: write line 2 knowing it MUST end with X, build toward X
+
+WEAK POINT 9: No sense of "this was written by one mind"
+  Problem: Each sentence feels disconnected from the last
+  FIX: CONNECTIVE TISSUE between sentences:
+       - Pronouns referring back ("He", "This", "That moment")
+       - Cause-effect links ("Because of this... the next thing")
+       - Time progression ("Then", "Later", "By morning")
+       - Repeated motifs (same image returning transformed)
+       Without these, output reads like random sentences. With them, it flows.
+```
+
+## Architecture (Clean)
+
+```
+INPUT: "Write a 1000-word story about a scientist who discovers time travel"
+       ↓
+┌─── STEP 1: PARSE REQUEST ──────────────────────────────────┐
+│  Form: story                                                │
+│  Length: 1000 words                                         │
+│  Topic words: [scientist, discovers, time travel]           │
+│  Emotion: wonder → fear → acceptance                        │
+│  Tension: curiosity vs consequences                         │
 └─────────────────────────────────────────────────────────────┘
+       ↓
+┌─── STEP 2: BUILD WORLD (from topic, not from word lists) ──┐
+│                                                             │
+│  CHARACTERS:                                                │
+│    - protagonist: "the scientist" / "Dr. Karev"            │
+│    - traits: obsessive, brilliant, lonely                   │
+│    (derived from: scientist + discovers = driven person)    │
+│                                                             │
+│  SETTING:                                                   │
+│    - primary: laboratory (logically: scientist → lab)       │
+│    - details: screens, equations, coffee, dim lights        │
+│    (derived from: lab → what labs contain)                  │
+│                                                             │
+│  OBJECTS:                                                   │
+│    - the machine (time travel → needs a device)            │
+│    - the notebook (scientist → records findings)           │
+│    - the photograph (time travel → memory of past)         │
+│    (derived from: what a time travel story needs)          │
+│                                                             │
+│  VOCABULARY (all from world-building, nothing stored):      │
+│    [lab, machine, notebook, data, screen, equations,        │
+│     late night, coffee, flickering, discovery, portal,      │
+│     past, future, consequences, change, regret, return]    │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+       ↓
+┌─── STEP 3: PLOT ARC (beats with word budgets) ─────────────┐
+│                                                             │
+│  Beat 1 (166 words): SETUP — scientist in lab, obsession   │
+│  Beat 2 (166 words): DISCOVERY — it works, wonder          │
+│  Beat 3 (166 words): FIRST USE — goes back, changes thing  │
+│  Beat 4 (166 words): CONSEQUENCE — returns, world changed  │
+│  Beat 5 (166 words): CRISIS — can't fix it, despair       │
+│  Beat 6 (170 words): RESOLUTION — acceptance, learns       │
+│                                                             │
+│  Each beat has: tension_level, emotion, key_event, setting  │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+       ↓
+┌─── STEP 4: GENERATE SENTENCES (per beat, until budget) ────┐
+│                                                             │
+│  For each beat:                                             │
+│    while word_count < budget:                               │
+│      1. Pick sentence TYPE based on tension level:          │
+│         low → description/compound                         │
+│         mid → simple/action                                │
+│         high → fragment/dialogue                           │
+│      2. Pick CONTENT from world vocabulary + beat context   │
+│      3. Add CONNECTIVE to previous sentence                │
+│      4. Check: does this advance the beat's event?         │
+│      5. Vary: don't repeat same structure twice in a row   │
+│                                                             │
+│  SENTENCE TYPES (grammar rules, not templates):             │
+│    DESCRIPTION: [Character] [verb-ed] [at/in] [detail].   │
+│    ACTION: [Character] [verb-ed] [object].                 │
+│    COMPOUND: [Clause], and [clause].                       │
+│    COMPLEX: When [event], [character] [realized/felt].     │
+│    FRAGMENT: [Noun]. [Noun]. [Emotion].                    │
+│    DIALOGUE: "[Speech]," [character] [said-variant].       │
+│    REFLECTION: [Character] [thought-verb] about [concept]. │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+       ↓
+┌─── STEP 5: CONNECT & POLISH ───────────────────────────────┐
+│                                                             │
+│  - Add pronouns (replace repeated character names)         │
+│  - Add time markers between beats ("Later that night...")  │
+│  - Add motif callbacks (opening image returns at end)      │
+│  - Verify word count ±10% of target                        │
+│  - Vary sentence openings (no 3 in a row same start)       │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+       ↓
+OUTPUT: 1000-word story that reads like SOMEONE WROTE IT
 ```
 
-## Word Harvester — How It Works
-
-### Source 1: Extract from user input
-```
-Input: "Write a story about a chef who lost his restaurant in a fire"
-
-Extract by GRAMMAR ROLE (not word type):
-  Nouns (things):      chef, restaurant, fire
-  Verbs (actions):     lost, write
-  Adjectives (traits): (none given)
-  Relations:           chef→lost→restaurant, restaurant→in→fire
-  
-These become the PRIMARY word pool for this story.
-```
-
-### Source 2: Knowledge base association
-```
-For each extracted noun, query knowledge:
-  "chef" → cooking, kitchen, knife, taste, recipe, heat, passion
-  "restaurant" → table, door, guest, night, menu, candle, plate
-  "fire" → flame, smoke, ash, red, burn, destroy, heat, light
-
-For each verb, query knowledge:
-  "lost" → gone, empty, before, memory, once, never again
-
-These ASSOCIATED words become the SECONDARY pool.
-No storage in Creator — pulled from knowledge at runtime.
-```
-
-### Source 3: Phonetic expansion (the AXIMA way)
-```
-For the CORE EMOTION WORD, expand by sound physics:
-
-"lost" has: dark vowel (o), soft ending (st), one syllable
-  → Same SOUND FEEL words (computed, not stored):
-    Rule: words ending in -ost/-ost/-ong/-one have similar darkness
-    "cost", "frost", "gone", "long", "song", "wrong", "stone", "alone"
-    
-These are DERIVED from phonetic rules — not a thesaurus.
-The rules: match vowel darkness + consonant softness + syllable count.
-```
-
-## What We Store (ONLY grammar)
+## For Songs
 
 ```
-STORED (structure — universal):
-  • 30 sentence grammar skeletons (varied by energy level)
-  • 6 arc patterns (story/song/poem/essay/rap/script)
-  • 8 style parameters (Style DNA)
-  • Growth rules (tension must rise before falling)
-  • Coherence rules (thread, callback, variation)
-  • Rhyme computation rules (phonetic matching logic)
-  
-  SIZE: ~10KB of pure grammar/rules
-
-NOT STORED:
-  • No adjectives
-  • No verbs
-  • No nouns
-  • No phrases
-  • No feelings
-  • No descriptions
-  
-  ALL content words come from: user input + knowledge lookup + phonetic derivation
+Same architecture but:
+  - Beats = verse/chorus/bridge (not plot arc)
+  - Chorus REPEATS (generated once, reused)
+  - Lines limited to ~8 words (song phrasing)
+  - RHYME CONSTRAINT: line endings must rhyme (AABB or ABAB)
+  - Build line 2 KNOWING it must end with rhyme of line 1
+  - 100 lines = ~12 sections × 8 lines each
 ```
 
-## Why This Is Better
+## For Poems
 
 ```
-CURRENT CREATOR:
-  "Write a story about cooking" → uses same "shattered/drifted/hollow"
-  "Write a story about war" → uses same "shattered/drifted/hollow"
-  EVERYTHING sounds the same.
-
-NEW CREATOR:
-  "Write a story about cooking" → harvests: kitchen, flame, taste, simmer, spice
-    → "The kitchen simmered with memory, each spice a story untold"
-  
-  "Write a story about war" → harvests: soldier, march, blood, silence, ground
-    → "The soldier marched into silence, blood soaking the ground"
-  
-  EACH topic produces UNIQUE vocabulary from its own context.
+Same architecture but:
+  - Short lines (max 8 words)
+  - IMAGERY focused (sensory details over narrative)
+  - Form constraints: haiku(5-7-5), sonnet(14 lines), free verse
+  - More metaphor, less literal
 ```
 
-## Build Steps
+## What We Need to Build
 
-1. **Word Harvester** — extract nouns/verbs/adj from user input via grammar parsing
-2. **Knowledge Connector** — query knowledge base for associated words per noun
-3. **Phonetic Expander** — derive similar-sounding words from core emotion word
-4. **Remove all stored word pools** from current physics.py
-5. **Combiner** — grammar skeletons + harvested words → sentences
-6. **Test** — same grammar, different topics → different-sounding output
+```
+FILE: src/python/creator/engine_v3.py
 
-## Dependencies
+class CreatorV3:
+    def create(self, request: str) -> str:
+        seed = self.parse_request(request)      # Step 1
+        world = self.build_world(seed)          # Step 2
+        arc = self.plan_arc(seed, world)        # Step 3
+        text = self.generate(arc, world, seed)  # Step 4
+        polished = self.polish(text)            # Step 5
+        return polished
 
-- ACES v2 parser (for extracting grammar roles from input) ← already built!
-- Knowledge Index (for associated word lookup) ← next to build
-- Phonetic rules from Voice module (vowel/consonant classification) ← already built!
+class WorldBuilder:
+    """Derives characters, settings, objects, vocabulary from topic."""
+    def build(self, topic_words, knowledge_engine) -> World
+
+class SentenceGenerator:
+    """Generates sentences from type + world vocabulary + beat context."""
+    def generate(self, sentence_type, vocabulary, context) -> str
+
+class Connector:
+    """Adds pronouns, time markers, motif callbacks."""
+    def connect(self, paragraphs) -> str
+```
 
 ## Success Criteria
 
-- [ ] "Story about cooking" sounds DIFFERENT from "story about war"
-- [ ] ALL content words traceable to user input or knowledge base
-- [ ] Zero stored adjectives/verbs/nouns in the Creator module
-- [ ] Grammar structures are the ONLY stored data (~10KB)
-- [ ] Works for ANY topic (even ones never seen before)
-- [ ] Each generation is UNIQUE (time-seeded selection from harvested pool)
+```
+- [ ] "1000 word story about scientist" → produces 900-1100 words
+- [ ] Every sentence grammatically correct
+- [ ] Characters persist (scientist mentioned throughout, not just once)
+- [ ] Events connect (cause → effect across beats)
+- [ ] NO generic words (no "hollow", "shattered" unless topic is about destruction)
+- [ ] ALL content words traceable to topic or logical derivation
+- [ ] Song produces actual rhyming lines
+- [ ] Different topics produce DIFFERENT vocabulary and feel
+- [ ] Output reads like a PERSON wrote it, not a template engine
+```
+
+## What Makes This Different From Previous Plans
+
+```
+PREVIOUS: "Harvest words then fill grammar skeletons"
+THIS:     "Build a WORLD from the topic, then NARRATE events in that world"
+
+The difference:
+  Previous: picks random verbs from pools → garbage
+  This: derives SPECIFIC actions from SPECIFIC characters in SPECIFIC settings
+
+  "The scientist adjusted his glasses and stared at the screen.
+   The numbers didn't lie. It had worked."
+
+  Every word here is DERIVED:
+    scientist → wears glasses (logical)
+    scientist in lab → has screens (logical)
+    discovers something → checks data → numbers (logical)
+    time travel works → "it had worked" (plot logic)
+
+  NO word pool. Just LOGICAL DERIVATION from the world model.
+```
