@@ -53,6 +53,8 @@ class Axima:
         self._physics = None
         # Brain (lazy load)
         self._brain = None
+        # Inference Engine (lazy load)
+        self._inference = None
 
     def process(self, text: str, mode: str = "deep") -> AximaResponse:
         """Process ANY input in ANY language.
@@ -115,6 +117,13 @@ class Axima:
                 answer = result
                 source = "physics"
                 return answer, source, steps
+
+        # Try Inference Engine (knowledge base — 4.8M facts)
+        result = self._try_inference(query)
+        if result:
+            answer = result
+            source = "knowledge"
+            return answer, source, steps
 
         # Try Brain (if documents are loaded)
         if self._brain:
@@ -187,6 +196,23 @@ class Axima:
             pass
         return None
 
+    def _try_inference(self, query: str) -> Optional[str]:
+        """Try inference engine — 4.8M facts with 7 reasoning rules."""
+        try:
+            if self._inference is None:
+                from inference_engine import get_inference_engine
+                self._inference = get_inference_engine('src/data')
+            result = self._inference.answer(query, max_hops=3)
+            if result and result.answer and len(result.answer) > 10:
+                # Format nicely
+                answer = result.answer
+                if result.hops > 1:
+                    answer += f"\n\n[Derived through {result.hops}-step reasoning]"
+                return answer
+        except:
+            pass
+        return None
+
     def _looks_like_math(self, text: str) -> bool:
         """Quick check if input is math."""
         import re
@@ -216,6 +242,18 @@ class Axima:
     def speak(self, text: str, voice: str = 'nova', emotion: str = 'neutral'):
         """Voice module removed — being rebuilt separately."""
         return []
+
+    def create(self, request: str) -> str:
+        """Create content: stories, songs, poems, rap, essays.
+        
+        Examples:
+            ax.create("Write a story about a detective")
+            ax.create("Write a song about heartbreak")
+            ax.create("Write a 1000 word story about time travel")
+        """
+        from creator.engine_v3 import get_creator_v3
+        creator = get_creator_v3()
+        return creator.create(request)
 
 
 # Singleton
