@@ -765,3 +765,305 @@ class MusicEngine:
                 s = max(-1.0, min(1.0, s))
                 data += struct.pack('<h', int(s * 32767))
             wf.writeframes(data)
+
+
+
+class Orchestra:
+    """Orchestral instruments: strings section, horns, woodwinds, harp."""
+
+    def __init__(self, sample_rate: int = 22050):
+        self.sr = sample_rate
+        self.bowed = BowedString(sample_rate)
+        self.wind = WindInstrument(sample_rate)
+
+    def string_section(self, freq: float, duration_s: float,
+                       size: int = 8) -> List[float]:
+        """Full string section (multiple detuned bowed strings)."""
+        n = int(duration_s * self.sr)
+        output = [0.0] * n
+        for v in range(size):
+            # Each player slightly detuned + different timing
+            detune = 1.0 + (v - size/2) * 0.002
+            delay = int(v * 0.01 * self.sr)  # Stagger entries
+            note = self.bowed.bow(freq * detune, duration_s - delay/self.sr,
+                                  bow_pressure=0.4 + v*0.05,
+                                  vibrato_depth=0.004 + v*0.001)
+            for i in range(len(note)):
+                idx = delay + i
+                if idx < n:
+                    output[idx] += note[i] / size
+        return output
+
+    def french_horn(self, freq: float, duration_s: float) -> List[float]:
+        """French horn (mellow brass, hand-stopped bell)."""
+        n = int(duration_s * self.sr)
+        period = int(self.sr / freq)
+        if period < 2: return [0.0] * n
+        delay = [0.0] * period
+        ptr = 0; z1 = z2 = 0.0
+        output = []
+        for i in range(n):
+            sample = delay[ptr]
+            # Softer lip reed than trumpet
+            lip = math.tanh(3.0 * sample) * 0.6
+            # More filtering (hand in bell = mellow)
+            filt = 0.6*lip + 0.3*z1 + 0.1*z2
+            z2 = z1; z1 = lip
+            delay[ptr] = -filt * 0.94
+            output.append(filt * 0.5)
+            ptr = (ptr + 1) % period
+        return self._env(output, 60, 100)
+
+    def oboe(self, freq: float, duration_s: float) -> List[float]:
+        """Oboe (double reed, nasal quality)."""
+        n = int(duration_s * self.sr)
+        period = int(self.sr / freq)
+        if period < 2: return [0.0] * n
+        delay = [0.0] * period
+        ptr = 0; z1 = 0.0
+        output = []
+        for i in range(n):
+            sample = delay[ptr]
+            # Double reed: sharper nonlinearity
+            reed = sample - 0.7 * sample**3 + 0.3 * sample**5
+            reed = max(-1.0, min(1.0, reed))
+            noise = ((i*0.618)%1.0)*2-1
+            exc = reed * 0.9 + noise * 0.02
+            filt = 0.5*exc + 0.5*z1; z1 = filt
+            delay[ptr] = filt * 0.96
+            output.append(sample * 0.6)
+            ptr = (ptr + 1) % period
+        return self._env(output, 25, 40)
+
+    def harp(self, freq: float, duration_s: float = 3.0) -> List[float]:
+        """Harp string (plucked, long decay, bright)."""
+        ks = KarplusStrong(self.sr)
+        return ks.pluck(freq, duration_s, brightness=0.8, decay=0.9995)
+
+    def timpani(self, freq: float = 80, duration_s: float = 1.5) -> List[float]:
+        """Timpani (tuned kettledrum)."""
+        n = int(duration_s * self.sr)
+        output = []
+        for i in range(n):
+            t = i / self.sr
+            env = math.exp(-t * 4)
+            # Inharmonic membrane modes
+            modes = [1.0, 1.504, 1.742, 2.0, 2.295]
+            sample = 0.0
+            for k, ratio in enumerate(modes):
+                sample += math.sin(2*math.pi*freq*ratio*t) * env / (k+1)
+            if t < 0.005: sample += (1-t/0.005) * 0.5
+            output.append(sample * 0.6)
+        return output
+
+    def _env(self, audio, att_ms, rel_ms):
+        n = len(audio); r = list(audio)
+        att = int(att_ms * self.sr / 1000)
+        rel = int(rel_ms * self.sr / 1000)
+        for i in range(min(att, n)): r[i] *= i / att
+        for i in range(min(rel, n)): r[n-1-i] *= i / rel
+        return r
+
+
+class EthnicInstruments:
+    """World music instruments: sitar, tabla, koto, didgeridoo, kalimba."""
+
+    def __init__(self, sample_rate: int = 22050):
+        self.sr = sample_rate
+
+    def sitar(self, freq: float, duration_s: float = 2.0) -> List[float]:
+        """Indian sitar (sympathetic strings + buzz bridge)."""
+        n = int(duration_s * self.sr)
+        period = int(self.sr / freq)
+        if period < 2: return [0.0] * n
+        # Main string (Karplus-Strong with nonlinear bridge)
+        delay = [((i*0.618)%1.0)*2-1 for i in range(period)]
+        ptr = 0; output = []
+        for i in range(n):
+            sample = delay[ptr]
+            # Buzz bridge nonlinearity (creates sitar's characteristic buzz)
+            if abs(sample) > 0.3:
+                sample = math.copysign(0.3 + (abs(sample)-0.3)*0.2, sample)
+            # Lowpass
+            next_ptr = (ptr+1)%period
+            delay[ptr] = 0.5*(sample + delay[next_ptr]) * 0.998
+            output.append(sample * 0.7)
+            ptr = (ptr+1) % period
+        return output
+
+    def tabla(self, pitch: str = "high", duration_s: float = 0.5) -> List[float]:
+        """Indian tabla (tuned hand drum)."""
+        n = int(duration_s * self.sr)
+        freq = 200 if pitch == "high" else 80
+        output = []
+        for i in range(n):
+            t = i / self.sr
+            env = math.exp(-t * (15 if pitch == "high" else 8))
+            # Membrane modes (slightly inharmonic)
+            s = 0.0
+            modes = [1.0, 1.59, 2.14, 2.3] if pitch == "high" else [1.0, 1.5, 2.0]
+            for k, m in enumerate(modes):
+                s += math.sin(2*math.pi*freq*m*t) * env / (k+1)
+            # Attack
+            if t < 0.003: s += (1-t/0.003) * 0.6
+            output.append(s * 0.7)
+        return output
+
+    def koto(self, freq: float, duration_s: float = 2.0) -> List[float]:
+        """Japanese koto (plucked zither with bridge)."""
+        ks = KarplusStrong(self.sr)
+        # Koto: bright pluck + slight detuning of overtones
+        note = ks.pluck(freq, duration_s, brightness=0.9, decay=0.997)
+        # Add slight "twang" (bridge effect)
+        for i in range(min(100, len(note))):
+            note[i] *= 1.0 + 0.3 * math.exp(-i/20.0)
+        return note
+
+    def didgeridoo(self, freq: float = 65, duration_s: float = 4.0) -> List[float]:
+        """Australian didgeridoo (drone tube)."""
+        n = int(duration_s * self.sr)
+        period = int(self.sr / freq)
+        if period < 2: return [0.0] * n
+        delay = [0.0] * period
+        ptr = 0; z1 = 0.0; output = []
+        for i in range(n):
+            sample = delay[ptr]
+            # Lip buzz + harmonics
+            lip = math.tanh(2.0 * sample + 0.3*math.sin(i*0.01)) * 0.7
+            # Heavy filtering (long tube = fundamental dominates)
+            filt = 0.7*lip + 0.3*z1; z1 = filt
+            delay[ptr] = -filt * 0.97
+            # Add drone modulation
+            mod = 1.0 + 0.1*math.sin(2*math.pi*2.0*i/self.sr)
+            output.append(sample * mod * 0.5)
+            ptr = (ptr+1)%period
+        return output
+
+    def kalimba(self, freq: float, duration_s: float = 2.0) -> List[float]:
+        """African kalimba (thumb piano)."""
+        n = int(duration_s * self.sr)
+        output = []
+        for i in range(n):
+            t = i / self.sr
+            env = math.exp(-t * 3)
+            # Tine vibration (nearly pure tone + slight inharmonicity)
+            s = math.sin(2*math.pi*freq*t) * env
+            s += math.sin(2*math.pi*freq*2.01*t) * env * 0.3
+            s += math.sin(2*math.pi*freq*3.02*t) * env * 0.1
+            # Click attack
+            if t < 0.002: s += (1-t/0.002) * 0.4
+            output.append(s * 0.6)
+        return output
+
+
+class ElectronicSounds:
+    """Electronic/EDM sounds: 808, acid bass, supersaw, arp, wobble."""
+
+    def __init__(self, sample_rate: int = 22050):
+        self.sr = sample_rate
+
+    def tr808_kick(self, duration_s: float = 0.8) -> List[float]:
+        """Roland TR-808 style kick (deep sub bass sweep)."""
+        n = int(duration_s * self.sr)
+        output = []
+        for i in range(n):
+            t = i / self.sr
+            # Deep pitch sweep (starts at 300Hz, drops to 30Hz)
+            freq = 30 + 270 * math.exp(-t * 40)
+            env = math.exp(-t * 5)
+            sample = math.sin(2*math.pi*freq*t) * env
+            # Add sub-harmonic
+            sample += math.sin(2*math.pi*30*t) * env * 0.5
+            # Transient click
+            if t < 0.003: sample += (1-t/0.003) * 0.7
+            output.append(sample * 0.9)
+        return output
+
+    def acid_bass(self, freq: float, duration_s: float = 0.3,
+                  cutoff_sweep: float = 0.8, resonance: float = 0.7) -> List[float]:
+        """TB-303 acid bass (saw + resonant filter sweep)."""
+        n = int(duration_s * self.sr)
+        output = []; z1 = z2 = 0.0
+        for i in range(n):
+            t = i / self.sr
+            progress = i / n
+            # Saw oscillator
+            phase = (freq * t) % 1.0
+            saw = 2.0 * phase - 1.0
+            # Filter sweep (high → low)
+            cutoff = freq * (2 + cutoff_sweep * 10 * math.exp(-progress * 8))
+            # Resonant lowpass (state variable filter)
+            f = 2.0 * math.sin(math.pi * min(cutoff/self.sr, 0.49))
+            q = 1.0 - resonance * 0.9
+            hp = saw - z1 - q * z2
+            bp = hp * f + z2
+            lp = bp * f + z1
+            z1 = lp; z2 = bp
+            # Envelope
+            env = math.exp(-progress * 3)
+            output.append(lp * env * 0.6)
+        return output
+
+    def supersaw(self, freq: float, duration_s: float,
+                 num_oscs: int = 7, detune: float = 0.01) -> List[float]:
+        """JP-8000 style supersaw (many detuned saws)."""
+        n = int(duration_s * self.sr)
+        output = []
+        detunes = [(i - num_oscs//2) * detune for i in range(num_oscs)]
+        for i in range(n):
+            t = i / self.sr
+            sample = 0.0
+            for d in detunes:
+                phase = (freq * (1+d) * t) % 1.0
+                sample += (2.0*phase - 1.0) / num_oscs
+            # Envelope
+            att = min(1.0, t / 0.02)
+            rel_t = duration_s - t
+            rel = min(1.0, rel_t / 0.05) if rel_t < 0.05 else 1.0
+            output.append(sample * att * rel * 0.5)
+        return output
+
+    def wobble_bass(self, freq: float, duration_s: float,
+                    lfo_rate: float = 4.0) -> List[float]:
+        """Dubstep wobble bass (filtered saw with LFO)."""
+        n = int(duration_s * self.sr)
+        output = []; z1 = 0.0
+        for i in range(n):
+            t = i / self.sr
+            # Saw oscillator
+            phase = (freq * t) % 1.0
+            saw = 2.0 * phase - 1.0
+            # LFO modulates filter cutoff
+            lfo = (math.sin(2*math.pi*lfo_rate*t) + 1.0) * 0.5
+            cutoff = freq * (1 + lfo * 8)
+            # One-pole filter
+            alpha = min(0.99, 2*math.pi*cutoff/self.sr)
+            z1 = z1*(1-alpha) + saw*alpha
+            output.append(z1 * 0.7)
+        return output
+
+    def arp(self, notes: List[int], duration_s: float,
+            rate: float = 8.0, waveform: str = "saw") -> List[float]:
+        """Arpeggiator (cycle through notes at rate)."""
+        n = int(duration_s * self.sr)
+        note_dur = 1.0 / rate  # seconds per note
+        output = []
+        for i in range(n):
+            t = i / self.sr
+            # Which note in sequence
+            note_idx = int(t / note_dur) % len(notes)
+            freq = 440.0 * (2.0 ** ((notes[note_idx] - 69) / 12.0))
+            # Within-note position
+            note_t = (t % note_dur) / note_dur
+            # Envelope per note
+            env = math.exp(-note_t * 5)
+            # Waveform
+            phase = (freq * t) % 1.0
+            if waveform == "saw":
+                sample = (2.0*phase - 1.0) * env
+            elif waveform == "square":
+                sample = (1.0 if phase < 0.5 else -1.0) * env
+            else:
+                sample = math.sin(2*math.pi*phase) * env
+            output.append(sample * 0.4)
+        return output
