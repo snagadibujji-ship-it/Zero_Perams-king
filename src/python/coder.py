@@ -222,15 +222,16 @@ class AximaCoderUnified:
     def _webpage(self, request: str) -> CodeResult:
         """Generate a single-file HTML website."""
         from web_generator import get_web_generator
-        wg = get_web_generator()
-        html = wg.generate(request)
+        wb = get_web_generator()
+        project = wb.generate(request)
+        html = project.get_full_html()
         return CodeResult(
             kind="webpage",
             code=html,
             language="html",
             files={"index.html": html},
-            explanation=f"Complete HTML page ({len(html)} chars). Open index.html in any browser.",
-            metadata={"source": "web_generator"}
+            explanation=f"Complete {project.framework} page ({len(html)} chars). Open index.html in browser.",
+            metadata={"source": "web_generator", "framework": project.framework, "project": project}
         )
 
 
