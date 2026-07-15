@@ -306,6 +306,17 @@ def get_voice(name: str) -> Optional[VoiceDNA]:
         VOICES['phoenix'] = voice_phoenix()
         VOICES['ocean'] = voice_ocean()
         VOICES['rebel'] = voice_rebel()
+        # BATCH 3: 10 MORE SPECIALTY VOICES
+        VOICES['child'] = voice_child()
+        VOICES['elder'] = voice_elder()
+        VOICES['robot'] = voice_robot()
+        VOICES['demon'] = voice_demon()
+        VOICES['narrator'] = voice_narrator()
+        VOICES['coach'] = voice_coach()
+        VOICES['diva'] = voice_diva()
+        VOICES['soldier'] = voice_soldier()
+        VOICES['poet'] = voice_poet()
+        VOICES['alien'] = voice_alien()
 
     return VOICES.get(name.lower())
 
@@ -547,4 +558,129 @@ def voice_rebel() -> VoiceDNA:
     v.emphasis_strength = 1.3; v.intensity_range = 14.0
     v.consonant_precision = 0.7; v.vowel_reduction = 0.7
     v.tempo_variation = 0.15; v.rhythm_regularity = 0.3
+    return v
+
+
+
+# ═══════════════════════════════════════════════════════════════
+# BATCH 3: 10 MORE SPECIALTY VOICES (total: 38)
+# ═══════════════════════════════════════════════════════════════
+
+def voice_child() -> VoiceDNA:
+    """Child — Young child voice (6-10 years old, stories/games)."""
+    v = VoiceDNA("Child")
+    v.base_f0 = 300.0; v.f0_range = 0.8; v.rd_mean = 0.9
+    v.speaking_rate = 4.8; v.warmth = 0.4; v.brightness = 0.8
+    v.vocal_tract_length = 12.0; v.gender_continuum = 0.3
+    v.age_factor = 0.0; v.jitter = 0.003; v.shimmer = 0.002
+    v.f0_variability = 0.18; v.emphasis_strength = 1.3
+    v.rhythm_regularity = 0.3; v.vowel_reduction = 0.3
+    return v
+
+def voice_elder() -> VoiceDNA:
+    """Elder — Elderly voice (grandparent, 80+ years, wise/frail)."""
+    v = VoiceDNA("Elder")
+    v.base_f0 = 115.0; v.f0_range = 0.3; v.rd_mean = 1.8
+    v.speaking_rate = 3.0; v.warmth = 0.7; v.brightness = 0.3
+    v.vocal_tract_length = 17.5; v.gender_continuum = 0.6
+    v.age_factor = 1.0; v.jitter = 0.012; v.shimmer = 0.01
+    v.aspiration_level = 0.05; v.creakiness = 0.2
+    v.pause_tendency = 0.9; v.pause_duration = 0.4
+    v.effort_level = 0.3; v.tremor_rate = 3.0
+    return v
+
+def voice_robot() -> VoiceDNA:
+    """Robot — Synthetic/mechanical voice (Siri/HAL 9000 zone)."""
+    v = VoiceDNA("Robot")
+    v.base_f0 = 150.0; v.f0_range = 0.1; v.rd_mean = 0.7
+    v.speaking_rate = 4.5; v.warmth = 0.1; v.brightness = 0.8
+    v.gender_continuum = 0.5; v.jitter = 0.0; v.shimmer = 0.0
+    v.f0_variability = 0.0; v.rhythm_regularity = 1.0
+    v.formant_precision = 1.0; v.consonant_precision = 1.0
+    v.coarticulation_degree = 0.2; v.aspiration_level = 0.0
+    v.emphasis_strength = 0.3; v.tempo_variation = 0.0
+    return v
+
+def voice_demon() -> VoiceDNA:
+    """Demon — Deep growling dark (horror/game villain)."""
+    v = VoiceDNA("Demon")
+    v.base_f0 = 65.0; v.f0_range = 0.4; v.rd_mean = 0.4
+    v.speaking_rate = 2.5; v.warmth = 0.5; v.brightness = 0.3
+    v.vocal_tract_length = 22.0; v.gender_continuum = 1.0
+    v.roughness = 0.4; v.jitter = 0.015; v.shimmer = 0.012
+    v.creakiness = 0.3; v.subglottal_coupling = 0.15
+    v.effort_level = 0.9; v.spectral_tilt = -6.0
+    v.pressed_phonation = 0.4; v.diplophonia = 0.1
+    return v
+
+def voice_narrator() -> VoiceDNA:
+    """Narrator — Perfect audiobook narrator (clear, engaging, versatile)."""
+    v = VoiceDNA("Narrator")
+    v.base_f0 = 125.0; v.f0_range = 0.55; v.rd_mean = 1.0
+    v.speaking_rate = 4.0; v.warmth = 0.65; v.brightness = 0.55
+    v.vocal_tract_length = 17.5; v.gender_continuum = 0.65
+    v.age_factor = 0.4; v.formant_precision = 0.95
+    v.consonant_precision = 0.92; v.emphasis_strength = 1.1
+    v.tempo_variation = 0.1; v.coarticulation_degree = 0.65
+    v.pause_tendency = 0.6; v.preboundary_lengthening = 1.4
+    return v
+
+def voice_coach() -> VoiceDNA:
+    """Coach — Motivational speaker (Tony Robbins / sports coach)."""
+    v = VoiceDNA("Coach")
+    v.base_f0 = 135.0; v.f0_range = 0.7; v.rd_mean = 0.7
+    v.speaking_rate = 5.0; v.warmth = 0.5; v.brightness = 0.75
+    v.gender_continuum = 0.8; v.effort_level = 0.8
+    v.emphasis_strength = 1.8; v.intensity_range = 20.0
+    v.tempo_variation = 0.18; v.pause_tendency = 0.4
+    v.f0_variability = 0.15; v.pressed_phonation = 0.15
+    v.rhythm_regularity = 0.5; v.chest_resonance = 0.8
+    return v
+
+def voice_diva() -> VoiceDNA:
+    """Diva — Powerful female singer (Beyoncé / Whitney zone)."""
+    v = VoiceDNA("Diva")
+    v.base_f0 = 230.0; v.f0_range = 0.9; v.rd_mean = 0.75
+    v.speaking_rate = 4.2; v.warmth = 0.6; v.brightness = 0.8
+    v.vocal_tract_length = 14.5; v.gender_continuum = 0.05
+    v.vibrato_rate = 6.0; v.vibrato_depth = 0.012
+    v.effort_level = 0.8; v.harmonic_richness = 1.0
+    v.emphasis_strength = 1.5; v.chest_resonance = 0.8
+    v.head_voice_mix = 0.4; v.intensity_range = 18.0
+    return v
+
+def voice_soldier() -> VoiceDNA:
+    """Soldier — Military crisp authoritative (drill sergeant)."""
+    v = VoiceDNA("Soldier")
+    v.base_f0 = 120.0; v.f0_range = 0.3; v.rd_mean = 0.5
+    v.speaking_rate = 5.5; v.warmth = 0.3; v.brightness = 0.7
+    v.gender_continuum = 0.9; v.effort_level = 0.9
+    v.consonant_precision = 1.0; v.rhythm_regularity = 0.8
+    v.emphasis_strength = 1.5; v.pressed_phonation = 0.3
+    v.intensity_range = 8.0; v.vowel_reduction = 0.4
+    v.tempo_variation = 0.03; v.pause_duration = 0.15
+    return v
+
+def voice_poet() -> VoiceDNA:
+    """Poet — Lyrical expressive (poetry reading, literary)."""
+    v = VoiceDNA("Poet")
+    v.base_f0 = 140.0; v.f0_range = 0.6; v.rd_mean = 1.2
+    v.speaking_rate = 3.5; v.warmth = 0.7; v.brightness = 0.5
+    v.gender_continuum = 0.5; v.age_factor = 0.4
+    v.emphasis_strength = 1.2; v.tempo_variation = 0.2
+    v.pause_tendency = 0.8; v.pause_duration = 0.5
+    v.preboundary_lengthening = 1.6; v.f0_variability = 0.14
+    v.coarticulation_degree = 0.75; v.rhythm_regularity = 0.2
+    return v
+
+def voice_alien() -> VoiceDNA:
+    """Alien — Otherworldly non-human (sci-fi, extraterrestrial)."""
+    v = VoiceDNA("Alien")
+    v.base_f0 = 180.0; v.f0_range = 0.9; v.rd_mean = 1.5
+    v.speaking_rate = 3.8; v.warmth = 0.2; v.brightness = 0.6
+    v.vocal_tract_length = 12.0; v.gender_continuum = 0.5
+    v.nasality = 0.3; v.jitter = 0.008; v.shimmer = 0.006
+    v.vibrato_rate = 8.0; v.vibrato_depth = 0.02
+    v.f0_variability = 0.2; v.coarticulation_degree = 0.3
+    v.rhythm_regularity = 0.1; v.diplophonia = 0.05
     return v
