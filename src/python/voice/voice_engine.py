@@ -25,6 +25,7 @@ from voice_linguist import Linguist
 from voice_humanizer import Humanizer
 from voice_dna import VoiceDNA, get_voice, list_voices
 from voice_emotion import EmotionEngine
+from voice_polish import AudioPolisher
 
 
 class AximaVoice:
@@ -50,6 +51,7 @@ class AximaVoice:
         self.linguist = Linguist()
         self.humanizer = Humanizer(sample_rate)
         self.emotion = EmotionEngine()
+        self.polisher = AudioPolisher(sample_rate)
 
         # Neural backend (loaded on demand)
         self._neural = None
@@ -110,7 +112,13 @@ class AximaVoice:
         audio = apply_radiation(audio)
 
         # Step 5: Humanize (aspiration + drift + micro-variation)
-        audio = self.humanizer.humanize(audio)
+        audio = self.humanizer.humanize(audio, aspiration=0.035, 
+                                         drift_amount=0.02,
+                                         micro_variation=0.004)
+
+        # Step 5.5: Professional polish (EQ + compression + de-essing)
+        audio = self.polisher.polish(audio, presence=2.5, warmth=1.8,
+                                      compression=0.35, deess=0.4)
 
         # Step 6: Normalize and scale
         audio = self._normalize(audio)
@@ -243,9 +251,16 @@ class AximaVoice:
 
             # Generate source signal
             if seg['voiced'] and not seg['stop']:
-                # Voiced: use glottal source
-                source = self.source.generate(dur_samples, f0, self.rd,
-                                             jitter=0.003, shimmer=0.003)
+                # Voiced: use glottal source with F0 micro-prosody
+                # Add Perlin-style pitch variation (THE key to naturalness)
+                f0_varied = f0
+                if f0 > 0:
+                    # Micro-prosody: ±3% smooth F0 variation per frame
+                    t = len(audio) / self.sr
+                    drift = self.humanizer._perlin_1d(t * 4.0 + 7.77)
+                    f0_varied = f0 * (1.0 + drift * 0.03)
+                source = self.source.generate(dur_samples, f0_varied, self.rd,
+                                             jitter=0.004, shimmer=0.003)
             elif seg['fricative']:
                 # Fricative: noise source
                 if seg['voiced']:
@@ -260,8 +275,14 @@ class AximaVoice:
                 # Stop consonant: silence + burst + aspiration
                 source = self._generate_stop(seg, dur_samples)
             else:
-                # Silence
-                source = [0.0] * dur_samples
+                # Silence — add subtle breath at long pauses
+                if seg['duration_ms'] > 100:
+                    breath = self.humanizer.add_breath(
+                        duration_ms=min(seg['duration_ms'] * 0.4, 80),
+                        intensity=0.015)
+                    source = breath + [0.0] * max(0, dur_samples - len(breath))
+                else:
+                    source = [0.0] * dur_samples
 
             # Filter through vocal tract (with interpolation to next phoneme)
             # Split: 70% stable, 30% transition to next
