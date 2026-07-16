@@ -31,6 +31,7 @@ class AximaResponse:
     mode: str = "deep"           # Explanation mode used
     has_formula: bool = False
     steps: list = None           # Step-by-step if available
+    truth: object = None         # TruthLabel — what kind of answer this is
 
 
 class Axima:
@@ -84,6 +85,13 @@ class Axima:
         else:
             shaped = answer
 
+        # Tag with truth label
+        from truth import tag_response
+        truth = tag_response(
+            shaped, source=source, confidence=lang_result.confidence,
+            hops=0, is_template=(source in ('coder', 'web', 'creator'))
+        )
+
         return AximaResponse(
             answer=shaped,
             language=lang_result.language,
@@ -94,6 +102,7 @@ class Axima:
             mode=mode,
             has_formula='=' in answer if answer else False,
             steps=steps,
+            truth=truth,
         )
 
     def _route_and_solve(self, query: str, intent: str, mode: str):

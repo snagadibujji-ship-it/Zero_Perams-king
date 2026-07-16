@@ -1,0 +1,17 @@
+[
+  {"input": "gravity ante enti", "expected": "te"},
+  {"input": "gravity kya hai", "expected": "hi"},
+  {"input": "gravity enna", "expected": "ta"},
+  {"input": "gravity nedir", "expected": "tr"},
+  {"input": "gravity কী", "expected": "bn"},
+  {"input": "gravity って何", "expected": "ja"},
+  {"input": "gravity ma hia", "expected": "ar"},
+  {"input": "gravity chemu", "expected": "te"},
+  {"input": "What is gravity", "expected": "en"},
+  {"input": "DNA kya hota hai", "expected": "hi"},
+  {"input": "photosynthesis ante", "expected": "te"},
+  {"input": "energia que es", "expected": "es"},
+  {"input": "gravité c'est quoi", "expected": "fr"},
+  {"input": "Schwerkraft was ist", "expected": "de"},
+  {"input": "gravity enthu aanu", "expected": "ml"}
+]

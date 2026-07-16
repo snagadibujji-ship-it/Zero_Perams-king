@@ -1,0 +1,12 @@
+[
+  {"input": "binary search in python", "expected": ["def ", "while", "mid"]},
+  {"input": "quicksort in python", "expected": ["def ", "pivot"]},
+  {"input": "fibonacci in python", "expected": ["def ", "fib"]},
+  {"input": "linked list in python", "expected": ["class ", "next"]},
+  {"input": "stack in python", "expected": ["push", "pop"]},
+  {"input": "merge sort in javascript", "expected": ["function", "merge"]},
+  {"input": "bubble sort in python", "expected": ["def ", "swap"]},
+  {"input": "binary tree in python", "expected": ["class ", "left", "right"]},
+  {"input": "hash map in python", "expected": ["def ", "key"]},
+  {"input": "dijkstra in python", "expected": ["def ", "dist"]}
+]

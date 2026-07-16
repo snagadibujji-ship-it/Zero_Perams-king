@@ -1,0 +1,22 @@
+[
+  {"input": "solve x^2 - 4 = 0", "expected": ["2", "-2"]},
+  {"input": "solve 2x + 6 = 0", "expected": ["-3"]},
+  {"input": "what is the derivative of x^3", "expected": ["3x^2", "3x²"]},
+  {"input": "integrate 2x dx", "expected": ["x^2", "x²"]},
+  {"input": "what is 15 * 7", "expected": ["105"]},
+  {"input": "what is sqrt(144)", "expected": ["12"]},
+  {"input": "solve x^2 + 2x + 1 = 0", "expected": ["-1"]},
+  {"input": "what is 2^10", "expected": ["1024"]},
+  {"input": "what is the factorial of 5", "expected": ["120"]},
+  {"input": "what is sin(0)", "expected": ["0"]},
+  {"input": "what is cos(0)", "expected": ["1"]},
+  {"input": "solve 3x - 9 = 0", "expected": ["3"]},
+  {"input": "what is log(100)", "expected": ["2"]},
+  {"input": "what is 17 + 28", "expected": ["45"]},
+  {"input": "what is 100 / 4", "expected": ["25"]},
+  {"input": "what is pi to 2 decimal places", "expected": ["3.14"]},
+  {"input": "what is e to 2 decimal places", "expected": ["2.71"]},
+  {"input": "solve x^2 - 9 = 0", "expected": ["3", "-3"]},
+  {"input": "what is the GCD of 12 and 18", "expected": ["6"]},
+  {"input": "what is 7 mod 3", "expected": ["1"]}
+]
