@@ -71,7 +71,11 @@ class Axima:
         lang_result = self.lang_engine.process(text)
 
         # Step 2: Get English query
-        english_q = lang_result.english_query or text
+        # For English input, use original text (multilingual parser can mangle math/code)
+        if lang_result.language == 'en':
+            english_q = text
+        else:
+            english_q = lang_result.english_query or text
 
         # Step 3: Route to the right engine
         answer, source, steps = self._route_and_solve(english_q, lang_result.intent, mode)
@@ -155,16 +159,45 @@ class Axima:
             if self._math is None:
                 from prometheus import get_prometheus
                 self._math = get_prometheus()
-            result = self._math.solver(query)
+            
+            import re
+            expr = query.rstrip('?').strip()
+            
+            # Structural rule: strip everything before the math expression
+            # Math starts at: a digit, a variable (x,y,z), a function name (sin,sqrt,log), or operator
+            match = re.search(r'(\d|[xyz]\s*[+\-*/^=]|sqrt|sin|cos|tan|log|ln|factorial|integrate|derivative|GCD|LCM|\d+\s*mod)', expr, re.IGNORECASE)
+            if match:
+                # Keep from where math starts
+                math_start = match.start()
+                # But also keep keyword before it (like "derivative of", "factorial of")
+                before = expr[:math_start].lower().strip()
+                if before.endswith(' of'):
+                    expr = expr[math_start - 3:].strip()  # keep "of X"
+                    expr = re.sub(r'^of\s+', '', expr)
+                    # Prepend the math keyword
+                    keyword_match = re.search(r'(derivative|integral|integrate|factorial|gcd|lcm)', before)
+                    if keyword_match:
+                        expr = keyword_match.group(1) + ' of ' + expr
+                else:
+                    expr = expr[math_start:]
+            
+            # Try expression
+            result = self._math.process(expr)
             if result:
-                if isinstance(result, dict):
-                    ans = result.get('answer', result.get('result', str(result)))
-                    explanation = result.get('explanation', '')
-                    if explanation:
-                        return f"{ans}\n\n{explanation}"
-                    return str(ans)
-                return str(result)
-        except:
+                r = str(result).strip()
+                first_line = r.split('\n')[0]
+                # Validate: must not be just echoing a word, must contain useful content
+                if first_line and len(first_line) > 0 and first_line != expr.split()[0]:
+                    return r
+            
+            # Fallback: try full query
+            result = self._math.process(query)
+            if result:
+                r = str(result).strip()
+                first_line = r.split('\n')[0]
+                if first_line and first_line != query.split()[0]:
+                    return r
+        except Exception:
             pass
         return None
 
@@ -225,9 +258,23 @@ class Axima:
     def _looks_like_math(self, text: str) -> bool:
         """Quick check if input is math."""
         import re
-        if re.search(r'\d+\s*[+\-*/^]\s*\d+', text):
+        low = text.lower()
+        # Direct arithmetic: "15 * 7", "2^10"
+        if re.search(r'\d+\s*[+\-*/^%]\s*\d+', text):
             return True
-        if re.search(r'\b(solve|calculate|compute|integral|derivative|factor)\b', text.lower()):
+        # Math keywords
+        if re.search(r'\b(solve|calculate|compute|integral|integrate|derivative|factor|simplify)\b', low):
+            return True
+        # Math functions: sqrt, sin, cos, log, factorial, gcd
+        if re.search(r'\b(sqrt|sin|cos|tan|log|ln|factorial|gcd|lcm|mod)\b', low):
+            return True
+        # "what is X" where X looks numeric/mathematical
+        if re.match(r'what\s+is\s+', low):
+            after = re.sub(r'^what\s+is\s+(the\s+)?', '', low)
+            if re.search(r'\d|[+\-*/^]|sqrt|sin|cos|log|pi|factorial|gcd|derivative|integral', after):
+                return True
+        # Contains equation markers
+        if '=' in text and re.search(r'[xyz]\s*[+\-*/^=]', low):
             return True
         return False
 

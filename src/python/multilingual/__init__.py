@@ -103,7 +103,7 @@ TAMIL_PATTERNS = [
 # Telugu function words (for detection, NOT translation)
 TELUGU_MARKERS = {
     'ante', 'enti', 'emi', 'emiti', 'ela', 'enduku', 'cheppu', 'cheppandi',
-    'chepu', 'chepp', 'chep',  # Abbreviated forms
+    'chepu', 'chepp', 'chep', 'chemu',  # Abbreviated forms
     'gurinchi', 'cheyyi', 'cheyyandi', 'valla', 'kosam', 'lo', 'ki', 'tho',
     'mariyu', 'kani', 'kabatti', 'appudu', 'ippudu', 'akkada', 'ikkada',
     'tundi', 'taru', 'tanu', 'tunnaru', 'andi', 'garu', 'meeru', 'nenu',
@@ -188,15 +188,33 @@ PORTUGUESE_MARKERS = {
 # Arabic function words (Romanized/Franco-Arabic: numbers+letters)
 ARABIC_MARKERS = {
     'shu', 'sho', 'eish', 'esh', 'keef', 'kif', 'lesh', 'leish',
-    'howa', 'hiya', 'hum', 'ana', 'inta', 'inti', 'ihna', 'intu',
+    'howa', 'hiya', 'hia', 'hum', 'ana', 'inta', 'inti', 'ihna', 'intu',
     'fi', 'min', 'ila', 'ala', 'ma3', 'bidun', 'ba3d', 'abl',
     'el', 'al',  # Arabic definite article — very common
     'la', 'mish', 'mush', 'bas', 'laken', 'aw', 'wa',
     'yani', 'tab', 'tayyib', 'khalas', 'inshallah', 'wallah',
     'mumkin', 'lazim', 'biddi', 'abgha', 'abbi',
     'shareh', 'guli', 'e7sb', 'a3tini', 'faser',
+    'ma', 'huwa', 'maahu',  # "what is it"
     '2', '3', '7', '5',  # Franco-Arabic numbers as letters
 }
+
+# Turkish function words (Romanized)
+TURKISH_MARKERS = {
+    'nedir', 'neden', 'nasil', 'nasıl', 'ne', 'kim', 'nere', 'nerede',
+    'mi', 'mu', 'mı', 'dir', 'dır', 'dur', 'ise', 'ama', 'fakat',
+    'bir', 'bu', 'su', 'o', 'ben', 'sen', 'biz', 'siz', 'onlar',
+    'var', 'yok', 'icin', 'ile', 'gibi', 'kadar', 'bile', 'daha',
+    'cok', 'az', 'iyi', 'kotu', 'buyuk', 'kucuk', 'evet', 'hayir',
+    'anlat', 'acikla', 'hesapla', 'soyle', 'goster',
+}
+
+TURKISH_PATTERNS = [
+    (r'(.+?)\s+nedir\s*\??', 'what_is', 1),
+    (r'(.+?)\s+ne\s+demek\s*\??', 'what_is', 1),
+    (r'(.+?)\s+nasil\s+(?:calisir|olur)\s*\??', 'how', 1),
+    (r'(.+?)\s+neden\s*\??', 'why', 1),
+]
 
 # Japanese function words (Romanized/Romaji)
 JAPANESE_MARKERS = {
@@ -371,6 +389,7 @@ ALL_LANGUAGE_PATTERNS = {
     'bn': BENGALI_PATTERNS,
     'kn': KANNADA_PATTERNS,
     'ml': MALAYALAM_PATTERNS,
+    'tr': TURKISH_PATTERNS,
 }
 
 ALL_LANGUAGE_MARKERS = {
@@ -388,6 +407,7 @@ ALL_LANGUAGE_MARKERS = {
     'bn': BENGALI_MARKERS,
     'kn': KANNADA_MARKERS,
     'ml': MALAYALAM_MARKERS,
+    'tr': TURKISH_MARKERS,
 }
 # Handle spelling variations in Romanized text
 # ═══════════════════════════════════════════════════════════════
@@ -517,19 +537,31 @@ SCRIPT_RANGES = {
     'te': (0x0C00, 0x0C7F),   # Telugu
     'hi': (0x0900, 0x097F),   # Devanagari
     'ta': (0x0B80, 0x0BFF),   # Tamil
+    'bn': (0x0980, 0x09FF),   # Bengali
     'ar': (0x0600, 0x06FF),   # Arabic
-    'zh': (0x4E00, 0x9FFF),   # Chinese
+    'ja': (0x3040, 0x30FF),   # Japanese Hiragana + Katakana
+    'zh': (0x4E00, 0x9FFF),   # Chinese (CJK Unified)
     'ko': (0xAC00, 0xD7AF),   # Korean
+    'kn': (0x0C80, 0x0CFF),   # Kannada
+    'ml': (0x0D00, 0x0D7F),   # Malayalam
 }
 
 
 def detect_script(text: str) -> Tuple[str, str]:
     """Detect script from Unicode. Returns (language, script_type)."""
+    found_langs = set()
     for char in text:
         code = ord(char)
         for lang, (start, end) in SCRIPT_RANGES.items():
             if start <= code <= end:
-                return lang, "native"
+                found_langs.add(lang)
+    
+    # If Japanese kana found, it's Japanese (even if CJK kanji also present)
+    if 'ja' in found_langs:
+        return 'ja', 'native'
+    # Return first non-latin script found
+    for lang in found_langs:
+        return lang, 'native'
     return "en", "roman"
 
 
