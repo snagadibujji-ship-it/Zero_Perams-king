@@ -617,6 +617,65 @@ class MultilingualEngine:
 
     def _detect_from_patterns(self, text: str) -> Optional[Dict]:
         """Try to match grammar patterns for each language."""
+        # ═══════════════════════════════════════════════════════════
+        # PRIORITY BYPASS: English math/science queries
+        # If text starts with common English question patterns AND
+        # contains math/code symbols, skip multilingual detection.
+        # This prevents false positives from Franco-Arabic digits
+        # ('2','3','5','7') and Hindi marker 'the'.
+        # ═══════════════════════════════════════════════════════════
+        import re as _re
+        lower = text.lower().strip()
+
+        # English question starters + math/numeric content = definitely English
+        english_starters = (
+            'what is', 'what are', 'solve', 'calculate', 'compute',
+            'find', 'integrate', 'derive', 'simplify', 'factor',
+            'how many', 'how much', 'how do', 'how does',
+            'why is', 'why does', 'why do', 'what does',
+            'explain', 'describe', 'compare', 'define',
+            'is there', 'are there', 'can you', 'could you',
+            'tell me', 'show me', 'give me',
+        )
+
+        if any(lower.startswith(s) for s in english_starters):
+            # Contains math indicators → definitely English
+            has_math = bool(_re.search(
+                r'\d+\s*[+\-*/^%]\s*\d+|'           # arithmetic: 15 * 7
+                r'sqrt|sin|cos|tan|log|ln|factorial|'  # functions
+                r'derivative|integral|integrate|'      # calculus
+                r'[xyz]\s*[+\-*/^=]|'                 # variables
+                r'\d+\s*mod\s*\d+|'                   # modulo
+                r'GCD|LCM|'                           # number theory
+                r'pi|euler|'                          # constants
+                r'\b\d+\s+decimal\s+place',           # "N decimal places"
+                lower
+            ))
+            if has_math:
+                return None  # None = English (handled by caller)
+
+            # Mostly English words with no non-English function words → English
+            words = lower.split()
+            has_non_english_structure = False
+            for word in words:
+                # Check if ANY strong non-English marker present (skip weak ones)
+                # Skip digits and common English words that appear in other marker sets
+                if word in ('the', 'a', 'an', 'to', 'of', 'is', 'are', 'it', 'in', 'on', 'or', 'no', 'do', 'if', 'at', 'by'):
+                    continue
+                # Skip pure digits
+                if word.isdigit() or all(c in '0123456789.*+-/^()' for c in word):
+                    continue
+                # Check Telugu/Hindi/Tamil specific markers (strong ones only)
+                strong_te = {'ante', 'enti', 'emi', 'cheppu', 'gurinchi', 'enduku', 'ela'}
+                strong_hi = {'kya', 'hai', 'kaise', 'kyun', 'batao', 'samjhao', 'hain'}
+                strong_ta = {'enna', 'eppadi', 'sollu', 'pathi'}
+                if word in strong_te or word in strong_hi or word in strong_ta:
+                    has_non_english_structure = True
+                    break
+
+            if not has_non_english_structure:
+                return None  # English
+
         # Normalize for matching (handles typos + abbreviations)
         normalized = self.normalizer.normalize(text)
         original_lower = text.lower().strip()

@@ -161,7 +161,7 @@ class KnowledgeGraph:
                                 object=parts[1].strip(),
                                 source="cse"
                             ))
-        except:
+        except (UnicodeDecodeError, IOError):
             pass  # Binary CSE files handled by knowledge_index.py instead
 
     def _load_text(self, path: str):
@@ -210,7 +210,7 @@ class KnowledgeGraph:
                     elif isinstance(val, list):
                         for v in val:
                             self.add_fact(Fact(subject=key, relation="has", object=str(v), source="causal"))
-        except:
+        except (json.JSONDecodeError, IOError, KeyError):
             pass
 
 
