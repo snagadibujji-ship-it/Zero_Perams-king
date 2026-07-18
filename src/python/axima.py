@@ -17,6 +17,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from dataclasses import dataclass
 from typing import Optional
+from tracer import get_tracer
 
 
 @dataclass
@@ -67,34 +68,51 @@ class Axima:
         Returns:
             AximaResponse with answer in user's language and style
         """
-        # Step 1: Detect language + extract intent
-        lang_result = self.lang_engine.process(text)
+        tracer = get_tracer()
 
-        # Step 2: Get English query
-        # For English input, use original text (multilingual parser can mangle math/code)
-        if lang_result.language == 'en':
-            english_q = text
-        else:
-            english_q = lang_result.english_query or text
-
-        # Step 3: Route to the right engine
-        answer, source, steps = self._route_and_solve(english_q, lang_result.intent, mode)
-
-        # Step 4: Shape response in user's language/style
-        if lang_result.language != 'en' and answer:
-            shaped = self.shaper.shape(
-                answer, lang_result.language, lang_result.style,
-                lang_result.intent, lang_result.topic
+        with tracer.trace(text) as t:
+            # Step 1: Detect language + extract intent
+            lang_result = self.lang_engine.process(text)
+            t.record_detection(
+                language=lang_result.language,
+                confidence=lang_result.confidence,
+                english_query=lang_result.english_query,
+                intent=lang_result.intent
             )
-        else:
-            shaped = answer
 
-        # Tag with truth label
-        from truth import tag_response
-        truth = tag_response(
-            shaped, source=source, confidence=lang_result.confidence,
-            hops=0, is_template=(source in ('coder', 'web', 'creator'))
-        )
+            # Step 2: Get English query
+            # For English input, use original text (multilingual parser can mangle math/code)
+            if lang_result.language == 'en':
+                english_q = text
+            else:
+                english_q = lang_result.english_query or text
+
+            # Step 3: Route to the right engine
+            answer, source, steps = self._route_and_solve(english_q, lang_result.intent, mode, t)
+
+            # Step 4: Shape response in user's language/style
+            if lang_result.language != 'en' and answer:
+                shaped = self.shaper.shape(
+                    answer, lang_result.language, lang_result.style,
+                    lang_result.intent, lang_result.topic
+                )
+            else:
+                shaped = answer
+
+            # Tag with truth label
+            from truth import tag_response
+            truth = tag_response(
+                shaped, source=source, confidence=lang_result.confidence,
+                hops=0, is_template=(source in ('coder', 'web', 'creator'))
+            )
+
+            # Record final result in trace
+            t.record_result(
+                answer=shaped or "",
+                status="success" if shaped else "no_answer",
+                source=source,
+                confidence=lang_result.confidence
+            )
 
         return AximaResponse(
             answer=shaped,
@@ -109,7 +127,7 @@ class Axima:
             truth=truth,
         )
 
-    def _route_and_solve(self, query: str, intent: str, mode: str):
+    def _route_and_solve(self, query: str, intent: str, mode: str, trace=None):
         """Route query to the right engine and get answer."""
         answer = ""
         source = "aces"
@@ -117,21 +135,31 @@ class Axima:
 
         # Try Math first (if it looks like math)
         if intent == 'calculate' or self._looks_like_math(query):
+            if trace:
+                trace.record_routing(engine="math", reason=f"intent={intent}" if intent == 'calculate' else "regex match")
             result = self._try_math(query)
             if result:
                 answer = result
                 source = "math"
                 return answer, source, steps
+            if trace:
+                trace.record_fallback("math", "physics", reason="math returned None")
 
         # Try Physics (if physics terms detected)
         if self._looks_like_physics(query):
+            if trace:
+                trace.record_routing(engine="physics", reason="physics keywords detected")
             result = self._try_physics(query)
             if result:
                 answer = result
                 source = "physics"
                 return answer, source, steps
+            if trace:
+                trace.record_fallback("physics", "inference", reason="physics returned None")
 
         # Try Inference Engine (knowledge base — 4.8M facts)
+        if trace:
+            trace.record_routing(engine="inference", reason="default knowledge lookup")
         result = self._try_inference(query)
         if result:
             answer = result
@@ -140,6 +168,8 @@ class Axima:
 
         # Try Brain (if documents are loaded)
         if self._brain:
+            if trace:
+                trace.record_fallback("inference", "brain", reason="inference returned None")
             result = self._try_brain(query)
             if result:
                 answer = result
@@ -147,6 +177,9 @@ class Axima:
                 return answer, source, steps
 
         # Default: ACES explanation
+        if trace:
+            trace.record_fallback("inference", "aces", reason="all engines returned None")
+            trace.record_routing(engine="aces", reason="default fallback")
         aces_result = self.aces.explain(query, mode=mode)
         answer = aces_result.text
         source = "aces"
@@ -161,7 +194,30 @@ class Axima:
                 self._math = get_prometheus()
             
             import re
+            import math as _math_mod
             expr = query.rstrip('?').strip()
+            lower_expr = expr.lower()
+
+            # ─── Special case: constant to N decimal places ───
+            const_match = re.match(
+                r'(?:what\s+is\s+)?(\w+)\s+to\s+(\d+)\s+decimal\s+places?',
+                lower_expr, re.IGNORECASE
+            )
+            if const_match:
+                const_name = const_match.group(1).lower()
+                places = int(const_match.group(2))
+                constants = {
+                    'pi': _math_mod.pi,
+                    'e': _math_mod.e,
+                    'tau': _math_mod.tau,
+                    'phi': (1 + 5**0.5) / 2,
+                }
+                if const_name in constants:
+                    # Truncate to N decimal places (not round)
+                    value = constants[const_name]
+                    factor = 10 ** places
+                    truncated = int(value * factor) / factor
+                    return str(truncated)
             
             # Structural rule: strip everything before the math expression
             # Math starts at: a digit, a variable (x,y,z), a function name (sin,sqrt,log), or operator
@@ -197,8 +253,10 @@ class Axima:
                 first_line = r.split('\n')[0]
                 if first_line and first_line != query.split()[0]:
                     return r
-        except Exception:
-            pass
+        except Exception as e:
+            tracer = get_tracer()
+            if tracer.current:
+                tracer.current.record_error("math", type(e).__name__, str(e))
         return None
 
     def _try_physics(self, query: str) -> Optional[str]:
@@ -224,8 +282,10 @@ class Axima:
                             return f"Domain: {domain} (confidence: {score})"
                     return None
                 return str(result) if str(result) != 'None' else None
-        except:
-            pass
+        except Exception as e:
+            tracer = get_tracer()
+            if tracer.current:
+                tracer.current.record_error("physics", type(e).__name__, str(e))
         return None
 
     def _try_brain(self, query: str) -> Optional[str]:
@@ -234,8 +294,10 @@ class Axima:
             results = self._brain.search(query, top_k=1)
             if results:
                 return results[0].text
-        except:
-            pass
+        except Exception as e:
+            tracer = get_tracer()
+            if tracer.current:
+                tracer.current.record_error("brain", type(e).__name__, str(e))
         return None
 
     def _try_inference(self, query: str) -> Optional[str]:
@@ -251,8 +313,10 @@ class Axima:
                 if result.hops > 1:
                     answer += f"\n\n[Derived through {result.hops}-step reasoning]"
                 return answer
-        except:
-            pass
+        except Exception as e:
+            tracer = get_tracer()
+            if tracer.current:
+                tracer.current.record_error("inference", type(e).__name__, str(e))
         return None
 
     def _looks_like_math(self, text: str) -> bool:
