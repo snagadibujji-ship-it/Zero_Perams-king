@@ -1,0 +1,467 @@
+{
+  "version": "1.0.0",
+  "frozen_at": "2026-07-23T11:33:00Z",
+  "categories": [
+    "math",
+    "multilingual",
+    "codegen"
+  ],
+  "contamination_disclosures": [
+    "Cases derived from standard math textbook problems",
+    "Multilingual cases use common greeting/question patterns",
+    "Codegen cases test well-known algorithm implementations"
+  ],
+  "cases": [
+    {
+      "id": "math_001",
+      "category": "math",
+      "input": "solve x^2 - 4 = 0",
+      "expected_output": "x = ±2",
+      "judge_type": "exact",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "math_002",
+      "category": "math",
+      "input": "solve 2x + 6 = 0",
+      "expected_output": "x = -3",
+      "judge_type": "exact",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "math_003",
+      "category": "math",
+      "input": "what is the derivative of x^3",
+      "expected_output": "3x^2",
+      "judge_type": "exact",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "math_004",
+      "category": "math",
+      "input": "integrate 2x dx",
+      "expected_output": "x^2 + C",
+      "judge_type": "exact",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "math_005",
+      "category": "math",
+      "input": "what is 15 * 7",
+      "expected_output": "105",
+      "judge_type": "exact",
+      "difficulty": "trivial",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "math_006",
+      "category": "math",
+      "input": "what is sqrt(144)",
+      "expected_output": "12",
+      "judge_type": "exact",
+      "difficulty": "trivial",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "math_007",
+      "category": "math",
+      "input": "solve x^2 + 2x + 1 = 0",
+      "expected_output": "x = -1",
+      "judge_type": "exact",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "math_008",
+      "category": "math",
+      "input": "what is 2^10",
+      "expected_output": "1024",
+      "judge_type": "exact",
+      "difficulty": "trivial",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "math_009",
+      "category": "math",
+      "input": "what is the factorial of 5",
+      "expected_output": "120",
+      "judge_type": "exact",
+      "difficulty": "trivial",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "math_010",
+      "category": "math",
+      "input": "what is sin(0)",
+      "expected_output": "0",
+      "judge_type": "exact",
+      "difficulty": "trivial",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "math_011",
+      "category": "math",
+      "input": "what is cos(0)",
+      "expected_output": "1",
+      "judge_type": "exact",
+      "difficulty": "trivial",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "math_012",
+      "category": "math",
+      "input": "solve 3x - 9 = 0",
+      "expected_output": "x = 3",
+      "judge_type": "exact",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "math_013",
+      "category": "math",
+      "input": "what is log(100)",
+      "expected_output": "2",
+      "judge_type": "exact",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "math_014",
+      "category": "math",
+      "input": "what is 17 + 28",
+      "expected_output": "45",
+      "judge_type": "exact",
+      "difficulty": "trivial",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "math_015",
+      "category": "math",
+      "input": "what is 100 / 4",
+      "expected_output": "25",
+      "judge_type": "exact",
+      "difficulty": "trivial",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "math_016",
+      "category": "math",
+      "input": "what is pi to 2 decimal places",
+      "expected_output": "3.14",
+      "judge_type": "tolerance",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "math_017",
+      "category": "math",
+      "input": "what is e to 2 decimal places",
+      "expected_output": "2.71",
+      "judge_type": "tolerance",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "math_018",
+      "category": "math",
+      "input": "solve x^2 - 9 = 0",
+      "expected_output": "x = ±3",
+      "judge_type": "exact",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "math_019",
+      "category": "math",
+      "input": "what is the GCD of 12 and 18",
+      "expected_output": "6",
+      "judge_type": "exact",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "math_020",
+      "category": "math",
+      "input": "what is 7 mod 3",
+      "expected_output": "1",
+      "judge_type": "exact",
+      "difficulty": "trivial",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "multi_001",
+      "category": "multilingual",
+      "input": "gravity ante enti",
+      "expected_output": "te",
+      "judge_type": "exact",
+      "difficulty": "medium",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "multi_002",
+      "category": "multilingual",
+      "input": "gravity kya hai",
+      "expected_output": "hi",
+      "judge_type": "exact",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "multi_003",
+      "category": "multilingual",
+      "input": "gravity enna",
+      "expected_output": "ta",
+      "judge_type": "exact",
+      "difficulty": "medium",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "multi_004",
+      "category": "multilingual",
+      "input": "gravity nedir",
+      "expected_output": "tr",
+      "judge_type": "exact",
+      "difficulty": "medium",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "multi_005",
+      "category": "multilingual",
+      "input": "gravity কী",
+      "expected_output": "bn",
+      "judge_type": "exact",
+      "difficulty": "medium",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "multi_006",
+      "category": "multilingual",
+      "input": "gravity って何",
+      "expected_output": "ja",
+      "judge_type": "exact",
+      "difficulty": "medium",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "multi_007",
+      "category": "multilingual",
+      "input": "gravity ma hia",
+      "expected_output": "ar",
+      "judge_type": "exact",
+      "difficulty": "medium",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "multi_008",
+      "category": "multilingual",
+      "input": "gravity chemu",
+      "expected_output": "te",
+      "judge_type": "exact",
+      "difficulty": "medium",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "multi_009",
+      "category": "multilingual",
+      "input": "What is gravity",
+      "expected_output": "en",
+      "judge_type": "exact",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "multi_010",
+      "category": "multilingual",
+      "input": "DNA kya hota hai",
+      "expected_output": "hi",
+      "judge_type": "exact",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "multi_011",
+      "category": "multilingual",
+      "input": "photosynthesis ante",
+      "expected_output": "te",
+      "judge_type": "exact",
+      "difficulty": "medium",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "multi_012",
+      "category": "multilingual",
+      "input": "energia que es",
+      "expected_output": "es",
+      "judge_type": "exact",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "multi_013",
+      "category": "multilingual",
+      "input": "gravité c'est quoi",
+      "expected_output": "fr",
+      "judge_type": "exact",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "multi_014",
+      "category": "multilingual",
+      "input": "Schwerkraft was ist",
+      "expected_output": "de",
+      "judge_type": "exact",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "multi_015",
+      "category": "multilingual",
+      "input": "gravity enthu aanu",
+      "expected_output": "ml",
+      "judge_type": "exact",
+      "difficulty": "medium",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "codegen_001",
+      "category": "codegen",
+      "input": "binary search in python",
+      "expected_output": "def binary_search",
+      "judge_type": "compilation",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "codegen_002",
+      "category": "codegen",
+      "input": "quicksort in python",
+      "expected_output": "def quicksort",
+      "judge_type": "compilation",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "codegen_003",
+      "category": "codegen",
+      "input": "fibonacci in python",
+      "expected_output": "def fibonacci",
+      "judge_type": "compilation",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "codegen_004",
+      "category": "codegen",
+      "input": "linked list in python",
+      "expected_output": "class Node",
+      "judge_type": "compilation",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "codegen_005",
+      "category": "codegen",
+      "input": "stack in python",
+      "expected_output": "class Stack",
+      "judge_type": "compilation",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "codegen_006",
+      "category": "codegen",
+      "input": "merge sort in javascript",
+      "expected_output": "function mergeSort",
+      "judge_type": "compilation",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "codegen_007",
+      "category": "codegen",
+      "input": "bubble sort in python",
+      "expected_output": "def bubble_sort",
+      "judge_type": "compilation",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "codegen_008",
+      "category": "codegen",
+      "input": "binary tree in python",
+      "expected_output": "class TreeNode",
+      "judge_type": "compilation",
+      "difficulty": "easy",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "codegen_009",
+      "category": "codegen",
+      "input": "hash map in python",
+      "expected_output": "class HashMap",
+      "judge_type": "compilation",
+      "difficulty": "medium",
+      "hidden": false,
+      "source": "manual"
+    },
+    {
+      "id": "codegen_010",
+      "category": "codegen",
+      "input": "dijkstra in python",
+      "expected_output": "def dijkstra",
+      "judge_type": "compilation",
+      "difficulty": "medium",
+      "hidden": false,
+      "source": "manual"
+    }
+  ],
+  "hash": ""
+}

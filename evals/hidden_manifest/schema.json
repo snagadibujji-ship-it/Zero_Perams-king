@@ -1,0 +1,98 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AXIMA Hidden Benchmark Manifest",
+  "description": "Schema for hidden/canary benchmark cases that are not checked into the repository.",
+  "type": "object",
+  "required": ["version", "cases", "frozen_at", "hash"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Semantic version of the hidden manifest.",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "frozen_at": {
+      "type": "string",
+      "description": "ISO 8601 timestamp when the manifest was frozen.",
+      "format": "date-time"
+    },
+    "hash": {
+      "type": "string",
+      "description": "SHA-256 hash of the cases array for integrity verification.",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "mutation_source": {
+      "type": "string",
+      "description": "Version of the public manifest these mutations were derived from."
+    },
+    "contamination_disclosures": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Known contamination risks for these cases."
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/BenchmarkCase"
+      },
+      "minItems": 1
+    }
+  },
+  "definitions": {
+    "BenchmarkCase": {
+      "type": "object",
+      "required": ["id", "category", "input", "expected_output", "judge_type", "difficulty"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique case identifier (e.g., 'hidden_math_001').",
+          "pattern": "^[a-z][a-z0-9_]+$"
+        },
+        "category": {
+          "type": "string",
+          "description": "Domain category.",
+          "enum": ["math", "physics", "codegen", "multilingual", "knowledge", "web", "creative"]
+        },
+        "input": {
+          "type": "string",
+          "description": "The query or problem statement.",
+          "minLength": 1
+        },
+        "expected_output": {
+          "type": "string",
+          "description": "The correct answer or expected structure.",
+          "minLength": 1
+        },
+        "judge_type": {
+          "type": "string",
+          "description": "Evaluation strategy.",
+          "enum": ["exact", "tolerance", "ast", "proof", "compilation", "test", "semantic", "human"]
+        },
+        "difficulty": {
+          "type": "string",
+          "description": "Case difficulty level.",
+          "enum": ["trivial", "easy", "medium", "hard", "frontier"]
+        },
+        "hidden": {
+          "type": "boolean",
+          "description": "Must be true for hidden manifest cases.",
+          "const": true
+        },
+        "source": {
+          "type": "string",
+          "description": "Origin of the case.",
+          "enum": ["manual", "mutation_negate", "mutation_number", "mutation_entity", "mutation_combined"]
+        },
+        "parent_id": {
+          "type": "string",
+          "description": "ID of the public case this was mutated from (if applicable)."
+        },
+        "mutation_type": {
+          "type": "string",
+          "description": "Type of mutation applied.",
+          "enum": ["negate", "change_numbers", "swap_entities", "paraphrase", "combine"]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

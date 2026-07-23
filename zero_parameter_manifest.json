@@ -1,0 +1,207 @@
+{
+  "executable_modules": {
+    "axima_cli.py": "9062ab791eaf6be76e2b7cf6088d7de2996a60d51aac21a367fdb516cfe31d5c",
+    "src/python/axima.py": "70917c8ad9037cd8199fa750bdd22d11e574a05e1843288e1575fe4fd2d2d831",
+    "src/python/axima_coder.py": "067dd5b89168ae59f51f1ad979a94f73c5c6b9905e1190d28809e62c1740e3a5",
+    "src/python/brain_compute.py": "a4cccf3cfe890af96264da239c16c905167f867325fec23fd545c7e8f9dd897f",
+    "src/python/brain_cross.py": "8a754d2130f64022c1867d31450eac5545dde391bcab244a746f6c2a9162d0d6",
+    "src/python/brain_ingest.py": "5f5ad0d9bb8d16ee495618e697e07ab0c174b25434879a51bda34b103c629fef",
+    "src/python/brain_reason.py": "1b2ad367dc367027ca0934020408ac84a5f938f8dd9218b71df6d3e8bf18c193",
+    "src/python/brain_study.py": "91936ee3c301cbde973d80b1758860aa9f61a2007981f8e61e4220da84b326fe",
+    "src/python/brain_tracker.py": "478e97ffb055258f52b76d1be29fa677fe8355e1c3ac4411475b9992a57c3953",
+    "src/python/codegen_engine.py": "0c9414c280a10f8cae193bd150ff822aadf36bd7ac48cc20b72a35bde449b695",
+    "src/python/coder.py": "c0f799d2b3df7e990c74a47f97bab257aed753264361c6e9d3e248e3164d6a0f",
+    "src/python/cosmic_coder.py": "01c69ee3dd19b71ac734ff54a50df646a7e4408cc09a1e2331f579f77d44bbd4",
+    "src/python/errors.py": "2c0fce06719d78cd0e4f8719f5b0f555f07fc430966052d7c916fc24bbb08f6d",
+    "src/python/hybrid_ai.py": "9889230540e70467998c5ccd6e99d40f63bd5b6b700b71e5941080181d23fbed",
+    "src/python/inference_engine.py": "88ee3024d627cd44abc9f36f187dcd7048577455c507e69fd9ac2ca9f23e6e0d",
+    "src/python/knowledge_index.py": "1dd895e8dfb87c86e64230bacbd273c9fb44128c16e18200c08434ade4453b4e",
+    "src/python/prometheus.py": "cf51d2d162f146c4e9c101cc3b90697c18e9224afbe7fbb6fee373b80fad6a23",
+    "src/python/prometheus_advanced.py": "b4453def398f6041a0ef87ae6e44a5da795d49b1afbc4a227a09de3b5d916433",
+    "src/python/prometheus_mind.py": "fe6e297caa053f5337a4daefc26e90a1efc6a12417c7cc50dfd3d6e8e72bde15",
+    "src/python/prometheus_physics.py": "5edd6492d24f1226d0ea06102d86707d36f5d2961c17098c0140679bcea00c65",
+    "src/python/prometheus_physics_math.py": "cceffc81d2562aec847ed6ac7b946b751b257a848565ac859e065cc46b6e3752",
+    "src/python/prometheus_physics_solve.py": "ecf69f52f9d179f918ff5acb362a092fed23495f9303f534780d532e9b431090",
+    "src/python/tracer.py": "38f0edfeb3d08dfdfc10fe935f9e2fb49df3090751281403461c5dce8b6eadea",
+    "src/python/truth.py": "36b2ada0e9e1ef21bc05cf965f4bf4ba63d4b6e18878aaa299c0d957c731f5f7",
+    "src/python/web_beyond.py": "3379fa7aab76f5aa77c4c64655c470f0cb8d5529758915d14be9a1bdbec6f145",
+    "src/python/web_generator.py": "abd0474708b3fc581392a877798d34920a7ba04582b0b05c39c2e3beb44c8bd9",
+    "src/python/core/__init__.py": "392c593fceccc258079dc9136d12a930b031d727789f1a2701842a7e057d4f94",
+    "src/python/core/activation_spreading.py": "a1e5dc68590897bd3cac6e0d27a2bb684cc23be03dd79a99cf17e47a5578de75",
+    "src/python/core/analogical_reasoning.py": "cccc130adfd4b846747ad3b2553e6f5b0b300f56b68141fc63fd6b73197b1015",
+    "src/python/core/attention.py": "2c14977bdd1b9ee09e4eb666ace8d22105d89621be89b80a3800c3040241358e",
+    "src/python/core/autonomous_goals.py": "f56aff5923d02fcbc8af5c5c539d30e2c727c4c4f706e5fa56d9048631738467",
+    "src/python/core/autonomous_supervisor.py": "b4b45535ac476d167d39c6c166c2367525db073ac99d6483dd1ab6d97ea695b8",
+    "src/python/core/autonomy_governance.py": "3b0b368229a8cb49ff1530907a049ef94f39c7a8869e64602f36d564e4b68e26",
+    "src/python/core/belief_revision.py": "39a6d591a651417519fc33b2302c8f7ec1f25979584c9b2bb49c09ea0561eab5",
+    "src/python/core/belief_system.py": "5c37e8bcd1f0a209e7fb31b83710524c4c7d859deb1ca95a036cfa6fb877a10e",
+    "src/python/core/cognitive_laws.py": "0004c2cfcb7da754b04e2282826431e61b21461b89900d75960347793b6fc708",
+    "src/python/core/cognitive_physics.py": "85404b80f2d99c50704ceb70469d09e806d5ee944eb0f5648dd8f50cf8eddb55",
+    "src/python/core/cognitive_runtime.py": "8a7313cf1aca8630b7724966d662991e41f695bd8edcf698dc211b172d3207e5",
+    "src/python/core/cognitive_scheduler.py": "ea62cb30b5ad54a54cb84f64f3003d5de321b252337a419fb5d88536dfcf4553",
+    "src/python/core/cognitive_state.py": "4badb3628a629a010c446a3d3caa9eb414f80a56f845cc613763ece692669ef6",
+    "src/python/core/concept_formation.py": "3b240c7bd13c7f3ffc9984cd78a449e04d6fc3894ae77ada6009e4c44aa92e41",
+    "src/python/core/contradiction.py": "7801746edc82817f3cdc4c9accf44960f003abd888bb7658688c76b9273bc7e9",
+    "src/python/core/curiosity.py": "cbf60f3f183a1427a2b9f7163c9f21031b6538be99ec01d0449c923dc882c3a5",
+    "src/python/core/discovery_pipeline.py": "66b1a753d340f2b2e14903c12f65b0a38022992c0b998737350b50c346986cde",
+    "src/python/core/emergent_validation.py": "996a37844d4c5b41d9aadcb1c8fb686d17b62048905e7c21b1ab7bd995609109",
+    "src/python/core/evolution.py": "47c87f15f710cbe46f250cebd08f86215591524be9065af2bdb86958077eac06",
+    "src/python/core/executor.py": "8abf03e6de90a4702d5a7865b9b444b54adc7c55d28375630961db268a3e620b",
+    "src/python/core/experiment_engine.py": "04a6be36cfa3469e356602943bf1504878775d4570f874dcd6336ed904d69d84",
+    "src/python/core/goal_system.py": "b84a9b070617399bdf244f183e3ba66fcf2d06127035dabbaa9c8174b909f5d9",
+    "src/python/core/hypothesis_generation.py": "678e4692b2f4b652f96293c67ae4f60b402c794f7176d21a9dd1b04c9fa09c18",
+    "src/python/core/integrated_runtime.py": "99a6c49a09c7bdbab16c632922593866c81a10cb1730437fc512223832662fd9",
+    "src/python/core/intelligence_benchmarks.py": "7c2aa73df0eba8a9d86ee63480f675f24cefbf3864a565e5831b6914572d0211",
+    "src/python/core/knowledge_decay.py": "a0501766f2d5560bbd4b293e32ffc50aabe4c89606d3a800c6b2e5adca1b90e6",
+    "src/python/core/knowledge_maintenance.py": "4417206456cc7681bdf3013de55e8e01d1d46f1f31a09d4fd6f9c48ff8db040c",
+    "src/python/core/knowledge_transfer.py": "9096993a42b9ff4b8a6ef71241632894151f92afbc9731feef9c44e7c24afdf4",
+    "src/python/core/memory_consolidation.py": "7231e2520886096dfb8a7755286dcb50bf1646ce9c770fbf35d79ae502ae2b6a",
+    "src/python/core/mental_simulation.py": "c151568b8d1cb8fe5d4cc65b5bc170a829472fd165132d3cf54f1a7f2947da87",
+    "src/python/core/meta_cognition.py": "4f3f071005ace187109a0ebc847e2b3dcc6af115243a10583e48e94f58c69feb",
+    "src/python/core/meta_reasoning.py": "543a29a7930f3b617396f2d948c37b20efee4cddfe778612de2ac5cacf50867f",
+    "src/python/core/observer.py": "9e8044269764244a1c34f8d4ff3005f04768e48029c2e2d1c8db2ff0cc5cbd16",
+    "src/python/core/planner.py": "b6b235d0f986519632db0c51d87e750f68bc9c4be9ff1635dc60d05fe504b15b",
+    "src/python/core/prediction.py": "a0f02a145169a6a42a8e4cc6f37bd20f6adccaa74be575bc9d7fda63e784925e",
+    "src/python/core/principle_evolution.py": "5375d503aa01e10c96d156501513c7f58ce699ad43d3efbdac8025e0c3687dfb",
+    "src/python/core/reality_graph.py": "12d64fba56ee319e99047fdb911cb49f6f21103754c8e93cd0117fc1b8d6e1c4",
+    "src/python/core/reality_sync.py": "19177b25a6c36d9b0c5c6f33d363fbd75cf541aeddcc404b1054a9311e27755c",
+    "src/python/core/reflection.py": "819a8a1ead31cf913254fb87f00a75691107343ab7f9c544296591b6aac65728",
+    "src/python/core/self_assessment.py": "605fdffc97093cdf8907b43214da50aa809227a2ab703a6d0dfc64c8a6722383",
+    "src/python/core/self_improvement.py": "3d4a3531e4e09a2d84c49fef33dd9d23a721677442325c3fcf13b5b50af0c374",
+    "src/python/core/self_metrics.py": "fdf7413b65b1167043108aab56ccef06ab065e11d76f2c558f2b131fe288d3d3",
+    "src/python/core/theory_formation.py": "125fcee0b0a6073e49b441ceff2726fa80e246592c72155cda4a5e4fde28c039",
+    "src/python/core/understanding.py": "544d11b14fb9365543cd781a823b93b4fc75b52eb5516eaf31005d4c93708bdd",
+    "src/python/core/world_model.py": "38056e372090e0f9bdcce0680eeaa8afb54840562ea21d2f14029853e2ed330e",
+    "src/python/creator/__init__.py": "389aea1eb13235bfb012366bc5a10483fe1de46be3dbe57564c01bbb4f2a539f",
+    "src/python/creator/engine.py": "b809ff01b44e79a8caf07d4aaf096ff3b3cee42e724521ac2c6bf1aae0834f7d",
+    "src/python/creator/engine_v3.py": "8f7325569171022400f26c0c732d4eb9b338b0d2c6fbeea3e39e5b63da6b5ba7",
+    "src/python/creator/narrative_intelligence.py": "0e8b6ada417b05a13407fbe05cfcaad4fe9ff2ea23b42f026c5b7435f9051235",
+    "src/python/creator/physics.py": "f22e2cf9b51639f9b65ad1961844f9deeed7fce96b67f8b18fc4c5e207ec7e36",
+    "src/python/multilingual/__init__.py": "019addb6a9ca3335418ed22278ca2c5506b8536d6e73dc544fe277624b9e9ce3",
+    "src/python/multilingual/shaper.py": "05ff9bd4c20587a385cd85bd66c9956153deec60d3793ff5ed054c3841ddad87",
+    "src/python/aces_v2/__init__.py": "172ce6547de9b99fe003ba7398ef6ff87e4465cb5538bf42914290be44902353",
+    "src/python/aces_v2/auditor.py": "91ebe5ea71877d3f2a8bf951dbbaf84529540c57781e6c728578a4074c0af062",
+    "src/python/aces_v2/bridges.py": "95e7ac419f96f82606bf478c8b1587baa597942e9ccf2cbb52c263545827c8e7",
+    "src/python/aces_v2/engine.py": "b6582d9348b66cf92658a9b0ca83046c3c4b905cb3a9c398442dcf19938082f1",
+    "src/python/aces_v2/graph_builder.py": "df6a8fb9fed46fa4c2c2814ef30dfae271101f71de4e59ce0f5cecd1263ea6d8",
+    "src/python/aces_v2/memory.py": "f74436bb123e79bd10f67fee1c8e012578a8470eba2d047c3634e39f5312525b",
+    "src/python/aces_v2/models.py": "89b403b8478998dc8d33881102c4cdb2ef351ca38130990da5108548b907a8d7",
+    "src/python/aces_v2/parser.py": "f911794366e0361868fc5ae096157a2c28d92c19d61444228a59c5aca665460d",
+    "src/python/aces_v2/reasoner.py": "1e8bb13a3aad894544e147057d086c66a34e54babe5c02883f75594a1bebd4e0",
+    "src/python/aces_v2/renderer.py": "7957b5ebbbc88af345a85093d273d6416352e657edaa7090e0b962026d2f9679",
+    "src/python/aces_v2/router.py": "b5addb916e7ed61eafa75bbf505b3e0cd81d9be54b46376a31811044bf704dca",
+    "src/python/aces_v2/shield.py": "b31438a46b0df7b720e39b1277a526b6a74eee11c48c6d88fa17c2735dbc342b",
+    "src/axima/__init__.py": "0dc9f3593eedefd181de33dc53f7fb5e2f2b498d9d9dbada6e9b68d9710634f4",
+    "src/axima/api.py": "6e584437ec9b0cd85e399e664e2f289f3889a78f9b1a0a1ab3d0fc50c19ad7be",
+    "src/axima/cli.py": "44051b2c4d37e924c23ecacc7fb24eea26cb0d36f677681d0736218ff810bb1b",
+    "src/axima/config.py": "eef0060c65e6e8dc0b113d6510f3bb33b8c964af50f5e4794860bf94c918ffff",
+    "src/axima/doctor.py": "656376bba1a41a746a58b9394f468c4426df2913b1bddc2adc45c1aff0cc9dc7",
+    "tests/test_parse_all.py": "d07daef68466f38062a4f8407da09882a3c816d13e7b1f18d6b9f065655b28d0",
+    "evals/run_evals.py": "a3466703934f55819b0fe4a562158de539598127e6627e2180667a96cdb43ef2"
+  },
+  "data_sources": [
+    {
+      "path": "user_data/aces_memory.json",
+      "size_bytes": 339,
+      "type": "json"
+    },
+    {
+      "path": "src/python/user_data/community.json",
+      "size_bytes": 2231,
+      "type": "json"
+    },
+    {
+      "path": "src/data/causal_knowledge.json",
+      "size_bytes": 88572,
+      "type": "json"
+    },
+    {
+      "path": "src/data/cse_triples.txt",
+      "size_bytes": 43903,
+      "type": "text"
+    },
+    {
+      "path": "src/data/domain_knowledge.txt",
+      "size_bytes": 315551,
+      "type": "text"
+    },
+    {
+      "path": "src/data/generated_knowledge.txt",
+      "size_bytes": 20047,
+      "type": "text"
+    },
+    {
+      "path": "src/data/kfr_import.txt",
+      "size_bytes": 32304,
+      "type": "text"
+    },
+    {
+      "path": "src/data/kfr_knowledge.txt",
+      "size_bytes": 29088,
+      "type": "text"
+    },
+    {
+      "path": "src/data/knowledge.dat",
+      "size_bytes": 832653,
+      "type": "binary_data"
+    },
+    {
+      "path": "src/data/rich_concepts.txt",
+      "size_bytes": 8439,
+      "type": "text"
+    },
+    {
+      "path": "src/data/seed_knowledge.txt",
+      "size_bytes": 70358,
+      "type": "text"
+    },
+    {
+      "path": "src/data/wiki_knowledge.txt",
+      "size_bytes": 464647,
+      "type": "text"
+    },
+    {
+      "path": "src/data/world_model.txt",
+      "size_bytes": 10174,
+      "type": "text"
+    },
+    {
+      "path": "src/user_data/corrections.json",
+      "size_bytes": 96,
+      "type": "json"
+    },
+    {
+      "path": "src/user_data/learned_answers.json",
+      "size_bytes": 18084,
+      "type": "json"
+    },
+    {
+      "path": "src/user_data/profile.json",
+      "size_bytes": 70,
+      "type": "json"
+    },
+    {
+      "path": "evals/math/cases.json",
+      "size_bytes": 1150,
+      "type": "json"
+    },
+    {
+      "path": "evals/multilingual/cases.json",
+      "size_bytes": 763,
+      "type": "json"
+    },
+    {
+      "path": "evals/codegen/cases.json",
+      "size_bytes": 696,
+      "type": "json"
+    }
+  ],
+  "optional_tools": [],
+  "prohibited_dependencies": {
+    "neural_models": [],
+    "api_calls": [],
+    "embeddings": []
+  },
+  "network_policy": "offline_only",
+  "generated_at": "2026-07-23T10:31:23Z"
+}
